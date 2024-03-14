@@ -333,6 +333,8 @@ namespace ScratchCardAsset
 				Card.OnRenderTextureInitialized -= OnCardRenderTextureInitialized;
 				Card.OnRenderTextureInitialized += OnCardRenderTextureInitialized;
 				Card.Init();
+				//add
+				Card.enabled = inputEnabled;
 			}
 			else
 			{
