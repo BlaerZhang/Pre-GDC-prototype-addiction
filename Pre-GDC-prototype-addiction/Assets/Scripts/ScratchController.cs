@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using DG.Tweening;
 using ScratchCardAsset;
 using UnityEngine;
 
@@ -8,6 +10,7 @@ public class ScratchController : MonoBehaviour
 {
     [Header("Basic")]
     public SpriteRenderer spriteRenderer;
+    public CinemachineVirtualCamera vCam;
     
     [Header("Scratch")]
     public float speed;
@@ -19,6 +22,7 @@ public class ScratchController : MonoBehaviour
 
     [Header("Feedback")] 
     public bool feedback;
+    public bool screenShake = false;
     public List<ParticleSystem> particles;
     public AudioClip soundLayer1;
 
@@ -41,26 +45,26 @@ public class ScratchController : MonoBehaviour
         
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePosDamped;
+        Vector2 mouseToScratcher = (Vector2)transform.position - mousePos;
         
         //Look Rotation
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, (Vector2)transform.position - mousePos);
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, mouseToScratcher);
         
         //Change Scale
-        if (((Vector2)transform.position - mousePos).magnitude <= spriteRenderer.bounds.size.y)
+        if (mouseToScratcher.magnitude <= spriteRenderer.bounds.size.y)
         {
-            transform.localScale = new Vector3(1,
-                ((Vector2)transform.position - mousePos).magnitude / spriteRenderer.bounds.size.y, 1);
+            transform.localScale = new Vector3(1, mouseToScratcher.magnitude / spriteRenderer.bounds.size.y, 1);
         }
         //Move Towards
         else
         {
-            transform.position += (Vector3)(mousePos - (Vector2)transform.position) * speed * Time.deltaTime;
+            transform.position += -(Vector3)mouseToScratcher.normalized * MathF.Pow(mouseToScratcher.magnitude,1f) * speed * Time.deltaTime;
         }
         
         //scratch
         if (Input.GetMouseButton(0))
         {
-            card.ScratchHole(ConvertToScratchCardTexturePosition(transform.localPosition + (Vector3)((Vector2)transform.position - mousePos).normalized * scratchOffset), pressure);
+            card.ScratchHole(ConvertToScratchCardTexturePosition(transform.localPosition + (Vector3)mouseToScratcher.normalized * scratchOffset), pressure);
         }
         
         //Calculate Progress speed
@@ -77,11 +81,13 @@ public class ScratchController : MonoBehaviour
                 foreach (var particle in particles)
                 {
                     particle.Play();
+                    vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = screenShake ? 1 : 0;
                     print("Particles!");
                 }
             }
             //sound
         }
+        
         else
         {
             if (particles != null)
@@ -89,6 +95,7 @@ public class ScratchController : MonoBehaviour
                 foreach (var particle in particles)
                 {
                     particle.Stop();
+                    vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
                 }
             }
             //sound stop

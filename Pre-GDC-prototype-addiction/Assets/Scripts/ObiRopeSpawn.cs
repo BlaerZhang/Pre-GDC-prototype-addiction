@@ -40,7 +40,7 @@ public class ObiRopeSpawn : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             if (!currentRope) return;
-            currentRope.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            currentRope.transform.position = (Vector2)FindObjectOfType<ScratchController>().transform.position;
             cursor.ChangeLength((eraseProgress.GetProgress() - currentErasePercentage) * 30f);
             // print(Mathf.RoundToInt(1 + 100f * eraseProgress.GetProgress() - currentErasePercentage));
         }
@@ -60,7 +60,7 @@ public class ObiRopeSpawn : MonoBehaviour
     void CreateRope()
     {
         // Create both the rope and the solver:	
-        GameObject ropeInstance = Instantiate(obiRopePrefab, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+        GameObject ropeInstance = Instantiate(obiRopePrefab, (Vector2)FindObjectOfType<ScratchController>().transform.position, Quaternion.identity);
         ropeInstance.transform.parent = solver.transform;
         currentRope = ropeInstance;
         
