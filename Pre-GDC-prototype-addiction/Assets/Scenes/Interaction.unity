@@ -10260,7 +10260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1013582065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15697,12 +15697,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3626916397168388536}
   vCam: {fileID: 1872941481}
-  speed: 1
+  speed: 2
   pressure: 1
   scratchOffset: 0.2
   progressSpeed: 0
   feedback: 1
-  screenShake: 1
+  screenShake: 2
   particles:
   - {fileID: 2358517195028606748}
   - {fileID: 504059769}

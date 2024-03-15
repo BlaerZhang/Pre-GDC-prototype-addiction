@@ -5,6 +5,7 @@ using Cinemachine;
 using DG.Tweening;
 using ScratchCardAsset;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class ScratchController : MonoBehaviour
 {
@@ -22,19 +23,25 @@ public class ScratchController : MonoBehaviour
 
     [Header("Feedback")] 
     public bool feedback;
-    public bool screenShake = false;
+    [Range(0,10)]
+    public float screenShake = 0;
     public List<ParticleSystem> particles;
     public AudioClip soundLayer1;
 
     private ScratchCard card;
     private SpriteRenderer cardSprite;
     private EraseProgress eraseProgress;
+    private PostProcessVolume postProcessVolume;
+
+    private ChromaticAberration chromaticAberration;
     // Start is called before the first frame update
     void Start()
     {
         card = FindObjectOfType<ScratchCard>();
         cardSprite = card.transform.parent.Find("Scratch Surface Sprite").GetComponent<SpriteRenderer>();
         eraseProgress = FindObjectOfType<EraseProgress>();
+        postProcessVolume = FindObjectOfType<PostProcessVolume>();
+        postProcessVolume.profile.TryGetSettings(out chromaticAberration);
     }
 
     // Update is called once per frame
@@ -81,10 +88,11 @@ public class ScratchController : MonoBehaviour
                 foreach (var particle in particles)
                 {
                     particle.Play();
-                    vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = screenShake ? 1 : 0;
                     print("Particles!");
                 }
             }
+            vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = screenShake;
+            chromaticAberration.intensity.value += Time.deltaTime * 2;
             //sound
         }
         
@@ -95,9 +103,10 @@ public class ScratchController : MonoBehaviour
                 foreach (var particle in particles)
                 {
                     particle.Stop();
-                    vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
                 }
             }
+            vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
+            if (chromaticAberration.intensity.value > 0) chromaticAberration.intensity.value -= Time.deltaTime;
             //sound stop
         }
     }
