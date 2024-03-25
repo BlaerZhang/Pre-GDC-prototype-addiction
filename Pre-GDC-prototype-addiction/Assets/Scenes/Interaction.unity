@@ -10166,71 +10166,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!1001 &680766133
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2912244606251093771, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: segmentLength
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6596211792616791385, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_Name
-      value: Rope
-      objectReference: {fileID: 0}
-    - target: {fileID: 6596211792616791385, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536964546134628274, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536964546134628274, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536964546134628274, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536964546134628274, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536964546134628274, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536964546134628274, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536964546134628274, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536964546134628274, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536964546134628274, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536964546134628274, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
 --- !u!114 &982965906 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114877032501962244, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
@@ -10260,7 +10195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1013582065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10590,52 +10525,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
---- !u!1 &1412227128
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1412227129}
-  - component: {fileID: 1412227130}
-  m_Layer: 0
-  m_Name: Rope Spawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1412227129
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412227128}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1412227130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412227128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 517b07beb9fd4ea498e151c63449714c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ropePrefab: {fileID: 6596211792616791385, guid: 9766403a0abf09a45997eaa799e5ac2d, type: 3}
-  eraseProgress: {fileID: 982965906}
 --- !u!1 &1872941480
 GameObject:
   m_ObjectHideFlags: 0
@@ -15729,8 +15618,6 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1872941482}
   - {fileID: 1144902202}
-  - {fileID: 1412227129}
-  - {fileID: 680766133}
   - {fileID: 1013582067}
   - {fileID: 7878350318571456081}
   - {fileID: 99851559}
