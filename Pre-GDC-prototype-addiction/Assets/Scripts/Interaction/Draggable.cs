@@ -61,15 +61,15 @@ public class Draggable : MonoBehaviour
         transform.position += (Vector3)cardToTarget.normalized * MathF.Pow(cardToTarget.magnitude,1f) * dragSpeed * Time.deltaTime;
         
         //Adjust Buy Area
-        float mouseYPosOnViewport = Camera.main.ScreenToViewportPoint(Input.mousePosition).y;
-        switch (mouseYPosOnViewport)
+        float cardYPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).y;
+        switch (cardYPosOnViewport)
         {
             case < 0.2f:
                 break;
             case < 0.5f:
                 BuyCardManager.instance.buyArea.anchoredPosition =
                     new Vector2(BuyCardManager.instance.buyArea.anchoredPosition.x,
-                        200 + (0.5f - mouseYPosOnViewport) * 1000);
+                        200 + (0.5f - cardYPosOnViewport) * 1000);
                 break;
             case >= 0.5f:
                 break;
@@ -77,7 +77,7 @@ public class Draggable : MonoBehaviour
         
         //Check if in buy area
         float buyAreaUpperEdgeYOnViewport = Camera.main.ScreenToViewportPoint(BuyCardManager.instance.buyArea.anchoredPosition).y;
-        if (buyAreaUpperEdgeYOnViewport > mouseYPosOnViewport)
+        if (buyAreaUpperEdgeYOnViewport > cardYPosOnViewport)
         {
             isInBuyArea = true;
             cardSprite.DOColor(Color.yellow, 0.1f);
