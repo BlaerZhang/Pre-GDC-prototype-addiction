@@ -38,9 +38,10 @@ public class Draggable : MonoBehaviour
     {
         isDragging = true;
         
-        //Reorder in List
+        //Reorder in List and Sort order
         BuyCardManager.instance.cardsToBuy.Remove(this);
         BuyCardManager.instance.cardsToBuy.Insert(0,this);
+        BuyCardManager.instance.sortCardsOrder();
         
         //Scale
         cardSprite.transform.DOScale(Vector3.one * hoverScale, 0.1f);
