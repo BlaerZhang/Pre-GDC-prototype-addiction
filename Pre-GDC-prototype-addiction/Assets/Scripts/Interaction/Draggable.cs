@@ -36,7 +36,8 @@ public class Draggable : MonoBehaviour
     private void OnMouseDown()
     {
         isDragging = true;
-        // cardSprite.DOColor(Color.white, 0.1f);
+        BuyCardManager.instance.cardsToBuy.Remove(this);
+        BuyCardManager.instance.cardsToBuy.Insert(0,this);
         cardSprite.transform.DOScale(Vector3.one * hoverScale, 0.1f);
         dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
