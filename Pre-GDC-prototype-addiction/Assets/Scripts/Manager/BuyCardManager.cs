@@ -14,6 +14,9 @@ public class BuyCardManager : MonoBehaviour
     public List<Transform> cardSpawnPos;
     public Draggable cardPrefab;
 
+    [Header("Buy Cards")] 
+    public RectTransform buyArea;
+
     private void Awake()
     {
         instance = this;
@@ -47,8 +50,12 @@ public class BuyCardManager : MonoBehaviour
         //TODO: Spawn Animation
     }
 
-    public void BuyCard()
+    public void BuyCard(Draggable card)
     {
-        
+        cardsToBuy.Remove(card);
+        for (int i = 0; i < 4; i++)
+        {
+            cardsToBuy[i].transform.DOMove(cardSpawnPos[i].position, 0.1f);
+        }
     }
 }

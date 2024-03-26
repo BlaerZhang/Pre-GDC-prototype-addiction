@@ -9,6 +9,7 @@ public class Draggable : MonoBehaviour
     [Header("Drag")]
     public float dragSpeed = 1;
     public bool isDragging = false;
+    public bool isInBuyArea = false;
     
     [Header("Feedback")] 
     public float hoverScale = 0.95f;
@@ -36,23 +37,69 @@ public class Draggable : MonoBehaviour
     private void OnMouseDown()
     {
         isDragging = true;
+        
+        //Reorder in List
         BuyCardManager.instance.cardsToBuy.Remove(this);
         BuyCardManager.instance.cardsToBuy.Insert(0,this);
+        
+        //Scale
         cardSprite.transform.DOScale(Vector3.one * hoverScale, 0.1f);
+        
+        //Set Drag Point Offset
         dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
+        //Activate Buy Area
+        BuyCardManager.instance.buyArea.DOAnchorPosY(200, 0.1f);
     }
 
     private void OnMouseDrag()
     {
+        //Card Follow Mouse
         Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)dragOffset;
         Vector2 cardToTarget = targetPos - (Vector2)transform.position;
         transform.position += (Vector3)cardToTarget.normalized * MathF.Pow(cardToTarget.magnitude,1f) * dragSpeed * Time.deltaTime;
-    }
+        
+        //Adjust Buy Area
+        float mouseYPosOnViewport = Camera.main.ScreenToViewportPoint(Input.mousePosition).y;
+        switch (mouseYPosOnViewport)
+        {
+            case < 0.2f:
+                break;
+            case < 0.5f:
+                BuyCardManager.instance.buyArea.anchoredPosition =
+                    new Vector2(BuyCardManager.instance.buyArea.anchoredPosition.x,
+                        200 + (0.5f - mouseYPosOnViewport) * 1000);
+                break;
+            case >= 0.5f:
+                break;
+        }
+        
+        //Check if in buy area
+        float buyAreaUpperEdgeYOnViewport = Camera.main.ScreenToViewportPoint(BuyCardManager.instance.buyArea.anchoredPosition).y;
+        if (buyAreaUpperEdgeYOnViewport > mouseYPosOnViewport)
+        {
+            isInBuyArea = true;
+            cardSprite.DOColor(Color.yellow, 0.1f);
+        }
+        else
+        {
+            isInBuyArea = false;
+            cardSprite.DOColor(Color.gray, 0.1f);
+        }
 
+    }
     private void OnMouseUp()
     {
         isDragging = false;
+        
+        //Scale
         cardSprite.transform.DOScale(Vector3.one, 0.1f);
+        
+        //Deactivate Buy Area
+        BuyCardManager.instance.buyArea.DOAnchorPosY(0, 0.1f);
+        
+        //Check if buy
+        if (isInBuyArea) BuyCardManager.instance.BuyCard(this);
     }
 
     private void OnMouseExit()
