@@ -117,7 +117,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _IsAnimating: 1
-    - _MaxMovement: 0.454
+    - _MaxMovement: 0.255
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -133,13 +133,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BackgroundColor: {r: 0.754717, g: 0.3665193, b: 0.20291919, a: 1}
+    - _BackgroundColor: {r: 0.9245283, g: 0.5760875, b: 0.039248828, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0, g: 1, b: 1, a: 1}
-    - _Color2: {r: 1, g: 0, b: 1, a: 1}
-    - _Color3: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    - _Color4: {r: 0, g: 0, b: 0, a: 1}
+    - _Color1: {r: 0.022828398, g: 0.5377358, b: 0.5377358, a: 1}
+    - _Color2: {r: 0.6886792, g: 0.048727296, b: 0.6886792, a: 1}
+    - _Color3: {r: 0.75294125, g: 0.3647059, b: 0.20392159, a: 1}
+    - _Color4: {r: 0.077830195, g: 0.5, b: 0.113284655, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _InitialPos1: {r: -0.73, g: -0.68, b: 0, a: 0}
     - _InitialPos2: {r: 0.12, g: 0.15, b: 0, a: 0}
