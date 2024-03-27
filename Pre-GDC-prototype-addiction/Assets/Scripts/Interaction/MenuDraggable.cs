@@ -10,6 +10,7 @@ namespace Interaction
     {
         [Header("Card")] 
         public bool unlock = false;
+        public Sprite lockedSprite;
         public int price = 1;
         
         [Header("Drag")]
@@ -39,7 +40,7 @@ namespace Interaction
 
             if (!unlock)
             {
-                cardSprite.color = new Color(0.2f,0.2f,0.2f);
+                cardSprite.sprite = lockedSprite;
                 pricePanelSprite.enabled = false;
                 priceText.enabled = false;
             }
@@ -53,7 +54,6 @@ namespace Interaction
 
         private void OnMouseEnter()
         {
-            if (!unlock) return;
             if (!isDragging) cardSprite.DOColor(Color.gray, 0.1f);
         }
 
@@ -142,8 +142,6 @@ namespace Interaction
 
         private void OnMouseExit()
         {
-            if(!unlock) return;
-            
             if (!isDragging) cardSprite.DOColor(Color.white, 0.1f);
         }
     }
