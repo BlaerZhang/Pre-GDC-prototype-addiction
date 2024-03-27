@@ -55,7 +55,7 @@ public class BuyCardManager : MonoBehaviour
             Draggable cardInstance = Instantiate(cardPrefab, cardPurchasePos.position, Quaternion.identity);
             cardsToBuy.Add(cardInstance);
         }
-        //TODO: Spawn Animation
+
         StartCoroutine(DealCards());
     }
 

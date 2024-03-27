@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MenuDraggable : MonoBehaviour
 {
     [Header("Drag")]
     public float dragSpeed = 25;
     public bool isDragging = false;
-    public bool isInBuyArea = false;
+    [FormerlySerializedAs("isInBuyArea")] public bool isInPickArea = false;
     
     [Header("Feedback")] 
     public float hoverScale = 0.95f;
@@ -49,8 +50,8 @@ public class MenuDraggable : MonoBehaviour
         //Set Drag Point Offset
         dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
-        //Activate Buy Area
-        // BuyCardManager.instance.buyArea.DOAnchorPosY(200, 0.1f);
+        //Activate Pick Area
+        MenuManager.instance.pickArea.DOAnchorPosX(-200, 0.1f);
     }
 
     private void OnMouseDrag()
@@ -64,29 +65,30 @@ public class MenuDraggable : MonoBehaviour
         float cardXPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).x;
         switch (cardXPosOnViewport)
         {
-            case < 0.2f:
+            case > 0.8f:
                 break;
-            case < 0.5f:
-                // BuyCardManager.instance.buyArea.anchoredPosition =
-                //     new Vector2(BuyCardManager.instance.buyArea.anchoredPosition.x,
-                //         200 + (0.5f - cardXPosOnViewport) * 1000);
+            case > 0.5f:
+                MenuManager.instance.pickArea.anchoredPosition =
+                    new Vector2(-200 - (cardXPosOnViewport - 0.5f) * 1000,
+                        MenuManager.instance.pickArea.anchoredPosition.y);
                 break;
-            case >= 0.5f:
+            case <= 0.5f:
                 break;
         }
         
-        //Check if in buy area
-        // float buyAreaUpperEdgeYOnViewport = Camera.main.ScreenToViewportPoint(BuyCardManager.instance.buyArea.anchoredPosition).y;
-        // if (buyAreaUpperEdgeYOnViewport > cardXPosOnViewport)
-        // {
-        //     isInBuyArea = true;
-        //     cardSprite.DOColor(Color.yellow, 0.1f);
-        // }
-        // else
-        // {
-        //     isInBuyArea = false;
-        //     cardSprite.DOColor(Color.gray, 0.1f);
-        // }
+        // Check if in buy area
+         float pickAreaLeftEdgeXOnViewport = Camera.main.ScreenToViewportPoint(MenuManager.instance.pickArea.anchoredPosition).x;
+         if (1 + pickAreaLeftEdgeXOnViewport < cardXPosOnViewport)
+         {
+             isInPickArea = true;
+             cardSprite.DOColor(Color.yellow, 0.1f);
+         }
+         else
+         {
+             isInPickArea = false;
+             cardSprite.DOColor(Color.gray, 0.1f);
+         }
+         print(1+pickAreaLeftEdgeXOnViewport);
 
     }
     private void OnMouseUp()
@@ -99,11 +101,11 @@ public class MenuDraggable : MonoBehaviour
         //Reset Order
         transform.DOMoveZ(0f, 0);
         
-        //Deactivate Buy Area
-        // BuyCardManager.instance.buyArea.DOAnchorPosY(0, 0.1f);
+        //Deactivate Pick Area
+        MenuManager.instance.pickArea.DOAnchorPosX(0, 0.1f);
         
-        //Check if buy
-        if (isInBuyArea) ;
+        //Check if pick
+        if (isInPickArea) MenuManager.instance.PickCard(this);
         else transform.DOLocalMove(originalLocalPos, 0.1f);
     }
 
