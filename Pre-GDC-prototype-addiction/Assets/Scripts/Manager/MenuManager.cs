@@ -16,8 +16,16 @@ public class MenuManager : MonoBehaviour
     // public Draggable cardPrefab;
 
     [Header("Pick Cards")] 
-    public RectTransform pickArea;
     public Transform cardPurchasePos;
+
+    [Header("Pick Area")] 
+    public RectTransform pickArea;
+    [Range(0,1)] public float areaActivateThreshold = 0.5f;
+    public float areaActivateDistance = 200;
+    [Range(0,1)] public float areaStopThreshold = 0.8f;
+    public float areaMoveAmount = 1000;
+    
+    
 
     private void Awake()
     {
@@ -42,6 +50,24 @@ public class MenuManager : MonoBehaviour
     public void PickCard(MenuDraggable card)
     {
         card.transform.DOMove(cardPurchasePos.position, 0.1f); 
+    }
+
+    public void AdjustPickArea(Transform posterPos)
+    {
+        float cardXPosOnViewport = Camera.main.WorldToViewportPoint(posterPos.position).x;
+
+        if (cardXPosOnViewport < areaStopThreshold && cardXPosOnViewport > areaActivateThreshold) 
+            pickArea.anchoredPosition = new Vector2(-areaActivateDistance - (cardXPosOnViewport - areaActivateThreshold) * areaMoveAmount, pickArea.anchoredPosition.y);
+    }
+
+    public void ActivatePickArea()
+    {
+        pickArea.DOAnchorPosX(-areaActivateDistance, 0.1f);
+    }
+
+    public void DeactivatePickArea()
+    {
+        pickArea.DOAnchorPosX(0, 0.1f);
     }
     
 }

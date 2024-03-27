@@ -73,7 +73,7 @@ namespace Interaction
                 dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
                 //Activate Pick Area
-                MenuManager.instance.pickArea.DOAnchorPosX(-200, 0.1f);
+                MenuManager.instance.ActivatePickArea();
             }
             else
             {
@@ -92,21 +92,10 @@ namespace Interaction
             transform.position += (Vector3)cardToTarget.normalized * MathF.Pow(cardToTarget.magnitude,1f) * dragSpeed * Time.deltaTime;
         
             //Adjust Buy Area
-            float cardXPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).x;
-            switch (cardXPosOnViewport)
-            {
-                case > 0.8f:
-                    break;
-                case > 0.5f:
-                    MenuManager.instance.pickArea.anchoredPosition =
-                        new Vector2(-200 - (cardXPosOnViewport - 0.5f) * 1000,
-                            MenuManager.instance.pickArea.anchoredPosition.y);
-                    break;
-                case <= 0.5f:
-                    break;
-            }
+            MenuManager.instance.AdjustPickArea(this.transform);
         
             // Check if in buy area
+            float cardXPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).x;
             float pickAreaLeftEdgeXOnViewport = Camera.main.ScreenToViewportPoint(MenuManager.instance.pickArea.anchoredPosition).x;
             if (1 + pickAreaLeftEdgeXOnViewport < cardXPosOnViewport)
             {
@@ -133,7 +122,7 @@ namespace Interaction
             transform.DOMoveZ(0f, 0);
         
             //Deactivate Pick Area
-            MenuManager.instance.pickArea.DOAnchorPosX(0, 0.1f);
+            MenuManager.instance.DeactivatePickArea();
         
             //Check if pick
             if (isInPickArea) MenuManager.instance.PickCard(this);

@@ -50,7 +50,7 @@ namespace Interaction
             dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
             //Activate Buy Area
-            BuyCardManager.instance.buyArea.DOAnchorPosY(200, 0.1f);
+            BuyCardManager.instance.ActivateBuyArea();
         }
 
         private void OnMouseDrag()
@@ -61,21 +61,10 @@ namespace Interaction
             transform.position += (Vector3)cardToTarget.normalized * MathF.Pow(cardToTarget.magnitude,1f) * dragSpeed * Time.deltaTime;
         
             //Adjust Buy Area
-            float cardYPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).y;
-            switch (cardYPosOnViewport)
-            {
-                case < 0.2f:
-                    break;
-                case < 0.5f:
-                    BuyCardManager.instance.buyArea.anchoredPosition =
-                        new Vector2(BuyCardManager.instance.buyArea.anchoredPosition.x,
-                            200 + (0.5f - cardYPosOnViewport) * 1000);
-                    break;
-                case >= 0.5f:
-                    break;
-            }
+            BuyCardManager.instance.AdjustBuyArea(this.transform);
         
             //Check if in buy area
+            float cardYPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).y;
             float buyAreaUpperEdgeYOnViewport = Camera.main.ScreenToViewportPoint(BuyCardManager.instance.buyArea.anchoredPosition).y;
             if (buyAreaUpperEdgeYOnViewport > cardYPosOnViewport)
             {
@@ -97,7 +86,7 @@ namespace Interaction
             cardSprite.transform.DOScale(Vector3.one, 0.1f);
         
             //Deactivate Buy Area
-            BuyCardManager.instance.buyArea.DOAnchorPosY(0, 0.1f);
+            BuyCardManager.instance.DeactivateBuyArea();
         
             //Check if buy
             if (isInBuyArea) BuyCardManager.instance.BuyCard(this);

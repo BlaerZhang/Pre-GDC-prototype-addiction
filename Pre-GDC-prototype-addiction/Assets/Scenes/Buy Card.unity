@@ -814,7 +814,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &797379609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1853,8 +1853,12 @@ MonoBehaviour:
   - {fileID: 712855067}
   cardPurchasePos: {fileID: 873493937}
   cardPrefab: {fileID: 6831996590865958706, guid: 3b17cb72e9d43b84699430dec7091365, type: 3}
-  buyArea: {fileID: 1429995438}
   handAnimator: {fileID: 1191899901}
+  buyArea: {fileID: 1429995438}
+  areaActivateThreshold: 0.5
+  areaActivateDistance: 200
+  areaStopThreshold: 0.2
+  areaMoveAmount: 1000
 --- !u!1 &1759593241
 GameObject:
   m_ObjectHideFlags: 0

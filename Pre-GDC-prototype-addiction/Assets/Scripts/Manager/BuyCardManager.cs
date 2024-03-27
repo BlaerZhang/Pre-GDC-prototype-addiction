@@ -18,10 +18,16 @@ public class BuyCardManager : MonoBehaviour
     public Draggable cardPrefab;
 
     [Header("Buy Cards")] 
-    public RectTransform buyArea;
 
     [Header("Hand")] 
     public Animator handAnimator;
+    
+    [Header("Buy Area")] 
+    public RectTransform buyArea;
+    [Range(0,1)] public float areaActivateThreshold = 0.5f;
+    public float areaActivateDistance = 200;
+    [Range(0,1)] public float areaStopThreshold = 0.2f;
+    public float areaMoveAmount = 1000;
 
     private void Awake()
     {
@@ -90,6 +96,24 @@ public class BuyCardManager : MonoBehaviour
             Destroy(cardToCollect);
             yield return new WaitForSeconds(0.13f);
         }
+    }
+
+    public void AdjustBuyArea(Transform cardPos)
+    {
+        float cardYPosOnViewport = Camera.main.WorldToViewportPoint(cardPos.position).y;
+        
+        if(cardYPosOnViewport < areaActivateThreshold && cardYPosOnViewport > areaStopThreshold)
+            buyArea.anchoredPosition = new Vector2(buyArea.anchoredPosition.x, areaActivateDistance + (areaActivateThreshold - cardYPosOnViewport) * areaMoveAmount);
+    }
+
+    public void ActivateBuyArea()
+    {
+        buyArea.DOAnchorPosY(areaActivateDistance, 0.1f);
+    }
+    
+    public void DeactivateBuyArea()
+    {
+        buyArea.DOAnchorPosY(0, 0.1f);
     }
     
 }
