@@ -7,6 +7,10 @@ namespace Interaction
 {
     public class MenuDraggable : MonoBehaviour
     {
+        [Header("Card")] 
+        public bool unlock = false;
+        //maybe add price here?
+        
         [Header("Drag")]
         public float dragSpeed = 25;
         public bool isDragging = false;
@@ -24,6 +28,8 @@ namespace Interaction
             cardSprite = GetComponentInChildren<SpriteRenderer>();
             isDragging = false;
             originalLocalPos = transform.localPosition;
+
+            if (!unlock) cardSprite.color = new Color(0.1f,0.1f,0.1f);
         }
 
         // Update is called once per frame
@@ -34,28 +40,39 @@ namespace Interaction
 
         private void OnMouseEnter()
         {
+            if (!unlock) return;
             if (!isDragging) cardSprite.DOColor(Color.gray, 0.1f);
         }
 
         private void OnMouseDown()
         {
-            isDragging = true;
+            if (unlock)
+            {
+                isDragging = true;
         
-            //Sort order
-            transform.DOMoveZ(-0.1f, 0);
+                //Sort order
+                transform.DOMoveZ(-0.1f, 0);
         
-            //Scale
-            cardSprite.transform.DOScale(Vector3.one * hoverScale, 0.1f);
+                //Scale
+                cardSprite.transform.DOScale(Vector3.one * hoverScale, 0.1f);
         
-            //Set Drag Point Offset
-            dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                //Set Drag Point Offset
+                dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
-            //Activate Pick Area
-            MenuManager.instance.pickArea.DOAnchorPosX(-200, 0.1f);
+                //Activate Pick Area
+                MenuManager.instance.pickArea.DOAnchorPosX(-200, 0.1f);
+            }
+            else
+            {
+                //play locked animation
+            }
+           
         }
 
         private void OnMouseDrag()
         {
+            if (!unlock) return;
+            
             //Card Follow Mouse
             Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)dragOffset;
             Vector2 cardToTarget = targetPos - (Vector2)transform.position;
@@ -88,11 +105,12 @@ namespace Interaction
                 isInPickArea = false;
                 cardSprite.DOColor(Color.gray, 0.1f);
             }
-            print(1+pickAreaLeftEdgeXOnViewport);
 
         }
         private void OnMouseUp()
         {
+            if(!unlock) return;
+            
             isDragging = false;
         
             //Scale
@@ -111,6 +129,8 @@ namespace Interaction
 
         private void OnMouseExit()
         {
+            if(!unlock) return;
+            
             if (!isDragging) cardSprite.DOColor(Color.white, 0.1f);
         }
     }
