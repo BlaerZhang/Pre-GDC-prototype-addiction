@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,7 +10,7 @@ namespace Interaction
     {
         [Header("Card")] 
         public bool unlock = false;
-        //maybe add price here?
+        public int price = 1;
         
         [Header("Drag")]
         public float dragSpeed = 25;
@@ -20,16 +21,28 @@ namespace Interaction
         public float hoverScale = 0.95f;
 
         private SpriteRenderer cardSprite;
+        private SpriteRenderer pricePanelSprite;
+        private TextMeshPro priceText;
+        
         private Vector2 dragOffset = new Vector2(0, 0);
         private Vector2 originalLocalPos;
     
         void Start()
         {
-            cardSprite = GetComponentInChildren<SpriteRenderer>();
+            cardSprite = transform.Find("Poster Sprite").GetComponent<SpriteRenderer>();
+            pricePanelSprite = transform.Find("Poster Sprite/Price Panel Sprite").GetComponent<SpriteRenderer>();
+            priceText = GetComponentInChildren<TextMeshPro>();
+            
             isDragging = false;
             originalLocalPos = transform.localPosition;
+            priceText.text = $"${price}";
 
-            if (!unlock) cardSprite.color = new Color(0.2f,0.2f,0.2f);
+            if (!unlock)
+            {
+                cardSprite.color = new Color(0.2f,0.2f,0.2f);
+                pricePanelSprite.enabled = false;
+                priceText.enabled = false;
+            }
         }
 
         // Update is called once per frame
