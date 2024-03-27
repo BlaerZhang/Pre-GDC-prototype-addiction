@@ -29,7 +29,7 @@ namespace Interaction
             isDragging = false;
             originalLocalPos = transform.localPosition;
 
-            if (!unlock) cardSprite.color = new Color(0.1f,0.1f,0.1f);
+            if (!unlock) cardSprite.color = new Color(0.2f,0.2f,0.2f);
         }
 
         // Update is called once per frame
