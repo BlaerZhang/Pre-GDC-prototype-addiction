@@ -279,11 +279,18 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
 
     void GenerateScratchField()
     {
-        Vector2 scratchFieldPos = new Vector2(0, prizeAreaStartPosition.y + cellSize * Mathf.FloorToInt(prizeAreaGridSize.y / 2));
-        GameObject scratchField = Instantiate(scratchFieldPrefab, scratchFieldPos, Quaternion.identity);
+        Vector2 scratchFieldPos = new Vector2(0, targetAreaStartPosition.y + cellSize * Mathf.FloorToInt(targetAreaGridSize.y / 2));
+        GameObject targetScratchField = Instantiate(scratchFieldPrefab, scratchFieldPos, Quaternion.identity);
         // change the size
-        scratchField.transform.localScale = new Vector3(prizeAreaGridSize.x, prizeAreaGridSize.y, 1);
+        targetScratchField.transform.localScale = new Vector3(targetAreaGridSize.x, targetAreaGridSize.y, 1);
 
-        scratchField.transform.SetParent(currentScratchCard.transform);
+        targetScratchField.transform.SetParent(currentScratchCard.transform);
+
+        scratchFieldPos = new Vector2(0, prizeAreaStartPosition.y + cellSize * Mathf.FloorToInt(prizeAreaGridSize.y / 2));
+        GameObject prizeScratchField = Instantiate(scratchFieldPrefab, scratchFieldPos, Quaternion.identity);
+        // change the size
+        prizeScratchField.transform.localScale = new Vector3(prizeAreaGridSize.x, prizeAreaGridSize.y, 1);
+
+        prizeScratchField.transform.SetParent(currentScratchCard.transform);
     }
 }
