@@ -35,23 +35,6 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
 
     public List<int> possibleNumberPlaces;
 
-    [Header("Icon Placement")]
-    // include prize number and icon sprite
-    public List<Sprite> iconSprites;
-
-    public Vector2 iconPrizePosOffset = new Vector2(0, -1);
-
-    // starts at the bottom-left corner (local space)
-    public Vector2 targetAreaStartPosition;
-    // （row, column)
-    public Vector2Int targetAreaGridSize;
-
-    public Vector2 prizeAreaStartPosition;
-    public Vector2Int prizeAreaGridSize;
-
-    public float cellSize = 1f;
-    public float gapLength = 0.1f;
-
     void Start()
     {
         // actualPrizeDistributions = Utils.DeepCopyDictionary(basePrizeDistributions);
@@ -84,6 +67,8 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
 
         AdjustWinningProbability();
         DistributeIcons();
+
+        GenerateScratchField();
     }
 
     /// <summary>
@@ -127,6 +112,22 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
     }
 
     //-------------------------------------------------
+    [Header("Icon Placement")]
+    // include prize number and icon sprite
+    public List<Sprite> iconSprites;
+
+    public Vector2 iconPrizePosOffset = new Vector2(0, -1);
+
+    // starts at the bottom-left corner (local space)
+    public Vector2 targetAreaStartPosition;
+    // （row, column)
+    public Vector2Int targetAreaGridSize;
+
+    public Vector2 prizeAreaStartPosition;
+    public Vector2Int prizeAreaGridSize;
+
+    public float cellSize = 1f;
+    public float gapLength = 0.1f;
 
     GameObject ConstructIconObject(Sprite iconSprite)
     {
@@ -271,5 +272,18 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
                 Gizmos.DrawWireCube(cellPosition, cellSize * Vector2.one);
             }
         }
+    }
+
+    [Header("Scratch Field Setting")]
+    public GameObject scratchFieldPrefab;
+
+    void GenerateScratchField()
+    {
+        Vector2 scratchFieldPos = new Vector2(0, prizeAreaStartPosition.y + cellSize * Mathf.FloorToInt(prizeAreaGridSize.y / 2));
+        GameObject scratchField = Instantiate(scratchFieldPrefab, scratchFieldPos, Quaternion.identity);
+        // change the size
+        scratchField.transform.localScale = new Vector3(prizeAreaGridSize.x, prizeAreaGridSize.y, 1);
+
+        scratchField.transform.SetParent(currentScratchCard.transform);
     }
 }
