@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ScratchCardAsset;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -277,19 +278,24 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
     [Header("Scratch Field Setting")]
     public GameObject scratchFieldPrefab;
 
+    // TODO: generate scratch field according to the sprite -> set native size of the scratch card
     void GenerateScratchField()
     {
-        Vector2 scratchFieldPos = new Vector2(0, targetAreaStartPosition.y + cellSize * Mathf.FloorToInt(targetAreaGridSize.y / 2));
+        Vector3 scratchFieldPos = new Vector3(0, targetAreaStartPosition.y + cellSize * Mathf.FloorToInt(targetAreaGridSize.y / 2), -1);
         GameObject targetScratchField = Instantiate(scratchFieldPrefab, scratchFieldPos, Quaternion.identity);
+        scratchFieldPrefab.GetComponent<ScratchCardManager>().SetNativeSize();
+
         // change the size
-        targetScratchField.transform.localScale = new Vector3(targetAreaGridSize.x, targetAreaGridSize.y, 1);
+        // targetScratchField.transform.localScale = new Vector3(targetAreaGridSize.x, targetAreaGridSize.y, 1);
 
         targetScratchField.transform.SetParent(currentScratchCard.transform);
 
-        scratchFieldPos = new Vector2(0, prizeAreaStartPosition.y + cellSize * Mathf.FloorToInt(prizeAreaGridSize.y / 2));
+        scratchFieldPos = new Vector3(0, prizeAreaStartPosition.y + cellSize * Mathf.FloorToInt(prizeAreaGridSize.y / 2), -1);
         GameObject prizeScratchField = Instantiate(scratchFieldPrefab, scratchFieldPos, Quaternion.identity);
+        prizeScratchField.GetComponent<ScratchCardManager>().SetNativeSize();
+
         // change the size
-        prizeScratchField.transform.localScale = new Vector3(prizeAreaGridSize.x, prizeAreaGridSize.y, 1);
+        // prizeScratchField.transform.localScale = new Vector3(prizeAreaGridSize.x, prizeAreaGridSize.y, 1);
 
         prizeScratchField.transform.SetParent(currentScratchCard.transform);
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.27445546, g: 0.096968256, b: 0.2874716, a: 1}
+  m_IndirectSpecularColor: {r: 0.636458, g: 0.23653993, b: 0.045862198, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -194,6 +194,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &304074876
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4016010540723093572, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016010540723093572, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016010540723093572, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016010540723093572, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016010540723093572, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016010540723093572, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016010540723093572, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016010540723093572, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016010540723093572, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016010540723093572, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770482431145254912, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: prizeAreaGridSize.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770482431145254912, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: prizeAreaGridSize.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770482431145254912, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7279161168526506875, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_Name
+      value: ScratchCardGenerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 7279161168526506875, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
 --- !u!1 &457260365
 GameObject:
   m_ObjectHideFlags: 0
@@ -10432,6 +10505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScratchCard
       objectReference: {fileID: 0}
+    - target: {fileID: 137284, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 178426, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -10508,6 +10585,18 @@ PrefabInstance:
       propertyPath: progressAccuracy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11486244, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
+      propertyPath: scratchSurfaceSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 571dbb2cbefac464195f151b4deca922, type: 3}
+    - target: {fileID: 11486244, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
+      propertyPath: scratchSurfaceSpriteHasAlpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21281386, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 571dbb2cbefac464195f151b4deca922, type: 3}
     - target: {fileID: 21281386, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
       propertyPath: m_SortingOrder
       value: 0
@@ -15435,7 +15524,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -3693163650798700923, guid: 01cec13631e59924582046ce3fdf2b44, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15564,7 +15653,7 @@ Transform:
   m_GameObject: {fileID: 6969460405144792628}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.713, y: 1.169, z: 0}
+  m_LocalPosition: {x: -4.713, y: 1.169, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15617,6 +15706,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 1872941482}
+  - {fileID: 304074876}
   - {fileID: 1144902202}
   - {fileID: 1013582067}
   - {fileID: 7878350318571456081}

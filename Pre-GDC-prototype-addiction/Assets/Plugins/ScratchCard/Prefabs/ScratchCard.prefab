@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &462224
 Transform:
   m_ObjectHideFlags: 0
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7.01, y: 3.78, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 437468}
@@ -123,12 +123,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121058}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 444b8500698854b63ac5ae06ea55cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SurfaceTransform: {fileID: 462224}
+  SurfaceTransform: {fileID: 469998}
   SurfaceMaterial: {fileID: 0}
   BrushMaterial: {fileID: 0}
   BrushSize: 1
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Card: {fileID: 11474202}
   Progress: {fileID: 114877032501962244}
-  RenderType: 0
+  RenderType: 1
   MeshCard: {fileID: 0}
   SpriteCard: {fileID: 0}
   ImageCard: {fileID: 0}
@@ -214,7 +214,7 @@ MonoBehaviour:
   brushTexture: {fileID: 2800000, guid: 6407cb4b2bd9f4a82b1e98830cae7837, type: 3}
   brushSize: 1
   brushOpacity: 1
-  inputEnabled: 1
+  inputEnabled: 0
   usePressure: 0
   checkCanvasRaycasts: 1
   canvasesForRaycastsBlocking: []
@@ -237,7 +237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &469998
 Transform:
   m_ObjectHideFlags: 0
