@@ -130,6 +130,8 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
     public float cellSize = 1f;
     public float gapLength = 0.1f;
 
+    public GameObject winningParticle;
+
     GameObject ConstructIconObject(Sprite iconSprite)
     {
         GameObject iconObject = new GameObject("targetIconObject");
@@ -139,7 +141,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
         return iconObject;
     }
 
-    GameObject ConstructIconObject(Vector2 iconPrizePosOffset, Sprite iconSprite, float prize)
+    GameObject ConstructIconObject(Vector2 iconPrizePosOffset, Sprite iconSprite, float prize, bool isWinning = false)
     {
         GameObject iconObject = new GameObject("prizeIconObject");
         iconObject.AddComponent<SpriteRenderer>().sprite = iconSprite;
@@ -154,6 +156,15 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
         textMeshPro.alignment = TextAlignmentOptions.Top;
         textObject.transform.SetParent(iconObject.transform);
         textObject.transform.position += (Vector3)iconPrizePosOffset;
+
+        if (isWinning)
+        {
+            var particle = Instantiate(winningParticle, iconObject.transform.position, Quaternion.identity);
+            particle.transform.SetParent(iconObject.transform);
+            particle.transform.localPosition = new Vector3(0, 0, -0.5f);
+            particle.GetComponent<ParticleSystem>().Play();
+            print("shinning icon!");
+        }
 
         return iconObject;
     }
@@ -223,7 +234,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
                 Sprite randIcon = targetIcons[Random.Range(0, targetIcons.Count)];
 
                 int randIndex = Random.Range(0, prizeMatrix.Count);
-                GameObject iconObject = ConstructIconObject(iconPrizePosOffset, randIcon, splitPrizes[i]);
+                GameObject iconObject = ConstructIconObject(iconPrizePosOffset, randIcon, splitPrizes[i], true);
                 prizeMatrix.Insert(randIndex, iconObject);
             }
         }
@@ -281,17 +292,17 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
     // TODO: generate scratch field according to the sprite -> set native size of the scratch card
     void GenerateScratchField()
     {
-        Vector3 scratchFieldPos = new Vector3(0, targetAreaStartPosition.y + cellSize * Mathf.FloorToInt(targetAreaGridSize.y / 2), -1);
-        GameObject targetScratchField = Instantiate(scratchFieldPrefab, scratchFieldPos, Quaternion.identity);
-        scratchFieldPrefab.GetComponent<ScratchCardManager>().SetNativeSize();
+        // Vector3 targetFieldPos = new Vector3(0, targetAreaStartPosition.y + cellSize * Mathf.FloorToInt(targetAreaGridSize.y / 2), -1);
+        // GameObject targetScratchField = Instantiate(scratchFieldPrefab, targetFieldPos, Quaternion.identity);
+        // scratchFieldPrefab.GetComponent<ScratchCardManager>().SetNativeSize();
 
         // change the size
         // targetScratchField.transform.localScale = new Vector3(targetAreaGridSize.x, targetAreaGridSize.y, 1);
 
-        targetScratchField.transform.SetParent(currentScratchCard.transform);
+        // targetScratchField.transform.SetParent(currentScratchCard.transform);
 
-        scratchFieldPos = new Vector3(0, prizeAreaStartPosition.y + cellSize * Mathf.FloorToInt(prizeAreaGridSize.y / 2), -1);
-        GameObject prizeScratchField = Instantiate(scratchFieldPrefab, scratchFieldPos, Quaternion.identity);
+        Vector3 prizeFieldPos = new Vector3(0, prizeAreaStartPosition.y + cellSize * Mathf.FloorToInt(prizeAreaGridSize.y / 2), -1);
+        GameObject prizeScratchField = Instantiate(scratchFieldPrefab, prizeFieldPos, Quaternion.identity);
         prizeScratchField.GetComponent<ScratchCardManager>().SetNativeSize();
 
         // change the size
