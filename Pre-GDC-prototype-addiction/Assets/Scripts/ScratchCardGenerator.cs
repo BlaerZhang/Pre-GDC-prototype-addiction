@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Interaction;
 using ScratchCardAsset;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -159,6 +160,11 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
 
         if (isWinning)
         {
+            BoxCollider2D boxCollider = iconObject.AddComponent<BoxCollider2D>();
+            boxCollider.isTrigger = true;
+
+            iconObject.AddComponent<PrizeRevealing>().prize = prize;
+
             var particle = Instantiate(winningParticle, iconObject.transform.position, Quaternion.identity);
             particle.transform.SetParent(iconObject.transform);
             particle.transform.localPosition = new Vector3(0, 0, -0.5f);
