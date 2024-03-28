@@ -150,7 +150,7 @@ MonoBehaviour:
       Data: 
   price: 50
   costThreshold: 200
-  winningProbabilityOverThreshold: 0.3
+  winningProbabilityOverThreshold: 0.7
   minPrizeSplitParts: 1
   maxPrizeSplitParts: 3
   minSplitValue: 50
