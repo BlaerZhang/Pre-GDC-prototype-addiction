@@ -18,6 +18,7 @@ public class BuyCardManager : MonoBehaviour
     public Draggable cardPrefab;
 
     [Header("Buy Cards")] 
+    public int price;
 
     [Header("Hand")] 
     public Animator handAnimator;
@@ -37,7 +38,7 @@ public class BuyCardManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnCardsToBuy();
+        Invoke("SpawnCardsToBuy", 0.5f);
     }
 
     // Update is called once per frame
@@ -57,6 +58,9 @@ public class BuyCardManager : MonoBehaviour
 
     public void SpawnCardsToBuy()
     {
+        price = GameManager.Instance.lastPickPrice;
+        UIManager.instance.UpdateBuyPrice(price);
+        
         for (int i = 0; i < 5; i++)
         {
             Draggable cardInstance = Instantiate(cardPrefab, cardPurchasePos.position, Quaternion.identity);
@@ -68,10 +72,19 @@ public class BuyCardManager : MonoBehaviour
 
     public void BuyCard(Draggable card)
     {
-        cardsToBuy.Remove(card);
-        card.transform.DOMove(cardPurchasePos.position, 0.1f);
-        for (int i = 0; i < cardsToBuy.Count; i++) { cardsToBuy[i].transform.DOMove(cardSpawnPos[i].position, 0.1f); }
-        StartCoroutine(CollectCards());
+        if (price <= GameManager.Instance.GetComponent<ResourceManager>().PlayerGold)
+        {
+            GameManager.Instance.GetComponent<ResourceManager>().PlayerGold -= price;
+            
+            cardsToBuy.Remove(card);
+            card.transform.DOMove(cardPurchasePos.position, 0.1f);
+            for (int i = 0; i < cardsToBuy.Count; i++) { cardsToBuy[i].transform.DOMove(cardSpawnPos[i].position, 0.1f); }
+            StartCoroutine(CollectCards());
+        }
+        else
+        {
+            UIManager.instance.PlayNotEnoughGoldAnimation();
+        }
     }
 
     IEnumerator DealCards()

@@ -24,7 +24,9 @@ public class MenuManager : MonoBehaviour
     public float areaActivateDistance = 200;
     [Range(0,1)] public float areaStopThreshold = 0.8f;
     public float areaMoveAmount = 1000;
-    
+
+    [Header("Move to Incremental")] 
+    public RectTransform incrementalButton;
     
 
     private void Awake()
@@ -49,7 +51,16 @@ public class MenuManager : MonoBehaviour
 
     public void PickCard(MenuDraggable card)
     {
-        card.transform.DOMove(cardPurchasePos.position, 0.1f); 
+        if (card.price <= GameManager.Instance.GetComponent<ResourceManager>().PlayerGold)
+        {
+            // card.transform.DOMove(cardPurchasePos.position, 0.1f);
+            GameManager.Instance.lastPickPrice = card.price;
+        }
+        else
+        {
+            UIManager.instance.PlayNotEnoughGoldAnimation();
+        }
+      
     }
 
     public void AdjustPickArea(Transform posterPos)
@@ -68,6 +79,16 @@ public class MenuManager : MonoBehaviour
     public void DeactivatePickArea()
     {
         pickArea.DOAnchorPosX(0, 0.1f);
+    }
+    
+    public void ActivateIncrementalButton()
+    {
+        incrementalButton.DOAnchorPosX(125, 0.1f);
+    }
+
+    public void DeactivateIncrementalButton()
+    {
+        incrementalButton.DOAnchorPosX(-200, 0.1f);
     }
     
 }

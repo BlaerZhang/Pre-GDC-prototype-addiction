@@ -69,7 +69,7 @@ namespace Interaction
             if (buyAreaUpperEdgeYOnViewport > cardYPosOnViewport)
             {
                 isInBuyArea = true;
-                cardSprite.DOColor(Color.yellow, 0.1f);
+                cardSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
             }
             else
             {

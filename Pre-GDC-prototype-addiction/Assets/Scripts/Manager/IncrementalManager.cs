@@ -21,10 +21,8 @@ public class IncrementalManager : MonoBehaviour
     
     void Start()
     {
-        //TODO: Put ResourceManager Under GameManager
-        resourceManager = GetComponent<ResourceManager>();
-        UIManager.instance.UpdateUpgradePrice($"${upgradePricePerLevel[clickerLevel - 1]}");
-        
+        resourceManager = GameManager.Instance.GetComponent<ResourceManager>();
+        UIManager.instance.UpdateUpgradePrice(upgradePricePerLevel[clickerLevel - 1]);
     }
 
 
@@ -47,12 +45,12 @@ public class IncrementalManager : MonoBehaviour
     {
         if (resourceManager.PlayerGold < upgradePricePerLevel[clickerLevel - 1]) 
         {
-            //TODO: Play not enough feedback
+            UIManager.instance.PlayNotEnoughGoldAnimation();
             return;
         } 
         resourceManager.PlayerGold -= upgradePricePerLevel[clickerLevel - 1];
         clickerLevel++;
-        UIManager.instance.UpdateUpgradePrice($"${upgradePricePerLevel[clickerLevel - 1]}");
+        UIManager.instance.UpdateUpgradePrice(upgradePricePerLevel[clickerLevel - 1]);
     }
     
     private void PlayFeedbackAnimation(RectTransform buttonTransform)
