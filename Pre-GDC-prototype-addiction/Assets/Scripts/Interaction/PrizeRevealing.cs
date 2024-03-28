@@ -13,6 +13,7 @@ namespace Interaction
     {
         private bool isClickable = false;
         private bool hasClicked = false;
+        private bool hasNumberShown = false;
         public float prize;
 
         public static Action<float> onPrizeRevealed;
@@ -47,6 +48,7 @@ namespace Interaction
 
         private void OnMouseDown()
         {
+            // it must be clickable(revealed) and has not been clicked
             if (!isClickable || hasClicked) return;
             // if the scratch field is scratched off
             print("rolling number!");
@@ -56,20 +58,22 @@ namespace Interaction
 
         private void GeneratePrizeNumber()
         {
-            print("gene");
-            if (!hasClicked) return;
-            print("number!");
+            // it must be revealed, and must be clicked
+            if (!hasClicked || hasNumberShown) return;
 
             GameObject textObject = new GameObject("prize");
             textObject.transform.localRotation = Quaternion.Euler(0, 0, 30f);
             TextMeshPro textMeshPro = textObject.AddComponent<TextMeshPro>();
             textObject.GetComponent<RectTransform>().sizeDelta = Vector2.one;
             textMeshPro.text = prize.ToString();
-            textMeshPro.color = Color.green;
-            textMeshPro.fontSize = 4;
+            textMeshPro.fontStyle = FontStyles.Bold;
+            textMeshPro.color = Color.magenta;
+            textMeshPro.fontSize = 5;
             textMeshPro.alignment = TextAlignmentOptions.Center;
             textObject.transform.SetParent(transform);
             textObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, -0.5f);
+
+            hasNumberShown = true;
         }
     }
 }
