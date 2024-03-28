@@ -174,11 +174,11 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
             var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
             indicatorObject.transform.SetParent(iconObject.transform);
 
-            var particle = Instantiate(winningParticle, iconObject.transform.position, Quaternion.identity);
-            particle.transform.SetParent(iconObject.transform);
-            particle.transform.localPosition = new Vector3(0, 0, -0.5f);
-            particle.GetComponent<ParticleSystem>().Play();
-            print("shinning icon!");
+            // var particle = Instantiate(winningParticle, iconObject.transform.position, Quaternion.identity);
+            // particle.transform.SetParent(iconObject.transform);
+            // particle.transform.localPosition = new Vector3(0, 0, -0.5f);
+            // particle.GetComponent<ParticleSystem>().Play();
+            // print("shinning icon!");
         }
 
         return iconObject;

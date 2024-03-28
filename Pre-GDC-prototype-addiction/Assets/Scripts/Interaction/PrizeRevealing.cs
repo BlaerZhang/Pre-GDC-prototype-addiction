@@ -56,7 +56,7 @@ namespace Interaction
             hasClicked = true;
         }
 
-        private void GeneratePrizeNumber()
+        private void GeneratePrizeNumber(TMP_FontAsset fontAsset)
         {
             // it must be revealed, and must be clicked
             if (!hasClicked || hasNumberShown) return;
@@ -66,9 +66,11 @@ namespace Interaction
             TextMeshPro textMeshPro = textObject.AddComponent<TextMeshPro>();
             textObject.GetComponent<RectTransform>().sizeDelta = Vector2.one;
             textMeshPro.text = prize.ToString();
+            textMeshPro.enableWordWrapping = false;
+            textMeshPro.font = fontAsset;
             textMeshPro.fontStyle = FontStyles.Bold;
-            textMeshPro.color = Color.magenta;
-            textMeshPro.fontSize = 5;
+            textMeshPro.color = Color.green;
+            textMeshPro.fontSize = 10;
             textMeshPro.alignment = TextAlignmentOptions.Center;
             textObject.transform.SetParent(transform);
             textObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, -0.5f);
