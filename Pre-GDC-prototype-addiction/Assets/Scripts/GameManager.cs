@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public int lastPickPrice = 1;
 
     public MenuDraggable.Tier lastPickTier = MenuDraggable.Tier.Level1;
+    
+    public float totalCostBeforeWinning = 0;
 
     private void Awake()
     {

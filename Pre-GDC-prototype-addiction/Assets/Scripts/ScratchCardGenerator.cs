@@ -28,7 +28,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
 
     // global among the same kind
     private GameObject currentScratchCard;
-    private float totalCostBeforeWinning = 0;
+    // private float totalCostBeforeWinning = 0;
     // private float currentWinningProbability;
 
     [Header("Prize Distribution")]
@@ -59,7 +59,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
         actualPrizeDistributions = Utils.DeepCopyDictionary(basePrizeDistributions);
 
         // TODO: purchase card, spend gold
-        totalCostBeforeWinning += price;
+        GameManager.Instance.totalCostBeforeWinning += price;
 
         if (currentScratchCard != null)
         {
@@ -68,7 +68,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
         currentScratchCard = new GameObject("newScratchCard");
         currentScratchCard.transform.SetParent(transform);
 
-        print($"totalCostBeforeWinning: {totalCostBeforeWinning}");
+        print($"totalCostBeforeWinning: {GameManager.Instance.totalCostBeforeWinning}");
 
         AdjustWinningProbability();
         DistributeIcons();
@@ -81,7 +81,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
     /// </summary>
     void AdjustWinningProbability()
     {
-        if (totalCostBeforeWinning >= costThreshold)
+        if (GameManager.Instance.totalCostBeforeWinning >= costThreshold)
         {
             int randIndex = Random.Range(1, basePrizeDistributions.Count);
             actualPrizeDistributions = Utils.AdjustProbabilityRatio(basePrizeDistributions, basePrizeDistributions.Keys.ElementAt(randIndex), winningProbabilityOverThreshold);
@@ -108,7 +108,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
                 {
                     print($"winning prize: {d.Key}");
                     // actualPrizeDistributions = Utils.DeepCopyDictionary(basePrizeDistributions);
-                    totalCostBeforeWinning = 0;
+                    GameManager.Instance.totalCostBeforeWinning = 0;
                 }
                 return d.Key;
             }
