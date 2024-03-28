@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using ScratchCardAsset;
+using TMPro;
 using UnityEngine;
 
 namespace Interaction
@@ -10,8 +11,8 @@ namespace Interaction
     /// </summary>
     public class PrizeRevealing : MonoBehaviour
     {
-        private bool hasRevealed = false;
         private bool isClickable = false;
+        private bool hasClicked = false;
         public float prize;
 
         public static Action<float> onPrizeRevealed;
@@ -22,6 +23,16 @@ namespace Interaction
         {
             cardManager = GetComponentInChildren<ScratchCardManager>();
             cardManager.Progress.OnProgress += OnScratchProgress;
+        }
+
+        private void OnEnable()
+        {
+            NumberRoller.onRollingEnds += GeneratePrizeNumber;
+        }
+
+        private void OnDisable()
+        {
+            NumberRoller.onRollingEnds -= GeneratePrizeNumber;
         }
 
         private void OnScratchProgress(float progress)
@@ -36,11 +47,29 @@ namespace Interaction
 
         private void OnMouseDown()
         {
-            if (hasRevealed || !isClickable) return;
+            if (!isClickable || hasClicked) return;
             // if the scratch field is scratched off
             print("rolling number!");
             onPrizeRevealed(prize);
-            hasRevealed = true;
+            hasClicked = true;
+        }
+
+        private void GeneratePrizeNumber()
+        {
+            print("gene");
+            if (!hasClicked) return;
+            print("number!");
+
+            GameObject textObject = new GameObject("prize");
+            textObject.transform.localRotation = Quaternion.Euler(0, 0, 30f);
+            TextMeshPro textMeshPro = textObject.AddComponent<TextMeshPro>();
+            textObject.GetComponent<RectTransform>().sizeDelta = Vector2.one;
+            textMeshPro.text = prize.ToString();
+            textMeshPro.color = Color.green;
+            textMeshPro.fontSize = 4;
+            textMeshPro.alignment = TextAlignmentOptions.Center;
+            textObject.transform.SetParent(transform);
+            textObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, -0.5f);
         }
     }
 }

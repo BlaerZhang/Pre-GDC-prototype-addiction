@@ -9,6 +9,14 @@ public class NumberRoller : MonoBehaviour
 {
     public TMP_Text numberText;
     public float duration = 2f;
+    private CanvasGroup canvasGroup;
+
+    public static Action onRollingEnds;
+
+    private void Start()
+    {
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
 
     private void OnEnable()
     {
@@ -22,6 +30,7 @@ public class NumberRoller : MonoBehaviour
 
     private void StartRolling(float prize)
     {
+        StartCoroutine(FadeCanvasGroupAlpha(0, 1, 1f));
         StartCoroutine(RollNumber(prize));
     }
 
@@ -40,5 +49,25 @@ public class NumberRoller : MonoBehaviour
         }
 
         numberText.text = targetNumber.ToString();
+
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(FadeCanvasGroupAlpha(1, 0, 1f));
+
+        onRollingEnds();
+    }
+
+    private IEnumerator FadeCanvasGroupAlpha(float startAlpha, float endAlpha, float duration)
+    {
+        float startTime = Time.time;
+        float endTime = startTime + duration;
+
+        while (Time.time < endTime)
+        {
+            float elapsed = (Time.time - startTime) / duration;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed);
+            yield return null;
+        }
+
+        canvasGroup.alpha = endAlpha;
     }
 }
