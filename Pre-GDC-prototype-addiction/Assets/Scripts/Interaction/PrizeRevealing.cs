@@ -26,7 +26,7 @@ namespace Interaction
 
         private void OnScratchProgress(float progress)
         {
-            if (progress >= 0.9f)
+            if (progress >= 0.999f)
             {
                 cardManager.Progress.OnProgress -= OnScratchProgress;
                 isClickable = true;
