@@ -12,6 +12,15 @@ namespace Interaction
         public bool unlock = false;
         public Sprite lockedSprite;
         public int price = 1;
+        public enum Tier
+        {
+            Level1,
+            Level2,
+            Level3,
+            Level4,
+            Level5
+        }
+        public Tier tier = Tier.Level1;
         
         [Header("Drag")]
         public float dragSpeed = 25;

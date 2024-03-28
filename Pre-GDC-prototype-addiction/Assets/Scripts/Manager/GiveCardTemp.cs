@@ -23,7 +23,8 @@ public class GiveCardTemp : MonoBehaviour
 
     public void GiveCard()
     {
-        GameObject card = GameObject.Find("newScratchCard");
+        generator = FindObjectOfType<ScratchCardGenerator>();
+        GameObject card = generator.transform.GetChild(0).gameObject;
         GameManager.Instance.GetComponent<ResourceManager>().PlayerGold += (int)generator.currentCardPrize;
         Sequence giveAnimation = DOTween.Sequence();
         giveAnimation

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Interaction;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
 
     public int lastPickPrice = 1;
+
+    public MenuDraggable.Tier lastPickTier = MenuDraggable.Tier.Level1;
 
     private void Awake()
     {
