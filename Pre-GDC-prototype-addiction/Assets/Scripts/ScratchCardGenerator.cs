@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Interaction;
+using ScratchCardAsset;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using TMPro;
+using Unity.Mathematics;
 
 /// <summary>
 /// generates a certain kind of scratch card visually
@@ -127,7 +130,12 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
     public Vector2Int prizeAreaGridSize;
 
     public float cellSize = 1f;
-    public float gapLength = 0.1f;
+    public float targetGapLength = 0.1f;
+    public float prizeGapLength = 0.1f;
+
+    public GameObject winningParticle;
+
+    public GameObject scratchIndicator;
 
     GameObject ConstructIconObject(Sprite iconSprite)
     {
@@ -138,21 +146,38 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
         return iconObject;
     }
 
-    GameObject ConstructIconObject(Vector2 iconPrizePosOffset, Sprite iconSprite, float prize)
+    GameObject ConstructIconObject(Vector2 iconPrizePosOffset, Sprite iconSprite, float prize, bool isWinning = false)
     {
         GameObject iconObject = new GameObject("prizeIconObject");
         iconObject.AddComponent<SpriteRenderer>().sprite = iconSprite;
         iconObject.transform.SetParent(currentScratchCard.transform);
 
-        GameObject textObject = new GameObject("prize");
-        TextMeshPro textMeshPro = textObject.AddComponent<TextMeshPro>();
-        textObject.GetComponent<RectTransform>().sizeDelta = Vector2.one;
-        textMeshPro.text = prize.ToString();
-        textMeshPro.color = Color.red;
-        textMeshPro.fontSize = 2;
-        textMeshPro.alignment = TextAlignmentOptions.Top;
-        textObject.transform.SetParent(iconObject.transform);
-        textObject.transform.position += (Vector3)iconPrizePosOffset;
+        // GameObject textObject = new GameObject("prize");
+        // TextMeshPro textMeshPro = textObject.AddComponent<TextMeshPro>();
+        // textObject.GetComponent<RectTransform>().sizeDelta = Vector2.one;
+        // textMeshPro.text = prize.ToString();
+        // textMeshPro.color = Color.red;
+        // textMeshPro.fontSize = 2;
+        // textMeshPro.alignment = TextAlignmentOptions.Top;
+        // textObject.transform.SetParent(iconObject.transform);
+        // textObject.transform.position += (Vector3)iconPrizePosOffset;
+
+        if (isWinning)
+        {
+            BoxCollider2D boxCollider = iconObject.AddComponent<BoxCollider2D>();
+            boxCollider.isTrigger = true;
+
+            iconObject.AddComponent<PrizeRevealing>().prize = prize;
+
+            var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
+            indicatorObject.transform.SetParent(iconObject.transform);
+
+            var particle = Instantiate(winningParticle, iconObject.transform.position, Quaternion.identity);
+            particle.transform.SetParent(iconObject.transform);
+            particle.transform.localPosition = new Vector3(0, 0, -0.5f);
+            particle.GetComponent<ParticleSystem>().Play();
+            print("shinning icon!");
+        }
 
         return iconObject;
     }
@@ -222,14 +247,14 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
                 Sprite randIcon = targetIcons[Random.Range(0, targetIcons.Count)];
 
                 int randIndex = Random.Range(0, prizeMatrix.Count);
-                GameObject iconObject = ConstructIconObject(iconPrizePosOffset, randIcon, splitPrizes[i]);
+                GameObject iconObject = ConstructIconObject(iconPrizePosOffset, randIcon, splitPrizes[i], true);
                 prizeMatrix.Insert(randIndex, iconObject);
             }
         }
 
         // place icons according to the matrix
-        PlaceIcons(targetIconObjects, targetAreaStartPosition, targetAreaGridSize.x, targetAreaGridSize.y);
-        PlaceIcons(prizeMatrix, prizeAreaStartPosition, prizeAreaGridSize.x, prizeAreaGridSize.y);
+        PlaceIcons(targetIconObjects, targetAreaStartPosition, targetAreaGridSize.x, targetAreaGridSize.y, targetGapLength);
+        PlaceIcons(prizeMatrix, prizeAreaStartPosition, prizeAreaGridSize.x, prizeAreaGridSize.y, prizeGapLength);
     }
 
     /// <summary>
@@ -238,7 +263,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
     /// <param name="startPosition"></param>
     /// <param name="xGridAmount"></param>
     /// <param name="yGridAmount"></param>
-    void PlaceIcons(List<GameObject> icons, Vector2 startPosition, int xGridAmount, int yGridAmount)
+    void PlaceIcons(List<GameObject> icons, Vector2 startPosition, int xGridAmount, int yGridAmount, float gapLength)
     {
         for (int i = 0; i < xGridAmount; i++)
         {
@@ -258,7 +283,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
         {
             for (int j = 0; j < targetAreaGridSize.y; j++)
             {
-                Vector2 cellPosition = new Vector2(i * cellSize + gapLength * i, j * cellSize + gapLength * j) + targetAreaStartPosition;
+                Vector2 cellPosition = new Vector2(i * cellSize + targetGapLength * i, j * cellSize + targetGapLength * j) + targetAreaStartPosition;
                 Gizmos.DrawWireCube(cellPosition, cellSize * Vector2.one);
             }
         }
@@ -268,29 +293,58 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
         {
             for (int j = 0; j < prizeAreaGridSize.y; j++)
             {
-                Vector2 cellPosition = new Vector2(i * cellSize + gapLength * i, j * cellSize + gapLength * j) + prizeAreaStartPosition;
+                Vector2 cellPosition = new Vector2(i * cellSize + prizeGapLength * i, j * cellSize + prizeGapLength * j) + prizeAreaStartPosition;
                 Gizmos.DrawWireCube(cellPosition, cellSize * Vector2.one);
             }
         }
     }
 
     [Header("Scratch Field Setting")]
+    public GameObject scratchBackgroundPrefab;
     public GameObject scratchFieldPrefab;
 
+    // TODO: generate scratch field according to the sprite -> set native size of the scratch card
+    // TODO: dynamically generate bg position
     void GenerateScratchField()
     {
-        Vector2 scratchFieldPos = new Vector2(0, targetAreaStartPosition.y + cellSize * Mathf.FloorToInt(targetAreaGridSize.y / 2));
-        GameObject targetScratchField = Instantiate(scratchFieldPrefab, scratchFieldPos, Quaternion.identity);
-        // change the size
-        targetScratchField.transform.localScale = new Vector3(targetAreaGridSize.x, targetAreaGridSize.y, 1);
+        GameObject scratchBackground = Instantiate(scratchBackgroundPrefab, Vector3.zero, quaternion.identity);
+        scratchBackground.transform.SetParent(currentScratchCard.transform);
 
-        targetScratchField.transform.SetParent(currentScratchCard.transform);
+        GameObject scratchFieldObject = Instantiate(scratchFieldPrefab, Vector3.zero, quaternion.identity);
+        scratchFieldObject.transform.SetParent(currentScratchCard.transform);
 
-        scratchFieldPos = new Vector2(0, prizeAreaStartPosition.y + cellSize * Mathf.FloorToInt(prizeAreaGridSize.y / 2));
-        GameObject prizeScratchField = Instantiate(scratchFieldPrefab, scratchFieldPos, Quaternion.identity);
-        // change the size
-        prizeScratchField.transform.localScale = new Vector3(prizeAreaGridSize.x, prizeAreaGridSize.y, 1);
-
-        prizeScratchField.transform.SetParent(currentScratchCard.transform);
+        // Vector3 targetFieldPos = new Vector3(0, targetAreaStartPosition.y + cellSize * Mathf.FloorToInt(targetAreaGridSize.y / 2), -1);
+        // GameObject targetScratchField = Instantiate(scratchFieldPrefab, targetFieldPos, Quaternion.identity);
+        // // scratchFieldPrefab.GetComponent<ScratchCardManager>().SetNativeSize();
+        // // change the size
+        // SpriteRenderer targetAreaSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        // ResizeSpriteToTargetSize(targetScratchField.transform, targetAreaSpriteRenderer, targetAreaGridSize);
+        // // targetScratchField.transform.localScale = new Vector3(targetAreaGridSize.x, targetAreaGridSize.y, 1);
+        // targetScratchField.transform.SetParent(currentScratchCard.transform);
+        //
+        //
+        // Vector3 prizeFieldPos = new Vector3(0, prizeAreaStartPosition.y + cellSize * Mathf.FloorToInt(prizeAreaGridSize.y / 2), -1);
+        // GameObject prizeScratchField = Instantiate(scratchFieldPrefab, prizeFieldPos, Quaternion.identity);
+        // // prizeScratchField.GetComponent<ScratchCardManager>().SetNativeSize();
+        // // change the size
+        // SpriteRenderer prizeAreaSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        // ResizeSpriteToTargetSize(prizeScratchField.transform, prizeAreaSpriteRenderer, prizeAreaGridSize);
+        // // prizeScratchField.transform.localScale = new Vector3(prizeAreaGridSize.x, prizeAreaGridSize.y, 1);
+        // prizeScratchField.transform.SetParent(currentScratchCard.transform);
     }
+
+    // void ResizeSpriteToTargetSize(Transform objectTransform, SpriteRenderer spriteRenderer, Vector2 targetSize)
+    // {
+    //     Vector2 spriteSize = spriteRenderer.sprite.bounds.size;
+    //
+    //     float spriteWidth = spriteRenderer.sprite.rect.width / spriteRenderer.sprite.pixelsPerUnit;
+    //     float spriteHeight = spriteRenderer.sprite.rect.height / spriteRenderer.sprite.pixelsPerUnit;
+    //
+    //     Vector2 scale = new Vector2(targetSize.x / spriteWidth, targetSize.y / spriteHeight);
+    //     objectTransform.localScale = new Vector3(scale.x, scale.y, 1);
+    //
+    //     // Vector2 scale = new Vector2(targetSize.x / spriteSize.x, targetSize.y / spriteSize.y);
+    //     //
+    //     // objectTransform.localScale = new Vector3(scale.x, scale.y, 1f);
+    // }
 }
