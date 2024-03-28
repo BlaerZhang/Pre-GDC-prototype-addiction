@@ -69,7 +69,7 @@ namespace Interaction
             textMeshPro.enableWordWrapping = false;
             textMeshPro.font = fontAsset;
             textMeshPro.fontStyle = FontStyles.Bold;
-            textMeshPro.color = Color.green;
+            textMeshPro.color = new Color(1f, 195f/255f, 0f, 1f);
             textMeshPro.fontSize = 10;
             textMeshPro.alignment = TextAlignmentOptions.Center;
             textObject.transform.SetParent(transform);
