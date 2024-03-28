@@ -51,6 +51,11 @@ namespace Interaction
         
             //Activate Buy Area
             BuyCardManager.instance.ActivateBuyArea();
+            
+            //Deactivate ScratchOff Button
+            BuyCardManager.instance.DeactivateScratchOffButton();
+            
+            
         }
 
         private void OnMouseDrag()
@@ -87,6 +92,9 @@ namespace Interaction
         
             //Deactivate Buy Area
             BuyCardManager.instance.DeactivateBuyArea();
+            
+            //Activate ScratchOff Button
+            BuyCardManager.instance.ActivateScratchOffButton();
         
             //Check if buy
             if (isInBuyArea) BuyCardManager.instance.BuyCard(this);

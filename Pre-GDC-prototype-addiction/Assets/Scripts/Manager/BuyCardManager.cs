@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Interaction;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Vector3 = System.Numerics.Vector3;
@@ -29,6 +30,17 @@ public class BuyCardManager : MonoBehaviour
     public float areaActivateDistance = 200;
     [Range(0,1)] public float areaStopThreshold = 0.2f;
     public float areaMoveAmount = 1000;
+    
+    [Header("Move to Scratch-off")] 
+    public RectTransform scratchOffButton;
+    
+    //temp
+    public TextMeshProUGUI buyCardPrice;
+    
+    public void UpdateBuyPrice(int price)
+    { 
+        buyCardPrice.text = $"${price}";
+    }
 
     private void Awake()
     {
@@ -59,7 +71,7 @@ public class BuyCardManager : MonoBehaviour
     public void SpawnCardsToBuy()
     {
         price = GameManager.Instance.lastPickPrice;
-        UIManager.instance.UpdateBuyPrice(price);
+        UpdateBuyPrice(price);
         
         for (int i = 0; i < 5; i++)
         {
@@ -127,6 +139,16 @@ public class BuyCardManager : MonoBehaviour
     public void DeactivateBuyArea()
     {
         buyArea.DOAnchorPosY(0, 0.1f);
+    }
+    
+    public void ActivateScratchOffButton()
+    {
+        scratchOffButton.DOAnchorPosX(125, 0.1f);
+    }
+
+    public void DeactivateScratchOffButton()
+    {
+        scratchOffButton.DOAnchorPosX(-200, 0.1f);
     }
     
 }

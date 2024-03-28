@@ -1921,6 +1921,8 @@ MonoBehaviour:
   areaActivateDistance: 200
   areaStopThreshold: 0.2
   areaMoveAmount: 1000
+  scratchOffButton: {fileID: 1390313127}
+  buyCardPrice: {fileID: 474936626}
 --- !u!1 &1759593241
 GameObject:
   m_ObjectHideFlags: 0

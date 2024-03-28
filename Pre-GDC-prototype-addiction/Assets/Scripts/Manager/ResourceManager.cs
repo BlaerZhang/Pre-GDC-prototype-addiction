@@ -5,6 +5,7 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour
 {
     private int playerGold = 0;
+    private int clickerLevel = 1;
 
     public int PlayerGold
     {
@@ -13,6 +14,15 @@ public class ResourceManager : MonoBehaviour
         {
             playerGold = value;
             UIManager.instance.UpdateResource($"Gold: {value}");
+        }
+    }
+
+    public int ClickerLevel
+    {
+        get { return clickerLevel; }
+        set
+        {
+            clickerLevel = value;
         }
     }
     

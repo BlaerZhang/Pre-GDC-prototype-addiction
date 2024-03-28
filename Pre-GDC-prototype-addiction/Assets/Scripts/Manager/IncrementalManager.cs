@@ -19,16 +19,25 @@ public class IncrementalManager : MonoBehaviour
     public GameObject textFeedback;
     public List<AudioClip> soundFeedbacks;
     
+    //temp
+    public TextMeshProUGUI upgradePrice;
+    
+    public void UpdateUpgradePrice(int price)
+    {
+        upgradePrice.text = $"${price}";
+    }
+    
     void Start()
     {
         resourceManager = GameManager.Instance.GetComponent<ResourceManager>();
-        UIManager.instance.UpdateUpgradePrice(upgradePricePerLevel[clickerLevel - 1]);
+        clickerLevel = resourceManager.ClickerLevel;
+        UpdateUpgradePrice(upgradePricePerLevel[clickerLevel - 1]);
     }
 
 
     void Update()
     {
-        
+        clickerLevel = resourceManager.ClickerLevel;
     }
 
     public void OnClick(RectTransform buttonTransform)
@@ -49,8 +58,8 @@ public class IncrementalManager : MonoBehaviour
             return;
         } 
         resourceManager.PlayerGold -= upgradePricePerLevel[clickerLevel - 1];
-        clickerLevel++;
-        UIManager.instance.UpdateUpgradePrice(upgradePricePerLevel[clickerLevel - 1]);
+        resourceManager.ClickerLevel++;
+        UpdateUpgradePrice(upgradePricePerLevel[clickerLevel - 1]);
     }
     
     private void PlayFeedbackAnimation(RectTransform buttonTransform)
