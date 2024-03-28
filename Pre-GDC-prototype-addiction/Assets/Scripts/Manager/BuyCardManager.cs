@@ -5,6 +5,7 @@ using DG.Tweening;
 using Interaction;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Vector3 = System.Numerics.Vector3;
 
@@ -33,14 +34,6 @@ public class BuyCardManager : MonoBehaviour
     
     [Header("Move to Scratch-off")] 
     public RectTransform scratchOffButton;
-    
-    //temp
-    public TextMeshProUGUI buyCardPrice;
-    
-    public void UpdateBuyPrice(int price)
-    { 
-        buyCardPrice.text = $"${price}";
-    }
 
     private void Awake()
     {
@@ -50,7 +43,7 @@ public class BuyCardManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("SpawnCardsToBuy", 0.5f);
+        SpawnCardsToBuy();
     }
 
     // Update is called once per frame
@@ -71,7 +64,7 @@ public class BuyCardManager : MonoBehaviour
     public void SpawnCardsToBuy()
     {
         price = GameManager.Instance.lastPickPrice;
-        UpdateBuyPrice(price);
+        GameManager.Instance.uiManager.UpdateBuyPrice(price);
         
         for (int i = 0; i < 5; i++)
         {
@@ -95,7 +88,7 @@ public class BuyCardManager : MonoBehaviour
         }
         else
         {
-            UIManager.instance.PlayNotEnoughGoldAnimation();
+            GameManager.Instance.uiManager.PlayNotEnoughGoldAnimation();
         }
     }
 
@@ -149,6 +142,21 @@ public class BuyCardManager : MonoBehaviour
     public void DeactivateScratchOffButton()
     {
         scratchOffButton.DOAnchorPosX(-200, 0.1f);
+    }
+    
+    public void LoadIncremental()
+    {
+        SceneManager.LoadScene("Incremental");
+    }
+
+    public void LoadBuy()
+    {
+        SceneManager.LoadScene("Buy Card");
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
     
 }

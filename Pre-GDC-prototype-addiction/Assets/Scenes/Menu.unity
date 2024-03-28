@@ -441,7 +441,6 @@ GameObject:
   - component: {fileID: 230012565}
   - component: {fileID: 230012569}
   - component: {fileID: 230012567}
-  - component: {fileID: 230012568}
   - component: {fileID: 230012570}
   m_Layer: 0
   m_Name: Game Manager
@@ -464,6 +463,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 561851532}
+  - {fileID: 505396389}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &230012567
@@ -478,21 +478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b03eed837141394c89d0710d4005b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &230012568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230012564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cff8100e5167de479b1c28b89b163c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerResource: {fileID: 207608353}
-  upgradePrice: {fileID: 0}
-  buyCardPrice: {fileID: 0}
 --- !u!114 &230012569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,7 +728,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 347867739}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1230983610}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: LoadIncremental
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &347867739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,6 +928,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456978498}
   m_CullTransparentMesh: 1
+--- !u!1 &505396388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 505396389}
+  - component: {fileID: 505396390}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &505396389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505396388}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 230012565}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &505396390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505396388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cff8100e5167de479b1c28b89b163c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerResource: {fileID: 207608353}
+  upgradePrice: {fileID: 0}
+  buyCardPrice: {fileID: 0}
 --- !u!1 &561851528
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,6 +2716,6 @@ SceneRoots:
   - {fileID: 110747787}
   - {fileID: 729096701}
   - {fileID: 1890247022}
-  - {fileID: 230012565}
   - {fileID: 1683343889}
   - {fileID: 1230983609}
+  - {fileID: 230012565}

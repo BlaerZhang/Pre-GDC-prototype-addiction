@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Interaction;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Vector3 = System.Numerics.Vector3;
 
@@ -55,10 +56,11 @@ public class MenuManager : MonoBehaviour
         {
             // card.transform.DOMove(cardPurchasePos.position, 0.1f);
             GameManager.Instance.lastPickPrice = card.price;
+            LoadBuy();
         }
         else
         {
-            UIManager.instance.PlayNotEnoughGoldAnimation();
+            GameManager.Instance.uiManager.PlayNotEnoughGoldAnimation();
         }
       
     }
@@ -89,6 +91,21 @@ public class MenuManager : MonoBehaviour
     public void DeactivateIncrementalButton()
     {
         incrementalButton.DOAnchorPosX(-200, 0.1f);
+    }
+
+    public void LoadIncremental()
+    {
+        SceneManager.LoadScene("Incremental");
+    }
+
+    public void LoadBuy()
+    {
+        SceneManager.LoadScene("Buy Card");
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
     
 }

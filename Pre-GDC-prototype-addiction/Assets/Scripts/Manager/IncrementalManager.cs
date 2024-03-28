@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class IncrementalManager : MonoBehaviour
 {
-    public int clickerLevel = 1;
+    // public int clickerLevel = 1;
 
     public List<int> productivityPerLevel;
 
@@ -19,30 +20,21 @@ public class IncrementalManager : MonoBehaviour
     public GameObject textFeedback;
     public List<AudioClip> soundFeedbacks;
     
-    //temp
-    public TextMeshProUGUI upgradePrice;
-    
-    public void UpdateUpgradePrice(int price)
-    {
-        upgradePrice.text = $"${price}";
-    }
-    
     void Start()
     {
         resourceManager = GameManager.Instance.GetComponent<ResourceManager>();
-        clickerLevel = resourceManager.ClickerLevel;
-        UpdateUpgradePrice(upgradePricePerLevel[clickerLevel - 1]);
+        GameManager.Instance.uiManager.UpdateUpgradePrice(upgradePricePerLevel[resourceManager.ClickerLevel - 1]);
     }
 
 
     void Update()
     {
-        clickerLevel = resourceManager.ClickerLevel;
+        
     }
 
     public void OnClick(RectTransform buttonTransform)
     {
-        resourceManager.PlayerGold += productivityPerLevel[clickerLevel - 1];
+        resourceManager.PlayerGold += productivityPerLevel[resourceManager.ClickerLevel - 1];
         if (feedback)
         {
             PlayFeedbackAnimation(buttonTransform);
@@ -52,14 +44,14 @@ public class IncrementalManager : MonoBehaviour
 
     public void OnUpgrade()
     {
-        if (resourceManager.PlayerGold < upgradePricePerLevel[clickerLevel - 1]) 
+        if (resourceManager.PlayerGold < upgradePricePerLevel[resourceManager.ClickerLevel - 1]) 
         {
-            UIManager.instance.PlayNotEnoughGoldAnimation();
+            GameManager.Instance.uiManager.PlayNotEnoughGoldAnimation();
             return;
         } 
-        resourceManager.PlayerGold -= upgradePricePerLevel[clickerLevel - 1];
+        resourceManager.PlayerGold -= upgradePricePerLevel[resourceManager.ClickerLevel - 1];
         resourceManager.ClickerLevel++;
-        UpdateUpgradePrice(upgradePricePerLevel[clickerLevel - 1]);
+        GameManager.Instance.uiManager.UpdateUpgradePrice(upgradePricePerLevel[resourceManager.ClickerLevel - 1]);
     }
     
     private void PlayFeedbackAnimation(RectTransform buttonTransform)
@@ -70,7 +62,7 @@ public class IncrementalManager : MonoBehaviour
         TextMeshProUGUI feedbackText = feedback.GetComponentInChildren<TextMeshProUGUI>();
         Sequence feedbackSequence = DOTween.Sequence();
 
-        feedbackText.text = $"${productivityPerLevel[clickerLevel - 1]}";
+        feedbackText.text = $"${productivityPerLevel[resourceManager.ClickerLevel - 1]}";
         
         feedbackSequence
             .Append(feedbackText.rectTransform.DOScale(Vector3.zero, 0))
@@ -79,5 +71,20 @@ public class IncrementalManager : MonoBehaviour
             .Insert(1, feedbackText.DOFade(0, 1f))
             .OnComplete((() => { Destroy(feedback); }));
         feedbackSequence.Play();
+    }
+    
+    public void LoadIncremental()
+    {
+        SceneManager.LoadScene("Incremental");
+    }
+
+    public void LoadBuy()
+    {
+        SceneManager.LoadScene("Buy Card");
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

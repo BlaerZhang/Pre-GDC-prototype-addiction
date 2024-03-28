@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public UIManager uiManager;
+
     public int lastPickPrice = 1;
 
     private void Awake()
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        uiManager = GetComponentInChildren<UIManager>();
     }
 
     // Start is called before the first frame update

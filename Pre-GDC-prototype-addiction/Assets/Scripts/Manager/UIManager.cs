@@ -19,13 +19,6 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI buyCardPrice;
 
     private bool isPlayingNotEnoughAnimation = false;
-    
-    public static UIManager instance;
-    
-    private void Awake()
-    {
-        instance = this;
-    }
 
     private void OnEnable()
     {
@@ -84,10 +77,10 @@ public class UIManager : MonoBehaviour
         isPlayingNotEnoughAnimation = true;
         
         playerResource.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0);
-        // playerResource.rectTransform.DOShakeAnchorPos(0.5f, Vector3.right * 10f, 10).OnComplete((() =>
-        // {
-        //     isPlayingNotEnoughAnimation = false;
-        // }));
+        playerResource.rectTransform.DOShakeAnchorPos(0.5f, Vector3.right * 10f, 10).OnComplete((() =>
+        {
+            isPlayingNotEnoughAnimation = false;
+        }));
     }
     
 }
