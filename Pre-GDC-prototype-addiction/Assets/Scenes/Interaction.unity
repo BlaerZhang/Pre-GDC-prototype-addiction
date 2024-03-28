@@ -243,6 +243,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6770482431145254912, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      propertyPath: costThreshold
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770482431145254912, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
       propertyPath: prizeGapLength
       value: 0
       objectReference: {fileID: 0}
@@ -277,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 6770482431145254912, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 6770482431145254912, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6770482431145254912, guid: 95c8d65e03dba47fdb7be284a4cf56c5, type: 3}
       propertyPath: targetAreaStartPosition.x
       value: -1.03
