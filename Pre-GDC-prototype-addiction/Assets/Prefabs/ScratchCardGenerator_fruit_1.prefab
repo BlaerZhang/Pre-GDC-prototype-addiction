@@ -158,7 +158,6 @@ MonoBehaviour:
   currentCardPrize: 0
   iconSprites:
   - {fileID: 21300000, guid: 8088d6c115609e14ba0c8dec0a12cc4f, type: 3}
-  - {fileID: 21300000, guid: 8088d6c115609e14ba0c8dec0a12cc4f, type: 3}
   - {fileID: 21300000, guid: 305df88bf83d3374991d5d9c81fb63cd, type: 3}
   - {fileID: 21300000, guid: eb9e57cb504a0814ca7f22f867e78d8f, type: 3}
   - {fileID: 21300000, guid: b569848a1528b084eae3fec3ebfa8753, type: 3}
