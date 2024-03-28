@@ -8,7 +8,7 @@ using UnityEngine;
 public class NumberRoller : MonoBehaviour
 {
     public TMP_Text numberText;
-    public float speed = 2f;
+    public float duration = 2f;
 
     private void OnEnable()
     {
@@ -30,10 +30,10 @@ public class NumberRoller : MonoBehaviour
         float elapsed = 0f;
         int startNumber = 0;
 
-        while (elapsed < targetNumber / speed)
+        while (elapsed < 1 / duration)
         {
             elapsed += Time.deltaTime;
-            float percentComplete = elapsed / (targetNumber / speed);
+            float percentComplete = elapsed / duration;
             int currentNumber = (int)Mathf.Lerp(startNumber, targetNumber, percentComplete);
             numberText.text = currentNumber.ToString();
             yield return null;

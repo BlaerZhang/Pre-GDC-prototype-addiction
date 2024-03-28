@@ -191,4 +191,7 @@ MonoBehaviour:
   prizeAreaGridSize: {x: 5, y: 3}
   cellSize: 1
   gapLength: 0
+  winningParticle: {fileID: 9070155249540889151, guid: 204e4cfaa737146ef83b34920fc40a5a, type: 3}
+  scratchIndicator: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
+  scratchBackgroundPrefab: {fileID: 0}
   scratchFieldPrefab: {fileID: 137284, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
