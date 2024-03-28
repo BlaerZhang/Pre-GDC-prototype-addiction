@@ -11,11 +11,14 @@ public class NumberRoller : MonoBehaviour
     public float duration = 2f;
     private CanvasGroup canvasGroup;
 
-    public static Action onRollingEnds;
+    public TMP_FontAsset fontAsset;
+
+    public static Action<TMP_FontAsset> onRollingEnds;
 
     private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        numberText.font = fontAsset;
     }
 
     private void OnEnable()
@@ -53,7 +56,7 @@ public class NumberRoller : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(FadeCanvasGroupAlpha(1, 0, 1f));
 
-        onRollingEnds();
+        onRollingEnds(fontAsset);
     }
 
     private IEnumerator FadeCanvasGroupAlpha(float startAlpha, float endAlpha, float duration)
