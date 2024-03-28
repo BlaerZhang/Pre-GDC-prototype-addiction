@@ -84,7 +84,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 10
+      Data: 1500
     - Name: $v
       Entry: 4
       Data: 0.3
@@ -96,7 +96,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 20
+      Data: 2000
     - Name: $v
       Entry: 4
       Data: 0.15
@@ -108,7 +108,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 50
+      Data: 3000
     - Name: $v
       Entry: 4
       Data: 0.047
@@ -120,10 +120,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 500
+      Data: 15000
     - Name: $v
       Entry: 4
-      Data: 0.002
+      Data: 0.001
     - Name: 
       Entry: 8
       Data: 
@@ -132,10 +132,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 1000
+      Data: 7500
     - Name: $v
       Entry: 4
-      Data: 0.001
+      Data: 0.002
     - Name: 
       Entry: 8
       Data: 
@@ -148,13 +148,14 @@ MonoBehaviour:
     - Name: actualPrizeDistributions
       Entry: 6
       Data: 
-  price: 10
-  costThreshold: 20
-  winningProbabilityOverThreshold: 0.7
-  minPrizeSplitParts: 3
-  maxPrizeSplitParts: 8
-  minSplitValue: 10
+  price: 1000
+  costThreshold: 3000
+  winningProbabilityOverThreshold: 0.3
+  minPrizeSplitParts: 1
+  maxPrizeSplitParts: 3
+  minSplitValue: 1000
   possibleNumberPlaces: 0a00000064000000e803000010270000
+  currentCardPrize: 0
   iconSprites:
   - {fileID: 21300000, guid: 8088d6c115609e14ba0c8dec0a12cc4f, type: 3}
   - {fileID: 21300000, guid: 8088d6c115609e14ba0c8dec0a12cc4f, type: 3}
@@ -185,13 +186,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 01d7f3d909f35ad409d9a458045d0758, type: 3}
   - {fileID: 21300000, guid: 6239590a9a7e5924fa11f7074ca7707b, type: 3}
   iconPrizePosOffset: {x: 0, y: -0.75}
-  targetAreaStartPosition: {x: -0.5, y: 0.5}
+  targetAreaStartPosition: {x: -1, y: 1}
   targetAreaGridSize: {x: 2, y: 1}
   prizeAreaStartPosition: {x: -2, y: -2.5}
   prizeAreaGridSize: {x: 5, y: 3}
   cellSize: 1
-  gapLength: 0
+  targetGapLength: 1
+  prizeGapLength: 0
   winningParticle: {fileID: 9070155249540889151, guid: 204e4cfaa737146ef83b34920fc40a5a, type: 3}
   scratchIndicator: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
-  scratchBackgroundPrefab: {fileID: 0}
+  scratchBackgroundPrefab: {fileID: 828839226113459185, guid: 4a5f640ad8acf42bd875c9d06d2d55e1, type: 3}
   scratchFieldPrefab: {fileID: 137284, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}

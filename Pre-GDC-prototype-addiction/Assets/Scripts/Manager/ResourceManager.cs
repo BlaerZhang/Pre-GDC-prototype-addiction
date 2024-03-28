@@ -17,6 +17,8 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+    public int initialGold = 0;
+
     public int ClickerLevel
     {
         get { return clickerLevel; }
@@ -28,7 +30,7 @@ public class ResourceManager : MonoBehaviour
     
     void Start()
     {
-        
+        PlayerGold = initialGold;
     }
 
     void Update()
