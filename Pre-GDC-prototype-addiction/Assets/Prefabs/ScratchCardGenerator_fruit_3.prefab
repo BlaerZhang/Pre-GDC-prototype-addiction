@@ -1,0 +1,197 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7279161168526506875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4016010540723093572}
+  - component: {fileID: 6770482431145254912}
+  m_Layer: 0
+  m_Name: ScratchCardGenerator_fruit_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4016010540723093572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279161168526506875}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6770482431145254912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279161168526506875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a351633ecdd4f9ea1336bc20096965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: basePrizeDistributions
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10
+    - Name: $v
+      Entry: 4
+      Data: 0.3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 20
+    - Name: $v
+      Entry: 4
+      Data: 0.15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 50
+    - Name: $v
+      Entry: 4
+      Data: 0.047
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 500
+    - Name: $v
+      Entry: 4
+      Data: 0.002
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1000
+    - Name: $v
+      Entry: 4
+      Data: 0.001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: actualPrizeDistributions
+      Entry: 6
+      Data: 
+  price: 10
+  costThreshold: 20
+  winningProbabilityOverThreshold: 0.7
+  minPrizeSplitParts: 3
+  maxPrizeSplitParts: 8
+  minSplitValue: 10
+  possibleNumberPlaces: 0a00000064000000e803000010270000
+  iconSprites:
+  - {fileID: 21300000, guid: 8088d6c115609e14ba0c8dec0a12cc4f, type: 3}
+  - {fileID: 21300000, guid: 8088d6c115609e14ba0c8dec0a12cc4f, type: 3}
+  - {fileID: 21300000, guid: 305df88bf83d3374991d5d9c81fb63cd, type: 3}
+  - {fileID: 21300000, guid: eb9e57cb504a0814ca7f22f867e78d8f, type: 3}
+  - {fileID: 21300000, guid: b569848a1528b084eae3fec3ebfa8753, type: 3}
+  - {fileID: 21300000, guid: 7d6f12fec43d0ed4b910a31087c6cc63, type: 3}
+  - {fileID: 21300000, guid: 302fa40f5fe8eb44f92683efcf90ec80, type: 3}
+  - {fileID: 21300000, guid: 792a68c8c2918d14cb5d2e6c37451d84, type: 3}
+  - {fileID: 21300000, guid: 7faa5326cc324f940b8c464a058267df, type: 3}
+  - {fileID: 21300000, guid: 9b9a205a28bd71d4785fd5b2cfe1ceb9, type: 3}
+  - {fileID: 21300000, guid: 1c5f89ae7c248a84d81560687b42d2ec, type: 3}
+  - {fileID: 21300000, guid: 01df33916b9b91648a0c49e90e1fdd97, type: 3}
+  - {fileID: 21300000, guid: e56abd72eca0780449d7a74e8a9f09b4, type: 3}
+  - {fileID: 21300000, guid: b37d19f367326924d954073480091c30, type: 3}
+  - {fileID: 21300000, guid: e6f65fbd476eb274b975a05add111b85, type: 3}
+  - {fileID: 21300000, guid: b3e5f94b263fe7749bc88f16ca136382, type: 3}
+  - {fileID: 21300000, guid: e2931e4f6e9dd0143a3fcf92744bce50, type: 3}
+  - {fileID: 21300000, guid: 819513540e008444aa321e714ca1f16e, type: 3}
+  - {fileID: 21300000, guid: 1cca86cddb09cc34ca1dcd8b2ee01e19, type: 3}
+  - {fileID: 21300000, guid: 25df5eebc337fc340b6cc260c78fd777, type: 3}
+  - {fileID: 21300000, guid: b28fb47b08364654f97e03f4df84be17, type: 3}
+  - {fileID: 21300000, guid: 97aec6a98e352d34dabd8b93804fcbcb, type: 3}
+  - {fileID: 21300000, guid: 974d80da382a0a84597f2eec444771d7, type: 3}
+  - {fileID: 21300000, guid: 95d63883a1acc4944834373772bf61d3, type: 3}
+  - {fileID: 21300000, guid: b525eae5494f181408b415226f872e21, type: 3}
+  - {fileID: 21300000, guid: a4566479f436e1a4f8cff52f8ecefd27, type: 3}
+  - {fileID: 21300000, guid: 01d7f3d909f35ad409d9a458045d0758, type: 3}
+  - {fileID: 21300000, guid: 6239590a9a7e5924fa11f7074ca7707b, type: 3}
+  iconPrizePosOffset: {x: 0, y: -0.75}
+  targetAreaStartPosition: {x: -0.5, y: 0.5}
+  targetAreaGridSize: {x: 2, y: 1}
+  prizeAreaStartPosition: {x: -2, y: -2.5}
+  prizeAreaGridSize: {x: 5, y: 3}
+  cellSize: 1
+  gapLength: 0
+  winningParticle: {fileID: 9070155249540889151, guid: 204e4cfaa737146ef83b34920fc40a5a, type: 3}
+  scratchIndicator: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
+  scratchBackgroundPrefab: {fileID: 0}
+  scratchFieldPrefab: {fileID: 137284, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
