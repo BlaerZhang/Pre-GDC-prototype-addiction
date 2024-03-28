@@ -114,6 +114,8 @@ public class BuyCardManager : MonoBehaviour
             Destroy(cardToCollect);
             yield return new WaitForSeconds(0.13f);
         }
+
+        SceneManager.LoadScene("Interaction");
     }
 
     public void AdjustBuyArea(Transform cardPos)

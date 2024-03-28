@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Incremental.unity
     guid: 5068f22fc17c1c846b114c8697420584
+  - enabled: 1
+    path: Assets/Scenes/Interaction.unity
+    guid: 92fd54a4b08364f408fa6caad0a7cb13
   m_configObjects: {}

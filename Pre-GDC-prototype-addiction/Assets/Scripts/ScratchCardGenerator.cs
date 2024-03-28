@@ -38,6 +38,8 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
 
     public List<int> possibleNumberPlaces;
 
+    [HideInInspector] public float currentCardPrize;
+
     void Start()
     {
         // actualPrizeDistributions = Utils.DeepCopyDictionary(basePrizeDistributions);
@@ -206,7 +208,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
             prizeIcons.Remove(currentIcon);
         }
 
-        float currentCardPrize = GenerateCurrentCardPrize();
+        currentCardPrize  = GenerateCurrentCardPrize();
 
         // construct the icon matrix along with the prizes
         List<GameObject> prizeMatrix = new List<GameObject>();
