@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Interaction;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Vector3 = System.Numerics.Vector3;
 
@@ -18,6 +20,7 @@ public class BuyCardManager : MonoBehaviour
     public Draggable cardPrefab;
 
     [Header("Buy Cards")] 
+    public int price;
 
     [Header("Hand")] 
     public Animator handAnimator;
@@ -28,6 +31,9 @@ public class BuyCardManager : MonoBehaviour
     public float areaActivateDistance = 200;
     [Range(0,1)] public float areaStopThreshold = 0.2f;
     public float areaMoveAmount = 1000;
+    
+    [Header("Move to Scratch-off")] 
+    public RectTransform scratchOffButton;
 
     private void Awake()
     {
@@ -57,6 +63,9 @@ public class BuyCardManager : MonoBehaviour
 
     public void SpawnCardsToBuy()
     {
+        price = GameManager.Instance.lastPickPrice;
+        GameManager.Instance.uiManager.UpdateBuyPrice(price);
+        
         for (int i = 0; i < 5; i++)
         {
             Draggable cardInstance = Instantiate(cardPrefab, cardPurchasePos.position, Quaternion.identity);
@@ -68,10 +77,19 @@ public class BuyCardManager : MonoBehaviour
 
     public void BuyCard(Draggable card)
     {
-        cardsToBuy.Remove(card);
-        card.transform.DOMove(cardPurchasePos.position, 0.1f);
-        for (int i = 0; i < cardsToBuy.Count; i++) { cardsToBuy[i].transform.DOMove(cardSpawnPos[i].position, 0.1f); }
-        StartCoroutine(CollectCards());
+        if (price <= GameManager.Instance.GetComponent<ResourceManager>().PlayerGold)
+        {
+            GameManager.Instance.GetComponent<ResourceManager>().PlayerGold -= price;
+            
+            cardsToBuy.Remove(card);
+            card.transform.DOMove(cardPurchasePos.position, 0.1f);
+            for (int i = 0; i < cardsToBuy.Count; i++) { cardsToBuy[i].transform.DOMove(cardSpawnPos[i].position, 0.1f); }
+            StartCoroutine(CollectCards());
+        }
+        else
+        {
+            GameManager.Instance.uiManager.PlayNotEnoughGoldAnimation();
+        }
     }
 
     IEnumerator DealCards()
@@ -96,6 +114,8 @@ public class BuyCardManager : MonoBehaviour
             Destroy(cardToCollect);
             yield return new WaitForSeconds(0.13f);
         }
+
+        SceneManager.LoadScene("Interaction");
     }
 
     public void AdjustBuyArea(Transform cardPos)
@@ -114,6 +134,31 @@ public class BuyCardManager : MonoBehaviour
     public void DeactivateBuyArea()
     {
         buyArea.DOAnchorPosY(0, 0.1f);
+    }
+    
+    public void ActivateScratchOffButton()
+    {
+        scratchOffButton.DOAnchorPosX(125, 0.1f);
+    }
+
+    public void DeactivateScratchOffButton()
+    {
+        scratchOffButton.DOAnchorPosX(-200, 0.1f);
+    }
+    
+    public void LoadIncremental()
+    {
+        SceneManager.LoadScene("Incremental");
+    }
+
+    public void LoadBuy()
+    {
+        SceneManager.LoadScene("Buy Card");
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
     
 }

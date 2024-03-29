@@ -51,6 +51,11 @@ namespace Interaction
         
             //Activate Buy Area
             BuyCardManager.instance.ActivateBuyArea();
+            
+            //Deactivate ScratchOff Button
+            BuyCardManager.instance.DeactivateScratchOffButton();
+            
+            
         }
 
         private void OnMouseDrag()
@@ -69,7 +74,7 @@ namespace Interaction
             if (buyAreaUpperEdgeYOnViewport > cardYPosOnViewport)
             {
                 isInBuyArea = true;
-                cardSprite.DOColor(Color.yellow, 0.1f);
+                cardSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
             }
             else
             {
@@ -87,6 +92,9 @@ namespace Interaction
         
             //Deactivate Buy Area
             BuyCardManager.instance.DeactivateBuyArea();
+            
+            //Activate ScratchOff Button
+            BuyCardManager.instance.ActivateScratchOffButton();
         
             //Check if buy
             if (isInBuyArea) BuyCardManager.instance.BuyCard(this);

@@ -12,6 +12,15 @@ namespace Interaction
         public bool unlock = false;
         public Sprite lockedSprite;
         public int price = 1;
+        public enum Tier
+        {
+            Level1,
+            Level2,
+            Level3,
+            Level4,
+            Level5
+        }
+        public Tier tier = Tier.Level1;
         
         [Header("Drag")]
         public float dragSpeed = 25;
@@ -74,6 +83,9 @@ namespace Interaction
         
                 //Activate Pick Area
                 MenuManager.instance.ActivatePickArea();
+                
+                //Deactivate Incremental Button
+                MenuManager.instance.DeactivateIncrementalButton();
             }
             else
             {
@@ -100,7 +112,7 @@ namespace Interaction
             if (1 + pickAreaLeftEdgeXOnViewport < cardXPosOnViewport)
             {
                 isInPickArea = true;
-                cardSprite.DOColor(Color.yellow, 0.1f);
+                cardSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
             }
             else
             {
@@ -123,10 +135,15 @@ namespace Interaction
         
             //Deactivate Pick Area
             MenuManager.instance.DeactivatePickArea();
+            
+            //Activate Incremental Button
+            MenuManager.instance.ActivateIncrementalButton();
         
             //Check if pick
             if (isInPickArea) MenuManager.instance.PickCard(this);
-            else transform.DOLocalMove(originalLocalPos, 0.1f);
+            
+            //Go back
+            transform.DOLocalMove(originalLocalPos, 0.1f);
         }
 
         private void OnMouseExit()

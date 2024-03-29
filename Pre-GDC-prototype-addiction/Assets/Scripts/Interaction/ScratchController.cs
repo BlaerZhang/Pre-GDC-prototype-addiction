@@ -34,22 +34,52 @@ namespace Interaction
         private PostProcessVolume postProcessVolume;
 
         private ChromaticAberration chromaticAberration;
-        // Start is called before the first frame update
-        void Start()
+
+        private void Start()
         {
-            card = FindObjectOfType<ScratchCard>();
-            cardSprite = card.transform.parent.Find("Scratch Surface Sprite").GetComponent<SpriteRenderer>();
-            eraseProgress = FindObjectOfType<EraseProgress>();
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
+
             postProcessVolume = FindObjectOfType<PostProcessVolume>();
             postProcessVolume.profile.TryGetSettings(out chromaticAberration);
+        }
+
+        private void OnEnable()
+        {
+            MouseEnterDetector.onMouseEnterEvent += InitializeCurrentCard;
+            MouseEnterDetector.onMouseExitEvent += RemoveCurrentCard;
+        }
+
+        private void OnDisable()
+        {
+            MouseEnterDetector.onMouseEnterEvent -= InitializeCurrentCard;
+            MouseEnterDetector.onMouseExitEvent -= RemoveCurrentCard;
+        }
+
+        private void InitializeCurrentCard(ScratchCard currentCard)
+        {
+            card = currentCard;
+            print(currentCard.name);
+            // card = FindObjectOfType<ScratchCard>();
+            cardSprite = card.transform.parent.Find("Scratch Surface Sprite").GetComponent<SpriteRenderer>();
+            eraseProgress = card.gameObject.GetComponent<EraseProgress>();
+            // eraseProgress = FindObjectOfType<EraseProgress>();
+        }
+
+        private void RemoveCurrentCard()
+        {
+            card = null;
         }
 
         // Update is called once per frame
         void Update()
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Confined;
+            if (card is null) return;
+            MoveScratchTool();
+        }
 
+        private void MoveScratchTool()
+        {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePosDamped;
             Vector2 mouseToScratcher = (Vector2)transform.position - mousePos;

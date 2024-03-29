@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &462224
 Transform:
   m_ObjectHideFlags: 0
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7.01, y: 3.78, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 437468}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444b8500698854b63ac5ae06ea55cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SurfaceTransform: {fileID: 462224}
+  SurfaceTransform: {fileID: 469998}
   SurfaceMaterial: {fileID: 0}
   BrushMaterial: {fileID: 0}
   BrushSize: 1
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   card: {fileID: 11474202}
   progressMaterial: {fileID: 0}
-  sampleSourceTexture: 0
+  sampleSourceTexture: 1
   progressAccuracy: 0
 --- !u!1 &137284
 GameObject:
@@ -178,7 +178,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 437498}
   - {fileID: 462224}
@@ -199,17 +199,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Card: {fileID: 11474202}
   Progress: {fileID: 114877032501962244}
-  RenderType: 0
+  RenderType: 1
   MeshCard: {fileID: 0}
   SpriteCard: {fileID: 0}
   ImageCard: {fileID: 0}
   meshRendererCard: {fileID: 2357512}
   spriteRendererCard: {fileID: 21281386}
   canvasRendererCard: {fileID: 0}
-  scratchSurfaceSpriteHasAlpha: 0
+  scratchSurfaceSpriteHasAlpha: 1
   mode: 0
   mainCamera: {fileID: 0}
-  scratchSurfaceSprite: {fileID: 21300000, guid: 571dbb2cbefac464195f151b4deca922, type: 3}
+  scratchSurfaceSprite: {fileID: 21300000, guid: 2dac7e568053b0c46a8044393eaa1e95, type: 3}
   progressAccuracy: 0
   brushTexture: {fileID: 2800000, guid: 6407cb4b2bd9f4a82b1e98830cae7837, type: 3}
   brushSize: 1
@@ -231,13 +231,15 @@ GameObject:
   m_Component:
   - component: {fileID: 469998}
   - component: {fileID: 21281386}
+  - component: {fileID: 4347447367483429148}
+  - component: {fileID: 6218210599568714524}
   m_Layer: 0
   m_Name: Scratch Surface Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &469998
 Transform:
   m_ObjectHideFlags: 0
@@ -294,7 +296,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 571dbb2cbefac464195f151b4deca922, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2dac7e568053b0c46a8044393eaa1e95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -305,3 +307,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &4347447367483429148
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178426}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.105, y: 7.605}
+    newSize: {x: 8.71, y: 3.72}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 7.01, y: 3.78}
+  m_EdgeRadius: 0
+--- !u!114 &6218210599568714524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178426}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b502def5f11b646c2b1d0aad2cc47328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
