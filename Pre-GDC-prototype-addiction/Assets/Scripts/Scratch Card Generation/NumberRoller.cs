@@ -24,17 +24,21 @@ public class NumberRoller : MonoBehaviour
     private void OnEnable()
     {
         PrizeRevealing.onPrizeRevealed += StartRolling;
+        GiveCardTemp.onSubmitScratchCard += StartRolling;
     }
 
     private void OnDisable()
     {
         PrizeRevealing.onPrizeRevealed -= StartRolling;
+        GiveCardTemp.onSubmitScratchCard -= StartRolling;
     }
 
     private void StartRolling(float prize)
     {
         StartCoroutine(FadeCanvasGroupAlpha(0, 1, 1f));
         StartCoroutine(RollNumber(prize));
+        // onRollingEnds?.Invoke(fontAsset);
+        onRollingEnds(fontAsset);
     }
 
     private IEnumerator RollNumber(float targetNumber)
@@ -55,8 +59,6 @@ public class NumberRoller : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         StartCoroutine(FadeCanvasGroupAlpha(1, 0, 1f));
-
-        onRollingEnds(fontAsset);
     }
 
     private IEnumerator FadeCanvasGroupAlpha(float startAlpha, float endAlpha, float duration)

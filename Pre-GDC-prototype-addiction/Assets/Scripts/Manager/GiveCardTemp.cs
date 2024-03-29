@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -8,22 +9,24 @@ public class GiveCardTemp : MonoBehaviour
 {
     public ScratchCardGenerator generator;
     public GameObject hand;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static Action onChangeSubmissionStatus;
+    public static Action<float> onSubmitScratchCard;
 
     public void GiveCard()
     {
+        StartCoroutine(GiveCardAction());
+    }
+
+    private IEnumerator GiveCardAction()
+    {
         generator = FindObjectOfType<ScratchCardGenerator>();
+
+        onChangeSubmissionStatus();
+        onSubmitScratchCard(generator.currentCardPrize);
+
+        yield return new WaitForSeconds(1f);
+
         GameObject card = generator.transform.GetChild(0).gameObject;
         GameManager.Instance.GetComponent<ResourceManager>().PlayerGold += (int)generator.currentCardPrize;
         Sequence giveAnimation = DOTween.Sequence();

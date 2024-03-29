@@ -49,6 +49,29 @@ public static class Utils
     /// <summary>
     /// generate a number like x(1~9)000...
     /// </summary>
+    public static int GenerateCleanNumber(int maxNumberPlace)
+    {
+        List<int> numberPlaces = new List<int>();
+
+        int currentNumberPlace = maxNumberPlace;
+        // TODO: fix the infinite loop here
+        while (currentNumberPlace != 1)
+        {
+            numberPlaces.Add(currentNumberPlace);
+            currentNumberPlace /= 10;
+
+            if (currentNumberPlace % 10 != 0) break;
+        }
+
+        int unitsPlace = Random.Range(1, 10);
+
+        int numberPlace = numberPlaces[Random.Range(0, numberPlaces.Count)];
+
+        int finalNumber = unitsPlace * numberPlace;
+
+        return finalNumber;
+    }
+
     public static int GenerateCleanNumber(List<int> maxNumberPlace)
     {
         int unitsPlace = Random.Range(1, 10);

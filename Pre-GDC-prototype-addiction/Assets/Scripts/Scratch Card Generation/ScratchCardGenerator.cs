@@ -180,6 +180,10 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
             // particle.GetComponent<ParticleSystem>().Play();
             // print("shinning icon!");
         }
+        else
+        {
+            iconObject.AddComponent<FakePrizeRevealing>();
+        }
 
         return iconObject;
     }

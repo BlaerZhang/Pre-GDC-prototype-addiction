@@ -59,7 +59,7 @@ namespace Interaction
         private void GeneratePrizeNumber(TMP_FontAsset fontAsset)
         {
             // it must be revealed, and must be clicked
-            if (!hasClicked || hasNumberShown) return;
+            if (hasNumberShown) return;
 
             GameObject textObject = new GameObject("prize");
             textObject.transform.localRotation = Quaternion.Euler(0, 0, 30f);
