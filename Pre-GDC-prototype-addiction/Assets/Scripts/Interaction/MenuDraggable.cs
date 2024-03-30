@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
 namespace Interaction
@@ -32,6 +33,7 @@ namespace Interaction
 
         private SpriteRenderer cardSprite;
         private SpriteRenderer pricePanelSprite;
+        private SortingGroup sortingGroup;
         private TextMeshPro priceText;
         
         private Vector2 dragOffset = new Vector2(0, 0);
@@ -41,6 +43,7 @@ namespace Interaction
         {
             cardSprite = transform.Find("Poster Sprite").GetComponent<SpriteRenderer>();
             pricePanelSprite = transform.Find("Poster Sprite/Price Panel Sprite").GetComponent<SpriteRenderer>();
+            sortingGroup = GetComponent<SortingGroup>();
             priceText = GetComponentInChildren<TextMeshPro>();
             
             isDragging = false;
@@ -74,6 +77,7 @@ namespace Interaction
         
                 //Sort order
                 transform.DOMoveZ(-0.1f, 0);
+                // sortingGroup.sortingOrder = 10;
         
                 //Scale
                 cardSprite.transform.DOScale(Vector3.one * hoverScale, 0.1f);
@@ -132,6 +136,7 @@ namespace Interaction
         
             //Reset Order
             transform.DOMoveZ(0f, 0);
+            sortingGroup.sortingOrder = 0;
         
             //Deactivate Pick Area
             MenuManager.instance.DeactivatePickArea();
