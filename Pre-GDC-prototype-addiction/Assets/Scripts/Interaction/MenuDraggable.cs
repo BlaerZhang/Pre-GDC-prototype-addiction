@@ -137,7 +137,7 @@ namespace Interaction
             MenuManager.instance.DeactivatePickArea();
             
             //Activate Incremental Button
-            MenuManager.instance.ActivateIncrementalButton();
+            if (!GameManager.Instance.incrementalLock) MenuManager.instance.ActivateIncrementalButton();
         
             //Check if pick
             if (isInPickArea) MenuManager.instance.PickCard(this);

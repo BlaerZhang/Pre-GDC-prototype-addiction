@@ -52,6 +52,9 @@ public class SwitchSceneManager : SerializedMonoBehaviour
         
         //unload scene
         StartCoroutine(UnloadScene(currentActiveScene, toScene));
+        
+        //unlock incremental
+        GameManager.Instance.incrementalLock = false;
     }
 
     IEnumerator UnloadScene(string fromScene, string toScene)

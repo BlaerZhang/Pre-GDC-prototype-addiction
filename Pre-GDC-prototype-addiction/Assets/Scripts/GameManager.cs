@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public SwitchSceneManager switchSceneManager;
 
+    public bool incrementalLock = true;
+
     public int lastPickPrice = 1;
 
     public MenuDraggable.Tier lastPickTier = MenuDraggable.Tier.Level1;
