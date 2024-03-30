@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     [Header("Game")]
-    public TextMeshProUGUI playerResource;
+    public List<TextMeshProUGUI> playerResource;
     
     [Header("Incremental")]
     public TextMeshProUGUI upgradePrice;
@@ -54,9 +54,12 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void UpdateResource(string resource)
+    public void UpdateResource(int resource)
     {
-        playerResource.text = resource;
+        foreach (var resourceText in playerResource)
+        {
+            resourceText.text = $"${resource}";
+        }
     }
 
     public void UpdateUpgradePrice(int price)
@@ -75,12 +78,14 @@ public class UIManager : MonoBehaviour
     {
         if(isPlayingNotEnoughAnimation) return;
         isPlayingNotEnoughAnimation = true;
-        
-        playerResource.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0);
-        playerResource.rectTransform.DOShakeAnchorPos(0.5f, Vector3.right * 10f, 10).OnComplete((() =>
+        foreach (var resourceText in playerResource)
         {
-            isPlayingNotEnoughAnimation = false;
-        }));
+            resourceText.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0);
+            resourceText.rectTransform.DOShakeAnchorPos(0.5f, Vector3.right * 10f, 10).OnComplete((() =>
+            {
+                isPlayingNotEnoughAnimation = false;
+            }));
+        }
     }
     
 }

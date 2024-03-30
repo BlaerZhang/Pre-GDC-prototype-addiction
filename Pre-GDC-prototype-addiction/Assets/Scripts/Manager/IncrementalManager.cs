@@ -4,6 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class IncrementalManager : MonoBehaviour
 {
@@ -19,6 +20,19 @@ public class IncrementalManager : MonoBehaviour
     public bool feedback;
     public GameObject textFeedback;
     public List<AudioClip> soundFeedbacks;
+    
+    [FormerlySerializedAs("incrementalButton")] [Header("Move to Menu")] 
+    public RectTransform menuButton;
+    
+    private void OnEnable()
+    {
+        GameManager.Instance.switchSceneManager.onSceneChange += InitializeButton;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.switchSceneManager.onSceneChange -= InitializeButton;
+    }
     
     void Start()
     {
@@ -73,18 +87,21 @@ public class IncrementalManager : MonoBehaviour
         feedbackSequence.Play();
     }
     
-    public void LoadIncremental()
+    public void ActivateMenuButton()
     {
-        SceneManager.LoadScene("Incremental");
+        menuButton.gameObject.SetActive(true);
+        menuButton.DOAnchorPosX(-125, 0.1f);
     }
 
-    public void LoadBuy()
+    public void DeactivateMenuButton()
     {
-        SceneManager.LoadScene("Buy Card");
+        menuButton.DOAnchorPosX(200, 0.1f).OnComplete((() => { menuButton.gameObject.SetActive(false); }));
     }
-
-    public void LoadMenu()
+    
+    public void InitializeButton(string toScene)
     {
-        SceneManager.LoadScene("Menu");
+        if (toScene == "Incremental") ActivateMenuButton();
     }
+    
+    
 }

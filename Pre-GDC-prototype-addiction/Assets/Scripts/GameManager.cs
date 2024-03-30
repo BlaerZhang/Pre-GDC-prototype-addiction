@@ -11,9 +11,13 @@ public class GameManager : MonoBehaviour
 
     public UIManager uiManager;
 
+    public SwitchSceneManager switchSceneManager;
+
     public int lastPickPrice = 1;
 
     public MenuDraggable.Tier lastPickTier = MenuDraggable.Tier.Level1;
+
+    public float lastMenuYPos = 0;
     
     public float totalCostBeforeWinning = 0;
 
@@ -30,6 +34,7 @@ public class GameManager : MonoBehaviour
         }
 
         uiManager = GetComponentInChildren<UIManager>();
+        switchSceneManager = GetComponent<SwitchSceneManager>();
     }
 
     // Start is called before the first frame update
@@ -42,11 +47,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         RestartGame();
-
-        if (Input.GetKeyDown(KeyCode.UpArrow)) SceneManager.LoadScene("Menu");
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) SceneManager.LoadScene("Incremental");
-        if (Input.GetKeyDown(KeyCode.RightArrow)) SceneManager.LoadScene("Buy Card");
-        if (Input.GetKeyDown(KeyCode.DownArrow)) SceneManager.LoadScene("?");
     }
 
     private void RestartGame()

@@ -13,7 +13,7 @@ public class ResourceManager : MonoBehaviour
         set
         {
             playerGold = value;
-            GameManager.Instance.uiManager.UpdateResource($"Gold: {value}");
+            GameManager.Instance.uiManager.UpdateResource(value);
         }
     }
 

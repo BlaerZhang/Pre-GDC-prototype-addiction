@@ -40,16 +40,23 @@ public class BuyCardManager : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        SpawnCardsToBuy();
+        GameManager.Instance.switchSceneManager.onSceneChange += OnSceneChange;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        GameManager.Instance.switchSceneManager.onSceneChange -= OnSceneChange;
+    }
+
+    private void OnSceneChange(string sceneLoaded)
+    {
+        if (sceneLoaded == "Buy Card")
+        {
+            SpawnCardsToBuy();
+            ActivateScratchOffButton();
+        }
     }
 
     public void sortCardsOrder()
@@ -83,8 +90,7 @@ public class BuyCardManager : MonoBehaviour
             
             cardsToBuy.Remove(card);
             card.transform.DOMove(cardPurchasePos.position, 0.1f);
-            for (int i = 0; i < cardsToBuy.Count; i++) { cardsToBuy[i].transform.DOMove(cardSpawnPos[i].position, 0.1f); }
-            StartCoroutine(CollectCards());
+            StartCoroutine(CollectCards(true));
         }
         else
         {
@@ -103,11 +109,25 @@ public class BuyCardManager : MonoBehaviour
         }
     }
 
-    IEnumerator CollectCards()
+    public void CollectCard(bool isPurchased)
     {
+        StartCoroutine(CollectCards(isPurchased));
+    }
+
+    IEnumerator CollectCards(bool isPurchased)
+    {
+        //cards move to slots
+        for (int i = 0; i < cardsToBuy.Count; i++) { cardsToBuy[i].transform.DOMove(cardSpawnPos[i].position, 0.1f); }
+        
+        //play hand animation
         handAnimator.SetTrigger("Collect");
+        
         yield return new WaitForSeconds(0.4f);
-        for (int i = 0; i < 4; i++)
+
+        int numberOfCardsToCollect = cardsToBuy.Count;
+        
+        //destroy cards with interval
+        for (int i = 0; i < numberOfCardsToCollect; i++)
         {
             GameObject cardToCollect = cardsToBuy[0].gameObject;
             cardsToBuy.Remove(cardsToBuy[0]);
@@ -115,7 +135,7 @@ public class BuyCardManager : MonoBehaviour
             yield return new WaitForSeconds(0.13f);
         }
 
-        SceneManager.LoadScene("Interaction");
+        if (isPurchased) GameManager.Instance.switchSceneManager.ChangeScene("Interaction");
     }
 
     public void AdjustBuyArea(Transform cardPos)
@@ -138,27 +158,12 @@ public class BuyCardManager : MonoBehaviour
     
     public void ActivateScratchOffButton()
     {
+        scratchOffButton.gameObject.SetActive(true);
         scratchOffButton.DOAnchorPosX(125, 0.1f);
     }
 
     public void DeactivateScratchOffButton()
     {
-        scratchOffButton.DOAnchorPosX(-200, 0.1f);
+        scratchOffButton.DOAnchorPosX(-200, 0.1f).OnComplete((() => { scratchOffButton.gameObject.SetActive(false); }));
     }
-    
-    public void LoadIncremental()
-    {
-        SceneManager.LoadScene("Incremental");
-    }
-
-    public void LoadBuy()
-    {
-        SceneManager.LoadScene("Buy Card");
-    }
-
-    public void LoadMenu()
-    {
-        SceneManager.LoadScene("Menu");
-    }
-    
 }

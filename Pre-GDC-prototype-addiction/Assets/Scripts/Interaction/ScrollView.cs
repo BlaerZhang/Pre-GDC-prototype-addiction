@@ -1,15 +1,23 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Interaction
 {
     public class ScrollView : MonoBehaviour
     {
+        public float initialPosY = 0;
         public Vector2 scrollLimits;
         public float currentScrollSpeed = 0f;
         // Start is called before the first frame update
         void Start()
         {
-        
+            transform.position = new Vector3(transform.position.x, GameManager.Instance.lastMenuYPos, transform.position.z);
+        }
+
+        private void OnDisable()
+        {
+            RecordLastYPos();
         }
 
         // Update is called once per frame
@@ -26,6 +34,11 @@ namespace Interaction
             transform.position = new Vector3(transform.position.x,
                 Mathf.Clamp(transform.position.y, scrollLimits.x, scrollLimits.y),
                 transform.position.z);
+        }
+
+        void RecordLastYPos()
+        {
+            GameManager.Instance.lastMenuYPos = transform.position.y;
         }
     
     }
