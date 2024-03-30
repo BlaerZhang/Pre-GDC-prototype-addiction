@@ -823,7 +823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: price
-      value: 1000
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
@@ -1307,7 +1307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: price
-      value: 1000
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: unlock
@@ -1910,7 +1910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: price
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
@@ -2104,6 +2104,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1890247022}
     m_Modifications:
+    - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: price
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
       value: Poster Card Sample (14)
@@ -2324,7 +2328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: price
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: unlock
@@ -2401,7 +2405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: price
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
@@ -2569,7 +2573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: price
-      value: 1000
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
@@ -2642,7 +2646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: price
-      value: 10
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
@@ -3161,7 +3165,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: price
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: unlock
@@ -3300,7 +3304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: price
-      value: 10
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
@@ -3367,6 +3371,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1890247022}
     m_Modifications:
+    - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: price
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
       value: Poster Card Sample (12)
@@ -3510,7 +3518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: price
-      value: 250
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1774714932219177802, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: unlock

@@ -15,11 +15,11 @@ public class ButtonHoverStopAnimator : MonoBehaviour, IPointerEnterHandler, IPoi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        buttonAnimator.speed = 0;
+        buttonAnimator.SetBool("Hover", true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        buttonAnimator.speed = 1;
+        buttonAnimator.SetBool("Hover", false);
     }
 }
