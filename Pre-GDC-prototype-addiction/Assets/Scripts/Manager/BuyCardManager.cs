@@ -165,6 +165,6 @@ public class BuyCardManager : MonoBehaviour
 
     public void DeactivateScratchOffButton()
     {
-        scratchOffButton.DOAnchorPosX(-200, 0.1f).OnComplete((() => { scratchOffButton.gameObject.SetActive(false); }));
+        scratchOffButton.DOAnchorPosX(-200, 0.1f);
     }
 }

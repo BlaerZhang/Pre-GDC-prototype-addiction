@@ -98,7 +98,7 @@ public class MenuManager : MonoBehaviour
 
     public void DeactivateIncrementalButton()
     {
-        incrementalButton.DOAnchorPosX(-200, 0.1f).OnComplete((() => { incrementalButton.gameObject.SetActive(false); }));
+        incrementalButton.DOAnchorPosX(-200, 0.1f);
     }
 
     public void InitializeButton(string toScene)

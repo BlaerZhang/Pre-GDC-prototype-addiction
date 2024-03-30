@@ -42,6 +42,7 @@ namespace Interaction
             BuyCardManager.instance.cardsToBuy.Remove(this);
             BuyCardManager.instance.cardsToBuy.Insert(0,this);
             BuyCardManager.instance.sortCardsOrder();
+            // cardSprite.sortingOrder = 10;
         
             //Scale
             cardSprite.transform.DOScale(Vector3.one * hoverScale, 0.1f);
@@ -89,6 +90,9 @@ namespace Interaction
         
             //Scale
             cardSprite.transform.DOScale(Vector3.one, 0.1f);
+            
+            //Order
+            cardSprite.sortingOrder = 0;
         
             //Deactivate Buy Area
             BuyCardManager.instance.DeactivateBuyArea();
