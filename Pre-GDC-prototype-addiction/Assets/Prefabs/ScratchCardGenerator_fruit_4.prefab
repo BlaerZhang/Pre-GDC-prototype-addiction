@@ -75,31 +75,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 0.5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1500
-    - Name: $v
-      Entry: 4
-      Data: 0.3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2000
-    - Name: $v
-      Entry: 4
-      Data: 0.15
+      Data: 0.4
     - Name: 
       Entry: 8
       Data: 
@@ -111,7 +87,7 @@ MonoBehaviour:
       Data: 3000
     - Name: $v
       Entry: 4
-      Data: 0.047
+      Data: 0.3
     - Name: 
       Entry: 8
       Data: 
@@ -120,7 +96,31 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 15000
+      Data: 5000
+    - Name: $v
+      Entry: 4
+      Data: 0.15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 12500
+    - Name: $v
+      Entry: 4
+      Data: 0.147
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 125000
     - Name: $v
       Entry: 4
       Data: 0.001
@@ -132,7 +132,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 7500
+      Data: 62500
     - Name: $v
       Entry: 4
       Data: 0.002
@@ -148,12 +148,12 @@ MonoBehaviour:
     - Name: actualPrizeDistributions
       Entry: 6
       Data: 
-  price: 1000
-  costThreshold: 3000
+  price: 2500
+  costThreshold: 7500
   winningProbabilityOverThreshold: 0.7
   minPrizeSplitParts: 1
   maxPrizeSplitParts: 3
-  minSplitValue: 1000
+  minSplitValue: 2500
   possibleNumberPlaces: 0a00000064000000e803000010270000
   currentCardPrize: 0
   iconSprites:

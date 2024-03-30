@@ -75,7 +75,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 0.5
+      Data: 0.4
     - Name: 
       Entry: 8
       Data: 
@@ -84,7 +84,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 10000
+      Data: 12000
     - Name: $v
       Entry: 4
       Data: 0.3
@@ -111,7 +111,7 @@ MonoBehaviour:
       Data: 50000
     - Name: $v
       Entry: 4
-      Data: 0.047
+      Data: 0.147
     - Name: 
       Entry: 8
       Data: 
@@ -120,7 +120,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 100000
+      Data: 250000
     - Name: $v
       Entry: 4
       Data: 0.002
@@ -132,7 +132,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 200000
+      Data: 500000
     - Name: $v
       Entry: 4
       Data: 0.001
@@ -149,7 +149,7 @@ MonoBehaviour:
       Entry: 6
       Data: 
   price: 10000
-  costThreshold: 100000
+  costThreshold: 50000
   winningProbabilityOverThreshold: 0.7
   minPrizeSplitParts: 1
   maxPrizeSplitParts: 3
