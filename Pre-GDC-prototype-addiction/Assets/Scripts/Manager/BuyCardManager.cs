@@ -135,7 +135,8 @@ public class BuyCardManager : MonoBehaviour
             yield return new WaitForSeconds(0.13f);
         }
 
-        if (isPurchased) GameManager.Instance.switchSceneManager.ChangeScene("Interaction");
+        // if (isPurchased) GameManager.Instance.switchSceneManager.ChangeScene("Interaction");
+        if (isPurchased) SceneManager.LoadScene("Interaction");
     }
 
     public void AdjustBuyArea(Transform cardPos)

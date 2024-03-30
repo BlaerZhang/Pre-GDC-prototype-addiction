@@ -33,7 +33,12 @@ public class GiveCardTemp : MonoBehaviour
             .AppendInterval(0.5f)
             .Append(hand.transform.DOMoveY(9, 1f))
             .Insert(2, card.transform.DOMoveY(9, 1f))
-            .OnComplete((() => { SceneManager.LoadScene("Buy Card"); }));
+            .OnComplete((() =>
+            {
+                SceneManager.LoadScene("Buy Card"); 
+                GameManager.Instance.switchSceneManager.ChangeScene("Buy Card");
+                BuyCardManager.instance.SpawnCardsToBuy();
+            }));
 
         giveAnimation.Play();
     }
