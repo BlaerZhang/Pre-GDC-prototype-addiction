@@ -34,22 +34,27 @@ public class MenuManager : MonoBehaviour
     {
         instance = this;
     }
-    
+
+    private void OnEnable()
+    {
+        GameManager.Instance.switchSceneManager.onSceneChange += InitializeButton;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.switchSceneManager.onSceneChange -= InitializeButton;
+    }
+
     void Start()
     {
-        SpawnCardsToBuy();
+        
     }
     
     void Update()
     {
         
     }
-
-    public void SpawnCardsToBuy()
-    {
-        
-    }
-
+    
     public void PickCard(MenuDraggable card)
     {
         if (card.price <= GameManager.Instance.GetComponent<ResourceManager>().PlayerGold)
@@ -57,7 +62,7 @@ public class MenuManager : MonoBehaviour
             // card.transform.DOMove(cardPurchasePos.position, 0.1f);
             GameManager.Instance.lastPickPrice = card.price;
             GameManager.Instance.lastPickTier = card.tier;
-            LoadBuy();
+            GameManager.Instance.switchSceneManager.ChangeScene("Buy Card");
         }
         else
         {
@@ -76,37 +81,32 @@ public class MenuManager : MonoBehaviour
 
     public void ActivatePickArea()
     {
+        pickArea.gameObject.SetActive(true);
         pickArea.DOAnchorPosX(-areaActivateDistance, 0.1f);
     }
 
     public void DeactivatePickArea()
     {
-        pickArea.DOAnchorPosX(0, 0.1f);
+        pickArea.DOAnchorPosX(600f, 0.1f).OnComplete((() => { pickArea.gameObject.SetActive(false); }));
     }
     
     public void ActivateIncrementalButton()
     {
+        incrementalButton.gameObject.SetActive(true);
         incrementalButton.DOAnchorPosX(125, 0.1f);
     }
 
     public void DeactivateIncrementalButton()
     {
-        incrementalButton.DOAnchorPosX(-200, 0.1f);
+        incrementalButton.DOAnchorPosX(-200, 0.1f).OnComplete((() => { incrementalButton.gameObject.SetActive(false); }));
     }
 
-    public void LoadIncremental()
+    public void InitializeButton(string toScene)
     {
-        SceneManager.LoadScene("Incremental");
+        if (toScene == "Menu")
+        {
+            ActivateIncrementalButton();
+            ActivatePickArea();
+        }
     }
-
-    public void LoadBuy()
-    {
-        SceneManager.LoadScene("Buy Card");
-    }
-
-    public void LoadMenu()
-    {
-        SceneManager.LoadScene("Menu");
-    }
-    
 }
