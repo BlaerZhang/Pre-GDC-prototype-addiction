@@ -106,7 +106,6 @@ public class MenuManager : MonoBehaviour
         if (toScene == "Menu")
         {
             ActivateIncrementalButton();
-            ActivatePickArea();
         }
     }
 }
