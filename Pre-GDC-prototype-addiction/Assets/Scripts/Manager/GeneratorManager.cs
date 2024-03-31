@@ -9,12 +9,17 @@ public class GeneratorManager : MonoBehaviour
 
     void Start()
     {
-        Instantiate(generators[(int)GameManager.Instance.lastPickTier]);
+        // 
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void GenerateCard()
+    {
+        Instantiate(generators[(int)GameManager.Instance.lastPickTier], transform);
     }
 }

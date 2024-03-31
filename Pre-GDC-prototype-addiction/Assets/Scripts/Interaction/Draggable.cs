@@ -14,7 +14,7 @@ namespace Interaction
         [Header("Feedback")] 
         public float hoverScale = 0.95f;
 
-        private SpriteRenderer cardSprite;
+        [HideInInspector] public SpriteRenderer cardSprite;
         private Vector2 dragOffset = new Vector2(0, 0);
     
         void Start()
@@ -101,7 +101,10 @@ namespace Interaction
             BuyCardManager.instance.ActivateScratchOffButton();
         
             //Check if buy
-            if (isInBuyArea) BuyCardManager.instance.BuyCard(this);
+            if (isInBuyArea)
+            {
+                BuyCardManager.instance.BuyCard(this);
+            }
         }
 
         private void OnMouseExit()

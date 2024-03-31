@@ -67,6 +67,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
         }
         currentScratchCard = new GameObject("newScratchCard");
         currentScratchCard.transform.SetParent(transform);
+        currentScratchCard.transform.position = transform.position;
 
         print($"totalCostBeforeWinning: {GameManager.Instance.totalCostBeforeWinning}");
 
@@ -272,7 +273,7 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
             for (int j = 0; j < yGridAmount; j++)
             {
                 Vector2 cellPosition = new Vector2(i * cellSize + gapLength * i, j * cellSize + gapLength * j) + startPosition;
-                icons[i * yGridAmount + j].transform.position = cellPosition;
+                icons[i * yGridAmount + j].transform.localPosition = cellPosition;
                 // Instantiate(icons[i * j + j], cellPosition, Quaternion.identity);
             }
         }
@@ -309,10 +310,10 @@ public class ScratchCardGenerator : SerializedMonoBehaviour
     // TODO: dynamically generate bg position
     void GenerateScratchField()
     {
-        GameObject scratchBackground = Instantiate(scratchBackgroundPrefab, Vector3.zero, quaternion.identity);
+        GameObject scratchBackground = Instantiate(scratchBackgroundPrefab, transform.position, quaternion.identity);
         scratchBackground.transform.SetParent(currentScratchCard.transform);
 
-        GameObject scratchFieldObject = Instantiate(scratchFieldPrefab, Vector3.zero, quaternion.identity);
+        GameObject scratchFieldObject = Instantiate(scratchFieldPrefab, transform.position, quaternion.identity);
         scratchFieldObject.transform.SetParent(currentScratchCard.transform);
 
         // Vector3 targetFieldPos = new Vector3(0, targetAreaStartPosition.y + cellSize * Mathf.FloorToInt(targetAreaGridSize.y / 2), -1);
