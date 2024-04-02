@@ -9,13 +9,20 @@ namespace ScratchCardGeneration.ScratchCardData
         order = 0)]
     public class ScratchCardPitySystemData : SerializedScriptableObject
     {
-        [DictionaryDrawerSettings(KeyLabel = "Brand", ValueLabel = "Pity Setting")]
-        public Dictionary<ScratchCardBrand, PitySetting> dataList = new Dictionary<ScratchCardBrand, PitySetting>()
+        [DictionaryDrawerSettings(KeyLabel = "Brand", ValueLabel = "Level Pity Setting")]
+        public Dictionary<ScratchCardBrand, LevelPitySetting> dataList = new Dictionary<ScratchCardBrand, LevelPitySetting>()
         {
             {
-                ScratchCardBrand.Fruities, new PitySetting()
+                ScratchCardBrand.Fruities, new LevelPitySetting()
             }
         };
+
+        [Serializable]
+        public class LevelPitySetting
+        {
+            [DictionaryDrawerSettings(KeyLabel = "Level", ValueLabel = "Pity Setting")]
+            public Dictionary<int, PitySetting> levelPitySetting;
+        }
 
         [Serializable]
         public class PitySetting

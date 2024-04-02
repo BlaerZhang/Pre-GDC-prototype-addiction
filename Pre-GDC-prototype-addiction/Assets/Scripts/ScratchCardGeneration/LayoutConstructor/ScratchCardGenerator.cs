@@ -37,8 +37,8 @@ namespace ScratchCardGeneration.LayoutConstructor
         {
             print("assenms bfhbv");
             var prizeDistribution = prizeDistributionData.dataList[currentCardBrand].levelDistribution[level];
-            float costThreshold = prizePityData.dataList[currentCardBrand].costThreshold;
-            float winningProbabilityOverThreshold = prizePityData.dataList[currentCardBrand].winningProbabilityOverThreshold;
+            float costThreshold = prizePityData.dataList[currentCardBrand].levelPitySetting[level].costThreshold;
+            float winningProbabilityOverThreshold = prizePityData.dataList[currentCardBrand].levelPitySetting[level].winningProbabilityOverThreshold;
 
             currentCardPrize = BasePrizeGenerator.GeneratePrize(prizeDistribution, costThreshold, winningProbabilityOverThreshold);
             print("prize generated");
