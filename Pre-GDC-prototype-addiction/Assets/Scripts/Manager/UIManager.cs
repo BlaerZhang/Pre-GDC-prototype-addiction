@@ -1,91 +1,91 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+namespace Manager
 {
-    [Header("Game")]
-    public List<TextMeshProUGUI> playerResource;
+    public class UIManager : MonoBehaviour
+    {
+        [Header("Game")]
+        public List<TextMeshProUGUI> playerResource;
     
-    [Header("Incremental")]
-    public TextMeshProUGUI upgradePrice;
+        [Header("Incremental")]
+        public TextMeshProUGUI upgradePrice;
 
-    [Header("Buy")] 
-    public TextMeshProUGUI buyCardPrice;
+        [Header("Buy")] 
+        public TextMeshProUGUI buyCardPrice;
 
-    private bool isPlayingNotEnoughAnimation = false;
+        private bool isPlayingNotEnoughAnimation = false;
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
-    {
-        switch (scene.name)
+        private void OnEnable()
         {
-            case "Incremental":
-                upgradePrice = GameObject.Find("Upgrade Price").GetComponent<TextMeshProUGUI>();
-                break;
-            case "Buy Card":
-                buyCardPrice = GameObject.Find("Buy Price").GetComponent<TextMeshProUGUI>();
-                break;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
-    }
-    
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void UpdateResource(int resource)
-    {
-        foreach (var resourceText in playerResource)
+        private void OnDisable()
         {
-            resourceText.text = $"${resource}";
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
-    }
 
-    public void UpdateUpgradePrice(int price)
-    {
-        upgradePrice.text = $"${price}";
-    }
-
-    public void UpdateBuyPrice(int price)
-    { 
-        print(buyCardPrice);
-        buyCardPrice.text = $"${price}";
-        print("Price Updated!");
-    }
-    
-    public void PlayNotEnoughGoldAnimation()
-    {
-        if(isPlayingNotEnoughAnimation) return;
-        isPlayingNotEnoughAnimation = true;
-        foreach (var resourceText in playerResource)
+        void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            resourceText.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0);
-            resourceText.rectTransform.DOShakeAnchorPos(0.5f, Vector3.right * 10f, 10).OnComplete((() =>
+            switch (scene.name)
             {
-                isPlayingNotEnoughAnimation = false;
-            }));
+                case "Incremental":
+                    upgradePrice = GameObject.Find("Upgrade Price").GetComponent<TextMeshProUGUI>();
+                    break;
+                case "Buy Card":
+                    buyCardPrice = GameObject.Find("Buy Price").GetComponent<TextMeshProUGUI>();
+                    break;
+            }
         }
-    }
     
+        void Start()
+        {
+        
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+        
+        }
+
+        public void UpdateResource(int resource)
+        {
+            foreach (var resourceText in playerResource)
+            {
+                resourceText.text = $"${resource}";
+            }
+        }
+
+        public void UpdateUpgradePrice(int price)
+        {
+            upgradePrice.text = $"${price}";
+        }
+
+        public void UpdateBuyPrice(int price)
+        { 
+            print(buyCardPrice);
+            buyCardPrice.text = $"${price}";
+            print("Price Updated!");
+        }
+    
+        public void PlayNotEnoughGoldAnimation()
+        {
+            if(isPlayingNotEnoughAnimation) return;
+            isPlayingNotEnoughAnimation = true;
+            foreach (var resourceText in playerResource)
+            {
+                resourceText.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0);
+                resourceText.rectTransform.DOShakeAnchorPos(0.5f, Vector3.right * 10f, 10).OnComplete((() =>
+                {
+                    isPlayingNotEnoughAnimation = false;
+                }));
+            }
+        }
+    
+    }
 }

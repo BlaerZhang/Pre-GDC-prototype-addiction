@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using Manager;
 using UnityEngine;
 
 namespace Interaction
@@ -16,10 +17,13 @@ namespace Interaction
 
         [HideInInspector] public SpriteRenderer cardSprite;
         private Vector2 dragOffset = new Vector2(0, 0);
+
+        private BuyCardManager buyCardManager;
     
         void Start()
         {
             cardSprite = GetComponentInChildren<SpriteRenderer>();
+            buyCardManager = FindObjectOfType<BuyCardManager>();
             isDragging = false;
         }
 
@@ -39,9 +43,9 @@ namespace Interaction
             isDragging = true;
         
             //Reorder in List and Sort order
-            BuyCardManager.instance.cardsToBuy.Remove(this);
-            BuyCardManager.instance.cardsToBuy.Insert(0,this);
-            BuyCardManager.instance.sortCardsOrder();
+            buyCardManager.cardsToBuy.Remove(this);
+            buyCardManager.cardsToBuy.Insert(0,this);
+            buyCardManager.sortCardsOrder();
             // cardSprite.sortingOrder = 10;
         
             //Scale
@@ -51,10 +55,10 @@ namespace Interaction
             dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
             //Activate Buy Area
-            BuyCardManager.instance.ActivateBuyArea();
+            buyCardManager.ActivateBuyArea();
             
             //Deactivate ScratchOff Button
-            BuyCardManager.instance.DeactivateScratchOffButton();
+            buyCardManager.DeactivateScratchOffButton();
             
             
         }
@@ -67,11 +71,11 @@ namespace Interaction
             transform.position += (Vector3)cardToTarget.normalized * MathF.Pow(cardToTarget.magnitude,1f) * dragSpeed * Time.deltaTime;
         
             //Adjust Buy Area
-            BuyCardManager.instance.AdjustBuyArea(this.transform);
+            buyCardManager.AdjustBuyArea(this.transform);
         
             //Check if in buy area
             float cardYPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).y;
-            float buyAreaUpperEdgeYOnViewport = Camera.main.ScreenToViewportPoint(BuyCardManager.instance.buyArea.anchoredPosition).y;
+            float buyAreaUpperEdgeYOnViewport = Camera.main.ScreenToViewportPoint(buyCardManager.buyArea.anchoredPosition).y;
             if (buyAreaUpperEdgeYOnViewport > cardYPosOnViewport)
             {
                 isInBuyArea = true;
@@ -95,15 +99,15 @@ namespace Interaction
             cardSprite.sortingOrder = 0;
         
             //Deactivate Buy Area
-            BuyCardManager.instance.DeactivateBuyArea();
+            buyCardManager.DeactivateBuyArea();
             
             //Activate ScratchOff Button
-            BuyCardManager.instance.ActivateScratchOffButton();
+            buyCardManager.ActivateScratchOffButton();
         
             //Check if buy
             if (isInBuyArea)
             {
-                BuyCardManager.instance.BuyCard(this);
+                buyCardManager.BuyCard(this);
             }
         }
 

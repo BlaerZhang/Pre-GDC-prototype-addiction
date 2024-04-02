@@ -1,25 +1,27 @@
-using System.Collections;
 using System.Collections.Generic;
-using Interaction;
+using ScratchCardGeneration.LayoutConstructor;
 using UnityEngine;
 
-public class GeneratorManager : MonoBehaviour
+namespace Manager
 {
-    public List<ScratchCardGenerator> generators;
-
-    void Start()
+    public class GeneratorManager : MonoBehaviour
     {
-        // 
-    }
+        public List<ScratchCardGenerator> generators;
 
-    // Update is called once per frame
-    void Update()
-    {
+        void Start()
+        {
+            // 
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
         
-    }
+        }
 
-    public void GenerateCard()
-    {
-        Instantiate(generators[(int)GameManager.Instance.lastPickTier], transform);
+        public void GenerateCard()
+        {
+            Instantiate(generators[(int)GameManager.Instance.lastPickTier - 1], transform);
+        }
     }
 }

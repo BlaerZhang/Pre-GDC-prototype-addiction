@@ -1,25 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonHoverStopAnimator : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+namespace Interaction
 {
-    private Animator buttonAnimator;
-
-    private void Start()
+    public class ButtonHoverStopAnimator : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        buttonAnimator = GetComponentInParent<Animator>();
-    }
+        private Animator buttonAnimator;
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        buttonAnimator.SetBool("Hover", true);
-    }
+        private void Start()
+        {
+            buttonAnimator = GetComponentInParent<Animator>();
+        }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        buttonAnimator.SetBool("Hover", false);
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            buttonAnimator.SetBool("Hover", true);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            buttonAnimator.SetBool("Hover", false);
+        }
     }
 }

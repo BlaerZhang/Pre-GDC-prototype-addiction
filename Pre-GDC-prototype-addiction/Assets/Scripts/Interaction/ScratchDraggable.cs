@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using Manager;
 using ScratchCardAsset;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -15,13 +16,14 @@ namespace Interaction
     
         [Header("Feedback")] 
         public float hoverScale = 0.95f;
-
+        
         public SpriteRenderer cardSurfaceSprite;
         public SpriteRenderer cardBackgroundSprite;
         private DetectScratchArea detectScratchArea;
         private Vector2 dragOffset = new Vector2(0, 0);
         private GameObject currentCard;
         private ScratchCardManager scratchCardManager;
+        private BuyCardManager buyCardManager;
     
         void Start()
         {
@@ -30,6 +32,7 @@ namespace Interaction
             detectScratchArea = GetComponent<DetectScratchArea>();
             currentCard = GameObject.Find("newScratchCard");
             scratchCardManager = GetComponentInParent<ScratchCardManager>();
+            buyCardManager = FindObjectOfType<BuyCardManager>();
             isDragging = false;
         }
 
@@ -58,7 +61,7 @@ namespace Interaction
             dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
             //Activate Give Area
-            BuyCardManager.instance.ActivateGiveArea();
+            buyCardManager.ActivateGiveArea();
         }
 
         private void OnMouseDrag()
@@ -69,11 +72,11 @@ namespace Interaction
             currentCard.transform.position += new Vector3(0, MathF.Pow(cardToTarget,1f) * dragSpeed * Time.deltaTime,0);
             
             //Adjust Give Area
-            BuyCardManager.instance.AdjustGiveArea(this.transform);
+            buyCardManager.AdjustGiveArea(this.transform);
 
             //Check if in give area
             float cardYPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).y;
-            float giveAreaLowerEdgeYOnViewport = Camera.main.ScreenToViewportPoint(BuyCardManager.instance.giveArea.anchoredPosition).y;
+            float giveAreaLowerEdgeYOnViewport = Camera.main.ScreenToViewportPoint(buyCardManager.giveArea.anchoredPosition).y;
             print($"Area Low: {giveAreaLowerEdgeYOnViewport}");
             if (1 + giveAreaLowerEdgeYOnViewport < cardYPosOnViewport)
             {
@@ -97,12 +100,12 @@ namespace Interaction
             currentCard.transform.DOScale(Vector3.one, 0.1f);
         
             //Deactivate Give Area
-            BuyCardManager.instance.DeactivateGiveArea();
+            buyCardManager.DeactivateGiveArea();
         
             //Check if give
             if (isInGiveArea)
             {
-                BuyCardManager.instance.GiveCard();
+                buyCardManager.GiveCard();
             }
             else
             {

@@ -2,73 +2,76 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Sirenix.OdinInspector;
 
-public class SwitchSceneManager : SerializedMonoBehaviour
+namespace Manager
 {
-    [HideInInspector] public Action<string> onSceneChange;
-    public Dictionary<string, CinemachineVirtualCamera> sceneName_vCamDict;
-    public bool isChangingScene = false;
-    private string currentActiveScene;
+    public class SwitchSceneManager : SerializedMonoBehaviour
+    {
+        [HideInInspector] public Action<string> onSceneChange;
+        public Dictionary<string, CinemachineVirtualCamera> sceneName_vCamDict;
+        public bool isChangingScene = false;
+        private string currentActiveScene;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        isChangingScene = false;
-        currentActiveScene = SceneManager.GetActiveScene().name;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        // Start is called before the first frame update
+        void Start()
         {
-            ChangeScene("Incremental");
+            isChangingScene = false;
+            currentActiveScene = SceneManager.GetActiveScene().name;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        // Update is called once per frame
+        void Update()
         {
-            ChangeScene("Menu");
-        }
-    }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                ChangeScene("Incremental");
+            }
 
-    public void ChangeScene(string toScene)
-    {
-        //set bool lock
-        if (isChangingScene) return;
-        isChangingScene = true;
-        
-        //adjust cam priority
-        foreach (var scene_vCam in sceneName_vCamDict)
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                ChangeScene("Menu");
+            }
+        }
+
+        public void ChangeScene(string toScene)
         {
-            scene_vCam.Value.Priority = 0;
+            //set bool lock
+            if (isChangingScene) return;
+            isChangingScene = true;
+        
+            //adjust cam priority
+            foreach (var scene_vCam in sceneName_vCamDict)
+            {
+                scene_vCam.Value.Priority = 0;
+            }
+            sceneName_vCamDict[toScene].Priority = 1;
+        
+            //additive load scene
+            SceneManager.LoadScene(toScene, LoadSceneMode.Additive);
+        
+            //unload scene
+            StartCoroutine(UnloadScene(currentActiveScene, toScene));
+        
+            //unlock incremental
+            GameManager.Instance.incrementalLock = false;
         }
-        sceneName_vCamDict[toScene].Priority = 1;
-        
-        //additive load scene
-        SceneManager.LoadScene(toScene, LoadSceneMode.Additive);
-        
-        //unload scene
-        StartCoroutine(UnloadScene(currentActiveScene, toScene));
-        
-        //unlock incremental
-        GameManager.Instance.incrementalLock = false;
-    }
 
-    IEnumerator UnloadScene(string fromScene, string toScene)
-    {
-        yield return new WaitForSeconds(Camera.main.GetComponent<CinemachineBrain>().m_DefaultBlend.BlendTime);
-        SceneManager.UnloadSceneAsync(fromScene);
+        IEnumerator UnloadScene(string fromScene, string toScene)
+        {
+            yield return new WaitForSeconds(Camera.main.GetComponent<CinemachineBrain>().m_DefaultBlend.BlendTime);
+            SceneManager.UnloadSceneAsync(fromScene);
         
-        //update active scene
-        currentActiveScene = toScene;
+            //update active scene
+            currentActiveScene = toScene;
         
-        //reset bool lock
-        isChangingScene = false;
+            //reset bool lock
+            isChangingScene = false;
         
-        //invoke action
-        onSceneChange?.Invoke(toScene);
+            //invoke action
+            onSceneChange?.Invoke(toScene);
+        }
     }
 }

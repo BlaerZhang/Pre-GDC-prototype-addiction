@@ -580,6 +580,7 @@ GameObject:
   - component: {fileID: 230012567}
   - component: {fileID: 230012570}
   - component: {fileID: 230012571}
+  - component: {fileID: 230012572}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -606,6 +607,7 @@ Transform:
   - {fileID: 1947322673}
   - {fileID: 287189476}
   - {fileID: 1521100194}
+  - {fileID: 603235376}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &230012567
@@ -635,6 +637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 0}
   switchSceneManager: {fileID: 0}
+  scratchCardGenerator: {fileID: 0}
   incrementalLock: 1
   lastPickPrice: 1
   lastPickTier: 0
@@ -736,6 +739,71 @@ MonoBehaviour:
       Entry: 8
       Data: 
   isChangingScene: 0
+--- !u!114 &230012572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230012564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a351633ecdd4f9ea1336bc20096965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 5976876850745966186}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: cardLayoutConstructorDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[ScratchCardGeneration.ScratchCardBrand,
+        Assembly-CSharp],[ScratchCardGeneration.LayoutConstructor.ICardLayoutConstructor,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ScratchCardGeneration.ScratchCardBrand,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  currentCardPrize: 0
+  prizeDistributionData: {fileID: 11400000, guid: c34e2992b33634cfd92791dbf4e32413, type: 2}
+  prizePityData: {fileID: 11400000, guid: 088ec434be36b4d4cbe4d2c7bd983333, type: 2}
+  currentScratchCard: {fileID: 0}
 --- !u!1 &287189475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,6 +1742,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574335225}
   m_CullTransparentMesh: 1
+--- !u!1 &603235375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 603235376}
+  m_Layer: 0
+  m_Name: Constructors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &603235376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603235375}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5976876850745966187}
+  m_Father: {fileID: 230012565}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &621812978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3875,6 +3975,91 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
   m_PrefabInstance: {fileID: 2136987813}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5976876850745966185
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 603235376}
+    m_Modifications:
+    - target: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: scratchIndicator
+      value: 
+      objectReference: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: scratchFieldPrefab
+      value: 
+      objectReference: {fileID: 137284, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: scratchBackgroundPrefab
+      value: 
+      objectReference: {fileID: 828839226113459185, guid: 4a5f640ad8acf42bd875c9d06d2d55e1, type: 3}
+    - target: {fileID: 8032303680787762760, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: m_Name
+      value: FruitiesConstructor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+--- !u!114 &5976876850745966186 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+  m_PrefabInstance: {fileID: 5976876850745966185}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ce0f0b457c478eb53f371c73197128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &5976876850745966187 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+  m_PrefabInstance: {fileID: 5976876850745966185}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

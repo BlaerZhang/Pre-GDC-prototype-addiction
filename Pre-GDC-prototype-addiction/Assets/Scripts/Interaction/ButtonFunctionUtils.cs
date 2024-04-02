@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using Manager;
 using UnityEngine;
 
-public class ButtonFunctionUtils : MonoBehaviour
+namespace Interaction
 {
-    public void ChangeScene(string toScene)
+    public class ButtonFunctionUtils : MonoBehaviour
     {
-        GameManager.Instance.switchSceneManager.ChangeScene(toScene);
-    }
+        public void ChangeScene(string toScene)
+        {
+            GameManager.Instance.switchSceneManager.ChangeScene(toScene);
+        }
     
+    }
 }
