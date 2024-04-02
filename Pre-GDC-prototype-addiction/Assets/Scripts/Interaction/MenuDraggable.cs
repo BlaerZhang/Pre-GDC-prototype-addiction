@@ -19,11 +19,11 @@ namespace Interaction
         public ScratchCardBrand cardBrand = ScratchCardBrand.Fruities;
         public enum Tier
         {
-            Level1 = 1,
-            Level2 = 2,
-            Level3 = 3,
-            Level4 = 4,
-            Level5 = 5
+            Level1,
+            Level2,
+            Level3,
+            Level4,
+            Level5
         }
         public Tier tier = Tier.Level1;
         

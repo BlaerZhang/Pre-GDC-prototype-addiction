@@ -71,7 +71,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 1
+      Data: 0
     - Name: $v
       Entry: 7
       Data: 5|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
@@ -172,7 +172,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: $v
       Entry: 7
       Data: 7|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
@@ -273,7 +273,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 3
+      Data: 2
     - Name: $v
       Entry: 7
       Data: 9|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
@@ -374,7 +374,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 4
+      Data: 3
     - Name: $v
       Entry: 7
       Data: 11|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
@@ -475,7 +475,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 5
+      Data: 4
     - Name: $v
       Entry: 7
       Data: 13|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,

@@ -85,7 +85,7 @@ namespace ScratchCardGeneration.LayoutConstructor
 
             iconObject.AddComponent<PrizeRevealing>().prize = prize;
 
-            var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.localPosition, Quaternion.identity);
+            var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
             indicatorObject.transform.SetParent(iconObject.transform);
 
             return iconObject;
