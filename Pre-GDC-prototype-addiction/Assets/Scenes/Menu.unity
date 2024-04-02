@@ -4030,7 +4030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: targetGapLength
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: scratchIndicator
@@ -4052,6 +4052,22 @@ PrefabInstance:
       propertyPath: scratchBackgroundPrefab
       value: 
       objectReference: {fileID: 828839226113459185, guid: 4a5f640ad8acf42bd875c9d06d2d55e1, type: 3}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: prizeAreaStartPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: prizeAreaStartPosition.y
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: targetAreaStartPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: targetAreaStartPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8032303680787762760, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: m_Name
       value: FruitiesConstructor
