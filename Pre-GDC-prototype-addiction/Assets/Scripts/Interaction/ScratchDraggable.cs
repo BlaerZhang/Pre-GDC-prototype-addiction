@@ -79,7 +79,6 @@ namespace Interaction
             //Check if in give area
             float cardYPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).y;
             float giveAreaLowerEdgeYOnViewport = Camera.main.ScreenToViewportPoint(buyCardManager.giveArea.anchoredPosition).y;
-            print($"Area Low: {giveAreaLowerEdgeYOnViewport}");
             if (1 + giveAreaLowerEdgeYOnViewport < cardYPosOnViewport)
             {
                 isInGiveArea = true;

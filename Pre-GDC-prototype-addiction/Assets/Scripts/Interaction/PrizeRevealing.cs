@@ -37,8 +37,8 @@ namespace Interaction
                 if (!isClickable || hasClicked) return;
                 // if the scratch field is scratched off
                 print("rolling number!");
-                onPrizeRevealed(prize);
                 hasClicked = true;
+                onPrizeRevealed(prize);
             }
             
         }

@@ -68,9 +68,7 @@ namespace Manager
 
         public void UpdateBuyPrice(int price)
         { 
-            print(buyCardPrice);
             buyCardPrice.text = $"${price}";
-            print("Price Updated!");
         }
     
         public void PlayNotEnoughGoldAnimation()
