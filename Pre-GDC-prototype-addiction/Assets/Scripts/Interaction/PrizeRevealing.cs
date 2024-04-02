@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using ScratchCardAsset;
+using ScratchCardGeneration;
+using ScratchCardGeneration.Utilities;
 using TMPro;
 using UnityEngine;
 

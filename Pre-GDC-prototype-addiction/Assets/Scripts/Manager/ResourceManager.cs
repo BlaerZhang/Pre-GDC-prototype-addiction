@@ -1,40 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceManager : MonoBehaviour
+namespace Manager
 {
-    private int playerGold = 0;
-    private int clickerLevel = 1;
-
-    public int PlayerGold
+    public class ResourceManager : MonoBehaviour
     {
-        get { return playerGold; }
-        set
-        {
-            playerGold = value;
-            GameManager.Instance.uiManager.UpdateResource($"Gold: {value}");
-        }
-    }
+        private int playerGold = 0;
+        private int clickerLevel = 1;
 
-    public int initialGold = 0;
-
-    public int ClickerLevel
-    {
-        get { return clickerLevel; }
-        set
+        public int PlayerGold
         {
-            clickerLevel = value;
+            get { return playerGold; }
+            set
+            {
+                playerGold = value;
+                GameManager.Instance.uiManager.UpdateResource($"Gold: {value}");
+            }
         }
-    }
+
+        public int initialGold = 0;
+
+        public int ClickerLevel
+        {
+            get { return clickerLevel; }
+            set
+            {
+                clickerLevel = value;
+            }
+        }
     
-    void Start()
-    {
-        PlayerGold = initialGold;
-    }
+        void Start()
+        {
+            PlayerGold = initialGold;
+        }
 
-    void Update()
-    {
+        void Update()
+        {
         
+        }
     }
 }

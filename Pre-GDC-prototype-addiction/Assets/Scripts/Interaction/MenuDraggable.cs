@@ -1,5 +1,7 @@
 using System;
 using DG.Tweening;
+using Manager;
+using ScratchCardGeneration.PrizeGenerator;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,6 +14,7 @@ namespace Interaction
         public bool unlock = false;
         public Sprite lockedSprite;
         public int price = 1;
+        public ScratchCardBrand cardBrand = ScratchCardBrand.Fruities;
         public enum Tier
         {
             Level1,
