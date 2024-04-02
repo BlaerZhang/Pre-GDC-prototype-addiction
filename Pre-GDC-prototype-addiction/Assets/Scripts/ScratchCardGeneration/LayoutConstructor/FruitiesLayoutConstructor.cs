@@ -37,13 +37,15 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         public GameObject scratchIndicator;
 
-        public GameObject ConstructCardLayout(float totalPrize)
+        public GameObject ConstructCardLayout(float totalPrize, Vector3 generatePos)
         {
             if (_currentScratchCard != null)
             {
                 Destroy(_currentScratchCard);
             }
             _currentScratchCard = new GameObject("newScratchCard");
+
+            _currentScratchCard.transform.position = generatePos;
 
             DistributeIcons(totalPrize);
 
@@ -56,7 +58,7 @@ namespace ScratchCardGeneration.LayoutConstructor
         {
             GameObject iconObject = new GameObject("targetIconObject");
             iconObject.AddComponent<SpriteRenderer>().sprite = iconSprite;
-            iconObject.transform.SetParent(transform);
+            iconObject.transform.SetParent(_currentScratchCard.transform);
 
             return iconObject;
         }
@@ -65,7 +67,7 @@ namespace ScratchCardGeneration.LayoutConstructor
         {
             GameObject iconObject = new GameObject("prizeIconObject");
             iconObject.AddComponent<SpriteRenderer>().sprite = iconSprite;
-            iconObject.transform.SetParent(transform);
+            iconObject.transform.SetParent(_currentScratchCard.transform);
 
             iconObject.AddComponent<FakePrizeRevealing>();
 
@@ -76,14 +78,14 @@ namespace ScratchCardGeneration.LayoutConstructor
         {
             GameObject iconObject = new GameObject("prizeIconObject");
             iconObject.AddComponent<SpriteRenderer>().sprite = iconSprite;
-            // iconObject.transform.SetParent(_currentScratchCard.transform);
+            iconObject.transform.SetParent(_currentScratchCard.transform);
 
             BoxCollider2D boxCollider = iconObject.AddComponent<BoxCollider2D>();
             boxCollider.isTrigger = true;
 
             iconObject.AddComponent<PrizeRevealing>().prize = prize;
 
-            var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
+            var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.localPosition, Quaternion.identity);
             indicatorObject.transform.SetParent(iconObject.transform);
 
             return iconObject;
@@ -99,7 +101,7 @@ namespace ScratchCardGeneration.LayoutConstructor
                 for (int j = 0; j < yGridAmount; j++)
                 {
                     Vector2 cellPosition = new Vector2(i * cellSize + gapLength * i, j * cellSize + gapLength * j) + startPosition;
-                    icons[i * yGridAmount + j].transform.position = cellPosition;
+                    icons[i * yGridAmount + j].transform.localPosition = cellPosition;
                     // Instantiate(icons[i * j + j], cellPosition, Quaternion.identity);
                 }
             }
@@ -209,9 +211,11 @@ namespace ScratchCardGeneration.LayoutConstructor
         {
             GameObject scratchBackground = Instantiate(scratchBackgroundPrefab, Vector3.zero, Quaternion.identity);
             scratchBackground.transform.SetParent(_currentScratchCard.transform);
+            scratchBackground.transform.localPosition = Vector2.zero;
 
             GameObject scratchFieldObject = Instantiate(scratchFieldPrefab, new Vector3(0, 0,0.01f), Quaternion.identity);
             scratchFieldObject.transform.SetParent(scratchBackground.transform);
+            scratchFieldObject.transform.localPosition = Vector2.zero;
         }
 
     }

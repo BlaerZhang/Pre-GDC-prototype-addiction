@@ -4025,6 +4025,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: prizeGapLength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: targetGapLength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: scratchIndicator
       value: 
       objectReference: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
@@ -4032,6 +4040,14 @@ PrefabInstance:
       propertyPath: scratchFieldPrefab
       value: 
       objectReference: {fileID: 137284, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: targetAreaGridSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: targetAreaGridSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: scratchBackgroundPrefab
       value: 

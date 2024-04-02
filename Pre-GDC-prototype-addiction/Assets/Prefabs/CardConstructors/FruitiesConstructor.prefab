@@ -47,14 +47,41 @@ MonoBehaviour:
   minPrizeSplitParts: 1
   maxPrizeSplitParts: 3
   minSplitValue: 5000
-  iconSprites: []
+  iconSprites:
+  - {fileID: 21300000, guid: 8088d6c115609e14ba0c8dec0a12cc4f, type: 3}
+  - {fileID: 21300000, guid: 305df88bf83d3374991d5d9c81fb63cd, type: 3}
+  - {fileID: 21300000, guid: eb9e57cb504a0814ca7f22f867e78d8f, type: 3}
+  - {fileID: 21300000, guid: b569848a1528b084eae3fec3ebfa8753, type: 3}
+  - {fileID: 21300000, guid: 7d6f12fec43d0ed4b910a31087c6cc63, type: 3}
+  - {fileID: 21300000, guid: 302fa40f5fe8eb44f92683efcf90ec80, type: 3}
+  - {fileID: 21300000, guid: 792a68c8c2918d14cb5d2e6c37451d84, type: 3}
+  - {fileID: 21300000, guid: 7faa5326cc324f940b8c464a058267df, type: 3}
+  - {fileID: 21300000, guid: 9b9a205a28bd71d4785fd5b2cfe1ceb9, type: 3}
+  - {fileID: 21300000, guid: 1c5f89ae7c248a84d81560687b42d2ec, type: 3}
+  - {fileID: 21300000, guid: 01df33916b9b91648a0c49e90e1fdd97, type: 3}
+  - {fileID: 21300000, guid: e56abd72eca0780449d7a74e8a9f09b4, type: 3}
+  - {fileID: 21300000, guid: b37d19f367326924d954073480091c30, type: 3}
+  - {fileID: 21300000, guid: e6f65fbd476eb274b975a05add111b85, type: 3}
+  - {fileID: 21300000, guid: b3e5f94b263fe7749bc88f16ca136382, type: 3}
+  - {fileID: 21300000, guid: e2931e4f6e9dd0143a3fcf92744bce50, type: 3}
+  - {fileID: 21300000, guid: 819513540e008444aa321e714ca1f16e, type: 3}
+  - {fileID: 21300000, guid: 1cca86cddb09cc34ca1dcd8b2ee01e19, type: 3}
+  - {fileID: 21300000, guid: 25df5eebc337fc340b6cc260c78fd777, type: 3}
+  - {fileID: 21300000, guid: b28fb47b08364654f97e03f4df84be17, type: 3}
+  - {fileID: 21300000, guid: 97aec6a98e352d34dabd8b93804fcbcb, type: 3}
+  - {fileID: 21300000, guid: 974d80da382a0a84597f2eec444771d7, type: 3}
+  - {fileID: 21300000, guid: 95d63883a1acc4944834373772bf61d3, type: 3}
+  - {fileID: 21300000, guid: b525eae5494f181408b415226f872e21, type: 3}
+  - {fileID: 21300000, guid: a4566479f436e1a4f8cff52f8ecefd27, type: 3}
+  - {fileID: 21300000, guid: 01d7f3d909f35ad409d9a458045d0758, type: 3}
+  - {fileID: 21300000, guid: 6239590a9a7e5924fa11f7074ca7707b, type: 3}
   targetAreaStartPosition: {x: 0, y: 0}
-  targetAreaGridSize: {x: 0, y: 0}
-  prizeAreaStartPosition: {x: 0, y: 0}
-  prizeAreaGridSize: {x: 0, y: 0}
+  targetAreaGridSize: {x: 2, y: 1}
+  prizeAreaStartPosition: {x: -1.5, y: -3}
+  prizeAreaGridSize: {x: 5, y: 3}
   cellSize: 1
-  targetGapLength: 0.1
-  prizeGapLength: 0.1
-  scratchIndicator: {fileID: 0}
-  scratchBackgroundPrefab: {fileID: 0}
-  scratchFieldPrefab: {fileID: 0}
+  targetGapLength: 0
+  prizeGapLength: 0
+  scratchIndicator: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
+  scratchBackgroundPrefab: {fileID: 828839226113459185, guid: 4a5f640ad8acf42bd875c9d06d2d55e1, type: 3}
+  scratchFieldPrefab: {fileID: 137284, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}

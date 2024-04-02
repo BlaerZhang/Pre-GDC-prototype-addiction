@@ -24,6 +24,7 @@ namespace Interaction
         private GameObject currentCard;
         private ScratchCardManager scratchCardManager;
         private BuyCardManager buyCardManager;
+        private Vector2 initialPos;
     
         void Start()
         {
@@ -33,6 +34,7 @@ namespace Interaction
             currentCard = GameObject.Find("newScratchCard");
             scratchCardManager = GetComponentInParent<ScratchCardManager>();
             buyCardManager = FindObjectOfType<BuyCardManager>();
+            initialPos = transform.position;
             isDragging = false;
         }
 
@@ -109,7 +111,7 @@ namespace Interaction
             }
             else
             {
-                currentCard.transform.DOLocalMove(Vector2.zero, 0.1f);
+                currentCard.transform.DOMove(initialPos, 0.1f);
             }
         }
 

@@ -33,22 +33,19 @@ namespace ScratchCardGeneration.LayoutConstructor
             BuyCardManager.onScratchCardSelected -= AssembleScratchCard;
         }
 
-        private void AssembleScratchCard(ScratchCardBrand currentCardBrand, int level, float price)
+        private void AssembleScratchCard(ScratchCardBrand currentCardBrand, int level, float price, Vector3 generatePos)
         {
-            print("assenms bfhbv");
             var prizeDistribution = prizeDistributionData.dataList[currentCardBrand].levelDistribution[level];
             float costThreshold = prizePityData.dataList[currentCardBrand].levelPitySetting[level].costThreshold;
             float winningProbabilityOverThreshold = prizePityData.dataList[currentCardBrand].levelPitySetting[level].winningProbabilityOverThreshold;
 
             currentCardPrize = BasePrizeGenerator.GeneratePrize(prizeDistribution, costThreshold, winningProbabilityOverThreshold);
-            print("prize generated");
 
             // record total gold spent before winning
             GameManager.Instance.totalCostBeforeWinning += price;
             Debug.Log($"totalCostBeforeWinning: {GameManager.Instance.totalCostBeforeWinning}");
 
-            currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize);
-            print("SwitchConstructor");
+            currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, generatePos);
         }
 
         private ICardLayoutConstructor SwitchConstructor(ScratchCardBrand currentCardBrand)
