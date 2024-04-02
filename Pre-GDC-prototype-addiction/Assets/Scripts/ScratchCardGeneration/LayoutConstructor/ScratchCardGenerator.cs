@@ -35,8 +35,13 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         private void AssembleScratchCard(ScratchCardBrand currentCardBrand, int level, float price, Vector3 generatePos)
         {
-            var prizeDistribution = prizeDistributionData.dataList[currentCardBrand].levelDistribution[level];
-            float costThreshold = prizePityData.dataList[currentCardBrand].levelPitySetting[level].costThreshold;
+            print($"level: {level}");
+
+            var prizeDistributionDataList = prizeDistributionData.dataList[currentCardBrand];
+            var pityDataList = prizePityData.dataList[currentCardBrand];
+
+            var prizeDistribution = prizeDistributionDataList.levelDistribution[level];
+            float costThreshold = pityDataList.levelPitySetting[level].costThreshold;
             float winningProbabilityOverThreshold = prizePityData.dataList[currentCardBrand].levelPitySetting[level].winningProbabilityOverThreshold;
 
             currentCardPrize = BasePrizeGenerator.GeneratePrize(prizeDistribution, costThreshold, winningProbabilityOverThreshold);
