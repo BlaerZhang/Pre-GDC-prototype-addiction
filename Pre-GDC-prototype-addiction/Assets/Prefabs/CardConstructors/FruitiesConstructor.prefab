@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ce0f0b457c478eb53f371c73197128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPrizeSplitParts: 0
-  maxPrizeSplitParts: 0
-  minSplitValue: 0
+  minPrizeSplitParts: 1
+  maxPrizeSplitParts: 3
+  minSplitValue: 5000
   iconSprites: []
   targetAreaStartPosition: {x: 0, y: 0}
   targetAreaGridSize: {x: 0, y: 0}

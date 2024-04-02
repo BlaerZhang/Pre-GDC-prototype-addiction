@@ -23,12 +23,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: dataList
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[ScratchCardGeneration.PrizeGenerator.ScratchCardBrand,
-        Assembly-CSharp],[ScratchCardGeneration.LayoutConstructor.ScratchCardPitySystemData+LevelPitySetting,
+      Data: 0|System.Collections.Generic.Dictionary`2[[ScratchCardGeneration.ScratchCardBrand,
+        Assembly-CSharp],[ScratchCardGeneration.ScratchCardData.ScratchCardPitySystemData+LevelPitySetting,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ScratchCardGeneration.PrizeGenerator.ScratchCardBrand,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ScratchCardGeneration.ScratchCardBrand,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -50,11 +50,11 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 2|ScratchCardGeneration.LayoutConstructor.ScratchCardPitySystemData+LevelPitySetting,
+      Data: 2|ScratchCardGeneration.ScratchCardData.ScratchCardPitySystemData+LevelPitySetting,
         Assembly-CSharp
     - Name: levelPitySetting
       Entry: 7
-      Data: 3|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[ScratchCardGeneration.LayoutConstructor.ScratchCardPitySystemData+PitySetting,
+      Data: 3|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[ScratchCardGeneration.ScratchCardData.ScratchCardPitySystemData+PitySetting,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
@@ -65,23 +65,111 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 5
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: $v
       Entry: 7
-      Data: 5|ScratchCardGeneration.LayoutConstructor.ScratchCardPitySystemData+PitySetting,
+      Data: 5|ScratchCardGeneration.ScratchCardData.ScratchCardPitySystemData+PitySetting,
         Assembly-CSharp
     - Name: costThreshold
       Entry: 4
-      Data: 1
+      Data: 300
     - Name: winningProbabilityOverThreshold
       Entry: 4
-      Data: 0.3
+      Data: 0.7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 6|ScratchCardGeneration.ScratchCardData.ScratchCardPitySystemData+PitySetting,
+        Assembly-CSharp
+    - Name: costThreshold
+      Entry: 4
+      Data: 600
+    - Name: winningProbabilityOverThreshold
+      Entry: 4
+      Data: 0.7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 7|ScratchCardGeneration.ScratchCardData.ScratchCardPitySystemData+PitySetting,
+        Assembly-CSharp
+    - Name: costThreshold
+      Entry: 4
+      Data: 1500
+    - Name: winningProbabilityOverThreshold
+      Entry: 4
+      Data: 0.7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 8|ScratchCardGeneration.ScratchCardData.ScratchCardPitySystemData+PitySetting,
+        Assembly-CSharp
+    - Name: costThreshold
+      Entry: 4
+      Data: 7500
+    - Name: winningProbabilityOverThreshold
+      Entry: 4
+      Data: 0.7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 9|ScratchCardGeneration.ScratchCardData.ScratchCardPitySystemData+PitySetting,
+        Assembly-CSharp
+    - Name: costThreshold
+      Entry: 4
+      Data: 50000
+    - Name: winningProbabilityOverThreshold
+      Entry: 4
+      Data: 0.7
     - Name: 
       Entry: 8
       Data: 
