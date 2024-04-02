@@ -133,9 +133,13 @@ public class BuyCardManager : MonoBehaviour
 
     IEnumerator CollectCards(bool isPurchased)
     {
-        //cards move to slots
-        for (int i = 0; i < cardsToBuy.Count; i++) { cardsToBuy[i].transform.DOMoveX(cardSpawnPos[i].position.x, 0.1f); }
-        for (int i = 0; i < cardsToBuy.Count; i++) { cardsToBuy[i].transform.DOMoveY(cardSpawnPos[i].position.y, 0.1f); }
+        //cards move to slots & disable drag
+        for (int i = 0; i < cardsToBuy.Count; i++)
+        {
+            cardsToBuy[i].transform.DOMoveX(cardSpawnPos[i].position.x, 0.1f);
+            cardsToBuy[i].transform.DOMoveY(cardSpawnPos[i].position.y, 0.1f);
+            cardsToBuy[i].GetComponent<BoxCollider2D>().enabled = false;
+        }
         
         //play hand animation
         handAnimator.SetTrigger("Collect");

@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using ScratchCardAsset;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -20,6 +21,7 @@ namespace Interaction
         private DetectScratchArea detectScratchArea;
         private Vector2 dragOffset = new Vector2(0, 0);
         private GameObject currentCard;
+        private ScratchCardManager scratchCardManager;
     
         void Start()
         {
@@ -27,7 +29,13 @@ namespace Interaction
             cardBackgroundSprite = GameObject.Find("ScratchCardBackground(Clone)").GetComponent<SpriteRenderer>();
             detectScratchArea = GetComponent<DetectScratchArea>();
             currentCard = GameObject.Find("newScratchCard");
+            scratchCardManager = GetComponentInParent<ScratchCardManager>();
             isDragging = false;
+        }
+
+        private void Update()
+        {
+            scratchCardManager.InputEnabled = !isDragging;
         }
 
         private void OnMouseEnter()
@@ -95,6 +103,10 @@ namespace Interaction
             if (isInGiveArea)
             {
                 BuyCardManager.instance.GiveCard();
+            }
+            else
+            {
+                currentCard.transform.DOLocalMove(Vector2.zero, 0.1f);
             }
         }
 
