@@ -186,7 +186,7 @@ namespace Manager
                     //set action to generate card
                     onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickPrice, transform.position);
                     
-                    print("Action Invoked");
+                    // print("Action Invoked");
                     
                     Destroy(card.gameObject);
                 }));

@@ -36,7 +36,7 @@ namespace Interaction
                 // it must be clickable(revealed) and has not been clicked
                 if (!isClickable || hasClicked) return;
                 // if the scratch field is scratched off
-                print("rolling number!");
+                // print("rolling number!");
                 hasClicked = true;
                 onPrizeRevealed(prize);
             }
