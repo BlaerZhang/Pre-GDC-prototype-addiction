@@ -15,6 +15,8 @@ namespace Manager
 
         public ScratchCardGenerator scratchCardGenerator;
 
+        public AudioManager audioManager;
+
         public bool incrementalLock = true;
 
         public int lastPickPrice = 1;
@@ -40,6 +42,7 @@ namespace Manager
             uiManager = GetComponentInChildren<UIManager>();
             switchSceneManager = GetComponent<SwitchSceneManager>();
             scratchCardGenerator = GetComponent<ScratchCardGenerator>();
+            audioManager = GetComponent<AudioManager>();
         }
 
         // Start is called before the first frame update

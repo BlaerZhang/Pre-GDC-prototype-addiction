@@ -6,6 +6,7 @@ using Interaction;
 using ScratchCardGeneration;
 using ScratchCardGeneration.LayoutConstructor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Manager
 {
@@ -19,8 +20,22 @@ namespace Manager
         public Transform cardPurchasePos;
         public Draggable cardPrefab;
 
+        [Header("Deal Cards Feedbacks")] 
+        public bool dealAudio = true;
+        public List<AudioClip> dealSounds;
+
         [Header("Buy Cards")] 
         public int price;
+        
+        [Header("Buy Feedbacks")] 
+        public bool buyAudio = true;
+        public List<AudioClip> buySounds;
+        public bool buyParticle = true;
+        public List<ParticleSystem> buyParticles;
+        public bool zoomInAudio = true;
+        public List<AudioClip> zoomInSounds;
+        public bool zoomInParticle = true;
+        public List<ParticleSystem> zoomInParticles;
 
         [Header("Hand")] 
         public Animator handAnimator;
@@ -98,6 +113,19 @@ namespace Manager
 
             StartCoroutine(DealCards());
         }
+        
+        IEnumerator DealCards()
+        {
+            handAnimator.SetTrigger("Deal");
+            yield return new WaitForSeconds(0.18f);
+            for (int i = 0; i < 5; i++)
+            {
+                cardsToBuy[i].transform.position = cardSpawnPos[i].position;
+                sortCardsOrder();
+                // if (dealAudio) GameManager.Instance.audioManager.PlaySound(dealSounds[Random.Range(0,dealSounds.Count)]);
+                yield return new WaitForSeconds(0.11f);
+            }
+        }
 
         public void BuyCard(Draggable card)
         {
@@ -122,18 +150,6 @@ namespace Manager
             else
             {
                 GameManager.Instance.uiManager.PlayNotEnoughGoldAnimation();
-            }
-        }
-
-        IEnumerator DealCards()
-        {
-            handAnimator.SetTrigger("Deal");
-            yield return new WaitForSeconds(0.18f);
-            for (int i = 0; i < 5; i++)
-            {
-                cardsToBuy[i].transform.position = cardSpawnPos[i].position;
-                sortCardsOrder();
-                yield return new WaitForSeconds(0.11f);
             }
         }
 
