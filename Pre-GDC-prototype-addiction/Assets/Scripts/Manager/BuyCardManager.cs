@@ -6,7 +6,6 @@ using Interaction;
 using ScratchCardGeneration;
 using ScratchCardGeneration.LayoutConstructor;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Manager
 {
@@ -20,22 +19,8 @@ namespace Manager
         public Transform cardPurchasePos;
         public Draggable cardPrefab;
 
-        [Header("Deal Cards Feedbacks")] 
-        public bool dealAudio = true;
-        public List<AudioClip> dealSounds;
-
         [Header("Buy Cards")] 
         public int price;
-        
-        [Header("Buy Feedbacks")] 
-        public bool buyAudio = true;
-        public List<AudioClip> buySounds;
-        public bool buyParticle = true;
-        public List<ParticleSystem> buyParticles;
-        public bool zoomInAudio = true;
-        public List<AudioClip> zoomInSounds;
-        public bool zoomInParticle = true;
-        public List<ParticleSystem> zoomInParticles;
 
         [Header("Hand")] 
         public Animator handAnimator;
@@ -46,12 +31,6 @@ namespace Manager
         public float areaActivateDistance = 200;
         [Range(0,1)] public float areaStopThreshold = 0.2f;
         public float areaMoveAmount = 1000;
-        
-        [Header("Give Card Feedbacks")] 
-        public bool giveAudio = true;
-        public List<AudioClip> giveSounds;
-        public bool giveParticle = true;
-        public List<ParticleSystem> giveParticles;
     
         [Header("Give Area")] 
         public RectTransform giveArea;
@@ -119,20 +98,6 @@ namespace Manager
 
             StartCoroutine(DealCards());
         }
-        
-        IEnumerator DealCards()
-        {
-            handAnimator.SetTrigger("Deal");
-            yield return new WaitForSeconds(0.18f);
-            for (int i = 0; i < 5; i++)
-            {
-                cardsToBuy[i].transform.position = cardSpawnPos[i].position;
-                sortCardsOrder();
-                if (dealAudio && dealSounds.Count > 0)
-                    GameManager.Instance.audioManager.PlaySound(dealSounds[Random.Range(0, dealSounds.Count)]);
-                yield return new WaitForSeconds(0.11f);
-            }
-        }
 
         public void BuyCard(Draggable card)
         {
@@ -150,15 +115,6 @@ namespace Manager
                 //move to purchase pos
                 card.transform.DOMove(cardPurchasePos.position, 0.1f);
                 card.transform.DORotate(cardPurchasePos.rotation.eulerAngles, 0.1f);
-                
-                //feedback
-                if (buyAudio && buySounds.Count > 0)
-                    GameManager.Instance.audioManager.PlaySound(buySounds[Random.Range(0, buySounds.Count)]);
-
-                if (buyParticle && buyParticles.Count > 0)
-                {
-                    //TODO: Particle Effect
-                }
             
                 //start collect + zoom
                 StartCoroutine(BuyCardCoroutineChain(true, card));
@@ -166,6 +122,18 @@ namespace Manager
             else
             {
                 GameManager.Instance.uiManager.PlayNotEnoughGoldAnimation();
+            }
+        }
+
+        IEnumerator DealCards()
+        {
+            handAnimator.SetTrigger("Deal");
+            yield return new WaitForSeconds(0.18f);
+            for (int i = 0; i < 5; i++)
+            {
+                cardsToBuy[i].transform.position = cardSpawnPos[i].position;
+                sortCardsOrder();
+                yield return new WaitForSeconds(0.11f);
             }
         }
 
@@ -192,10 +160,6 @@ namespace Manager
                 GameObject cardToCollect = cardsToBuy[0].gameObject;
                 cardsToBuy.Remove(cardsToBuy[0]);
                 Destroy(cardToCollect);
-                
-                if (dealAudio && dealSounds.Count > 0)
-                    GameManager.Instance.audioManager.PlaySound(dealSounds[Random.Range(0, dealSounds.Count)]);
-                
                 yield return new WaitForSeconds(0.13f);
             }
         }
@@ -222,12 +186,7 @@ namespace Manager
                     //set action to generate card
                     onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickPrice, transform.position);
                     
-                    //Feedback
-                    if (zoomInAudio && zoomInSounds.Count > 0)
-                        GameManager.Instance.audioManager.PlaySound(zoomInSounds[Random.Range(0, zoomInSounds.Count)]);
-                    if (zoomInParticle && zoomInParticles.Count > 0) ; //TODO: Zoom In Particles
-                    
-                    print("Action Invoked");
+                    // print("Action Invoked");
                     
                     Destroy(card.gameObject);
                 }));
@@ -260,12 +219,6 @@ namespace Manager
                 ActivateScratchOffButton();
                 Destroy(card.gameObject);
             }));
-            
-            //Feedback
-            if (generator.currentCardPrize <= 0) return;
-            if (giveAudio && giveSounds.Count > 0)
-                GameManager.Instance.audioManager.PlaySound(giveSounds[Random.Range(0, giveSounds.Count)]);
-            if (giveParticle && giveParticles.Count > 0) ; //TODO: Give Particles
         }
 
         public void AdjustGiveArea(Transform cardPos)
