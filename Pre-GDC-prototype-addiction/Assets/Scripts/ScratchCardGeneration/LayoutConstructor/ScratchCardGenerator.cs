@@ -45,7 +45,6 @@ namespace ScratchCardGeneration.LayoutConstructor
             float winningProbabilityOverThreshold = prizePityData.dataList[currentCardBrand].levelPitySetting[level].winningProbabilityOverThreshold;
 
             currentCardPrize = BasePrizeGenerator.GeneratePrize(prizeDistribution, costThreshold, winningProbabilityOverThreshold);
-            print("currentCardPrize: " + currentCardPrize);
 
             // record total gold spent before winning
             GameManager.Instance.totalCostBeforeWinning += price;

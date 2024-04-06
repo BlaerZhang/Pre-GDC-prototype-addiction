@@ -28,15 +28,10 @@ namespace ScratchCardGeneration.PrizeGenerator
             var sortedDistribution = _actualPrizeDistributions.OrderBy(pair => pair.Value);
 
             float rand = Random.value;
-            // Debug.Log($"rand: {rand}");
-            float cumulativeProbability = 0;
             foreach (var d in sortedDistribution)
             {
-                // Debug.Log($"d.value: {d.Value}");
-                cumulativeProbability += d.Value;
-                if (rand <= cumulativeProbability)
+                if (rand <= d.Value)
                 {
-                    // Debug.Log($"cumulativeProbability: {cumulativeProbability}");
                     // return to the normal distribution after winning
                     if (d.Key != 0)
                     {

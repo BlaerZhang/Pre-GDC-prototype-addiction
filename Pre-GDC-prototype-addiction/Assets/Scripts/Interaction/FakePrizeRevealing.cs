@@ -22,13 +22,13 @@ namespace Interaction
 
         private void ChangeSubmissionStatus()
         {
-            // print("changing status");
+            print("changing status");
             hasSubmitted = true;
         }
 
         private void GeneratePrizeNumber(TMP_FontAsset fontAsset)
         {
-            // print(hasSubmitted);
+            print(hasSubmitted);
             if (!hasSubmitted) return;
 
             GameObject textObject = new GameObject("prize");
