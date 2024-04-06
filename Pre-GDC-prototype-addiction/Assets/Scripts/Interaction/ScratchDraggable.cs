@@ -13,6 +13,7 @@ namespace Interaction
         public float dragSpeed = 1;
         public bool isDragging = false;
         public bool isInGiveArea = false;
+        public bool dragLock = false;
     
         [Header("Feedback")] 
         public float hoverScale = 0.95f;
@@ -38,6 +39,16 @@ namespace Interaction
             isDragging = false;
         }
 
+        private void OnEnable()
+        {
+            BuyCardManager.onChangeSubmissionStatus += LockDrag;
+        }
+
+        private void OnDisable()
+        {
+            BuyCardManager.onChangeSubmissionStatus -= LockDrag;
+        }
+
         private void Update()
         {
             scratchCardManager.InputEnabled = !isDragging;
@@ -54,6 +65,8 @@ namespace Interaction
 
         private void OnMouseDown()
         {
+            if (dragLock) return;
+            
             isDragging = true;
             
             base.OnMouseDown();
@@ -70,6 +83,8 @@ namespace Interaction
 
         private void OnMouseDrag()
         {
+            if (dragLock) return;
+            
             //Card Follow Mouse Y
             Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)dragOffset;
             float cardToTarget = targetPos.y - transform.position.y;
@@ -97,6 +112,8 @@ namespace Interaction
         }
         private void OnMouseUp()
         {
+            if (dragLock) return;
+            
             isDragging = false;
             
             base.OnMouseUp();
@@ -125,6 +142,11 @@ namespace Interaction
                 // cardSurfaceSprite.DOColor(Color.white, 0.1f);
                 // cardBackgroundSprite.DOColor(Color.white, 0.1f);
             }
+        }
+
+        private void LockDrag()
+        {
+            dragLock = true;
         }
     }
 }
