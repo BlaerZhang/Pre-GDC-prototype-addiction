@@ -255,8 +255,9 @@ namespace Manager
 
             card.transform.DOMoveY(card.transform.position.y + 1, 0.2f);
             card.transform.DOScale(0.9f, 0.2f);
-            card.transform.DOScale(0.9f, 3f).OnComplete((() =>
+            DOVirtual.DelayedCall(2, () =>
             {
+                print("delayed!");
                 GameManager.Instance.GetComponent<ResourceManager>().PlayerGold += (int)generator.currentCardPrize;
                 card.transform.DOMoveY(card.transform.position.y + 10, 0.1f).OnComplete((() =>
                 {
@@ -271,7 +272,7 @@ namespace Manager
                 if (giveAudio && giveSounds.Count > 0)
                     GameManager.Instance.audioManager.PlaySound(giveSounds[Random.Range(0, giveSounds.Count)]);
                 if (giveParticle && giveParticles.Count > 0) ; //TODO: Give Particles
-            }));
+            }).Play();
         }
 
         public void AdjustGiveArea(Transform cardPos)
