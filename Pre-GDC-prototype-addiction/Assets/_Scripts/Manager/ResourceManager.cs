@@ -14,6 +14,7 @@ namespace Manager
             {
                 playerGold = value;
                 GameManager.Instance.uiManager.UpdateResource(value);
+                StatsTracker.onValueChanged?.Invoke(nameof(playerGold), playerGold);
             }
         }
 
