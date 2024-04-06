@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 
 namespace Interaction
 {
-    public class MenuDraggable : MonoBehaviour
+    public class MenuDraggable : DraggableBase
     {
         [Header("Card")] 
         public bool unlock = false;
@@ -78,6 +78,8 @@ namespace Interaction
             if (unlock)
             {
                 isDragging = true;
+                
+                base.OnMouseDown();
         
                 //Sort order
                 transform.DOMoveZ(-0.1f, 0);
@@ -134,6 +136,8 @@ namespace Interaction
             if(!unlock) return;
             
             isDragging = false;
+            
+            base.OnMouseUp();
         
             //Scale
             cardSprite.transform.DOScale(Vector3.one, 0.1f);

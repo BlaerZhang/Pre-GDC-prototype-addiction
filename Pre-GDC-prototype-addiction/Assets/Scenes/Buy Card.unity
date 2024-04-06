@@ -2679,13 +2679,30 @@ MonoBehaviour:
   - {fileID: 712855067}
   cardPurchasePos: {fileID: 873493937}
   cardPrefab: {fileID: 6831996590865958706, guid: 3b17cb72e9d43b84699430dec7091365, type: 3}
+  dealAudio: 1
+  dealSounds:
+  - {fileID: 8300000, guid: 1729a20b18d06904b999c3b53ef33d48, type: 3}
   price: 0
+  buyAudio: 1
+  buySounds: []
+  buyParticle: 1
+  buyParticles: []
+  zoomInAudio: 1
+  zoomInSounds:
+  - {fileID: 8300000, guid: 14cc5907bc11d114ea4a70a80e2c6790, type: 3}
+  zoomInParticle: 1
+  zoomInParticles: []
   handAnimator: {fileID: 1191899901}
   buyArea: {fileID: 1703158906}
   areaActivateThreshold: 0.5
   areaActivateDistance: 200
   areaStopThreshold: 0.2
   areaMoveAmount: 1000
+  giveAudio: 1
+  giveSounds:
+  - {fileID: 8300000, guid: aaec419a76d69294e9faf99e54f4fcc6, type: 3}
+  giveParticle: 1
+  giveParticles: []
   giveArea: {fileID: 1413073038}
   giveAreaActivateThreshold: 0.5
   giveAreaActivateDistance: 100

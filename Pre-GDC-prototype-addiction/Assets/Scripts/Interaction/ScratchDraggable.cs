@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 namespace Interaction
 {
-    public class ScratchDraggable : MonoBehaviour
+    public class ScratchDraggable : DraggableBase
     {
         [Header("Drag")]
         public float dragSpeed = 1;
@@ -55,6 +55,8 @@ namespace Interaction
         private void OnMouseDown()
         {
             isDragging = true;
+            
+            base.OnMouseDown();
         
             //Scale
             currentCard.transform.DOScale(Vector3.one * hoverScale, 0.1f);
@@ -96,6 +98,8 @@ namespace Interaction
         private void OnMouseUp()
         {
             isDragging = false;
+            
+            base.OnMouseUp();
         
             //Scale
             currentCard.transform.DOScale(Vector3.one, 0.1f);

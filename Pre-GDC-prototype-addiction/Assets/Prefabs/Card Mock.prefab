@@ -130,10 +130,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52d5fcd8d61e9045b250dfdcc60efdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickAudio: 1
+  pickSounds:
+  - {fileID: 8300000, guid: 6655024329b44594e8157c100d084027, type: 3}
+  - {fileID: 8300000, guid: 00c4bc5eba5a4a04798f1dab5bad2087, type: 3}
+  dropAudio: 1
+  dropSounds:
+  - {fileID: 8300000, guid: 14cc5907bc11d114ea4a70a80e2c6790, type: 3}
+  - {fileID: 8300000, guid: 3ea9efcfbc64756469555c668ca07af6, type: 3}
+  dropParticle: 1
+  dropParticles: []
   dragSpeed: 25
   isDragging: 0
   isInBuyArea: 0
   hoverScale: 1.05
+  cardSprite: {fileID: 0}
 --- !u!61 &846922715040881144
 BoxCollider2D:
   m_ObjectHideFlags: 0

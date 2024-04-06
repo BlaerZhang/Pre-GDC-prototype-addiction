@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Interaction
 {
-    public class Draggable : MonoBehaviour
+    public class Draggable : DraggableBase
     {
         [Header("Drag")]
         public float dragSpeed = 1;
@@ -41,6 +41,8 @@ namespace Interaction
         private void OnMouseDown()
         {
             isDragging = true;
+            
+            base.OnMouseDown();
         
             //Reorder in List and Sort order
             buyCardManager.cardsToBuy.Remove(this);
@@ -91,6 +93,8 @@ namespace Interaction
         private void OnMouseUp()
         {
             isDragging = false;
+            
+            base.OnMouseUp();
         
             //Scale
             cardSprite.transform.DOScale(Vector3.one, 0.1f);
