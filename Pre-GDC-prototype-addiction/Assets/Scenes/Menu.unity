@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b03eed837141394c89d0710d4005b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialGold: 200
+  initialGold: 300
 --- !u!114 &230012569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2686,7 +2686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab6e32afefc4b6b93870d471a61cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptableTrackingStatsData: {fileID: 11400000, guid: 7002ec3aa08b7449cb81ca64864e7b66, type: 2}
 --- !u!114 &1163759884
 MonoBehaviour:
   m_ObjectHideFlags: 0

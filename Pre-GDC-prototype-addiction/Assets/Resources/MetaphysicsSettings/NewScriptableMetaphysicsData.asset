@@ -46,10 +46,10 @@ MonoBehaviour:
       Data: 2|MetaphysicsSystem.ScriptableMetaphysics+Requirement, Assembly-CSharp
     - Name: comparator
       Entry: 3
-      Data: 0
+      Data: 3
     - Name: value
       Entry: 4
-      Data: 0
+      Data: 120
     - Name: isMatched
       Entry: 5
       Data: true
@@ -67,3 +67,5 @@ MonoBehaviour:
       Data: 
   metaphysicsId: 0
   response: {fileID: 11400000, guid: d04003ef002e34d689c25cafd49c932d, type: 2}
+  isRepeatable: 0
+  hasTriggered: 1

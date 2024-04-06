@@ -9,6 +9,11 @@ public class RequirementComparer : MonoBehaviour
 {
     public List<ScriptableMetaphysics> metaphysicsList;
 
+    private void Awake()
+    {
+        Init();
+    }
+
     private void OnEnable()
     {
         StatsTracker.onAfterValueChanged += CheckIfTriggerResponseEvent;
@@ -17,6 +22,14 @@ public class RequirementComparer : MonoBehaviour
     private void OnDisable()
     {
         StatsTracker.onAfterValueChanged -= CheckIfTriggerResponseEvent;
+    }
+
+    private void Init()
+    {
+        foreach (var metaPhysics in metaphysicsList)
+        {
+            metaPhysics.ResetData();
+        }
     }
 
     /// <summary>
@@ -50,7 +63,11 @@ public class RequirementComparer : MonoBehaviour
                 if (matchedNum == metaPhysics.metaphysicsRequirement.Count)
                 {
                     // trigger response event
-                    metaPhysics.response.Raise();
+                    if (metaPhysics.isRepeatable || !metaPhysics.hasTriggered)
+                    {
+                        metaPhysics.response.Raise();
+                        metaPhysics.hasTriggered = true;
+                    }
                 }
             }
         }

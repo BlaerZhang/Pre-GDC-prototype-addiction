@@ -9,8 +9,6 @@ using UnityEngine;
 /// </summary>
 public class StatsTracker : MonoBehaviour
 {
-    public ScriptableTrackingStats scriptableTrackingStatsData;
-
     public static Action<string, float> onBeforeValueChanged;
     // called when tracked value changes
     public static Action<string, float> onValueChanged;

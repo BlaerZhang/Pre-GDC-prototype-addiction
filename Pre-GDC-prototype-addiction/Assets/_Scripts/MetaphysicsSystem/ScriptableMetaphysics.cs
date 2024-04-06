@@ -24,6 +24,13 @@ namespace MetaphysicsSystem
         [DictionaryDrawerSettings(KeyLabel = "Variable Name", ValueLabel = "Requirements")]
         public Dictionary<string, Requirement> metaphysicsRequirement;
         public GameEvent response;
+        public bool isRepeatable;
+        [HideInInspector] public bool hasTriggered;
+
+        public void ResetData()
+        {
+            hasTriggered = false;
+        }
     }
 
     public enum Comparator
