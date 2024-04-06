@@ -123,14 +123,14 @@ namespace Manager
         IEnumerator DealCards()
         {
             handAnimator.SetTrigger("Deal");
-            yield return new WaitForSeconds(0.18f);
+            yield return new WaitForSeconds(0.2f);
             for (int i = 0; i < 5; i++)
             {
                 cardsToBuy[i].transform.position = cardSpawnPos[i].position;
                 sortCardsOrder();
                 if (dealAudio && dealSounds.Count > 0)
                     GameManager.Instance.audioManager.PlaySound(dealSounds[Random.Range(0, dealSounds.Count)]);
-                yield return new WaitForSeconds(0.11f);
+                yield return new WaitForSeconds(0.09f);
             }
         }
 
@@ -182,7 +182,7 @@ namespace Manager
             //play hand animation
             handAnimator.SetTrigger("Collect");
         
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.42f);
 
             int numberOfCardsToCollect = cardsToBuy.Count;
         
@@ -196,7 +196,7 @@ namespace Manager
                 if (dealAudio && dealSounds.Count > 0)
                     GameManager.Instance.audioManager.PlaySound(dealSounds[Random.Range(0, dealSounds.Count)]);
                 
-                yield return new WaitForSeconds(0.13f);
+                yield return new WaitForSeconds(0.11f);
             }
         }
 
@@ -247,25 +247,31 @@ namespace Manager
     
         public void GiveCard()
         {
+            GameObject card = generator.currentScratchCard;
+            
             //set action
             onChangeSubmissionStatus?.Invoke();
             onSubmitScratchCard?.Invoke(generator.currentCardPrize);
 
-            GameObject card = generator.currentScratchCard;
-            GameManager.Instance.GetComponent<ResourceManager>().PlayerGold += (int)generator.currentCardPrize;
-            card.transform.DOMoveY(card.transform.position.y + 10, 0.1f).OnComplete((() =>
+            card.transform.DOMoveY(card.transform.position.y + 1, 0.2f);
+            card.transform.DOScale(0.9f, 0.2f);
+            card.transform.DOScale(0.9f, 3f).OnComplete((() =>
             {
-                //Reset
-                SpawnCardsToBuy();
-                ActivateScratchOffButton();
-                Destroy(card.gameObject);
-            }));
+                GameManager.Instance.GetComponent<ResourceManager>().PlayerGold += (int)generator.currentCardPrize;
+                card.transform.DOMoveY(card.transform.position.y + 10, 0.1f).OnComplete((() =>
+                {
+                    //Reset
+                    SpawnCardsToBuy();
+                    ActivateScratchOffButton();
+                    Destroy(card.gameObject);
+                }));
             
-            //Feedback
-            if (generator.currentCardPrize <= 0) return;
-            if (giveAudio && giveSounds.Count > 0)
-                GameManager.Instance.audioManager.PlaySound(giveSounds[Random.Range(0, giveSounds.Count)]);
-            if (giveParticle && giveParticles.Count > 0) ; //TODO: Give Particles
+                //Feedback
+                if (generator.currentCardPrize <= 0) return;
+                if (giveAudio && giveSounds.Count > 0)
+                    GameManager.Instance.audioManager.PlaySound(giveSounds[Random.Range(0, giveSounds.Count)]);
+                if (giveParticle && giveParticles.Count > 0) ; //TODO: Give Particles
+            }));
         }
 
         public void AdjustGiveArea(Transform cardPos)

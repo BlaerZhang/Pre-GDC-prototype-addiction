@@ -42,6 +42,7 @@ namespace Interaction
             textMeshPro.color = Color.red;
             textMeshPro.fontSize = 5;
             textMeshPro.alignment = TextAlignmentOptions.Center;
+            textMeshPro.sortingOrder = 2;
             textObject.transform.SetParent(transform);
             textObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, -0.5f);
         }

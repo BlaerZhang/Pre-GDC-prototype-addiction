@@ -2684,7 +2684,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1729a20b18d06904b999c3b53ef33d48, type: 3}
   price: 0
   buyAudio: 1
-  buySounds: []
+  buySounds:
+  - {fileID: 8300000, guid: 082d864f2b890ee49a9d92a1d29a5369, type: 3}
   buyParticle: 1
   buyParticles: []
   zoomInAudio: 1
