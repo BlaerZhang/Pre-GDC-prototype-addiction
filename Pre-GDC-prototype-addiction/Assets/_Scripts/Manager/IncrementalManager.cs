@@ -40,12 +40,6 @@ namespace Manager
             GameManager.Instance.uiManager.UpdateUpgradePrice(upgradePricePerLevel[resourceManager.ClickerLevel - 1]);
         }
 
-
-        void Update()
-        {
-        
-        }
-
         public void OnClick(RectTransform buttonTransform)
         {
             resourceManager.PlayerGold += productivityPerLevel[resourceManager.ClickerLevel - 1];

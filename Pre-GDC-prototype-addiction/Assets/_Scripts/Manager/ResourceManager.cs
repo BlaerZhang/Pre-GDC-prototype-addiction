@@ -33,10 +33,5 @@ namespace Manager
         {
             PlayerGold = initialGold;
         }
-
-        void Update()
-        {
-        
-        }
     }
 }

@@ -41,17 +41,6 @@ namespace Manager
                     break;
             }
         }
-    
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
 
         public void UpdateResource(int resource)
         {

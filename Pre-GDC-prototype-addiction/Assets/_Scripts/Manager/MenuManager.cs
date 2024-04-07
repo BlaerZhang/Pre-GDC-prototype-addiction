@@ -40,16 +40,6 @@ namespace Manager
         {
             GameManager.Instance.switchSceneManager.onSceneChange -= InitializeButton;
         }
-
-        void Start()
-        {
-        
-        }
-    
-        void Update()
-        {
-        
-        }
     
         public void PickCard(MenuDraggable card)
         {
