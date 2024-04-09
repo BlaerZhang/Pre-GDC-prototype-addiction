@@ -25,15 +25,15 @@ namespace Manager
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                ChangeScene("Incremental");
-            }
-
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                ChangeScene("Menu");
-            }
+            // if (Input.GetKeyDown(KeyCode.LeftArrow))
+            // {
+            //     ChangeScene("Incremental");
+            // }
+            //
+            // if (Input.GetKeyDown(KeyCode.RightArrow))
+            // {
+            //     ChangeScene("Menu");
+            // }
         }
 
         public void ChangeScene(string toScene)
