@@ -136,10 +136,10 @@ namespace Manager
 
         public void BuyCard(Draggable card)
         {
-            if (price <= GameManager.Instance.GetComponent<ResourceManager>().PlayerGold)
+            if (price <= GameManager.Instance.resourceManager.PlayerGold)
             {
                 //set gold
-                GameManager.Instance.GetComponent<ResourceManager>().PlayerGold -= price;
+                GameManager.Instance.resourceManager.PlayerGold -= price;
             
                 //disable collider
                 card.GetComponent<BoxCollider2D>().enabled = false;

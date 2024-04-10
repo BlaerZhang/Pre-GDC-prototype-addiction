@@ -7,6 +7,26 @@ namespace ScratchCardGeneration.Utilities
 {
     public static class Utils
     {
+        public static int GetRandomWithExclusions(int min, int max, HashSet<int> exclusions)
+        {
+            List<int> availableNumbers = new List<int>();
+            for (int i = min; i < max; i++)
+            {
+                if (!exclusions.Contains(i))
+                {
+                    availableNumbers.Add(i);
+                }
+            }
+
+            if (availableNumbers.Count == 0)
+            {
+                throw new System.InvalidOperationException("No numbers available for random selection.");
+            }
+
+            int randomIndex = Random.Range(0, availableNumbers.Count);
+            return availableNumbers[randomIndex];
+        }
+
         public static Dictionary<TKey, TValue> DeepCopyDictionary<TKey, TValue>(Dictionary<TKey, TValue> original)
         {
             Dictionary<TKey, TValue> copy = new Dictionary<TKey, TValue>();

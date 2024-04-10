@@ -17,6 +17,8 @@ namespace Manager
 
         public AudioManager audioManager;
 
+        public ResourceManager resourceManager;
+
         public bool incrementalLock = true;
 
         public int lastPickPrice = 1;
@@ -40,9 +42,10 @@ namespace Manager
             }
 
             uiManager = GetComponentInChildren<UIManager>();
-            switchSceneManager = GetComponent<SwitchSceneManager>();
-            scratchCardGenerator = GetComponent<ScratchCardGenerator>();
-            audioManager = GetComponent<AudioManager>();
+            switchSceneManager = GetComponentInChildren<SwitchSceneManager>();
+            scratchCardGenerator = GetComponentInChildren<ScratchCardGenerator>();
+            audioManager = GetComponentInChildren<AudioManager>();
+            resourceManager = GetComponentInChildren<ResourceManager>();
         }
 
         void Update()
