@@ -167,9 +167,6 @@ namespace ScratchCardGeneration.LayoutConstructor
            int targetY = targetAreaGridSize.y;
 
            targetIndexMatrix = Utils.ListToVariableMatrix(targetIndexList, targetY, targetX);
-
-           int a = targetIndexMatrix.GetRow();
-           int b = targetIndexMatrix.GetColumn();
            targetIndexMatrix.PrintMatrix();
 
            int prizeAmount = prizeAreaGridSize.x * prizeAreaGridSize.y;
@@ -200,9 +197,6 @@ namespace ScratchCardGeneration.LayoutConstructor
            int prizeY = prizeAreaGridSize.y;
 
            prizeIndexMatrix = Utils.ListToVariableMatrix(prizeIndexList, prizeY, prizeX);
-           int c = prizeIndexMatrix.GetRow();
-           int d = prizeIndexMatrix.GetColumn();
-           
            prizeIndexMatrix.PrintMatrix();
            
            // place icons
