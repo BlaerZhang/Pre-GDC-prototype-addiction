@@ -7,6 +7,22 @@ namespace ScratchCardGeneration.Utilities
 {
     public static class Utils
     {
+        public static VariableMatrix<T> ListToVariableMatrix<T>(List<T> list, int row, int column)
+        {
+            VariableMatrix<T> matrix = new VariableMatrix<T>(row, column);
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < column; j++)
+                {
+                    int currentIndex = i * column + j;
+                    // matrix.AddElement(j, list[currentIndex]);
+                    matrix.SetElement(i, j, list[currentIndex]);
+                }
+            }
+
+            return matrix;
+        }
+        
         public static int GetRandomWithExclusions(int min, int max, HashSet<int> exclusions)
         {
             List<int> availableNumbers = new List<int>();

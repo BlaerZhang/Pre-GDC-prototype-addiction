@@ -7,37 +7,33 @@ public class VariableMatrix<T>
 {
     private List<List<T>> matrix = new List<List<T>>();
 
-    private int row;
-    private int column;
+    // TODO: optimize the row and column calculation
+    // public int row;
+    // public int column;
 
-    public int Row
+    public VariableMatrix(int rowIndex, int columnIndex)
     {
-        get
+        for (int i = 0; i < rowIndex; i++)
         {
-            return row = matrix.Count;
+            matrix.Add(new List<T>(columnIndex));
+            for (int j = 0; j < columnIndex; j++)
+            {
+                matrix[i].Add(default(T));
+            }
         }
     }
 
-    public int Column
+    public int GetRow()
     {
-        get
-        {
-            if (row > 0) column = matrix[0].Count;
-            return column;
-        }
+        return matrix.Count;
     }
-
-    public VariableMatrix() {}
-
-    public VariableMatrix(int row, int column)
+    
+    public int GetColumn()
     {
-        for (int i = 0; i < row; i++)
-        {
-            AddRow();
-            matrix[i].Capacity = column;
-        }
+        if (matrix.Count > 0) return matrix[0].Count;
+        return 0;
     }
-
+    
     public void AddRow()
     {
         matrix.Add(new List<T>());

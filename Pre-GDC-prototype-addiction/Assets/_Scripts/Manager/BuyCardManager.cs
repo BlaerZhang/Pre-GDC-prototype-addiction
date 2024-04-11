@@ -258,7 +258,7 @@ namespace Manager
             DOVirtual.DelayedCall(2, () =>
             {
                 print("delayed!");
-                GameManager.Instance.GetComponent<ResourceManager>().PlayerGold += (int)generator.currentCardPrize;
+                GameManager.Instance.resourceManager.PlayerGold += (int)generator.currentCardPrize;
                 card.transform.DOMoveY(card.transform.position.y + 10, 0.1f).OnComplete((() =>
                 {
                     //Reset
