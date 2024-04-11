@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Manager;
 using UnityEngine;
 
 public class CoinFlip : MonoBehaviour
 {
-    private Rigidbody rigidbody;
     private bool isFace = true;
     private bool isFlipping = false;
-    void Start()
-    {
-        rigidbody = GetComponent<Rigidbody>();
-    }
+    public KeyCode keycode;
+    public List<AudioClip> flipSounds;
+    public List<AudioClip> dropSounds;
+    public List<ParticleSystem> dropParticles;
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && !isFlipping)
+        if (Input.GetKeyDown(keycode) && !isFlipping)
         {
             isFlipping = true;
             
@@ -27,9 +27,15 @@ public class CoinFlip : MonoBehaviour
                 .Append(transform.DOLocalRotate(new Vector3(0, flipAngle, 0), 1f, RotateMode.FastBeyond360).SetEase(Ease.InQuad))
                 .Insert(0, transform.DOScaleX(1.5f, 0.5f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo))
                 .Insert(0, transform.DOScaleY(1.5f, 0.5f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo))
-                .OnComplete((() => { isFlipping = false; }));
+                .OnComplete((() =>
+                {
+                    isFlipping = false;
+                    if (dropSounds.Count > 0) AudioManager.instance.PlaySound(dropSounds[Random.Range(0, dropSounds.Count)]);
+                    //TODO: Drop Particles
+                }));
 
             flipSequence.Play();
+            if (flipSounds.Count > 0) AudioManager.instance.PlaySound(flipSounds[Random.Range(0, flipSounds.Count)]);
         }
     }
 }

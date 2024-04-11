@@ -286,6 +286,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81fae2b9aaf6944195492b02f60b481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keycode: 113
+  flipSounds:
+  - {fileID: 8300000, guid: 33be82a4ee482124ba1e6d1d98d5c978, type: 3}
+  dropSounds:
+  - {fileID: 8300000, guid: 0bec58fad2ffd4a4c932a22e8c9e8f87, type: 3}
+  dropParticles: []
 --- !u!4 &105514281
 Transform:
   m_ObjectHideFlags: 0
