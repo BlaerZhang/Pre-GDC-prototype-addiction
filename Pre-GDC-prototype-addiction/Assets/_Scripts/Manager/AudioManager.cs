@@ -5,13 +5,6 @@ namespace Manager
 {
     public class AudioManager : MonoBehaviour
     {
-        public static AudioManager instance;
-        
-        private void Awake()
-        {
-            instance = this;
-        }
-
         public void PlaySound(AudioClip audioClip)
         {
             if (audioClip == null) return;

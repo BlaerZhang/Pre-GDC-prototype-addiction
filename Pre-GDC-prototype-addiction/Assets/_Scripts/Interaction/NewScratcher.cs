@@ -96,7 +96,7 @@ namespace Interaction
                         if (!particle.isPlaying) particle.Play();
                         particle.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
                         particle.transform.rotation = Quaternion.Euler(180 - mouseDir, 90, -90);
-                        print("Particles!");
+                        // print("Particles!");
                     }
                 }
                 
