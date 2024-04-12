@@ -28,10 +28,13 @@ namespace ScratchCardGeneration.PrizeGenerator
             var sortedDistribution = _actualPrizeDistributions.OrderBy(pair => pair.Value);
 
             float rand = Random.value;
+            float accumulatedProbability = 0;
             foreach (var d in sortedDistribution)
             {
-                if (rand <= d.Value)
+                accumulatedProbability += d.Value;
+                if (rand <= accumulatedProbability)
                 {
+                    Debug.Log($"accumulatedProbability: {accumulatedProbability}");
                     // return to the normal distribution after winning
                     if (d.Key != 0)
                     {
