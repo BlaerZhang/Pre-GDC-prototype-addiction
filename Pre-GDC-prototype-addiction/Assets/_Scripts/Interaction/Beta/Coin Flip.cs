@@ -30,12 +30,12 @@ public class CoinFlip : MonoBehaviour
                 .OnComplete((() =>
                 {
                     isFlipping = false;
-                    if (dropSounds.Count > 0) AudioManager.instance.PlaySound(dropSounds[Random.Range(0, dropSounds.Count)]);
+                    if (dropSounds.Count > 0) GameManager.Instance.audioManager.PlaySound(dropSounds[Random.Range(0, dropSounds.Count)]);
                     //TODO: Drop Particles
                 }));
 
             flipSequence.Play();
-            if (flipSounds.Count > 0) AudioManager.instance.PlaySound(flipSounds[Random.Range(0, flipSounds.Count)]);
+            if (flipSounds.Count > 0) GameManager.Instance.audioManager.PlaySound(flipSounds[Random.Range(0, flipSounds.Count)]);
         }
     }
 }

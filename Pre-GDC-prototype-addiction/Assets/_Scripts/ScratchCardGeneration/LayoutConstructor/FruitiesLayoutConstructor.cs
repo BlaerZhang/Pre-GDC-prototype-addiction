@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Interaction;
-using Obi;
 using ScratchCardGeneration.Utilities;
-using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -135,7 +132,6 @@ namespace ScratchCardGeneration.LayoutConstructor
                     if (!targetIndexList.Contains(spriteIndex)) icon = ConstructPrizeIconObject(iconSprites[spriteIndex]);
                     else
                     {
-                        print(iconSprites[spriteIndex]);
                         icon = ConstructPrizeIconObject(iconSprites[spriteIndex], priceList[winningPrizeCounter]);
                         winningPrizeCounter++;
                     }

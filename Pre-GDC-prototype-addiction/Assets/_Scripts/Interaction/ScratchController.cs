@@ -81,7 +81,7 @@ namespace Interaction
         private void MoveScratchTool()
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePosDamped;
+            // Vector2 mousePosDamped;
             Vector2 mouseToScratcher = (Vector2)transform.position - mousePos;
 
             //Look Rotation

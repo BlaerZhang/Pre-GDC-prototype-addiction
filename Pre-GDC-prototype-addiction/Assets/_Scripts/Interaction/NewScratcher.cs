@@ -14,13 +14,13 @@ namespace Interaction
         // public SpriteRenderer spriteRenderer;
         public CinemachineVirtualCamera vCam;
 
-        [Header("Scratch")]
+        // [Header("Scratch")]
         // public float speed;
-        public float pressure;
+        // public float pressure;
         // public float scratchOffset;
-        public float progressSpeed = 0f;
-        private float previousProgress = 0f;
-        private float currentProgress = 0f;
+        // public float progressSpeed = 0f;
+        // private float previousProgress = 0f;
+        // private float currentProgress = 0f;
         private float mouseDir = 0f;
 
         [Header("Feedback")]
@@ -30,12 +30,12 @@ namespace Interaction
         [Range(0,1)]
         public float chromaticAberrationAmount = 0;
         public List<ParticleSystem> particles;
-        public AudioClip soundLayer1;
+        // public AudioClip soundLayer1;
 
         [Header("Card")]
         public ScratchCard card;
         public SpriteRenderer cardSprite;
-        public EraseProgress eraseProgress;
+        // public EraseProgress eraseProgress;
         private PostProcessVolume postProcessVolume;
 
         private ChromaticAberration chromaticAberration;
@@ -51,15 +51,15 @@ namespace Interaction
             vCam = GameObject.Find("Buy Card vCam").GetComponent<CinemachineVirtualCamera>();
         }
 
-        private void OnEnable()
-        {
-            // eraseProgress.OnProgress += OnProgress;
-        }
-
-        private void OnDisable()
-        {
-            // eraseProgress.OnProgress -= OnProgress;
-        }
+        // private void OnEnable()
+        // {
+        //     eraseProgress.OnProgress += OnProgress;
+        // }
+        //
+        // private void OnDisable()
+        // {
+        //     eraseProgress.OnProgress -= OnProgress;
+        // }
         
         void Update()
         {
@@ -117,17 +117,17 @@ namespace Interaction
             }
         }
         
-        public Vector2 ConvertToScratchCardTexturePosition(Vector2 scratchPos)
-        {
-            Vector3 scratchCardOrigin = new Vector2(cardSprite.transform.position.x - cardSprite.sprite.bounds.size.x / 2,
-                cardSprite.transform.position.y - cardSprite.sprite.bounds.size.y / 2);
-            Vector2 relativePos = scratchPos - (Vector2)scratchCardOrigin;
-            Vector2 uvPosition = new Vector2(relativePos.x / cardSprite.sprite.bounds.size.x, relativePos.y / cardSprite.sprite.bounds.size.y);
-
-            Vector2 convertedPosition = new Vector2(Mathf.FloorToInt(uvPosition.x * cardSprite.sprite.texture.width),
-                Mathf.FloorToInt(uvPosition.y * cardSprite.sprite.texture.height));
-
-            return convertedPosition;
-        }
+        // public Vector2 ConvertToScratchCardTexturePosition(Vector2 scratchPos)
+        // {
+        //     Vector3 scratchCardOrigin = new Vector2(cardSprite.transform.position.x - cardSprite.sprite.bounds.size.x / 2,
+        //         cardSprite.transform.position.y - cardSprite.sprite.bounds.size.y / 2);
+        //     Vector2 relativePos = scratchPos - (Vector2)scratchCardOrigin;
+        //     Vector2 uvPosition = new Vector2(relativePos.x / cardSprite.sprite.bounds.size.x, relativePos.y / cardSprite.sprite.bounds.size.y);
+        //
+        //     Vector2 convertedPosition = new Vector2(Mathf.FloorToInt(uvPosition.x * cardSprite.sprite.texture.width),
+        //         Mathf.FloorToInt(uvPosition.y * cardSprite.sprite.texture.height));
+        //
+        //     return convertedPosition;
+        // }
     }
 }
