@@ -30,18 +30,12 @@ namespace Interaction
             isDragging = false;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
-
-        private void OnMouseEnter()
+        protected override void OnMouseEnter()
         {
             if (!isDragging) cardSprite.DOColor(Color.gray, 0.1f);
         }
-
-        private void OnMouseDown()
+        
+        protected override void OnMouseDown()
         {
             isDragging = true;
             
@@ -68,7 +62,7 @@ namespace Interaction
             
         }
 
-        private void OnMouseDrag()
+        protected override void OnMouseDrag()
         {
             //Card Follow Mouse
             Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)dragOffset;
@@ -93,7 +87,7 @@ namespace Interaction
             }
 
         }
-        private void OnMouseUp()
+        protected override void OnMouseUp()
         {
             isDragging = false;
             
@@ -118,7 +112,7 @@ namespace Interaction
             }
         }
 
-        private void OnMouseExit()
+        protected override void OnMouseExit()
         {
             if (!isDragging) cardSprite.DOColor(Color.white, 0.1f);
         }

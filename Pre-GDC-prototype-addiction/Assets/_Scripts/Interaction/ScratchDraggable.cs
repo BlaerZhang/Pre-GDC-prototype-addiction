@@ -54,7 +54,7 @@ namespace Interaction
             scratchCardManager.InputEnabled = !isDragging;
         }
 
-        private void OnMouseEnter()
+        protected override void OnMouseEnter()
         {
             if (!isDragging)
             {
@@ -63,7 +63,7 @@ namespace Interaction
             }
         }
 
-        private void OnMouseDown()
+        protected override void OnMouseDown()
         {
             if (dragLock) return;
             
@@ -81,7 +81,7 @@ namespace Interaction
             buyCardManager.ActivateGiveArea();
         }
 
-        private void OnMouseDrag()
+        protected override void OnMouseDrag()
         {
             if (dragLock) return;
             
@@ -110,7 +110,7 @@ namespace Interaction
             }
 
         }
-        private void OnMouseUp()
+        protected override void OnMouseUp()
         {
             if (dragLock) return;
             
@@ -135,7 +135,7 @@ namespace Interaction
             }
         }
 
-        private void OnMouseExit()
+        protected override void OnMouseExit()
         {
             if (!isDragging)
             {

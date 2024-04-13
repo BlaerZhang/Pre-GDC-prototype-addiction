@@ -137,10 +137,10 @@ namespace Manager
 
         public void BuyCard(Draggable card)
         {
-            if (price <= GameManager.Instance.GetComponent<ResourceManager>().PlayerGold)
+            if (price <= GameManager.Instance.resourceManager.PlayerGold)
             {
                 //set gold
-                GameManager.Instance.GetComponent<ResourceManager>().PlayerGold -= price;
+                GameManager.Instance.resourceManager.PlayerGold -= price;
             
                 //disable collider
                 card.GetComponent<BoxCollider2D>().enabled = false;
@@ -259,7 +259,7 @@ namespace Manager
             DOVirtual.DelayedCall(2, () =>
             {
                 print("delayed!");
-                GameManager.Instance.GetComponent<ResourceManager>().PlayerGold += (int)generator.currentCardPrize;
+                GameManager.Instance.resourceManager.PlayerGold += (int)generator.currentCardPrize;
                 card.transform.DOMoveY(card.transform.position.y + 10, 0.1f).OnComplete((() =>
                 {
                     //Reset

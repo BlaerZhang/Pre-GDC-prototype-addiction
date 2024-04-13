@@ -9,7 +9,7 @@ namespace Manager
 
         public int PlayerGold
         {
-            get { return playerGold; }
+            get => playerGold;
             set
             {
                 playerGold = value;
@@ -22,11 +22,8 @@ namespace Manager
 
         public int ClickerLevel
         {
-            get { return clickerLevel; }
-            set
-            {
-                clickerLevel = value;
-            }
+            get => clickerLevel;
+            set => clickerLevel = value;
         }
     
         void Start()

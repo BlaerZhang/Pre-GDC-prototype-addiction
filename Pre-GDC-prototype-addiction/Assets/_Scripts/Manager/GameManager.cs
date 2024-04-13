@@ -9,25 +9,25 @@ namespace Manager
     {
         public static GameManager Instance;
 
-        [HideInInspector] public UIManager uiManager;
+        public UIManager uiManager;
 
-        [HideInInspector] public SwitchSceneManager switchSceneManager;
+        public SwitchSceneManager switchSceneManager;
 
-        [HideInInspector] public ScratchCardGenerator scratchCardGenerator;
+        public ScratchCardGenerator scratchCardGenerator;
 
-        [HideInInspector] public AudioManager audioManager;
-        
-        [HideInInspector] public CardPoolManager cardPoolManager;
+        public AudioManager audioManager;
 
-        [HideInInspector] public bool incrementalLock = true;
+        public ResourceManager resourceManager;
 
-        [HideInInspector] public int lastPickPrice = 1;
+        public bool incrementalLock = true;
 
-        [HideInInspector] public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
+        public int lastPickPrice = 1;
 
-        [HideInInspector] public float lastMenuYPos = 0;
+        public MenuDraggable.Tier lastPickTier = MenuDraggable.Tier.Level1;
+
+        public float lastMenuYPos = 0;
     
-        [HideInInspector] public float totalCostBeforeWinning = 0;
+        public float totalCostBeforeWinning = 0;
 
         private void Awake()
         {
@@ -42,10 +42,10 @@ namespace Manager
             }
 
             uiManager = GetComponentInChildren<UIManager>();
-            switchSceneManager = GetComponent<SwitchSceneManager>();
-            scratchCardGenerator = GetComponent<ScratchCardGenerator>();
-            audioManager = GetComponent<AudioManager>();
-            cardPoolManager = GetComponent<CardPoolManager>();
+            switchSceneManager = GetComponentInChildren<SwitchSceneManager>();
+            scratchCardGenerator = GetComponentInChildren<ScratchCardGenerator>();
+            audioManager = GetComponentInChildren<AudioManager>();
+            resourceManager = GetComponentInChildren<ResourceManager>();
         }
 
         void Update()

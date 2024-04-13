@@ -55,18 +55,12 @@ namespace Interaction
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
-
-        private void OnMouseEnter()
+        protected override void OnMouseEnter()
         {
             if (!isDragging) cardSprite.DOColor(Color.gray, 0.1f);
         }
 
-        private void OnMouseDown()
+        protected override void OnMouseDown()
         {
             if (unlock)
             {
@@ -97,7 +91,7 @@ namespace Interaction
            
         }
 
-        private void OnMouseDrag()
+        protected override void OnMouseDrag()
         {
             if (!unlock) return;
             
@@ -124,7 +118,7 @@ namespace Interaction
             }
 
         }
-        private void OnMouseUp()
+        protected override void OnMouseUp()
         {
             if(!unlock) return;
             
@@ -152,7 +146,7 @@ namespace Interaction
             transform.DOLocalMove(originalLocalPos, 0.1f);
         }
 
-        private void OnMouseExit()
+        protected override void OnMouseExit()
         {
             if (!isDragging) cardSprite.DOColor(Color.white, 0.1f);
         }

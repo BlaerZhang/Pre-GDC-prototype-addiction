@@ -43,7 +43,7 @@ namespace Manager
     
         public void PickCard(Interaction.MenuDraggable card)
         {
-            if (card.price <= GameManager.Instance.GetComponent<ResourceManager>().PlayerGold)
+            if (card.price <= GameManager.Instance.resourceManager.PlayerGold)
             {
                 // card.transform.DOMove(cardPurchasePos.position, 0.1f);
                 GameManager.Instance.lastPickPrice = card.price;
