@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81fae2b9aaf6944195492b02f60b481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinMesh: {fileID: 4981886305866691801}
   keycode: 113
   flipSounds:
   - {fileID: 8300000, guid: 33be82a4ee482124ba1e6d1d98d5c978, type: 3}
@@ -4703,13 +4704,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3897353745460632595}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 105514281}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
 --- !u!33 &5044233193270972811
 MeshFilter:
   m_ObjectHideFlags: 0
