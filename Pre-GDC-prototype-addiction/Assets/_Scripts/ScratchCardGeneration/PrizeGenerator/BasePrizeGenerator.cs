@@ -18,19 +18,21 @@ namespace ScratchCardGeneration.PrizeGenerator
         {
             _actualPrizeDistributions = Utils.DeepCopyDictionary(basePrizeDistributions);
 
-            if (GameManager.Instance.totalCostBeforeWinning >= costThreshold)
-            {
-                int randIndex = Random.Range(1, basePrizeDistributions.Count);
-                _actualPrizeDistributions = Utils.AdjustProbabilityRatio(basePrizeDistributions, basePrizeDistributions.Keys.ElementAt(randIndex), winningProbabilityOverThreshold);
-            }
+            // if (GameManager.Instance.totalCostBeforeWinning >= costThreshold)
+            // {
+            //     int randIndex = Random.Range(1, basePrizeDistributions.Count);
+            //     _actualPrizeDistributions = Utils.AdjustProbabilityRatio(basePrizeDistributions, basePrizeDistributions.Keys.ElementAt(randIndex), winningProbabilityOverThreshold);
+            // }
 
             // order the probability by ascending
             var sortedDistribution = _actualPrizeDistributions.OrderBy(pair => pair.Value);
 
             float rand = Random.value;
+            float accumulatedProbability = 0;
             foreach (var d in sortedDistribution)
             {
-                if (rand <= d.Value)
+                accumulatedProbability += d.Value;
+                if (rand <= accumulatedProbability)
                 {
                     // return to the normal distribution after winning
                     if (d.Key != 0)
