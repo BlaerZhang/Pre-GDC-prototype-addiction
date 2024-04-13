@@ -10,27 +10,27 @@ namespace Manager
     {
         public static GameManager Instance;
 
-        public UIManager uiManager;
+        [HideInInspector] public UIManager uiManager;
 
-        public SwitchSceneManager switchSceneManager;
+        [HideInInspector] public SwitchSceneManager switchSceneManager;
 
-        public ScratchCardGenerator scratchCardGenerator;
+        [HideInInspector] public ScratchCardGenerator scratchCardGenerator;
 
-        public AudioManager audioManager;
+        [HideInInspector] public AudioManager audioManager;
 
-        public ResourceManager resourceManager;
+        [HideInInspector] public ResourceManager resourceManager;
 
-        public CardPoolManager cardPoolManager;
+        [HideInInspector] public CardPoolManager cardPoolManager;
 
-        public bool incrementalLock = true;
+        [HideInInspector] public bool incrementalLock = true;
 
-        public int lastPickPrice = 1;
+        [HideInInspector] public int lastPickPrice = 1;
 
-        public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
+        [HideInInspector] public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
 
-        public float lastMenuYPos = 0;
+        [HideInInspector] public float lastMenuYPos = 0;
     
-        public float totalCostBeforeWinning = 0;
+        [HideInInspector] public float totalCostBeforeWinning = 0;
 
         private void Awake()
         {

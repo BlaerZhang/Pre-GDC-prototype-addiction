@@ -20,7 +20,7 @@ public class CardPoolManager : SerializedMonoBehaviour
         public List<Draggable> currentCards;
     }
 
-    public List<CardsStatsPerTier> cardStatsList;
+    [HideInInspector] public List<CardsStatsPerTier> cardStatsList;
 
     private void OnEnable()
     {
