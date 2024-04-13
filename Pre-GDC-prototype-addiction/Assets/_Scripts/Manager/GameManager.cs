@@ -2,6 +2,7 @@ using Interaction;
 using ScratchCardGeneration.LayoutConstructor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Manager
 {
@@ -19,11 +20,13 @@ namespace Manager
 
         public ResourceManager resourceManager;
 
+        public CardPoolManager cardPoolManager;
+
         public bool incrementalLock = true;
 
         public int lastPickPrice = 1;
 
-        public MenuDraggable.Tier lastPickTier = MenuDraggable.Tier.Level1;
+        public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
 
         public float lastMenuYPos = 0;
     
@@ -46,6 +49,7 @@ namespace Manager
             scratchCardGenerator = GetComponentInChildren<ScratchCardGenerator>();
             audioManager = GetComponentInChildren<AudioManager>();
             resourceManager = GetComponentInChildren<ResourceManager>();
+            cardPoolManager = GetComponentInChildren<CardPoolManager>();
         }
 
         void Update()
