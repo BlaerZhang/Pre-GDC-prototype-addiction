@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,6 +8,20 @@ namespace ScratchCardGeneration.Utilities
 {
     public static class Utils
     {
+        public static Vector2Int SelectRandomGridFromMatrix(int matrixRow, int matrixColumn)
+        {
+            return new Vector2Int(Random.Range(0, matrixRow), Random.Range(0, matrixColumn));
+        }
+
+
+        /// <summary>
+        /// transform a list into variable matrix
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static VariableMatrix<T> ListToVariableMatrix<T>(List<T> list, int row, int column)
         {
             VariableMatrix<T> matrix = new VariableMatrix<T>(row, column);
@@ -15,14 +30,21 @@ namespace ScratchCardGeneration.Utilities
                 for (int j = 0; j < column; j++)
                 {
                     int currentIndex = i * column + j;
-                    // matrix.AddElement(j, list[currentIndex]);
                     matrix.SetElement(i, j, list[currentIndex]);
                 }
             }
 
             return matrix;
         }
-        
+
+        /// <summary>
+        /// get a random number from a range, but exclude certain numbers
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <param name="exclusions"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public static int GetRandomWithExclusions(int min, int max, HashSet<int> exclusions)
         {
             List<int> availableNumbers = new List<int>();

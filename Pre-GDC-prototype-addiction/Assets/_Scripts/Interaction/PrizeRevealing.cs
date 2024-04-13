@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Globalization;
 using ScratchCardAsset;
 using ScratchCardGeneration;
 using ScratchCardGeneration.Utilities;
@@ -24,23 +25,13 @@ namespace Interaction
 
         private void Start()
         {
-            cardManager = GetComponentInChildren<ScratchCardManager>();
+            cardManager = GetComponent<ScratchCardManager>();
             cardManager.Progress.OnProgress += OnScratchProgress;
         }
 
         private void Update()
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (Input.GetMouseButtonDown(0) && ((Vector2)transform.position - mousePos).magnitude <= 0.5f)
-            {
-                // it must be clickable(revealed) and has not been clicked
-                if (!isClickable || hasClicked) return;
-                // if the scratch field is scratched off
-                print("rolling number!");
-                hasClicked = true;
-                onPrizeRevealed(prize);
-            }
-            
+            ClickIcon();
         }
 
         private void OnEnable()
@@ -63,26 +54,35 @@ namespace Interaction
             }
         }
 
-        // private void OnMouseDown()
-        // {
-        //     // it must be clickable(revealed) and has not been clicked
-        //     if (!isClickable || hasClicked) return;
-        //     // if the scratch field is scratched off
-        //     print("rolling number!");
-        //     onPrizeRevealed(prize);
-        //     hasClicked = true;
-        // }
+        private void ClickIcon()
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Input.GetMouseButtonDown(0) && ((Vector2)transform.position - mousePosition).magnitude <= 0.5f)
+            {
+                // it must be clickable(revealed) and has not been clicked
+                if (!isClickable || hasClicked) return;
+                // if the scratch field is scratched off
+                // print("rolling number!");
+                hasClicked = true;
+                onPrizeRevealed(prize);
+            }
+        }
 
         private void GeneratePrizeNumber(TMP_FontAsset fontAsset)
         {
             // it must be revealed, and must be clicked
             if (hasNumberShown || !hasClicked) return;
 
-            GameObject textObject = new GameObject("prize");
-            textObject.transform.localRotation = Quaternion.Euler(0, 0, 30f);
+            GameObject textObject = new GameObject("prize")
+            {
+                transform =
+                {
+                    localRotation = Quaternion.Euler(0, 0, 30f)
+                }
+            };
             TextMeshPro textMeshPro = textObject.AddComponent<TextMeshPro>();
             textObject.GetComponent<RectTransform>().sizeDelta = Vector2.one;
-            textMeshPro.text = prize.ToString();
+            textMeshPro.text = prize.ToString(CultureInfo.InvariantCulture);
             textMeshPro.enableWordWrapping = false; 
             textMeshPro.font = fontAsset;
             textMeshPro.fontStyle = FontStyles.Bold;

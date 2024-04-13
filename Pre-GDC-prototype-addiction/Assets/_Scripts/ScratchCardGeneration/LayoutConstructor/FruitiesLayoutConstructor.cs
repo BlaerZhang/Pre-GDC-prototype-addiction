@@ -14,6 +14,7 @@ namespace ScratchCardGeneration.LayoutConstructor
         
         private VariableMatrix<int> targetIndexMatrix;
         private VariableMatrix<int> prizeIndexMatrix;
+        private VariableMatrix<Vector2> prizeCellPositionMatrix;
 
         [Header("Prize Distribution")]
         public int minPrizeSplitParts;
@@ -38,6 +39,10 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         public GameObject scratchIndicator;
 
+        public GameObject lightEffect;
+        public float prizeQualityThreshold;
+
+
         public GameObject ConstructCardLayout(float totalPrize, Vector3 generatePosition)
         {
             if (currentScratchCard != null)
@@ -56,12 +61,39 @@ namespace ScratchCardGeneration.LayoutConstructor
 
             GenerateCardFace();
 
+            DetermineLightEffectType(totalPrize);
+
             return currentScratchCard;
         }
 
+        private void DetermineLightEffectType(float totalPrize)
+        {
+            StatsTracker.onValueChanged(nameof(totalPrize), totalPrize);
+
+            Vector2Int hh = Utils.SelectRandomGridFromMatrix(3, 5);
+            print(hh);
+            print(prizeCellPositionMatrix.GetElement(hh));
+            if (totalPrize >= prizeQualityThreshold)
+            {
+                // generate light effect after probability check
+                // Instantiate(lightEffect, )
+            }
+            else if (totalPrize < prizeQualityThreshold || totalPrize > 0)
+            {
+                // generate light effect after probability check
+
+            }
+            else
+            {
+
+            }
+        }
+
+
+
         GameObject ConstructIconObject(Sprite iconSprite)
         {
-            GameObject iconObject = new GameObject("targetIconObject");
+            GameObject iconObject = new GameObject("IconObject");
             iconObject.AddComponent<SpriteRenderer>().sprite = iconSprite;
             iconObject.transform.SetParent(currentScratchCard.transform);
 
@@ -75,12 +107,8 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         private void AddRealPrizeRevealing(GameObject iconObject, float prize)
         {
-            BoxCollider2D boxCollider = iconObject.AddComponent<BoxCollider2D>();
-            boxCollider.isTrigger = true;
-
-            iconObject.AddComponent<PrizeRevealing>().prize = prize;
-
             var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
+            indicatorObject.AddComponent<PrizeRevealing>().prize = prize;
             indicatorObject.transform.SetParent(iconObject.transform);
         }
 
@@ -92,11 +120,14 @@ namespace ScratchCardGeneration.LayoutConstructor
             int row = iconIndexMatrix.GetRow();
             int col = iconIndexMatrix.GetColumn();
 
+            Vector2 topLeftStartPosition = new Vector2(startPosition.x, startPosition.y + (row - 1) * (cellSize + gapLength));
+
             for (int i = 0; i < row; i++)
             {
                 for (int j = 0; j < col; j++)
                 {
-                    Vector2 cellPosition = new Vector2(j * cellSize + gapLength * j, i * cellSize + gapLength * i) + startPosition;
+                    Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + gapLength), -i * (cellSize + gapLength));
+
                     int spriteIndex = iconIndexMatrix.GetElement(i, j);
                     GameObject icon = ConstructIconObject(iconSprites[spriteIndex]);
 
@@ -112,13 +143,17 @@ namespace ScratchCardGeneration.LayoutConstructor
             
             int winningPrizeCounter = 0;
 
+            Vector2 topLeftStartPosition = new Vector2(startPosition.x, startPosition.y + (row - 1) * (cellSize + gapLength));
+
             for (int i = 0; i < row; i++)
             {
+                prizeCellPositionMatrix.AddRow();
                 for (int j = 0; j < col; j++)
                 {
-                    Vector2 cellPosition = new Vector2(j * cellSize + gapLength * j, i * cellSize + gapLength * i) + startPosition;
-                    int spriteIndex = iconIndexMatrix.GetElement(i, j);
+                    Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + gapLength), -i * (cellSize + gapLength));
+                    prizeCellPositionMatrix.AddElement(i, cellPosition);
 
+                    int spriteIndex = iconIndexMatrix.GetElement(i, j);
                     GameObject icon = ConstructIconObject(iconSprites[spriteIndex]);
 
                     if (!targetIndexList.Contains(spriteIndex))
@@ -189,10 +224,14 @@ namespace ScratchCardGeneration.LayoutConstructor
 
            prizeIndexMatrix = Utils.ListToVariableMatrix(prizeIndexList, prizeY, prizeX);
            prizeIndexMatrix.PrintMatrix();
+
+           prizeCellPositionMatrix = new VariableMatrix<Vector2>();
            
            // place icons
            PlaceIcons(targetIndexMatrix, targetAreaStartPosition, targetGapLength);
            PlaceIcons(prizeIndexMatrix, prizeAreaStartPosition, prizeGapLength, targetIndexList, splitPrizes);
+
+           prizeCellPositionMatrix.PrintMatrix();
        }
 
         void OnDrawGizmosSelected()
