@@ -9,11 +9,14 @@ namespace Interaction
     {
         [Header("Drag")]
         public float dragSpeed = 1;
-        public bool isDragging = false;
-        public bool isInBuyArea = false;
+        private bool isDragging = false;
+        private bool isInBuyArea = false;
     
         [Header("Feedback")] 
         public float hoverScale = 0.95f;
+        
+        [Header("Metaphysics")]
+        public FaceType faceType;
 
         [HideInInspector] public SpriteRenderer cardSprite;
         private Vector2 dragOffset = new Vector2(0, 0);

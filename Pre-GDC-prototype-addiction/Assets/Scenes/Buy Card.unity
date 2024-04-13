@@ -2620,6 +2620,100 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6f95554a0767340b6765612e399cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 6831996590865958706, guid: 3b17cb72e9d43b84699430dec7091365, type: 3}
+    - {fileID: 6831996590865958706, guid: e2017cd09a7a5064c88890fbd750bc65, type: 3}
+    - {fileID: 6831996590865958706, guid: 8e3b751c59832d04b8a40207ce93727c, type: 3}
+    - {fileID: 6831996590865958706, guid: 84ebad8f248352b46a064a91fb86bd4a, type: 3}
+    - {fileID: 6831996590865958706, guid: 4fe1b799b9eebf04c8a3b495729fd4ce, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: cardPrefabsDict
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Interaction.Draggable, Assembly-CSharp],[System.Int32,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Interaction.Draggable,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 1
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 3
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 4
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   cardsToBuy: []
   cardSpawnPos:
   - {fileID: 1650043345}
@@ -2628,7 +2722,6 @@ MonoBehaviour:
   - {fileID: 508373667}
   - {fileID: 712855067}
   cardPurchasePos: {fileID: 873493937}
-  cardPrefab: {fileID: 6831996590865958706, guid: 3b17cb72e9d43b84699430dec7091365, type: 3}
   dealAudio: 1
   dealSounds:
   - {fileID: 8300000, guid: 1729a20b18d06904b999c3b53ef33d48, type: 3}

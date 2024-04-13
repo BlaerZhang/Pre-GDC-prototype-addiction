@@ -286,7 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81fae2b9aaf6944195492b02f60b481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinMesh: {fileID: 4981886305866691801}
   keycode: 113
   flipSounds:
   - {fileID: 8300000, guid: 33be82a4ee482124ba1e6d1d98d5c978, type: 3}
@@ -678,6 +677,7 @@ GameObject:
   - component: {fileID: 230012569}
   - component: {fileID: 230012567}
   - component: {fileID: 230012570}
+  - component: {fileID: 230012573}
   - component: {fileID: 230012571}
   - component: {fileID: 230012572}
   m_Layer: 0
@@ -737,6 +737,7 @@ MonoBehaviour:
   switchSceneManager: {fileID: 0}
   scratchCardGenerator: {fileID: 0}
   audioManager: {fileID: 0}
+  cardPoolManager: {fileID: 0}
   incrementalLock: 1
   lastPickPrice: 1
   lastPickTier: 0
@@ -903,6 +904,112 @@ MonoBehaviour:
   prizeDistributionData: {fileID: 11400000, guid: c34e2992b33634cfd92791dbf4e32413, type: 2}
   prizePityData: {fileID: 11400000, guid: 088ec434be36b4d4cbe4d2c7bd983333, type: 2}
   currentScratchCard: {fileID: 0}
+--- !u!114 &230012573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230012564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008893fc76cfc8e40a357a29abdb5198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 6831996590865958706, guid: 3b17cb72e9d43b84699430dec7091365, type: 3}
+    - {fileID: 6831996590865958706, guid: e2017cd09a7a5064c88890fbd750bc65, type: 3}
+    - {fileID: 6831996590865958706, guid: 8e3b751c59832d04b8a40207ce93727c, type: 3}
+    - {fileID: 6831996590865958706, guid: 84ebad8f248352b46a064a91fb86bd4a, type: 3}
+    - {fileID: 6831996590865958706, guid: 4fe1b799b9eebf04c8a3b495729fd4ce, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: cardPrefabsDict
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Interaction.Draggable, Assembly-CSharp],[System.Int32,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Interaction.Draggable,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 1
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 3
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 4
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!1 &287189475
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,18 +7,16 @@ using ScratchCardGeneration;
 using ScratchCardGeneration.LayoutConstructor;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Sirenix.OdinInspector;
 
 namespace Manager
 {
-    public class BuyCardManager : MonoBehaviour
+    public class BuyCardManager : SerializedMonoBehaviour
     {
-        // public static BuyCardManager instance;
-    
         [Header("Spawn Cards")]
-        public List<Draggable> cardsToBuy = new List<Draggable>();
+        [HideInInspector] public List<Draggable> cardsToBuy = new List<Draggable>();
         public List<Transform> cardSpawnPos;
         public Transform cardPurchasePos;
-        public Draggable cardPrefab;
 
         [Header("Deal Cards Feedbacks")] 
         public bool dealAudio = true;
@@ -26,6 +24,7 @@ namespace Manager
 
         [Header("Buy Cards")] 
         public int price;
+        public ScratchCardTier tier;
         
         [Header("Buy Feedbacks")] 
         public bool buyAudio = true;
@@ -74,7 +73,6 @@ namespace Manager
 
         private void Awake()
         {
-            // instance = this;
             generator = GameManager.Instance.scratchCardGenerator;
         }
 
@@ -108,12 +106,15 @@ namespace Manager
 
         public void SpawnCardsToBuy()
         {
+            //set price
             price = GameManager.Instance.lastPickPrice;
-            GameManager.Instance.uiManager.UpdateBuyPrice(price);
-        
-            for (int i = 0; i < 5; i++)
+            tier = GameManager.Instance.lastPickTier;
+            GameManager.Instance.uiManager.UpdateBuyPrice(price); //update UI
+            
+            //spawn card
+            foreach (var card in GameManager.Instance.cardPoolManager.CreateCardPool(tier))
             {
-                Draggable cardInstance = Instantiate(cardPrefab, new Vector3(100,100), Quaternion.identity);
+                Draggable cardInstance = Instantiate(card, new Vector3(100, 100), Quaternion.identity);
                 cardsToBuy.Add(cardInstance);
             }
 

@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6831996590865958706}
   - component: {fileID: 846922715040881144}
   m_Layer: 0
-  m_Name: Card Mock
+  m_Name: Original Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
