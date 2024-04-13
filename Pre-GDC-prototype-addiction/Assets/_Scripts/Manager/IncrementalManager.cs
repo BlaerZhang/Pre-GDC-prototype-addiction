@@ -46,7 +46,7 @@ namespace Manager
             if (feedback)
             {
                 PlayFeedbackAnimation(buttonTransform);
-                if (soundFeedbacks.Count > 0) AudioManager.instance.PlaySound(soundFeedbacks[Random.Range(0, soundFeedbacks.Count)]);
+                if (soundFeedbacks.Count > 0) GameManager.Instance.audioManager.PlaySound(soundFeedbacks[Random.Range(0, soundFeedbacks.Count)]);
             }
         }
 

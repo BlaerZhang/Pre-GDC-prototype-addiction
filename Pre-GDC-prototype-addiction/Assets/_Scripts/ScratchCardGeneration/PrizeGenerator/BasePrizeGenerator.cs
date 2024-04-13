@@ -34,6 +34,7 @@ namespace ScratchCardGeneration.PrizeGenerator
                 accumulatedProbability += d.Value;
                 if (rand <= accumulatedProbability)
                 {
+                    Debug.Log($"accumulatedProbability: {accumulatedProbability}");
                     // return to the normal distribution after winning
                     if (d.Key != 0)
                     {
