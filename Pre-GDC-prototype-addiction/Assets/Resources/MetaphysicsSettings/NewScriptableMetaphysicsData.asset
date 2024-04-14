@@ -68,4 +68,4 @@ MonoBehaviour:
   metaphysicsId: 0
   response: {fileID: 11400000, guid: d04003ef002e34d689c25cafd49c932d, type: 2}
   isRepeatable: 0
-  hasTriggered: 1
+  hasTriggered: 0

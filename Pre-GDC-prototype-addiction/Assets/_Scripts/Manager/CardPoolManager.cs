@@ -10,7 +10,9 @@ using Interaction;
 
 public class CardPoolManager : SerializedMonoBehaviour
 {
+    [DictionaryDrawerSettings(KeyLabel = "Card Prefab", ValueLabel = "Weight in Pool")]
     public Dictionary<Draggable, int> cardPrefabsDict;
+    
     private Dictionary<Draggable, int> initialPoolWeightDict;
 
     [Serializable] public class CardsStatsPerTier
@@ -20,8 +22,76 @@ public class CardPoolManager : SerializedMonoBehaviour
         public List<Draggable> currentCards;
     }
 
-    [HideInInspector] public List<CardsStatsPerTier> cardStatsList;
+    // [Serializable] public class EventTriggerWeightPerFaceType
+    // {
+    //     public FaceType faceType;
+    //     public int noEventWeight;
+    //     public int discountWeight;
+    //     public int event2Weight;
+    //     public int event3Weight;
+    // }
 
+    [DictionaryDrawerSettings(KeyLabel = "Face Type", ValueLabel = "Face Event Probability")]
+    public Dictionary<FaceType, Dictionary<FaceEventType, float>> eventTriggerWeightPerFaceTypeList;
+    
+    [HideInInspector] public List<CardsStatsPerTier> cardStatsList;
+    
+    [OnInspectorInit] private void CreateData()
+    {
+        eventTriggerWeightPerFaceTypeList = new Dictionary<FaceType, Dictionary<FaceEventType, float>>()
+        {
+            {
+                FaceType.Original, new Dictionary<FaceEventType, float>()
+                {
+                    { FaceEventType.NoEvent, 0 },
+                    { FaceEventType.Discount, 0 },
+                    { FaceEventType.WinningChance, 0 },
+                    { FaceEventType.Prize, 0 },
+                }
+            },
+
+            {
+                FaceType.B, new Dictionary<FaceEventType, float>()
+                {
+                    { FaceEventType.NoEvent, 0 },
+                    { FaceEventType.Discount, 0 },
+                    { FaceEventType.WinningChance, 0 },
+                    { FaceEventType.Prize, 0 },
+                }
+            },
+
+            {
+                FaceType.C, new Dictionary<FaceEventType, float>()
+                {
+                    { FaceEventType.NoEvent, 0 },
+                    { FaceEventType.Discount, 0 },
+                    { FaceEventType.WinningChance, 0 },
+                    { FaceEventType.Prize, 0 },
+                }
+            },
+
+            {
+                FaceType.D, new Dictionary<FaceEventType, float>()
+                {
+                    { FaceEventType.NoEvent, 0 },
+                    { FaceEventType.Discount, 0 },
+                    { FaceEventType.WinningChance, 0 },
+                    { FaceEventType.Prize, 0 },
+                }
+            },
+
+            {
+                FaceType.E, new Dictionary<FaceEventType, float>()
+                {
+                    { FaceEventType.NoEvent, 0 },
+                    { FaceEventType.Discount, 0 },
+                    { FaceEventType.WinningChance, 0 },
+                    { FaceEventType.Prize, 0 },
+                }
+            },
+        };
+    }
+    
     private void OnEnable()
     {
         BuyCardManager.onChangeSubmissionStatus += ResetRefreshLock;
