@@ -32,30 +32,30 @@ public class CardPoolManager : SerializedMonoBehaviour
     // }
 
     [DictionaryDrawerSettings(KeyLabel = "Face Type", ValueLabel = "Face Event Probability")]
-    public Dictionary<FaceType, Dictionary<FaceEventType, float>> eventTriggerWeightPerFaceTypeList;
+    public Dictionary<FaceType, Dictionary<FaceEventType, float>> eventTriggerWeightPerFaceTypeDict;
     
     [HideInInspector] public List<CardsStatsPerTier> cardStatsList;
     
-    [OnInspectorInit] private void CreateData()
+    [ContextMenu(nameof(CreateData))] private void CreateData()
     {
-        if (eventTriggerWeightPerFaceTypeList != null) return;
-        eventTriggerWeightPerFaceTypeList = new Dictionary<FaceType, Dictionary<FaceEventType, float>>()
+        if (eventTriggerWeightPerFaceTypeDict.Count > 0) return;
+        eventTriggerWeightPerFaceTypeDict = new Dictionary<FaceType, Dictionary<FaceEventType, float>>()
         {
             {
                 FaceType.Original, new Dictionary<FaceEventType, float>()
                 {
-                    { FaceEventType.NoEvent, 0 },
-                    { FaceEventType.Discount, 0 },
-                    { FaceEventType.WinningChance, 0 },
-                    { FaceEventType.Prize, 0 },
+                    { FaceEventType.NoEvent, 0.75f },
+                    { FaceEventType.Discount, 0.08f },
+                    { FaceEventType.WinningChance, 0.08f },
+                    { FaceEventType.Prize, 0.09f },
                 }
             },
 
             {
                 FaceType.B, new Dictionary<FaceEventType, float>()
                 {
-                    { FaceEventType.NoEvent, 0 },
-                    { FaceEventType.Discount, 0 },
+                    { FaceEventType.NoEvent, 0.9f },
+                    { FaceEventType.Discount, 0.1f },
                     { FaceEventType.WinningChance, 0 },
                     { FaceEventType.Prize, 0 },
                 }
@@ -64,30 +64,30 @@ public class CardPoolManager : SerializedMonoBehaviour
             {
                 FaceType.C, new Dictionary<FaceEventType, float>()
                 {
-                    { FaceEventType.NoEvent, 0 },
-                    { FaceEventType.Discount, 0 },
-                    { FaceEventType.WinningChance, 0 },
-                    { FaceEventType.Prize, 0 },
+                    { FaceEventType.NoEvent, 0.8f },
+                    { FaceEventType.Discount, 0.04f },
+                    { FaceEventType.WinningChance, 0.08f },
+                    { FaceEventType.Prize, 0.08f },
                 }
             },
 
             {
                 FaceType.D, new Dictionary<FaceEventType, float>()
                 {
-                    { FaceEventType.NoEvent, 0 },
-                    { FaceEventType.Discount, 0 },
-                    { FaceEventType.WinningChance, 0 },
-                    { FaceEventType.Prize, 0 },
+                    { FaceEventType.NoEvent, 0.7f },
+                    { FaceEventType.Discount, 0.1f },
+                    { FaceEventType.WinningChance, 0.1f },
+                    { FaceEventType.Prize, 0.1f },
                 }
             },
 
             {
                 FaceType.E, new Dictionary<FaceEventType, float>()
                 {
-                    { FaceEventType.NoEvent, 0 },
+                    { FaceEventType.NoEvent, 0.6f },
                     { FaceEventType.Discount, 0 },
-                    { FaceEventType.WinningChance, 0 },
-                    { FaceEventType.Prize, 0 },
+                    { FaceEventType.WinningChance, 0.2f },
+                    { FaceEventType.Prize, 0.2f },
                 }
             },
         };

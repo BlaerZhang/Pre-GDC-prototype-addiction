@@ -108,7 +108,7 @@ namespace Interaction
             //Check if buy
             if (isInBuyArea)
             {
-                buyCardManager.BuyCard(this);
+                buyCardManager.TryBuyCard(this);
             }
         }
 

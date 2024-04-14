@@ -5,6 +5,7 @@ using DG.Tweening;
 using Interaction;
 using ScratchCardGeneration;
 using ScratchCardGeneration.LayoutConstructor;
+using ScratchCardGeneration.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Sirenix.OdinInspector;
@@ -135,7 +136,7 @@ namespace Manager
             }
         }
 
-        public void BuyCard(Draggable card)
+        public void TryBuyCard(Draggable card)
         {
             if (price <= GameManager.Instance.resourceManager.PlayerGold)
             {
@@ -160,6 +161,9 @@ namespace Manager
                 {
                     //TODO: Particle Effect
                 }
+                
+                FaceEventType faceEventTypeResult = Utils.CalculateMultiProbability(GameManager.Instance.cardPoolManager.eventTriggerWeightPerFaceTypeDict[card.faceType]); //draw face event
+                StatsTracker.onValueChanged?.Invoke(nameof(faceEventTypeResult), (int)faceEventTypeResult); //send to metaphysics center
             
                 //start collect + zoom
                 StartCoroutine(BuyCardCoroutineChain(true, card));

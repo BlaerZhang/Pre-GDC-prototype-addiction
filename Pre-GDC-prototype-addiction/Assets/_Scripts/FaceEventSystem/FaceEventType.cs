@@ -1,7 +1,7 @@
 public enum FaceEventType
 {
-    NoEvent,
-    Discount,
-    WinningChance,
-    Prize
+    NoEvent = 0,
+    Discount = 1,
+    WinningChance = 2,
+    Prize = 3
 }
