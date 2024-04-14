@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Globalization;
+using Manager;
 using ScratchCardAsset;
 using ScratchCardGeneration;
 using ScratchCardGeneration.Utilities;
@@ -13,86 +15,130 @@ namespace Interaction
     /// </summary>
     public class PrizeRevealing : MonoBehaviour
     {
+        [HideInInspector] public bool isWinningPrize = false;
+
+        public float fullyScratchedThreshold = 0.85f;
+
         private bool isClickable = false;
         private bool hasClicked = false;
         private bool hasNumberShown = false;
-        public float prize;
+        [HideInInspector] public float prize;
 
+        private bool hasSubmitted = false;
+
+        public static Action onFullyScratched;
         public static Action<float> onPrizeRevealed;
 
         private ScratchCardManager cardManager;
 
         private void Start()
         {
-            cardManager = GetComponentInChildren<ScratchCardManager>();
+            cardManager = GetComponent<ScratchCardManager>();
             cardManager.Progress.OnProgress += OnScratchProgress;
         }
 
         private void Update()
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (Input.GetMouseButtonDown(0) && ((Vector2)transform.position - mousePos).magnitude <= 0.5f)
-            {
-                // it must be clickable(revealed) and has not been clicked
-                if (!isClickable || hasClicked) return;
-                // if the scratch field is scratched off
-                print("rolling number!");
-                hasClicked = true;
-                onPrizeRevealed(prize);
-            }
-            
+            if (isWinningPrize) ClickIcon();
         }
 
         private void OnEnable()
         {
             NumberRoller.onRollingEnds += GeneratePrizeNumber;
+            if (!isWinningPrize) BuyCardManager.onChangeSubmissionStatus += ChangeSubmissionStatus;
         }
 
         private void OnDisable()
         {
             NumberRoller.onRollingEnds -= GeneratePrizeNumber;
+            if (!isWinningPrize) BuyCardManager.onChangeSubmissionStatus -= ChangeSubmissionStatus;
+        }
+
+        private void ChangeSubmissionStatus()
+        {
+            // print("changing status");
+            hasSubmitted = true;
         }
 
         private void OnScratchProgress(float progress)
         {
+            if (progress >= fullyScratchedThreshold)
+            {
+                onFullyScratched?.Invoke();
+            }
+
             if (progress >= 0.999f)
             {
                 cardManager.Progress.OnProgress -= OnScratchProgress;
+                if (!isWinningPrize) return;
                 isClickable = true;
                 Debug.Log($"User scratched {Math.Round(progress * 100f, 2)}% of surface");
             }
         }
 
-        // private void OnMouseDown()
-        // {
-        //     // it must be clickable(revealed) and has not been clicked
-        //     if (!isClickable || hasClicked) return;
-        //     // if the scratch field is scratched off
-        //     print("rolling number!");
-        //     onPrizeRevealed(prize);
-        //     hasClicked = true;
-        // }
+        private void ClickIcon()
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Input.GetMouseButtonDown(0) && ((Vector2)transform.position - mousePosition).magnitude <= 0.5f)
+            {
+                // it must be clickable(revealed) and has not been clicked
+                if (!isClickable || hasClicked) return;
+                // if the scratch field is scratched off
+                // print("rolling number!");
+                hasClicked = true;
+                onPrizeRevealed?.Invoke(prize);
+            }
+        }
 
         private void GeneratePrizeNumber(TMP_FontAsset fontAsset)
         {
-            // it must be revealed, and must be clicked
-            if (hasNumberShown || !hasClicked) return;
+            GameObject textObject;
+            TextMeshPro textMeshPro;
+            if (isWinningPrize)
+            {
+                // it must be revealed, and must be clicked
+                if (hasNumberShown || !hasClicked) return;
 
-            GameObject textObject = new GameObject("prize");
-            textObject.transform.localRotation = Quaternion.Euler(0, 0, 30f);
-            TextMeshPro textMeshPro = textObject.AddComponent<TextMeshPro>();
-            textObject.GetComponent<RectTransform>().sizeDelta = Vector2.one;
-            textMeshPro.text = prize.ToString();
-            textMeshPro.enableWordWrapping = false; 
+                textObject = new GameObject("prize")
+                {
+                    transform =
+                    {
+                        localRotation = Quaternion.Euler(0, 0, 30f)
+                    }
+                };
+                textMeshPro = textObject.AddComponent<TextMeshPro>();
+                textObject.GetComponent<RectTransform>().sizeDelta = Vector2.one;
+                textMeshPro.text = prize.ToString(CultureInfo.InvariantCulture);
+                textMeshPro.fontStyle = FontStyles.Bold;
+                textMeshPro.color = new Color(1f, 195f/255f, 0f, 1f);
+                textMeshPro.fontSize = 10;
+                hasNumberShown = true;
+            }
+            else
+            {
+                if (!hasSubmitted) return;
+
+                textObject = new GameObject("fake prize")
+                {
+                    transform =
+                    {
+                        localRotation = Quaternion.Euler(0, 0, 30f)
+                    }
+                };
+                textMeshPro = textObject.AddComponent<TextMeshPro>();
+                textObject.GetComponent<RectTransform>().sizeDelta = Vector2.one;
+                textMeshPro.text = Utils.GenerateCleanNumber(1000).ToString();
+                textMeshPro.fontStyle = FontStyles.Italic;
+                textMeshPro.color = Color.white;
+                textMeshPro.fontSize = 5;
+            }
+
+            textMeshPro.enableWordWrapping = false;
             textMeshPro.font = fontAsset;
-            textMeshPro.fontStyle = FontStyles.Bold;
-            textMeshPro.color = new Color(1f, 195f/255f, 0f, 1f);
-            textMeshPro.fontSize = 10;
             textMeshPro.alignment = TextAlignmentOptions.Center;
+            textMeshPro.sortingOrder = 2;
             textObject.transform.SetParent(transform);
             textObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, -0.5f);
-
-            hasNumberShown = true;
         }
     }
 }

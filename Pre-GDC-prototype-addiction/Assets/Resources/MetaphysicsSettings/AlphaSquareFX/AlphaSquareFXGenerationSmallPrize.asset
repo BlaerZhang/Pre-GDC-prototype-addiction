@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43194378afe141fa9c2aa3e9e71b8a68, type: 3}
-  m_Name: NewScriptableMetaphysicsData
+  m_Name: AlphaSquareFXGenerationSmallPrize
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -40,16 +40,16 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: playerGold
+      Data: totalPrize
     - Name: $v
       Entry: 7
       Data: 2|MetaphysicsSystem.ScriptableMetaphysics+Requirement, Assembly-CSharp
     - Name: comparator
       Entry: 3
-      Data: 0
+      Data: 2
     - Name: value
       Entry: 4
-      Data: 0
+      Data: 200
     - Name: isMatched
       Entry: 5
       Data: false
@@ -66,6 +66,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   metaphysicsId: 0
-  response: {fileID: 11400000, guid: d04003ef002e34d689c25cafd49c932d, type: 2}
-  isRepeatable: 0
+  response: {fileID: 11400000, guid: 653215d50ffdd40c384d666a21877049, type: 2}
+  isRepeatable: 1
   hasTriggered: 0

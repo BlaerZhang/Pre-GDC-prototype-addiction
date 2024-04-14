@@ -2761,7 +2761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1163759881
 Transform:
   m_ObjectHideFlags: 0
@@ -3754,7 +3754,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 75
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3766,7 +3766,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 8
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3778,7 +3778,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 4
-      Data: 8
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3790,7 +3790,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 4
-      Data: 9
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3827,7 +3827,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 90
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3839,7 +3839,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 10
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3900,7 +3900,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 80
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3912,7 +3912,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3924,7 +3924,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 4
-      Data: 8
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3936,7 +3936,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 4
-      Data: 8
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3973,7 +3973,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 70
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3985,7 +3985,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 10
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -3997,7 +3997,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 4
-      Data: 10
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -4009,7 +4009,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 4
-      Data: 10
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -4046,7 +4046,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 60
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -4070,7 +4070,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 4
-      Data: 20
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -4082,7 +4082,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 4
-      Data: 20
+      Data: 0
     - Name: 
       Entry: 8
       Data: 

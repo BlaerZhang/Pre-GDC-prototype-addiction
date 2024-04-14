@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using MetaphysicsSystem;
 using UnityEngine;
 
@@ -38,13 +35,20 @@ public class RequirementComparer : MonoBehaviour
     private void CheckIfTriggerResponseEvent(string changedVariableName, float variableValue)
     {
         print("CheckIfTriggerResponseEvent");
+
+        if (metaphysicsList == null)
+        {
+            print("Metaphysics List is null!");
+            return;
+        }
+
         foreach (var metaPhysics in metaphysicsList)
         {
             int matchedNum = 0;
             // if contains the variable that changed, means possibly the requirement would be met
             if (metaPhysics.metaphysicsRequirement.ContainsKey(changedVariableName))
             {
-                // check if the variable change whether could trigger the metaphysics effect
+                // check if the variable change whether it could trigger the metaphysics effect
                 foreach (var requirement in metaPhysics.metaphysicsRequirement)
                 {
                     // change the match status, if this is the one that changes

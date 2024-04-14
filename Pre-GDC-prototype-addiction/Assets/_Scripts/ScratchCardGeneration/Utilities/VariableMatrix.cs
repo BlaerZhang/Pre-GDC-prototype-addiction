@@ -7,9 +7,7 @@ public class VariableMatrix<T>
 {
     private List<List<T>> matrix = new List<List<T>>();
 
-    // TODO: optimize the row and column calculation
-    // public int row;
-    // public int column;
+    public VariableMatrix() {}
 
     public VariableMatrix(int rowIndex, int columnIndex)
     {
@@ -57,12 +55,23 @@ public class VariableMatrix<T>
     {
         if (rowIndex < matrix.Count && columnIndex < matrix[rowIndex].Count)
         {
+            if (matrix[rowIndex] != null) return matrix[rowIndex][columnIndex];
+        }
+
+        throw null!;
+    }
+
+    public T GetElement(Vector2Int gridPosition)
+    {
+        int rowIndex = gridPosition.x;
+        int columnIndex = gridPosition.y;
+
+        if (rowIndex < matrix.Count && columnIndex < matrix[rowIndex].Count)
+        {
             return matrix[rowIndex][columnIndex];
         }
-        else
-        {
-            throw new IndexOutOfRangeException("Index out of range");
-        }
+
+        throw null!;
     }
 
     public void SetElement(int rowIndex, int columnIndex, T value)
@@ -73,7 +82,7 @@ public class VariableMatrix<T>
         }
         else
         {
-            throw new IndexOutOfRangeException("Index out of range");
+            throw new IndexOutOfRangeException("Variable matrix index out of range");
         }
     }
 
