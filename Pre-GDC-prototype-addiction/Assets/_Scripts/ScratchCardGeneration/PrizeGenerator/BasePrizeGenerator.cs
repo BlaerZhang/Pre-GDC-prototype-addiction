@@ -36,12 +36,12 @@ namespace ScratchCardGeneration.PrizeGenerator
                 {
                     Debug.Log($"accumulatedProbability: {accumulatedProbability}");
                     // return to the normal distribution after winning
-                    if (d.Key != 0)
-                    {
-                        Debug.Log($"winning prize: {d.Key}");
-                        _actualPrizeDistributions = Utils.DeepCopyDictionary(basePrizeDistributions);
-                        GameManager.Instance.totalCostBeforeWinning = 0;
-                    }
+                    // if (d.Key != 0)
+                    // {
+                    //     Debug.Log($"winning prize: {d.Key}");
+                    //     _actualPrizeDistributions = Utils.DeepCopyDictionary(basePrizeDistributions);
+                    //     GameManager.Instance.totalCostBeforeWinning = 0;
+                    // }
                     return d.Key;
                 }
             }

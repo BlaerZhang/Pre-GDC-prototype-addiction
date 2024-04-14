@@ -12,9 +12,9 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         private GameObject currentScratchCard;
         
-        private VariableMatrix<int> targetIndexMatrix;
-        private VariableMatrix<int> prizeIndexMatrix;
-        private VariableMatrix<Vector2> prizeCellPositionMatrix;
+        [HideInInspector] public VariableMatrix<int> targetIndexMatrix;
+        [HideInInspector] public VariableMatrix<int> prizeIndexMatrix;
+        [HideInInspector] public VariableMatrix<Vector2> prizeCellPositionMatrix;
 
         [Header("Prize Distribution")]
         public int minPrizeSplitParts;
@@ -61,7 +61,7 @@ namespace ScratchCardGeneration.LayoutConstructor
 
             GenerateCardFace();
 
-            DetermineLightEffectType(totalPrize);
+            // DetermineLightEffectType(totalPrize);
 
             return currentScratchCard;
         }
@@ -102,13 +102,17 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         private void AddFakePrizeRevealing(GameObject iconObject)
         {
-            iconObject.AddComponent<FakePrizeRevealing>();
+            // iconObject.AddComponent<FakePrizeRevealing>();
+            var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
+            indicatorObject.AddComponent<PrizeRevealing>().isWinningPrize = false;
+            indicatorObject.transform.SetParent(iconObject.transform);
         }
 
         private void AddRealPrizeRevealing(GameObject iconObject, float prize)
         {
             var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
             indicatorObject.AddComponent<PrizeRevealing>().prize = prize;
+            indicatorObject.AddComponent<PrizeRevealing>().isWinningPrize = true;
             indicatorObject.transform.SetParent(iconObject.transform);
         }
 

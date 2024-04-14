@@ -8,11 +8,30 @@ namespace ScratchCardGeneration.Utilities
 {
     public static class Utils
     {
+        public static T CalculateMultiProbability<T>(Dictionary<T, float> probabilityDict)
+        {
+            var sortedDistribution = probabilityDict.OrderBy(pair => pair.Value);
+
+            float rand = Random.value;
+            float accumulatedProbability = 0;
+            foreach (var d in sortedDistribution)
+            {
+                accumulatedProbability += d.Value;
+                if (rand <= accumulatedProbability)
+                {
+                    Debug.Log($"accumulatedProbability: {accumulatedProbability}");
+
+                    return d.Key;
+                }
+            }
+
+            return default;
+        }
+
         public static Vector2Int SelectRandomGridFromMatrix(int matrixRow, int matrixColumn)
         {
             return new Vector2Int(Random.Range(0, matrixRow), Random.Range(0, matrixColumn));
         }
-
 
         /// <summary>
         /// transform a list into variable matrix

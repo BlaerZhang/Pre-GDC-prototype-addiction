@@ -9,24 +9,16 @@ namespace Manager
     {
         public static GameManager Instance;
 
-        public UIManager uiManager;
-
-        public SwitchSceneManager switchSceneManager;
-
-        public ScratchCardGenerator scratchCardGenerator;
-
-        public AudioManager audioManager;
-
-        public ResourceManager resourceManager;
+        [HideInInspector] public UIManager uiManager;
+        [HideInInspector] public SwitchSceneManager switchSceneManager;
+        [HideInInspector] public ScratchCardGenerator scratchCardGenerator;
+        [HideInInspector] public AudioManager audioManager;
+        [HideInInspector] public ResourceManager resourceManager;
 
         public bool incrementalLock = true;
-
         public int lastPickPrice = 1;
-
         public MenuDraggable.Tier lastPickTier = MenuDraggable.Tier.Level1;
-
         public float lastMenuYPos = 0;
-    
         public float totalCostBeforeWinning = 0;
 
         private void Awake()
