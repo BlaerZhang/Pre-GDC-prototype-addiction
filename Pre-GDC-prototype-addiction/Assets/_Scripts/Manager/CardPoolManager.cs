@@ -38,6 +38,7 @@ public class CardPoolManager : SerializedMonoBehaviour
     
     [OnInspectorInit] private void CreateData()
     {
+        if (eventTriggerWeightPerFaceTypeList != null) return;
         eventTriggerWeightPerFaceTypeList = new Dictionary<FaceType, Dictionary<FaceEventType, float>>()
         {
             {
