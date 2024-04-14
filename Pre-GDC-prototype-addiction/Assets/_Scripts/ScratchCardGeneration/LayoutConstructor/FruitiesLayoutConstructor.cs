@@ -111,8 +111,9 @@ namespace ScratchCardGeneration.LayoutConstructor
         private void AddRealPrizeRevealing(GameObject iconObject, float prize)
         {
             var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
-            indicatorObject.AddComponent<PrizeRevealing>().prize = prize;
-            indicatorObject.AddComponent<PrizeRevealing>().isWinningPrize = true;
+            PrizeRevealing prizeRevealing = indicatorObject.AddComponent<PrizeRevealing>();
+            prizeRevealing.prize = prize;
+            prizeRevealing.isWinningPrize = true;
             indicatorObject.transform.SetParent(iconObject.transform);
         }
 
