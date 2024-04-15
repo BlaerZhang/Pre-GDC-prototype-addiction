@@ -4,6 +4,7 @@ using System.Globalization;
 using Manager;
 using ScratchCardAsset;
 using ScratchCardGeneration;
+using ScratchCardGeneration.LayoutConstructor;
 using ScratchCardGeneration.Utilities;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,8 @@ namespace Interaction
     {
         [HideInInspector] public bool isWinningPrize = false;
 
+        public Vector2Int currentGrid;
+
         public float fullyScratchedThreshold = 0.85f;
 
         private bool isClickable = false;
@@ -26,7 +29,8 @@ namespace Interaction
 
         private bool hasSubmitted = false;
 
-        public static Action onFullyScratched;
+        // pass the current fully scratched grid
+        public static Action<Vector2Int> onFullyScratched;
         public static Action<float> onPrizeRevealed;
 
         private ScratchCardManager cardManager;
@@ -64,9 +68,12 @@ namespace Interaction
         {
             if (progress >= fullyScratchedThreshold)
             {
-                onFullyScratched?.Invoke();
+                FruitiesLayoutConstructor fruitiesLayoutConstructor =
+                    (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.cardLayoutConstructorDic[
+                        ScratchCardBrand.Fruities];
+                fruitiesLayoutConstructor.scratchingStatusMatrix.SetElement(currentGrid.x, currentGrid.y, true);
+                onFullyScratched?.Invoke(currentGrid);
             }
-
             if (progress >= 0.999f)
             {
                 cardManager.Progress.OnProgress -= OnScratchProgress;

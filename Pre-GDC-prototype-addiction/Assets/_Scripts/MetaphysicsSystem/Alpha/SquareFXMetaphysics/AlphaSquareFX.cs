@@ -2,42 +2,76 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Interaction;
 using Manager;
 using ScratchCardGeneration;
 using ScratchCardGeneration.LayoutConstructor;
+using ScratchCardGeneration.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Sirenix.OdinInspector;
 
-public class AlphaSquareFX : SerializedBehaviour
+public class AlphaSquareFX : SerializedMonoBehaviour
 {
+    public enum FXActionName
+    {
+        Split,
+        Disappear,
+        Stay,
+        Move
+    }
+
     private FruitiesLayoutConstructor fruitiesLayoutConstructor;
 
+    // prize grid
     // if the grid is true, means it has been fully scratched
     private VariableMatrix<bool> scratchingStatusMatrix;
-
-    // static
     private List<Vector2Int> prizeWinningGridList;
-    private VariableMatrix<Vector2> gridPositionList;
-
-    private Vector2Int currentGrid;
-
-    [HideInInspector] public int spawnOrder = 0;
+    private VariableMatrix<Vector2> gridPositionMatrix;
+    [HideInInspector] public Vector2Int currentGrid;
 
     [HideInInspector] public bool isPositive = true;
 
+    private static bool _moveEndEventHasTriggered = false;
+    public static Action onFXMoveEnd;
+
+    [Header("Action Settings")]
+    public float moveDuration = 1f;
+
+    [Header("Positive Effect")]
     [Header("Scratch no FX and FX not on winning grid")]
-    public Dictionary<string, float> ScratchNoFXAndFXNotOnWinningGridProbabilityList;
-    [Header("Scratch no FX and FX on winning grid")]
-    public Dictionary<string, float> ScratchNoFXAndFXOnWinningGridProbabilityList;
-    [Header("Scratch FX but FX not on winning grid (only for negative FX)")]
-    public Dictionary<string, float> ScratchFXAndFXOnWinningGridProbabilityList;
+    [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
+    public Dictionary<FXActionName, float> PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    [Header("Scratch no FX but FX on winning grid")]
+    [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
+    public Dictionary<FXActionName, float> PositiveScratchNoFXButFXOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    [Header("Scratch FX but FX not on winning grid")]
+    [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
+    public Dictionary<FXActionName, float> PositiveScratchFXButFXNotOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    [Header("Scratch FX and FX on winning grid")]
+    [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
+    public Dictionary<FXActionName, float> PositiveScratchFXAndFXOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+
+    [Header("Negative Effect")]
+    [Header("Scratch no FX and FX not on winning grid")]
+    [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
+    public Dictionary<FXActionName, float> NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    [Header("Scratch no FX but FX on winning grid")]
+    [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
+    public Dictionary<FXActionName, float> NegativeScratchNoFXButFXOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    [Header("Scratch FX but FX not on winning grid")]
+    [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
+    public Dictionary<FXActionName, float> NegativeScratchFXButFXNotOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    [Header("Scratch FX and FX on winning grid")]
+    [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
+    public Dictionary<FXActionName, float> NegativeScratchFXAndFXOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
 
     void Start()
     {
         fruitiesLayoutConstructor = (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.cardLayoutConstructorDic[ScratchCardBrand.Fruities];
-        // fruitiesLayoutConstructor.
+        prizeWinningGridList = fruitiesLayoutConstructor.prizeWinningGridList;
+        gridPositionMatrix = fruitiesLayoutConstructor.prizeCellPositionMatrix;
     }
 
     private void OnEnable()
@@ -50,34 +84,105 @@ public class AlphaSquareFX : SerializedBehaviour
         PrizeRevealing.onFullyScratched -= TriggerFXAction;
     }
 
-    public void Spawn(Vector2 initPosition, int initSpawnOrder, bool initIsPositive)
+    private void Spawn(Vector2 initPosition, bool initIsPositive)
     {
-        spawnOrder = initSpawnOrder;
         isPositive = initIsPositive;
         Instantiate(gameObject, initPosition, Quaternion.identity);
     }
 
-    private void TriggerFXAction()
+    // triggered when fully scratched
+    private void TriggerFXAction(Vector2Int currentFullyScratchedGrid)
     {
         if (isPositive)
         {
-
+            // FX ~ fully scratched grid
+            if (currentGrid.Equals(currentFullyScratchedGrid))
+            {
+                // FX ~ prize grid
+                ApplyProbabilityList(prizeWinningGridList.Contains(currentGrid)
+                    ? PositiveScratchFXAndFXOnWinningGridProbabilityList
+                    // Destroy(gameObject);
+                    : PositiveScratchFXButFXNotOnWinningGridProbabilityList);
+                // MoveRandomly();
+            }
+            else
+            {
+                // FX ~ prize grid
+                ApplyProbabilityList(prizeWinningGridList.Contains(currentGrid)
+                    ? PositiveScratchNoFXButFXOnWinningGridProbabilityList
+                    : PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList);
+            }
         }
         else
         {
-
+            // FX ~ fully scratched grid
+            if (currentGrid.Equals(currentFullyScratchedGrid))
+            {
+                // FX ~ prize grid
+                ApplyProbabilityList(prizeWinningGridList.Contains(currentGrid)
+                    ? NegativeScratchFXAndFXOnWinningGridProbabilityList
+                    // Destroy(gameObject);
+                    : NegativeScratchFXButFXNotOnWinningGridProbabilityList);
+            }
+            else
+            {
+                // FX ~ prize grid
+                ApplyProbabilityList(prizeWinningGridList.Contains(currentGrid)
+                    ? NegativeScratchNoFXButFXOnWinningGridProbabilityList
+                    : NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList);
+            }
         }
     }
 
-    private void MoveToGrid(Vector2Int newGrid)
+    private void ApplyProbabilityList(Dictionary<FXActionName, float> dict)
     {
-        transform.position = gridPositionList.GetElement(newGrid);
+        FXActionName actionName = Utils.CalculateMultiProbability(dict);
 
-        // check if multiple vfx are on the same grid
-
-        // delete them until only one left
+        switch (actionName)
+        {
+            case FXActionName.Disappear:
+                Destroy(gameObject);
+                break;
+            case FXActionName.Split:
+                SplitSelf();
+                break;
+            case FXActionName.Stay:
+                break;
+            case FXActionName.Move:
+                MoveRandomly();
+                break;
+        }
     }
 
+    /// <summary>
+    /// TODO: move randomly to a not fully scratched grid
+    /// </summary>
+    /// <param name="newGrid"></param>
+    private void MoveRandomly()
+    {
+        Vector2Int gridSize = fruitiesLayoutConstructor.prizeAreaGridSize;
+        Vector2Int newGrid = Utils.SelectRandomGridFromMatrix(gridSize.x, gridSize.y);
+        transform.DOMove(gridPositionMatrix.GetElement(newGrid), moveDuration)
+            .OnComplete(() =>
+            {
+                if (!_moveEndEventHasTriggered)
+                {
+                    _moveEndEventHasTriggered = true;
+                    onFXMoveEnd?.Invoke();
+                    StartCoroutine(ResetActionTrigger(1f));
+                }
+            });
+    }
+
+    IEnumerator ResetActionTrigger(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        _moveEndEventHasTriggered = false;
+    }
+
+    /// <summary>
+    /// spawn a new fx to a nearby not fully scratched grid
+    /// </summary>
     private void SplitSelf()
     {
         // get nearby grids that are not fully scratched
@@ -105,8 +210,8 @@ public class AlphaSquareFX : SerializedBehaviour
         if (notFullyScratchedGridNearby.Count == 0) return;
         int randIndex = Random.Range(0, notFullyScratchedGridNearby.Count);
         Vector2Int spawnGrid = notFullyScratchedGridNearby[randIndex];
-        Vector2 spawnPosition = gridPositionList.GetElement(spawnGrid);
+        Vector2 spawnPosition = gridPositionMatrix.GetElement(spawnGrid);
 
-        Spawn(spawnPosition, spawnOrder + 1, isPositive);
+        Spawn(spawnPosition, isPositive);
     }
 }

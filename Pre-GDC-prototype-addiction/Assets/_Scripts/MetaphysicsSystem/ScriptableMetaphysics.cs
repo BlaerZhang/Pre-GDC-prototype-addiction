@@ -22,7 +22,7 @@ namespace MetaphysicsSystem
 
         public int metaphysicsId;
         [DictionaryDrawerSettings(KeyLabel = "Variable Name", ValueLabel = "Requirements")]
-        public Dictionary<string, Requirement> metaphysicsRequirement;
+        public Dictionary<string, Requirement> metaphysicsRequirement = new Dictionary<string, Requirement>();
         public GameEvent response;
         public bool isRepeatable = true;
         [HideInInspector] public bool hasTriggered;

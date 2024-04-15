@@ -21,6 +21,18 @@ public class VariableMatrix<T>
         }
     }
 
+    public VariableMatrix(int rowIndex, int columnIndex, T defaultValue)
+    {
+        for (int i = 0; i < rowIndex; i++)
+        {
+            matrix.Add(new List<T>(columnIndex));
+            for (int j = 0; j < columnIndex; j++)
+            {
+                matrix[i].Add(defaultValue);
+            }
+        }
+    }
+
     public int GetRow()
     {
         return matrix.Count;

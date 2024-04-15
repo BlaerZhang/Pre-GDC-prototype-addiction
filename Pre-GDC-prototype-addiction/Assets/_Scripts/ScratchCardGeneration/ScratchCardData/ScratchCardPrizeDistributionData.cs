@@ -13,7 +13,7 @@ namespace ScratchCardGeneration.ScratchCardData
         public class Distribution
         {
             [DictionaryDrawerSettings(KeyLabel = "Level", ValueLabel = "Distribution")]
-            public Dictionary<int, Dictionary<int, float>> levelDistribution;
+            public Dictionary<int, Dictionary<int, float>> levelDistribution = new Dictionary<int, Dictionary<int, float>>();
         }
 
         [DictionaryDrawerSettings(KeyLabel = "Brand", ValueLabel = "Level And Distribution")]
