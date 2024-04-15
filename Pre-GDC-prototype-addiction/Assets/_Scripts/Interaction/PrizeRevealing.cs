@@ -71,7 +71,7 @@ namespace Interaction
                 FruitiesLayoutConstructor fruitiesLayoutConstructor =
                     (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.CardLayoutConstructorDic[
                         ScratchCardBrand.Fruities];
-                fruitiesLayoutConstructor.scratchingStatusMatrix.SetElement(currentGrid.x, currentGrid.y, true);
+                fruitiesLayoutConstructor.ScratchingStatusMatrix.SetElement(currentGrid.x, currentGrid.y, true);
                 onFullyScratched?.Invoke(currentGrid);
             }
             if (progress >= 0.999f)

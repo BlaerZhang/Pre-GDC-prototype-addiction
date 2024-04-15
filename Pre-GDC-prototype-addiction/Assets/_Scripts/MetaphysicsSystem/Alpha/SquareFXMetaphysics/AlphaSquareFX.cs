@@ -23,6 +23,7 @@ public class AlphaSquareFX : SerializedMonoBehaviour
     }
 
     private FruitiesLayoutConstructor fruitiesLayoutConstructor;
+    private Vector2Int gridSize;
 
     // prize grid
     // if the grid is true, means it has been fully scratched
@@ -34,10 +35,11 @@ public class AlphaSquareFX : SerializedMonoBehaviour
     [HideInInspector] public bool isPositive = true;
 
     private static bool _moveEndEventHasTriggered = false;
+    private bool isMoving = false;
     public static Action onFXMoveEnd;
 
     [Header("Action Settings")]
-    public float moveDuration = 1f;
+    public float moveDuration = 0.1f;
 
     [Header("Positive Effect")]
     [Header("Scratch no FX and FX not on winning grid")]
@@ -67,11 +69,16 @@ public class AlphaSquareFX : SerializedMonoBehaviour
     [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
     public Dictionary<FXActionName, float> NegativeScratchFXAndFXOnWinningGridProbabilityList;
 
-    void Start()
+    void Awake()
     {
         fruitiesLayoutConstructor = (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.CardLayoutConstructorDic[ScratchCardBrand.Fruities];
         prizeWinningGridList = fruitiesLayoutConstructor.prizeWinningGridList;
-        gridPositionMatrix = fruitiesLayoutConstructor.prizeCellPositionMatrix;
+        gridPositionMatrix = fruitiesLayoutConstructor.PrizeCellPositionMatrix;
+        scratchingStatusMatrix = fruitiesLayoutConstructor.ScratchingStatusMatrix;
+        gridSize = fruitiesLayoutConstructor.prizeAreaGridSize;
+
+        transform.SetParent(GameObject.Find("currentScratchCard").transform);
+        InitPosition();
     }
 
     private void OnEnable()
@@ -111,18 +118,33 @@ public class AlphaSquareFX : SerializedMonoBehaviour
 
     private void Spawn(Vector2 initPosition, bool initIsPositive)
     {
-        isPositive = initIsPositive;
-        Instantiate(gameObject, initPosition, Quaternion.identity);
+        GameObject newFX = Instantiate(gameObject, initPosition, Quaternion.identity);
+        newFX.GetComponent<AlphaSquareFX>().isPositive = initIsPositive;
+    }
+
+    private void InitPosition()
+    {
+        currentGrid = Utils.SelectRandomGridFromMatrix(gridSize.x, gridSize.y);
+        transform.localPosition = gridPositionMatrix.GetElement(currentGrid);
+
+        print("current grid: " + currentGrid);
     }
 
     // triggered when fully scratched
     private void TriggerFXAction(Vector2Int currentFullyScratchedGrid)
     {
+        if (isMoving) return;
+
         if (isPositive)
         {
             // FX ~ fully scratched grid
             if (currentGrid.Equals(currentFullyScratchedGrid))
             {
+                print(prizeWinningGridList.Contains(currentGrid)
+                    ? nameof(PositiveScratchFXAndFXOnWinningGridProbabilityList)
+                    // Destroy(gameObject);
+                    : nameof(PositiveScratchFXButFXNotOnWinningGridProbabilityList));
+
                 // FX ~ prize grid
                 ApplyProbabilityList(prizeWinningGridList.Contains(currentGrid)
                     ? PositiveScratchFXAndFXOnWinningGridProbabilityList
@@ -132,6 +154,10 @@ public class AlphaSquareFX : SerializedMonoBehaviour
             }
             else
             {
+                print(prizeWinningGridList.Contains(currentGrid)
+                    ? nameof(PositiveScratchNoFXButFXOnWinningGridProbabilityList)
+                    // Destroy(gameObject);
+                    : nameof(PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList));
                 // FX ~ prize grid
                 ApplyProbabilityList(prizeWinningGridList.Contains(currentGrid)
                     ? PositiveScratchNoFXButFXOnWinningGridProbabilityList
@@ -143,6 +169,10 @@ public class AlphaSquareFX : SerializedMonoBehaviour
             // FX ~ fully scratched grid
             if (currentGrid.Equals(currentFullyScratchedGrid))
             {
+                print(prizeWinningGridList.Contains(currentGrid)
+                    ? nameof(NegativeScratchFXAndFXOnWinningGridProbabilityList)
+                    // Destroy(gameObject);
+                    : nameof(NegativeScratchFXButFXNotOnWinningGridProbabilityList));
                 // FX ~ prize grid
                 ApplyProbabilityList(prizeWinningGridList.Contains(currentGrid)
                     ? NegativeScratchFXAndFXOnWinningGridProbabilityList
@@ -151,6 +181,10 @@ public class AlphaSquareFX : SerializedMonoBehaviour
             }
             else
             {
+                print(prizeWinningGridList.Contains(currentGrid)
+                    ? nameof(NegativeScratchNoFXButFXOnWinningGridProbabilityList)
+                    // Destroy(gameObject);
+                    : nameof(NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList));
                 // FX ~ prize grid
                 ApplyProbabilityList(prizeWinningGridList.Contains(currentGrid)
                     ? NegativeScratchNoFXButFXOnWinningGridProbabilityList
@@ -162,6 +196,7 @@ public class AlphaSquareFX : SerializedMonoBehaviour
     private void ApplyProbabilityList(Dictionary<FXActionName, float> dict)
     {
         FXActionName actionName = Utils.CalculateMultiProbability(dict);
+        print($"actionName: {actionName}");
 
         switch (actionName)
         {
@@ -180,22 +215,29 @@ public class AlphaSquareFX : SerializedMonoBehaviour
     }
 
     // TODO: test if the action could only be called once
+    // TODO: test if the lock is unlocked after action
     /// <summary>
     /// move randomly to a not fully scratched grid
     /// </summary>
-    /// <param name="newGrid"></param>
     private void MoveRandomly()
     {
-        Vector2Int gridSize = fruitiesLayoutConstructor.prizeAreaGridSize;
         Vector2Int newGrid = Utils.SelectRandomGridFromMatrix(gridSize.x, gridSize.y);
-        transform.DOMove(gridPositionMatrix.GetElement(newGrid), moveDuration)
+        Vector2 newWorldPosition = gridPositionMatrix.GetElement(newGrid) + (Vector2)transform.parent.position;
+        print(newWorldPosition);
+        print(gridPositionMatrix.GetElement(newGrid));
+        transform.DOMove(newWorldPosition, moveDuration)
+            .OnStart(() =>
+            {
+                isMoving = true;
+            })
             .OnComplete(() =>
             {
+                isMoving = false;
                 if (!_moveEndEventHasTriggered)
                 {
                     _moveEndEventHasTriggered = true;
                     onFXMoveEnd?.Invoke();
-                    StartCoroutine(ResetActionTrigger(1f));
+                    StartCoroutine(ResetActionTrigger(.1f));
                 }
             });
     }
@@ -216,15 +258,16 @@ public class AlphaSquareFX : SerializedMonoBehaviour
 
         int gridX = currentGrid.x;
         int gridY = currentGrid.y;
+
         Vector2Int rightGrid = new Vector2Int(gridX + 1, gridY);
         Vector2Int leftGrid = new Vector2Int(gridX - 1, gridY);
         Vector2Int upGrid = new Vector2Int(gridX, gridY - 1);
         Vector2Int downGrid = new Vector2Int(gridX, gridY + 1);
 
-        notFullyScratchedGridNearby.Add(rightGrid);
-        notFullyScratchedGridNearby.Add(leftGrid);
-        notFullyScratchedGridNearby.Add(upGrid);
-        notFullyScratchedGridNearby.Add(downGrid);
+        if (rightGrid.x < gridSize.x) notFullyScratchedGridNearby.Add(rightGrid);
+        if (leftGrid.x >= 0) notFullyScratchedGridNearby.Add(leftGrid);
+        if (upGrid.y >= 0) notFullyScratchedGridNearby.Add(upGrid);
+        if (downGrid.y < gridSize.y) notFullyScratchedGridNearby.Add(downGrid);
 
         foreach (var grid in notFullyScratchedGridNearby.ToList())
         {

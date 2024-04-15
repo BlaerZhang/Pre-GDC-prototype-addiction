@@ -38,13 +38,13 @@ namespace ScratchCardGeneration.LayoutConstructor
         // private
         private GameObject currentScratchCard;
 
-        [HideInInspector] public VariableMatrix<int> targetIndexMatrix;
-        [HideInInspector] public VariableMatrix<int> prizeIndexMatrix;
+        [HideInInspector] public VariableMatrix<int> TargetIndexMatrix;
+        [HideInInspector] public VariableMatrix<int> PrizeIndexMatrix;
 
         // for alpha light effect
-        [HideInInspector] public VariableMatrix<Vector2> prizeCellPositionMatrix;
+        [HideInInspector] public VariableMatrix<Vector2> PrizeCellPositionMatrix;
         // set to true if fully scratched
-        [HideInInspector] public VariableMatrix<bool> scratchingStatusMatrix;
+        [HideInInspector] public VariableMatrix<bool> ScratchingStatusMatrix;
         [HideInInspector] public List<Vector2Int> prizeWinningGridList;
 
         public GameObject ConstructCardLayout(float totalPrize, float price, Vector3 generatePosition)
@@ -53,7 +53,7 @@ namespace ScratchCardGeneration.LayoutConstructor
             {
                 Destroy(currentScratchCard);
             }
-            currentScratchCard = new GameObject("newScratchCard")
+            currentScratchCard = new GameObject("currentScratchCard")
             {
                 transform =
                 {
@@ -61,7 +61,7 @@ namespace ScratchCardGeneration.LayoutConstructor
                 }
             };
 
-            scratchingStatusMatrix = new VariableMatrix<bool>(prizeAreaGridSize.x, prizeAreaGridSize.y, false);
+            ScratchingStatusMatrix = new VariableMatrix<bool>(prizeAreaGridSize.x, prizeAreaGridSize.y, false);
 
             DistributeIcons(totalPrize);
 
@@ -137,11 +137,11 @@ namespace ScratchCardGeneration.LayoutConstructor
 
             for (int i = 0; i < row; i++)
             {
-                prizeCellPositionMatrix.AddRow();
+                PrizeCellPositionMatrix.AddRow();
                 for (int j = 0; j < col; j++)
                 {
                     Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + gapLength), -i * (cellSize + gapLength));
-                    prizeCellPositionMatrix.AddElement(i, cellPosition);
+                    PrizeCellPositionMatrix.AddElement(i, cellPosition);
 
                     int spriteIndex = iconIndexMatrix.GetElement(i, j);
                     GameObject icon = ConstructIconObject(iconSprites[spriteIndex]);
@@ -185,8 +185,8 @@ namespace ScratchCardGeneration.LayoutConstructor
            int targetX = targetAreaGridSize.x;
            int targetY = targetAreaGridSize.y;
 
-           targetIndexMatrix = Utils.ListToVariableMatrix(targetIndexList, targetY, targetX);
-           targetIndexMatrix.PrintMatrix();
+           TargetIndexMatrix = Utils.ListToVariableMatrix(targetIndexList, targetX, targetY);
+           TargetIndexMatrix.PrintMatrix();
 
            int prizeAmount = prizeAreaGridSize.x * prizeAreaGridSize.y;
 
@@ -215,16 +215,16 @@ namespace ScratchCardGeneration.LayoutConstructor
            int prizeX = prizeAreaGridSize.x;
            int prizeY = prizeAreaGridSize.y;
 
-           prizeIndexMatrix = Utils.ListToVariableMatrix(prizeIndexList, prizeY, prizeX);
-           prizeIndexMatrix.PrintMatrix();
+           PrizeIndexMatrix = Utils.ListToVariableMatrix(prizeIndexList, prizeX, prizeY);
+           PrizeIndexMatrix.PrintMatrix();
 
-           prizeCellPositionMatrix = new VariableMatrix<Vector2>();
+           PrizeCellPositionMatrix = new VariableMatrix<Vector2>();
            
            // place icons
-           PlaceIcons(targetIndexMatrix, targetAreaStartPosition, targetGapLength);
-           PlaceIcons(prizeIndexMatrix, prizeAreaStartPosition, prizeGapLength, targetIndexList, splitPrizes);
+           PlaceIcons(TargetIndexMatrix, targetAreaStartPosition, targetGapLength);
+           PlaceIcons(PrizeIndexMatrix, prizeAreaStartPosition, prizeGapLength, targetIndexList, splitPrizes);
 
-           prizeCellPositionMatrix.PrintMatrix();
+           PrizeCellPositionMatrix.PrintMatrix();
        }
 
         void OnDrawGizmosSelected()

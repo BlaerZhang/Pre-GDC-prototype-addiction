@@ -25,7 +25,6 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
         public GameObject lightEffectPrefab;
 
-        // TODO: determined by the card type?
         private float prizeTypeThreshold;
 
         [DictionaryDrawerSettings(KeyLabel = "Card Price", ValueLabel = "Price Type Threshold")]
@@ -59,7 +58,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
             }}
         };
 
-        private List<AlphaSquareFX> currentAlphaSquareFxList;
+        private List<AlphaSquareFX> currentAlphaSquareFxList = new();
 
         private void OnEnable()
         {
@@ -77,6 +76,8 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         private void CheckPrizeType(float totalPrize, float price)
         {
             SwitchPrizeTypeThreshold(price);
+            print($"price: {price}");
+            print($"totalPrize: {totalPrize}");
 
             FXType fxType;
             if (totalPrize >= prizeTypeThreshold)
@@ -92,12 +93,16 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
             {
                 fxType = Utils.CalculateMultiProbability(FXTypeProbabilityDict[PrizeType.None]);
             }
+
+            print($"fxType: {fxType}");
             SpawnLightEffectByType(fxType);
+            print("end spawn");
         }
 
         private void SwitchPrizeTypeThreshold(float price)
         {
             prizeTypeThreshold = PrizeTypeThresholdDict[price];
+            print($"prizeTypeThreshold: {prizeTypeThreshold}");
         }
 
         private void SpawnLightEffectByType(FXType fxType)
@@ -106,16 +111,16 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
             GameObject fxObject = Instantiate(lightEffectPrefab);
             AlphaSquareFX alphaSquareFX = fxObject?.GetComponent<AlphaSquareFX>();
+
             if (alphaSquareFX) currentAlphaSquareFxList.Add(alphaSquareFX);
 
-            switch (fxType)
+            if  (fxType.Equals(FXType.Positive))
             {
-                case FXType.Positive:
-                    if (alphaSquareFX) alphaSquareFX.isPositive = true;
-                    break;
-                case FXType.Negative:
-                    if (alphaSquareFX) alphaSquareFX.isPositive = false;
-                    break;
+                if (alphaSquareFX) alphaSquareFX.isPositive = true;
+            }
+            else if (fxType.Equals(FXType.Negative))
+            {
+                if (alphaSquareFX) alphaSquareFX.isPositive = false;
             }
         }
 

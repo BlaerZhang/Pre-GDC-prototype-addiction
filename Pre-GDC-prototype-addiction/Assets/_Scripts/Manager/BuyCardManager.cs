@@ -97,7 +97,7 @@ namespace Manager
             }
         }
 
-        public void sortCardsOrder()
+        public void SortCardsOrder()
         {
             if (cardsToBuy.Count <= 0) return;
             for (int i = 0; i < cardsToBuy.Count; i++)
@@ -106,7 +106,7 @@ namespace Manager
             }
         }
 
-        public void SpawnCardsToBuy()
+        private void SpawnCardsToBuy()
         {
             price = GameManager.Instance.lastPickPrice;
             GameManager.Instance.uiManager.UpdateBuyPrice(price);
@@ -127,7 +127,7 @@ namespace Manager
             for (int i = 0; i < 5; i++)
             {
                 cardsToBuy[i].transform.position = cardSpawnPos[i].position;
-                sortCardsOrder();
+                SortCardsOrder();
                 if (dealAudio && dealSounds.Count > 0)
                     GameManager.Instance.audioManager.PlaySound(dealSounds[Random.Range(0, dealSounds.Count)]);
                 yield return new WaitForSeconds(0.09f);
@@ -200,7 +200,8 @@ namespace Manager
             }
         }
 
-        public void ZoomInCard(Draggable card)
+        // TODO: onScratchCardSelected exception
+        private void ZoomInCard(Draggable card)
         {
             //set initial pos
             card.transform.rotation = Quaternion.Euler(Vector3.zero);

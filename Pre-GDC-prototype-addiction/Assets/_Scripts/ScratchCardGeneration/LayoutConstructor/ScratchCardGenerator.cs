@@ -48,7 +48,7 @@ namespace ScratchCardGeneration.LayoutConstructor
 
             // record total gold spent before winning
             GameManager.Instance.totalCostBeforeWinning += price;
-            Debug.Log($"totalCostBeforeWinning: {GameManager.Instance.totalCostBeforeWinning}");
+            // Debug.Log($"totalCostBeforeWinning: {GameManager.Instance.totalCostBeforeWinning}");
 
             currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, price, generatePos);
         }

@@ -76,12 +76,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 01d7f3d909f35ad409d9a458045d0758, type: 3}
   - {fileID: 21300000, guid: 6239590a9a7e5924fa11f7074ca7707b, type: 3}
   targetAreaStartPosition: {x: 0, y: 0}
-  targetAreaGridSize: {x: 2, y: 1}
+  targetAreaGridSize: {x: 1, y: 2}
   prizeAreaStartPosition: {x: -1.5, y: -3}
-  prizeAreaGridSize: {x: 5, y: 3}
+  prizeAreaGridSize: {x: 3, y: 5}
   cellSize: 1
   targetGapLength: 0
   prizeGapLength: 0
   scratchIndicator: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
+  prizeWinningGridList: []
   scratchBackgroundPrefab: {fileID: 828839226113459185, guid: 4a5f640ad8acf42bd875c9d06d2d55e1, type: 3}
   scratchFieldPrefab: {fileID: 137284, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}

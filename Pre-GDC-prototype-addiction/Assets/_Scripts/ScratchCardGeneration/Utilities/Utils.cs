@@ -19,7 +19,7 @@ namespace ScratchCardGeneration.Utilities
                 accumulatedProbability += d.Value;
                 if (rand <= accumulatedProbability)
                 {
-                    Debug.Log($"accumulatedProbability: {accumulatedProbability}");
+                    // Debug.Log($"accumulatedProbability: {accumulatedProbability}");
 
                     return d.Key;
                 }
