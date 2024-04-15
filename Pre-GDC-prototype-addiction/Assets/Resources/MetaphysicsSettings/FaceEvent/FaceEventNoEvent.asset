@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43194378afe141fa9c2aa3e9e71b8a68, type: 3}
-  m_Name: NewScriptableMetaphysicsData
+  m_Name: FaceEventNoEvent
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -40,19 +40,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: playerGold
+      Data: faceEventTypeResult
     - Name: $v
       Entry: 7
       Data: 2|MetaphysicsSystem.ScriptableMetaphysics+Requirement, Assembly-CSharp
     - Name: comparator
       Entry: 3
-      Data: 3
+      Data: 0
     - Name: value
       Entry: 4
-      Data: 120
+      Data: 0
     - Name: isMatched
       Entry: 5
-      Data: true
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -66,6 +66,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   metaphysicsId: 0
-  response: {fileID: 11400000, guid: d04003ef002e34d689c25cafd49c932d, type: 2}
-  isRepeatable: 0
-  hasTriggered: 1
+  response: {fileID: 11400000, guid: d655bc9c447413745b5c179fa4fb623f, type: 2}
+  isRepeatable: 1
+  hasTriggered: 0

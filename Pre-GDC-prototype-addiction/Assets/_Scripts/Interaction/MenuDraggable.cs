@@ -17,20 +17,13 @@ namespace Interaction
         public Sprite lockedSprite;
         public int price = 1;
         public ScratchCardBrand cardBrand = ScratchCardBrand.Fruities;
-        public enum Tier
-        {
-            Level1,
-            Level2,
-            Level3,
-            Level4,
-            Level5
-        }
-        public Tier tier = Tier.Level1;
+      
+        public ScratchCardTier tier = ScratchCardTier.Level1;
         
         [Header("Drag")]
         public float dragSpeed = 25;
         public bool isDragging = false;
-        [FormerlySerializedAs("isInBuyArea")] public bool isInPickArea = false;
+        public bool isInPickArea = false;
     
         [Header("Feedback")] 
         public float hoverScale = 0.95f;

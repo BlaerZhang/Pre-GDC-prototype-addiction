@@ -5,7 +5,6 @@ namespace Manager
     public class ResourceManager : MonoBehaviour
     {
         private int playerGold = 0;
-        private int clickerLevel = 1;
 
         public int PlayerGold
         {
@@ -20,12 +19,8 @@ namespace Manager
 
         public int initialGold = 0;
 
-        public int ClickerLevel
-        {
-            get => clickerLevel;
-            set => clickerLevel = value;
-        }
-    
+        public int ClickerLevel { get; set; } = 1;
+
         void Start()
         {
             PlayerGold = initialGold;

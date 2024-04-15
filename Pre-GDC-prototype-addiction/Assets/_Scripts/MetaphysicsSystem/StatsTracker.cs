@@ -33,7 +33,7 @@ public class StatsTracker : MonoBehaviour
          trackingStatsDict?.TryAdd(variableName, value);
 
          // change the stat value to a new one
-         trackingStatsDict[variableName] = value;
+         if (trackingStatsDict != null) trackingStatsDict[variableName] = value;
 
          onAfterValueChanged?.Invoke(variableName, value);
     }

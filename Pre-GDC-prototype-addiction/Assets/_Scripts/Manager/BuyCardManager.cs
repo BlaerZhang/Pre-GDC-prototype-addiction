@@ -5,20 +5,19 @@ using DG.Tweening;
 using Interaction;
 using ScratchCardGeneration;
 using ScratchCardGeneration.LayoutConstructor;
+using ScratchCardGeneration.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Sirenix.OdinInspector;
 
 namespace Manager
 {
-    public class BuyCardManager : MonoBehaviour
+    public class BuyCardManager : SerializedMonoBehaviour
     {
-        // public static BuyCardManager instance;
-    
         [Header("Spawn Cards")]
-        public List<Draggable> cardsToBuy = new List<Draggable>();
+        [HideInInspector] public List<Draggable> cardsToBuy = new List<Draggable>();
         public List<Transform> cardSpawnPos;
         public Transform cardPurchasePos;
-        public Draggable cardPrefab;
 
         [Header("Deal Cards Feedbacks")] 
         public bool dealAudio = true;
@@ -26,6 +25,7 @@ namespace Manager
 
         [Header("Buy Cards")] 
         public int price;
+        public ScratchCardTier tier;
         
         [Header("Buy Feedbacks")] 
         public bool buyAudio = true;
@@ -74,7 +74,6 @@ namespace Manager
 
         private void Awake()
         {
-            // instance = this;
             generator = GameManager.Instance.scratchCardGenerator;
         }
 
@@ -108,12 +107,15 @@ namespace Manager
 
         public void SpawnCardsToBuy()
         {
+            //set price
             price = GameManager.Instance.lastPickPrice;
-            GameManager.Instance.uiManager.UpdateBuyPrice(price);
-        
-            for (int i = 0; i < 5; i++)
+            tier = GameManager.Instance.lastPickTier;
+            GameManager.Instance.uiManager.UpdateBuyPrice(price); //update UI
+            
+            //spawn card
+            foreach (var card in GameManager.Instance.cardPoolManager.CreateCardPool(tier))
             {
-                Draggable cardInstance = Instantiate(cardPrefab, new Vector3(100,100), Quaternion.identity);
+                Draggable cardInstance = Instantiate(card, new Vector3(100, 100), Quaternion.identity);
                 cardsToBuy.Add(cardInstance);
             }
 
@@ -134,7 +136,7 @@ namespace Manager
             }
         }
 
-        public void BuyCard(Draggable card)
+        public void TryBuyCard(Draggable card)
         {
             if (price <= GameManager.Instance.resourceManager.PlayerGold)
             {
@@ -159,6 +161,9 @@ namespace Manager
                 {
                     //TODO: Particle Effect
                 }
+                
+                FaceEventType faceEventTypeResult = Utils.CalculateMultiProbability(GameManager.Instance.cardPoolManager.eventTriggerWeightPerFaceTypeDict[card.faceType]); //draw face event
+                StatsTracker.onValueChanged?.Invoke(nameof(faceEventTypeResult), (int)faceEventTypeResult); //send to metaphysics center
             
                 //start collect + zoom
                 StartCoroutine(BuyCardCoroutineChain(true, card));
@@ -257,7 +262,7 @@ namespace Manager
             card.transform.DOScale(0.9f, 0.2f);
             DOVirtual.DelayedCall(2, () =>
             {
-                print("delayed!");
+                // print("delayed!");
                 GameManager.Instance.resourceManager.PlayerGold += (int)generator.currentCardPrize;
                 card.transform.DOMoveY(card.transform.position.y + 10, 0.1f).OnComplete((() =>
                 {

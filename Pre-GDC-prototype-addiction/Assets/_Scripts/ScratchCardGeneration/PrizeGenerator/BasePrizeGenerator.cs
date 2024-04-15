@@ -18,11 +18,11 @@ namespace ScratchCardGeneration.PrizeGenerator
         {
             _actualPrizeDistributions = Utils.DeepCopyDictionary(basePrizeDistributions);
 
-            if (GameManager.Instance.totalCostBeforeWinning >= costThreshold)
-            {
-                int randIndex = Random.Range(1, basePrizeDistributions.Count);
-                _actualPrizeDistributions = Utils.AdjustProbabilityRatio(basePrizeDistributions, basePrizeDistributions.Keys.ElementAt(randIndex), winningProbabilityOverThreshold);
-            }
+            // if (GameManager.Instance.totalCostBeforeWinning >= costThreshold)
+            // {
+            //     int randIndex = Random.Range(1, basePrizeDistributions.Count);
+            //     _actualPrizeDistributions = Utils.AdjustProbabilityRatio(basePrizeDistributions, basePrizeDistributions.Keys.ElementAt(randIndex), winningProbabilityOverThreshold);
+            // }
 
             // order the probability by ascending
             var sortedDistribution = _actualPrizeDistributions.OrderBy(pair => pair.Value);
@@ -36,12 +36,12 @@ namespace ScratchCardGeneration.PrizeGenerator
                 {
                     Debug.Log($"accumulatedProbability: {accumulatedProbability}");
                     // return to the normal distribution after winning
-                    if (d.Key != 0)
-                    {
-                        Debug.Log($"winning prize: {d.Key}");
-                        _actualPrizeDistributions = Utils.DeepCopyDictionary(basePrizeDistributions);
-                        GameManager.Instance.totalCostBeforeWinning = 0;
-                    }
+                    // if (d.Key != 0)
+                    // {
+                    //     Debug.Log($"winning prize: {d.Key}");
+                    //     _actualPrizeDistributions = Utils.DeepCopyDictionary(basePrizeDistributions);
+                    //     GameManager.Instance.totalCostBeforeWinning = 0;
+                    // }
                     return d.Key;
                 }
             }
