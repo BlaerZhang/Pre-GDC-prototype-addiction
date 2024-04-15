@@ -53,59 +53,26 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: FXTypeProbabilityDict
+    - Name: PrizeTypeThresholdDict
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
-        Assembly-CSharp],[System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
-        Assembly-CSharp],[System.Single, mscorlib]], mscorlib]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.Single, mscorlib],[System.Single,
+        mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Single,
+        mscorlib]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 5
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
-        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
+      Entry: 4
+      Data: 100
     - Name: $v
       Entry: 4
       Data: 200
@@ -116,11 +83,11 @@ MonoBehaviour:
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 1
+      Entry: 4
+      Data: 200
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 400
     - Name: 
       Entry: 8
       Data: 
@@ -128,11 +95,35 @@ MonoBehaviour:
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 2
+      Entry: 4
+      Data: 500
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 1000
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 4
+      Data: 2500
+    - Name: $v
+      Entry: 4
+      Data: 5000
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 4
+      Data: 10000
+    - Name: $v
+      Entry: 4
+      Data: 20000
     - Name: 
       Entry: 8
       Data: 
@@ -142,22 +133,50 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: FXTypeProbabilityDict
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
+        Assembly-CSharp],[System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
     - Name: 
       Entry: 8
       Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
-      Data: 1
+      Data: 0
     - Name: $v
       Entry: 7
       Data: 4|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
-      Entry: 9
-      Data: 3
+      Entry: 7
+      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 12
       Data: 3
@@ -169,7 +188,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 0.6
     - Name: 
       Entry: 8
       Data: 
@@ -181,7 +200,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 0.2
     - Name: 
       Entry: 8
       Data: 
@@ -193,7 +212,68 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 6|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 5
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
       Data: 0
+    - Name: $v
+      Entry: 4
+      Data: 0.25
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 4
+      Data: 0.25
     - Name: 
       Entry: 8
       Data: 
@@ -214,11 +294,11 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 7
-      Data: 5|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+      Data: 7|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 3
+      Data: 5
     - Name: 
       Entry: 12
       Data: 3
@@ -242,7 +322,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -254,7 +334,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -274,4 +354,3 @@ MonoBehaviour:
       Entry: 8
       Data: 
   lightEffectPrefab: {fileID: 1498663611874079804, guid: 875ede5f57f76432d8570e7e71a1488a, type: 3}
-  prizeQualityThreshold: 200

@@ -69,7 +69,7 @@ namespace Interaction
             if (progress >= fullyScratchedThreshold)
             {
                 FruitiesLayoutConstructor fruitiesLayoutConstructor =
-                    (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.cardLayoutConstructorDic[
+                    (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.CardLayoutConstructorDic[
                         ScratchCardBrand.Fruities];
                 fruitiesLayoutConstructor.scratchingStatusMatrix.SetElement(currentGrid.x, currentGrid.y, true);
                 onFullyScratched?.Invoke(currentGrid);

@@ -29,7 +29,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         private float prizeTypeThreshold;
 
         [DictionaryDrawerSettings(KeyLabel = "Card Price", ValueLabel = "Price Type Threshold")]
-        public readonly Dictionary<float, float> prizeTypeThresholdDict = new()
+        public readonly Dictionary<float, float> PrizeTypeThresholdDict = new()
         {
             { 100, 200 },
             { 200, 200 },
@@ -97,7 +97,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
         private void SwitchPrizeTypeThreshold(float price)
         {
-            prizeTypeThreshold = prizeTypeThresholdDict[price];
+            prizeTypeThreshold = PrizeTypeThresholdDict[price];
         }
 
         private void SpawnLightEffectByType(FXType fxType)

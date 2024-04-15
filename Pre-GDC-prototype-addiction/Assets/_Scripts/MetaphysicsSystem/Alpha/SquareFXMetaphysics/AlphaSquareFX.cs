@@ -69,7 +69,7 @@ public class AlphaSquareFX : SerializedMonoBehaviour
 
     void Start()
     {
-        fruitiesLayoutConstructor = (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.cardLayoutConstructorDic[ScratchCardBrand.Fruities];
+        fruitiesLayoutConstructor = (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.CardLayoutConstructorDic[ScratchCardBrand.Fruities];
         prizeWinningGridList = fruitiesLayoutConstructor.prizeWinningGridList;
         gridPositionMatrix = fruitiesLayoutConstructor.prizeCellPositionMatrix;
     }

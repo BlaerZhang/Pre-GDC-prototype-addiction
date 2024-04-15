@@ -19,7 +19,7 @@ namespace ScratchCardGeneration.LayoutConstructor
         public ScratchCardPitySystemData prizePityData;
 
         [Header("Layout Setting")]
-        public Dictionary<ScratchCardBrand, ICardLayoutConstructor> cardLayoutConstructorDic;
+        public Dictionary<ScratchCardBrand, ICardLayoutConstructor> CardLayoutConstructorDic = new();
 
         [HideInInspector] public GameObject currentScratchCard;
 
@@ -55,7 +55,7 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         private ICardLayoutConstructor SwitchConstructor(ScratchCardBrand currentCardBrand)
         {
-            return cardLayoutConstructorDic[currentCardBrand];
+            return CardLayoutConstructorDic[currentCardBrand];
         }
     }
 }
