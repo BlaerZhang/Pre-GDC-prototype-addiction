@@ -42,30 +42,30 @@ public class AlphaSquareFX : SerializedMonoBehaviour
     [Header("Positive Effect")]
     [Header("Scratch no FX and FX not on winning grid")]
     [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
-    public Dictionary<FXActionName, float> PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    public Dictionary<FXActionName, float> PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList;
     [Header("Scratch no FX but FX on winning grid")]
     [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
-    public Dictionary<FXActionName, float> PositiveScratchNoFXButFXOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    public Dictionary<FXActionName, float> PositiveScratchNoFXButFXOnWinningGridProbabilityList;
     [Header("Scratch FX but FX not on winning grid")]
     [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
-    public Dictionary<FXActionName, float> PositiveScratchFXButFXNotOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    public Dictionary<FXActionName, float> PositiveScratchFXButFXNotOnWinningGridProbabilityList;
     [Header("Scratch FX and FX on winning grid")]
     [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
-    public Dictionary<FXActionName, float> PositiveScratchFXAndFXOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    public Dictionary<FXActionName, float> PositiveScratchFXAndFXOnWinningGridProbabilityList;
 
     [Header("Negative Effect")]
     [Header("Scratch no FX and FX not on winning grid")]
     [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
-    public Dictionary<FXActionName, float> NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    public Dictionary<FXActionName, float> NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList;
     [Header("Scratch no FX but FX on winning grid")]
     [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
-    public Dictionary<FXActionName, float> NegativeScratchNoFXButFXOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    public Dictionary<FXActionName, float> NegativeScratchNoFXButFXOnWinningGridProbabilityList;
     [Header("Scratch FX but FX not on winning grid")]
     [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
-    public Dictionary<FXActionName, float> NegativeScratchFXButFXNotOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    public Dictionary<FXActionName, float> NegativeScratchFXButFXNotOnWinningGridProbabilityList;
     [Header("Scratch FX and FX on winning grid")]
     [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
-    public Dictionary<FXActionName, float> NegativeScratchFXAndFXOnWinningGridProbabilityList = new Dictionary<FXActionName, float>();
+    public Dictionary<FXActionName, float> NegativeScratchFXAndFXOnWinningGridProbabilityList;
 
     void Start()
     {
@@ -82,6 +82,31 @@ public class AlphaSquareFX : SerializedMonoBehaviour
     private void OnDisable()
     {
         PrizeRevealing.onFullyScratched -= TriggerFXAction;
+    }
+
+    [ContextMenu(nameof(CreateAllData))]
+    private void CreateAllData()
+    {
+        CreateData(ref PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList);
+        CreateData(ref PositiveScratchNoFXButFXOnWinningGridProbabilityList);
+        CreateData(ref PositiveScratchFXButFXNotOnWinningGridProbabilityList);
+        CreateData(ref PositiveScratchFXAndFXOnWinningGridProbabilityList);
+
+        CreateData(ref NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList);
+        CreateData(ref NegativeScratchNoFXButFXOnWinningGridProbabilityList);
+        CreateData(ref NegativeScratchFXButFXNotOnWinningGridProbabilityList);
+        CreateData(ref NegativeScratchFXAndFXOnWinningGridProbabilityList);
+    }
+
+    private void CreateData(ref Dictionary<FXActionName, float> dictionary)
+    {
+        dictionary = new()
+        {
+            { FXActionName.Split, 0 },
+            { FXActionName.Disappear, 0 },
+            { FXActionName.Move, 0 },
+            { FXActionName.Stay, 0 },
+        };
     }
 
     private void Spawn(Vector2 initPosition, bool initIsPositive)
@@ -154,8 +179,9 @@ public class AlphaSquareFX : SerializedMonoBehaviour
         }
     }
 
+    // TODO: test if the action could only be called once
     /// <summary>
-    /// TODO: move randomly to a not fully scratched grid
+    /// move randomly to a not fully scratched grid
     /// </summary>
     /// <param name="newGrid"></param>
     private void MoveRandomly()

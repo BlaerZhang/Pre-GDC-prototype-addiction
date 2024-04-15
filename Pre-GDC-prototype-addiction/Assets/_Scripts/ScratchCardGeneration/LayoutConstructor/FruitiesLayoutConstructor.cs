@@ -33,7 +33,7 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         public GameObject scratchIndicator;
 
-        public static Action<float> onScratchCardConstructed;
+        public static Action<float, float> onScratchCardConstructed;
 
         // private
         private GameObject currentScratchCard;
@@ -47,7 +47,7 @@ namespace ScratchCardGeneration.LayoutConstructor
         [HideInInspector] public VariableMatrix<bool> scratchingStatusMatrix;
         [HideInInspector] public List<Vector2Int> prizeWinningGridList;
 
-        public GameObject ConstructCardLayout(float totalPrize, Vector3 generatePosition)
+        public GameObject ConstructCardLayout(float totalPrize, float price, Vector3 generatePosition)
         {
             if (currentScratchCard != null)
             {
@@ -64,6 +64,8 @@ namespace ScratchCardGeneration.LayoutConstructor
             scratchingStatusMatrix = new VariableMatrix<bool>(prizeAreaGridSize.x, prizeAreaGridSize.y, false);
 
             DistributeIcons(totalPrize);
+
+            onScratchCardConstructed?.Invoke(totalPrize, price);
 
             GenerateCardFace();
 
@@ -223,8 +225,6 @@ namespace ScratchCardGeneration.LayoutConstructor
            PlaceIcons(prizeIndexMatrix, prizeAreaStartPosition, prizeGapLength, targetIndexList, splitPrizes);
 
            prizeCellPositionMatrix.PrintMatrix();
-
-           onScratchCardConstructed?.Invoke(totalPrize);
        }
 
         void OnDrawGizmosSelected()

@@ -24,10 +24,40 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         }
 
         public GameObject lightEffectPrefab;
-        public float prizeQualityThreshold;
 
-        // 2: big prize, 1: small prize, 0: no prize
-        public readonly Dictionary<PrizeType, Dictionary<FXType, float>> FXTypeProbabilityDict = new Dictionary<PrizeType, Dictionary<FXType, float>>();
+        // TODO: determined by the card type?
+        private float prizeTypeThreshold;
+
+        [DictionaryDrawerSettings(KeyLabel = "Card Price", ValueLabel = "Price Type Threshold")]
+        public readonly Dictionary<float, float> prizeTypeThresholdDict = new()
+        {
+            { 100, 200 },
+            { 200, 200 },
+            { 500, 200 },
+        };
+
+        [DictionaryDrawerSettings(KeyLabel = "Prize Type", ValueLabel = "FX Type Distribution")]
+        public readonly Dictionary<PrizeType, Dictionary<FXType, float>> FXTypeProbabilityDict = new()
+        {
+            { PrizeType.Big, new()
+            {
+                { FXType.Positive, 0 },
+                { FXType.Negative, 0 },
+                { FXType.None, 0 },
+            } },
+            { PrizeType.Small, new()
+            {
+                { FXType.Positive, 0 },
+                { FXType.Negative, 0 },
+                { FXType.None, 0 },
+            }},
+            { PrizeType.None, new()
+            {
+                { FXType.Positive, 0 },
+                { FXType.Negative, 0 },
+                { FXType.None, 0 },
+            }}
+        };
 
         private List<AlphaSquareFX> currentAlphaSquareFxList;
 
@@ -44,15 +74,17 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         }
 
         // called when generating the card
-        private void CheckPrizeType(float totalPrize)
+        private void CheckPrizeType(float totalPrize, float price)
         {
+            SwitchPrizeTypeThreshold(price);
+
             FXType fxType;
-            if (totalPrize >= prizeQualityThreshold)
+            if (totalPrize >= prizeTypeThreshold)
             {
                 // randomly get a FX type
                 fxType = Utils.CalculateMultiProbability(FXTypeProbabilityDict[PrizeType.Big]);
             }
-            else if (totalPrize < prizeQualityThreshold || totalPrize > 0)
+            else if (totalPrize < prizeTypeThreshold || totalPrize > 0)
             {
                 fxType = Utils.CalculateMultiProbability(FXTypeProbabilityDict[PrizeType.Small]);
             }
@@ -61,6 +93,11 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
                 fxType = Utils.CalculateMultiProbability(FXTypeProbabilityDict[PrizeType.None]);
             }
             SpawnLightEffectByType(fxType);
+        }
+
+        private void SwitchPrizeTypeThreshold(float price)
+        {
+            prizeTypeThreshold = prizeTypeThresholdDict[price];
         }
 
         private void SpawnLightEffectByType(FXType fxType)

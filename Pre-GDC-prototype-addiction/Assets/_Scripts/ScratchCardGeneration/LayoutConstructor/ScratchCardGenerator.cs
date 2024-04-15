@@ -50,7 +50,7 @@ namespace ScratchCardGeneration.LayoutConstructor
             GameManager.Instance.totalCostBeforeWinning += price;
             Debug.Log($"totalCostBeforeWinning: {GameManager.Instance.totalCostBeforeWinning}");
 
-            currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, generatePos);
+            currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, price, generatePos);
         }
 
         private ICardLayoutConstructor SwitchConstructor(ScratchCardBrand currentCardBrand)
