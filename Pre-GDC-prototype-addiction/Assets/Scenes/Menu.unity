@@ -1068,7 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b03eed837141394c89d0710d4005b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialGold: 90000000
+  initialGold: 300
 --- !u!1 &347867736
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,7 +4636,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 0.9
+      Data: 0.8
     - Name: 
       Entry: 8
       Data: 
@@ -4648,7 +4648,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 0.1
+      Data: 0.2
     - Name: 
       Entry: 8
       Data: 
@@ -4709,7 +4709,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 0.8
+      Data: 0.7
     - Name: 
       Entry: 8
       Data: 
@@ -4733,7 +4733,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 4
-      Data: 0.08
+      Data: 0.16
     - Name: 
       Entry: 8
       Data: 
@@ -4745,7 +4745,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 4
-      Data: 0.08
+      Data: 0.2
     - Name: 
       Entry: 8
       Data: 
@@ -4782,7 +4782,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 0.7
+      Data: 0.61
     - Name: 
       Entry: 8
       Data: 
@@ -4794,7 +4794,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 0.1
+      Data: 0.13
     - Name: 
       Entry: 8
       Data: 
@@ -4806,7 +4806,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 4
-      Data: 0.1
+      Data: 0.13
     - Name: 
       Entry: 8
       Data: 
@@ -4818,7 +4818,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 4
-      Data: 0.1
+      Data: 0.13
     - Name: 
       Entry: 8
       Data: 
@@ -4855,7 +4855,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 0.6
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -4867,7 +4867,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 0.1
     - Name: 
       Entry: 8
       Data: 

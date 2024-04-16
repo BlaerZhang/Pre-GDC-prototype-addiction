@@ -257,6 +257,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
             foreach (var fx in copyFxList)
             {
+                if (!fx) continue; 
                 SwitchActionProbabilityList(fx, currentFullyScratchedGrid);
                 fxCounter++;
             }
