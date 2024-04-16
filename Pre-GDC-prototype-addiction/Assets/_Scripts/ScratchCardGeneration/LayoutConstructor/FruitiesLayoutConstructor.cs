@@ -37,9 +37,8 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         // private
         private GameObject currentScratchCard;
-
-        [HideInInspector] public VariableMatrix<int> TargetIndexMatrix;
-        [HideInInspector] public VariableMatrix<int> PrizeIndexMatrix;
+        private VariableMatrix<int> targetIndexMatrix;
+        private VariableMatrix<int> prizeIndexMatrix;
 
         // for alpha light effect
         [HideInInspector] public VariableMatrix<Vector2> PrizeCellPositionMatrix;
@@ -185,8 +184,8 @@ namespace ScratchCardGeneration.LayoutConstructor
            int targetX = targetAreaGridSize.x;
            int targetY = targetAreaGridSize.y;
 
-           TargetIndexMatrix = Utils.ListToVariableMatrix(targetIndexList, targetX, targetY);
-           TargetIndexMatrix.PrintMatrix();
+           targetIndexMatrix = Utils.ListToVariableMatrix(targetIndexList, targetX, targetY);
+           targetIndexMatrix.PrintMatrix();
 
            int prizeAmount = prizeAreaGridSize.x * prizeAreaGridSize.y;
 
@@ -215,14 +214,14 @@ namespace ScratchCardGeneration.LayoutConstructor
            int prizeX = prizeAreaGridSize.x;
            int prizeY = prizeAreaGridSize.y;
 
-           PrizeIndexMatrix = Utils.ListToVariableMatrix(prizeIndexList, prizeX, prizeY);
-           PrizeIndexMatrix.PrintMatrix();
+           prizeIndexMatrix = Utils.ListToVariableMatrix(prizeIndexList, prizeX, prizeY);
+           prizeIndexMatrix.PrintMatrix();
 
            PrizeCellPositionMatrix = new VariableMatrix<Vector2>();
            
            // place icons
-           PlaceIcons(TargetIndexMatrix);
-           PlaceIcons(PrizeIndexMatrix, targetIndexList, splitPrizes);
+           PlaceIcons(targetIndexMatrix);
+           PlaceIcons(prizeIndexMatrix, targetIndexList, splitPrizes);
 
            PrizeCellPositionMatrix.PrintMatrix();
        }

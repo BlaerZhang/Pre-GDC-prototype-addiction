@@ -38,7 +38,8 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
             Move
         }
 
-        public GameObject lightEffectPrefab;
+        public GameObject positiveLightEffectPrefab;
+        public GameObject negativeLightEffectPrefab;
 
         private float prizeTypeThreshold;
 
@@ -122,14 +123,12 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         {
             PrizeRevealing.onFullyScratched += TriggerFXAction;
             FruitiesLayoutConstructor.onScratchCardConstructed += CheckPrizeType;
-            // AlphaSquareFX.onFXMoveEnd += DestroyOverlappedFX;
         }
 
         private void OnDisable()
         {
             PrizeRevealing.onFullyScratched -= TriggerFXAction;
             FruitiesLayoutConstructor.onScratchCardConstructed -= CheckPrizeType;
-            // AlphaSquareFX.onFXMoveEnd -= DestroyOverlappedFX;
         }
 
         #region Data Creation
@@ -211,7 +210,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         {
             if (fxType.Equals(FXType.None)) return;
 
-            GameObject fxObject = Instantiate(lightEffectPrefab);
+            GameObject fxObject = fxType.Equals(FXType.Positive) ? Instantiate(positiveLightEffectPrefab) : Instantiate(negativeLightEffectPrefab);
             AlphaSquareFX alphaSquareFX = fxObject?.GetComponent<AlphaSquareFX>();
 
             if (!alphaSquareFX)

@@ -875,5 +875,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  lightEffectPrefab: {fileID: 1498663611874079804, guid: 875ede5f57f76432d8570e7e71a1488a, type: 3}
+  positiveLightEffectPrefab: {fileID: 523018379551594819, guid: 76762074a52e341bcbe889638dfae060, type: 3}
+  negativeLightEffectPrefab: {fileID: 1761492123442763582, guid: 6c07982eab1644927b0729ba74249d2d, type: 3}
   moveDuration: 0.1
