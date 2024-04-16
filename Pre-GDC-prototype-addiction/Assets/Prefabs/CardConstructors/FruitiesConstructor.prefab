@@ -75,12 +75,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a4566479f436e1a4f8cff52f8ecefd27, type: 3}
   - {fileID: 21300000, guid: 01d7f3d909f35ad409d9a458045d0758, type: 3}
   - {fileID: 21300000, guid: 6239590a9a7e5924fa11f7074ca7707b, type: 3}
-  targetAreaStartPosition: {x: 0, y: 0}
+  targetAreaStartPosition: {x: -1, y: 0.9}
   targetAreaGridSize: {x: 1, y: 2}
-  prizeAreaStartPosition: {x: -1.5, y: -3}
+  prizeAreaStartPosition: {x: -2, y: -2.5}
   prizeAreaGridSize: {x: 3, y: 5}
   cellSize: 1
-  targetGapLength: 0
+  targetGapLength: 1
   prizeGapLength: 0
   scratchIndicator: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
   prizeWinningGridList: []
