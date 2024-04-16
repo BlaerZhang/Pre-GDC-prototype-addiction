@@ -244,6 +244,8 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         {
             if (isMoving) return;
 
+            if (currentAlphaSquareFxList.Count == 0) return;
+
             var copyFxList = Utils.DeepCopyList(currentAlphaSquareFxList);
             fxCounter = 0;
 
@@ -319,7 +321,6 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
         private void ApplyProbabilityList(Dictionary<FXActionName, float> dict, AlphaSquareFX currentFX)
         {
-            if (!currentFX) return;
             FXActionName actionName = Utils.CalculateMultiProbability(dict);
             print($"actionName: {actionName}");
 
