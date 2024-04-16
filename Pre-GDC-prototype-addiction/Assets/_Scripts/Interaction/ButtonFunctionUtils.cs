@@ -9,6 +9,11 @@ namespace Interaction
         {
             GameManager.Instance.switchSceneManager.ChangeScene(toScene);
         }
+
+        public void ClearFaceEvent()
+        {
+            GameManager.Instance.faceEventManager.ClearDuration();
+        }
     
     }
 }

@@ -83,6 +83,15 @@ public class FaceEventManager : SerializedMonoBehaviour
         }
     }
 
+    public void ClearDuration()
+    {
+        foreach (var key in faceEventDurationDict.Keys.ToList())
+        {
+            faceEventDurationDict[key] = 0;
+            onFaceEventEnd?.Invoke(key);
+        }
+    }
+
     public void UpdateFaceEventInfo(FaceEventType eventType, int eventDuration, ScratchCardTier triggerTier)
     {
         //update trigger tier
