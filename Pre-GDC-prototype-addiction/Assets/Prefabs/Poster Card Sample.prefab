@@ -236,6 +236,8 @@ MonoBehaviour:
   dragSpeed: 25
   isDragging: 0
   isInPickArea: 0
+  discount: 0
+  eventTriggerTier: 0
   hoverScale: 0.95
 --- !u!61 &8180575029619347132
 BoxCollider2D:
@@ -319,13 +321,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5688746831539231329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.12074329, w: 0.99268377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.21, z: 0}
-  m_LocalScale: {x: 1, y: 0.05, z: 1}
+  m_LocalScale: {x: 1, y: 0.075, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8292161802001816541}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 13.87}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8615607063665983803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -368,11 +370,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.2509804, g: 0.5568628, b: 0.2627451, a: 1}
+  m_Color: {r: 0.9803922, g: 0.83921576, b: 0.20784315, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 1
+  m_Size: {x: 1.5, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

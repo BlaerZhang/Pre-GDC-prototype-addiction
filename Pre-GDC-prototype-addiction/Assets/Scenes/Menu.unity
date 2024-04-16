@@ -626,6 +626,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   resourceManager: {fileID: 0}
   cardPoolManager: {fileID: 0}
+  faceEventManager: {fileID: 0}
   incrementalLock: 1
   lastPickPrice: 1
   lastPickTier: 0
@@ -1606,9 +1607,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: onSceneChange
-      Entry: 6
-      Data: 
     - Name: sceneName_vCamDict
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Cinemachine.CinemachineVirtualCamera,
@@ -3678,6 +3676,95 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f9e5814aa662a40877061c0541f7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: faceEventDurationDict
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Int32,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FaceEventType, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  discountTriggerTier: 0
+  prizeTriggerTier: 0
+  discountFormula:
+    percentageOnTriggerTier: 50
+    deltaPercentage: 50
+    tanhSteepness: 0.5
+    formulaTable:
+    - {x: -5, y: 0.66928566}
+    - {x: -4, y: 1.7986208}
+    - {x: -3, y: 4.7425866}
+    - {x: -2, y: 11.920291}
+    - {x: -1, y: 26.894142}
+    - {x: 0, y: 50}
+    - {x: 1, y: 73.10586}
+    - {x: 2, y: 88.07971}
+    - {x: 3, y: 95.257416}
+    - {x: 4, y: 98.20138}
+    - {x: 5, y: 99.33071}
 --- !u!1 &1667801746
 GameObject:
   m_ObjectHideFlags: 0

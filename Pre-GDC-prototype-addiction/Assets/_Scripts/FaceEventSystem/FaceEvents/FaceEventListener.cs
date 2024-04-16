@@ -14,6 +14,8 @@ public class FaceEventListener : GameEventListenerBase
     public static Action<FaceEventType, int, ScratchCardTier> onFaceEventTriggered;
     public override void OnEventRaised()
     {
+        if (faceEventType == FaceEventType.NoEvent) return;
+        
         onFaceEventTriggered?.Invoke(faceEventType, eventDuration, GameManager.Instance.lastPickTier);
         Debug.Log($"{faceEventType} triggered");
     }

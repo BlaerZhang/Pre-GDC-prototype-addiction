@@ -33,12 +33,12 @@ namespace Manager
 
         private void OnEnable()
         {
-            GameManager.Instance.switchSceneManager.onSceneChange += InitializeButton;
+            SwitchSceneManager.onSceneChange += InitializeButton;
         }
 
         private void OnDisable()
         {
-            GameManager.Instance.switchSceneManager.onSceneChange -= InitializeButton;
+            SwitchSceneManager.onSceneChange -= InitializeButton;
         }
     
         public void PickCard(Interaction.MenuDraggable card)

@@ -79,12 +79,12 @@ namespace Manager
 
         private void OnEnable()
         {
-            GameManager.Instance.switchSceneManager.onSceneChange += OnSceneChange;
+            SwitchSceneManager.onSceneChange += OnSceneChange;
         }
 
         private void OnDisable()
         {
-            GameManager.Instance.switchSceneManager.onSceneChange -= OnSceneChange;
+            SwitchSceneManager.onSceneChange -= OnSceneChange;
         }
 
         private void OnSceneChange(string sceneLoaded)

@@ -21,6 +21,8 @@ namespace Manager
         [HideInInspector] public ResourceManager resourceManager;
 
         [HideInInspector] public CardPoolManager cardPoolManager;
+        
+        [HideInInspector] public FaceEventManager faceEventManager;
 
         [HideInInspector] public bool incrementalLock = true;
 
@@ -50,6 +52,7 @@ namespace Manager
             audioManager = GetComponentInChildren<AudioManager>();
             resourceManager = GetComponentInChildren<ResourceManager>();
             cardPoolManager = GetComponentInChildren<CardPoolManager>();
+            faceEventManager = GetComponentInChildren<FaceEventManager>();
         }
 
         void Update()
