@@ -422,7 +422,6 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         {
             print("destroy overlap FX");
             int fxCount = currentAlphaSquareFxList.Count;
-            print(fxCount);
             if (fxCount <= 1) return;
 
             for (int i = 0; i < currentAlphaSquareFxList.Count - 1; i++)
