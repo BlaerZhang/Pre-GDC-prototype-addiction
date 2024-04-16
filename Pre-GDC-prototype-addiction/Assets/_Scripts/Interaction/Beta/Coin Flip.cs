@@ -19,8 +19,8 @@ public class CoinFlip : MonoBehaviour
         if (Input.GetKeyDown(keycode) && !isFlipping)
         {
             isFlipping = true;
-            
-            int flipAngle = Random.Range(5, 7) * 180;
+
+            int flipAngle = Random.Range(5, 7) * 180 * (Random.Range(0, 2) * 2 - 1);
             isFace = ((flipAngle / 180) % 2 == 0) == isFace ? isFace : !isFace;
             
             Sequence flipSequence = DOTween.Sequence();
