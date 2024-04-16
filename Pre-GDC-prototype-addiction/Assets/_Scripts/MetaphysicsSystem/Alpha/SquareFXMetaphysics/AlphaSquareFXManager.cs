@@ -324,14 +324,15 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
         private void ApplyProbabilityList(Dictionary<FXActionName, float> dict, AlphaSquareFX currentFX)
         {
+            if (!currentFX) return;
             FXActionName actionName = Utils.CalculateMultiProbability(dict);
             print($"actionName: {actionName}");
 
             switch (actionName)
             {
                 case FXActionName.Disappear:
-                    currentAlphaSquareFxList.Remove(currentFX);
                     Destroy(currentFX.gameObject);
+                    currentAlphaSquareFxList.Remove(currentFX);
                     break;
                 case FXActionName.Split:
                     SplitSelf(currentFX);
@@ -390,7 +391,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
             // int randIndex = Random.Range(0, notFullyScratchedGridNearby.Count);
             // Vector2Int spawnGrid = notFullyScratchedGridNearby[randIndex];
-            Vector2Int spawnGrid = Utils.GetRandomElementFromList(notFullyScratchedGridNearby);;
+            Vector2Int spawnGrid = Utils.GetRandomElementFromList(notFullyScratchedGridNearby);
             Vector2 spawnPosition = gridPositionMatrix.GetElement(spawnGrid) + (Vector2)currentFX.transform.parent.position;;
 
             AlphaSquareFX newFx = currentFX.Replicate(currentFX.transform.position, spawnGrid);

@@ -18,9 +18,9 @@ namespace Interaction
     {
         [HideInInspector] public bool isWinningPrize = false;
 
-        public Vector2Int currentGrid;
+        [HideInInspector] public Vector2Int currentGrid;
 
-        public float fullyScratchedThreshold = 0.85f;
+        public float fullyScratchedThreshold = 0.7f;
         private bool isFullyScratched = false;
 
         private bool isClickable = false;
@@ -67,17 +67,18 @@ namespace Interaction
 
         private void OnScratchProgress(float progress)
         {
-            if (progress >= fullyScratchedThreshold & !isFullyScratched)
+            if (progress >= fullyScratchedThreshold)
             {
-                isFullyScratched = true;
-                FruitiesLayoutConstructor fruitiesLayoutConstructor =
-                    (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.CardLayoutConstructorDic[
-                        ScratchCardBrand.Fruities];
-                fruitiesLayoutConstructor.ScratchingStatusMatrix.SetElement(currentGrid.x, currentGrid.y, true);
-                onFullyScratched?.Invoke(currentGrid);
-            }
-            if (progress >= 0.999f)
-            {
+                if (!isFullyScratched)
+                {
+                    isFullyScratched = true;
+                    FruitiesLayoutConstructor fruitiesLayoutConstructor =
+                        (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.CardLayoutConstructorDic[
+                            ScratchCardBrand.Fruities];
+                    fruitiesLayoutConstructor.ScratchingStatusMatrix.SetElement(currentGrid.x, currentGrid.y, true);
+                    onFullyScratched?.Invoke(currentGrid);
+                }
+                
                 cardManager.Progress.OnProgress -= OnScratchProgress;
                 if (!isWinningPrize) return;
                 isClickable = true;

@@ -99,14 +99,14 @@ namespace Interaction
             if (1 + giveAreaLowerEdgeYOnViewport < cardYPosOnViewport)
             {
                 isInGiveArea = true;
-                cardSurfaceSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
-                cardBackgroundSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
+                // cardSurfaceSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
+                // cardBackgroundSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
             }
             else
             {
                 isInGiveArea = false;
-                cardSurfaceSprite.DOColor(Color.white, 0.1f);
-                cardBackgroundSprite.DOColor(Color.white, 0.1f);
+                // cardSurfaceSprite.DOColor(Color.white, 0.1f);
+                // cardBackgroundSprite.DOColor(Color.white, 0.1f);
             }
 
         }
