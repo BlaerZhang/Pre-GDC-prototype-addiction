@@ -105,18 +105,18 @@ namespace ScratchCardGeneration.LayoutConstructor
         /// <summary>
         /// place the icon onto the card
         /// </summary>
-        private void PlaceIcons(VariableMatrix<int> iconIndexMatrix, Vector2 startPosition, float gapLength)
+        private void PlaceIcons(VariableMatrix<int> iconIndexMatrix)
         {
-            int row = iconIndexMatrix.GetRow();
-            int col = iconIndexMatrix.GetColumn();
+            int row = targetAreaGridSize.x;
+            int col = targetAreaGridSize.y;
 
-            Vector2 topLeftStartPosition = new Vector2(startPosition.x, startPosition.y + (row - 1) * (cellSize + gapLength));
+            Vector2 topLeftStartPosition = new Vector2(targetAreaStartPosition.x, targetAreaStartPosition.y + (row - 1) * (cellSize + targetGapLength));
 
             for (int i = 0; i < row; i++)
             {
                 for (int j = 0; j < col; j++)
                 {
-                    Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + gapLength), -i * (cellSize + gapLength));
+                    Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + targetGapLength), -i * (cellSize + targetGapLength));
 
                     int spriteIndex = iconIndexMatrix.GetElement(i, j);
                     GameObject icon = ConstructIconObject(iconSprites[spriteIndex]);
@@ -126,21 +126,21 @@ namespace ScratchCardGeneration.LayoutConstructor
             }
         }
 
-        private void PlaceIcons(VariableMatrix<int> iconIndexMatrix, Vector2 startPosition, float gapLength, List<int> targetIndexList, List<float> priceList)
+        private void PlaceIcons(VariableMatrix<int> iconIndexMatrix, List<int> targetIndexList, List<float> priceList)
         {
-            int row = iconIndexMatrix.GetRow();
-            int col = iconIndexMatrix.GetColumn();
+            int row = prizeAreaGridSize.x;
+            int col = prizeAreaGridSize.y;
             
             int winningPrizeCounter = 0;
 
-            Vector2 topLeftStartPosition = new Vector2(startPosition.x, startPosition.y + (row - 1) * (cellSize + gapLength));
+            Vector2 topLeftStartPosition = new Vector2(prizeAreaStartPosition.x, prizeAreaStartPosition.y + (row - 1) * (cellSize + prizeGapLength));
 
             for (int i = 0; i < row; i++)
             {
                 PrizeCellPositionMatrix.AddRow();
                 for (int j = 0; j < col; j++)
                 {
-                    Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + gapLength), -i * (cellSize + gapLength));
+                    Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + prizeGapLength), -i * (cellSize + prizeGapLength));
                     PrizeCellPositionMatrix.AddElement(i, cellPosition);
 
                     int spriteIndex = iconIndexMatrix.GetElement(i, j);
@@ -221,8 +221,8 @@ namespace ScratchCardGeneration.LayoutConstructor
            PrizeCellPositionMatrix = new VariableMatrix<Vector2>();
            
            // place icons
-           PlaceIcons(TargetIndexMatrix, targetAreaStartPosition, targetGapLength);
-           PlaceIcons(PrizeIndexMatrix, prizeAreaStartPosition, prizeGapLength, targetIndexList, splitPrizes);
+           PlaceIcons(TargetIndexMatrix);
+           PlaceIcons(PrizeIndexMatrix, targetIndexList, splitPrizes);
 
            PrizeCellPositionMatrix.PrintMatrix();
        }
@@ -234,7 +234,7 @@ namespace ScratchCardGeneration.LayoutConstructor
             {
                 for (int j = 0; j < targetAreaGridSize.y; j++)
                 {
-                    Vector2 cellPosition = new Vector2(i * cellSize + targetGapLength * i, j * cellSize + targetGapLength * j) + targetAreaStartPosition;
+                    Vector2 cellPosition = new Vector2(j * (cellSize + targetGapLength), i * (cellSize + targetGapLength)) + targetAreaStartPosition;
                     Gizmos.DrawWireCube(cellPosition, cellSize * Vector2.one);
                 }
             }
@@ -244,7 +244,7 @@ namespace ScratchCardGeneration.LayoutConstructor
             {
                 for (int j = 0; j < prizeAreaGridSize.y; j++)
                 {
-                    Vector2 cellPosition = new Vector2(i * cellSize + prizeGapLength * i, j * cellSize + prizeGapLength * j) + prizeAreaStartPosition;
+                    Vector2 cellPosition = new Vector2(j * (cellSize + prizeGapLength), i * (cellSize + prizeGapLength)) + prizeAreaStartPosition;
                     Gizmos.DrawWireCube(cellPosition, cellSize * Vector2.one);
                 }
             }

@@ -3130,51 +3130,214 @@ PrefabInstance:
       objectReference: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 9
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"FXTypeProbabilityDict.{0es}.{0es}","value":{"$id":0,"$type":"System.Single,
-        mscorlib",1}'
+      value: '"path":"NegativeScratchFXAndFXOnWinningGridProbabilityList","value":{"$id":0,"$type":"System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib","comparer":{"$id":1,"$type":"System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"$rlength":4,"$rcontent":[{"$k":0,"$v":0},{"$k":1,"$v":0},{"$k":3,"$v":0},{"$k":2,"$v":0}]}'
       objectReference: {fileID: 0}
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[1]
-      value: '"path":"FXTypeProbabilityDict.{0es}.{1es}","value":{"$id":0,"$type":"System.Single,
+      value: '"path":"NegativeScratchFXAndFXOnWinningGridProbabilityList.{0es}","value":{"$id":0,"$type":"System.Single,
         mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[2]
-      value: '"path":"FXTypeProbabilityDict.{0es}.{2es}","value":{"$id":0,"$type":"System.Single,
+      value: '"path":"NegativeScratchFXAndFXOnWinningGridProbabilityList.{1es}","value":{"$id":0,"$type":"System.Single,
         mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[3]
-      value: '"path":"FXTypeProbabilityDict.{1es}.{0es}","value":{"$id":0,"$type":"System.Single,
-        mscorlib",1}'
+      value: '"path":"NegativeScratchFXAndFXOnWinningGridProbabilityList.{2es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[4]
-      value: '"path":"FXTypeProbabilityDict.{1es}.{1es}","value":{"$id":0,"$type":"System.Single,
+      value: '"path":"NegativeScratchFXAndFXOnWinningGridProbabilityList.{3es}","value":{"$id":0,"$type":"System.Single,
         mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[5]
-      value: '"path":"FXTypeProbabilityDict.{1es}.{2es}","value":{"$id":0,"$type":"System.Single,
-        mscorlib",0}'
+      value: '"path":"NegativeScratchFXButFXNotOnWinningGridProbabilityList","value":{"$id":0,"$type":"System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib","comparer":{"$id":1,"$type":"System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"$rlength":4,"$rcontent":[{"$k":0,"$v":0},{"$k":1,"$v":0},{"$k":3,"$v":0},{"$k":2,"$v":0}]}'
       objectReference: {fileID: 0}
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[6]
-      value: '"path":"FXTypeProbabilityDict.{2es}.{0es}","value":{"$id":0,"$type":"System.Single,
-        mscorlib",1}'
+      value: '"path":"NegativeScratchFXButFXNotOnWinningGridProbabilityList.{0es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[7]
-      value: '"path":"FXTypeProbabilityDict.{2es}.{1es}","value":{"$id":0,"$type":"System.Single,
+      value: '"path":"NegativeScratchFXButFXNotOnWinningGridProbabilityList.{1es}","value":{"$id":0,"$type":"System.Single,
         mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[8]
-      value: '"path":"FXTypeProbabilityDict.{2es}.{2es}","value":{"$id":0,"$type":"System.Single,
+      value: '"path":"NegativeScratchFXButFXNotOnWinningGridProbabilityList.{2es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[9]
+      value: '"path":"NegativeScratchFXButFXNotOnWinningGridProbabilityList.{3es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[10]
+      value: '"path":"NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList","value":{"$id":0,"$type":"System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib","comparer":{"$id":1,"$type":"System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"$rlength":4,"$rcontent":[{"$k":0,"$v":0},{"$k":1,"$v":0},{"$k":3,"$v":0},{"$k":2,"$v":0}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[11]
+      value: '"path":"NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList.{0es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[12]
+      value: '"path":"NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList.{1es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[13]
+      value: '"path":"NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList.{2es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[14]
+      value: '"path":"NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList.{3es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[15]
+      value: '"path":"NegativeScratchNoFXButFXOnWinningGridProbabilityList","value":{"$id":0,"$type":"System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib","comparer":{"$id":1,"$type":"System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"$rlength":4,"$rcontent":[{"$k":0,"$v":0},{"$k":1,"$v":0},{"$k":3,"$v":0},{"$k":2,"$v":0}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[16]
+      value: '"path":"NegativeScratchNoFXButFXOnWinningGridProbabilityList.{0es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[17]
+      value: '"path":"NegativeScratchNoFXButFXOnWinningGridProbabilityList.{1es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[18]
+      value: '"path":"NegativeScratchNoFXButFXOnWinningGridProbabilityList.{2es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[19]
+      value: '"path":"NegativeScratchNoFXButFXOnWinningGridProbabilityList.{3es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[20]
+      value: '"path":"PositiveScratchFXAndFXOnWinningGridProbabilityList","value":{"$id":0,"$type":"System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib","comparer":{"$id":1,"$type":"System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"$rlength":4,"$rcontent":[{"$k":0,"$v":1},{"$k":1,"$v":0},{"$k":3,"$v":0},{"$k":2,"$v":0}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[21]
+      value: '"path":"PositiveScratchFXAndFXOnWinningGridProbabilityList.{0es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[22]
+      value: '"path":"PositiveScratchFXAndFXOnWinningGridProbabilityList.{1es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[23]
+      value: '"path":"PositiveScratchFXAndFXOnWinningGridProbabilityList.{2es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[24]
+      value: '"path":"PositiveScratchFXAndFXOnWinningGridProbabilityList.{3es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[25]
+      value: '"path":"PositiveScratchFXButFXNotOnWinningGridProbabilityList","value":{"$id":0,"$type":"System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib","comparer":{"$id":1,"$type":"System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"$rlength":4,"$rcontent":[{"$k":0,"$v":1},{"$k":1,"$v":0},{"$k":3,"$v":0},{"$k":2,"$v":0}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[26]
+      value: '"path":"PositiveScratchFXButFXNotOnWinningGridProbabilityList.{0es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[27]
+      value: '"path":"PositiveScratchFXButFXNotOnWinningGridProbabilityList.{1es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[28]
+      value: '"path":"PositiveScratchFXButFXNotOnWinningGridProbabilityList.{2es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[29]
+      value: '"path":"PositiveScratchFXButFXNotOnWinningGridProbabilityList.{3es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[30]
+      value: '"path":"PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList","value":{"$id":0,"$type":"System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib","comparer":{"$id":1,"$type":"System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"$rlength":4,"$rcontent":[{"$k":0,"$v":1},{"$k":1,"$v":0},{"$k":3,"$v":0},{"$k":2,"$v":0}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[31]
+      value: '"path":"PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList.{0es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[32]
+      value: '"path":"PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList.{1es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[33]
+      value: '"path":"PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList.{2es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[34]
+      value: '"path":"PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList.{3es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[35]
+      value: '"path":"PositiveScratchNoFXButFXOnWinningGridProbabilityList","value":{"$id":0,"$type":"System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib","comparer":{"$id":1,"$type":"System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"$rlength":4,"$rcontent":[{"$k":0,"$v":1},{"$k":1,"$v":0},{"$k":3,"$v":0},{"$k":2,"$v":0}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[36]
+      value: '"path":"PositiveScratchNoFXButFXOnWinningGridProbabilityList.{0es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[37]
+      value: '"path":"PositiveScratchNoFXButFXOnWinningGridProbabilityList.{1es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[38]
+      value: '"path":"PositiveScratchNoFXButFXOnWinningGridProbabilityList.{2es}","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[39]
+      value: '"path":"PositiveScratchNoFXButFXOnWinningGridProbabilityList.{3es}","value":{"$id":0,"$type":"System.Single,
         mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}

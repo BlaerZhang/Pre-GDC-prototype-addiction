@@ -21,6 +21,7 @@ namespace Interaction
         public Vector2Int currentGrid;
 
         public float fullyScratchedThreshold = 0.85f;
+        private bool isFullyScratched = false;
 
         private bool isClickable = false;
         private bool hasClicked = false;
@@ -66,8 +67,9 @@ namespace Interaction
 
         private void OnScratchProgress(float progress)
         {
-            if (progress >= fullyScratchedThreshold)
+            if (progress >= fullyScratchedThreshold & !isFullyScratched)
             {
+                isFullyScratched = true;
                 FruitiesLayoutConstructor fruitiesLayoutConstructor =
                     (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.CardLayoutConstructorDic[
                         ScratchCardBrand.Fruities];

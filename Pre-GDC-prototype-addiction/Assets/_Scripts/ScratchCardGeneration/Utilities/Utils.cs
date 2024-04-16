@@ -8,6 +8,12 @@ namespace ScratchCardGeneration.Utilities
 {
     public static class Utils
     {
+        public static T GetRandomElementFromList<T>(List<T> list)
+        {
+            int randIndex = Random.Range(0, list.Count);
+            return list[randIndex];
+        }
+
         public static T CalculateMultiProbability<T>(Dictionary<T, float> probabilityDict)
         {
             var sortedDistribution = probabilityDict.OrderBy(pair => pair.Value);
@@ -82,6 +88,16 @@ namespace ScratchCardGeneration.Utilities
 
             int randomIndex = Random.Range(0, availableNumbers.Count);
             return availableNumbers[randomIndex];
+        }
+
+        public static List<T> DeepCopyList<T>(List<T> original)
+        {
+            List<T> copy = new ();
+            foreach (var element in original)
+            {
+                copy.Add(element);
+            }
+            return copy;
         }
 
         public static Dictionary<TKey, TValue> DeepCopyDictionary<TKey, TValue>(Dictionary<TKey, TValue> original)
