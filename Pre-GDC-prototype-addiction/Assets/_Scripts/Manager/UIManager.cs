@@ -97,17 +97,17 @@ namespace Manager
         private void CollapseFaceEventUI(FaceEventType eventType)
         {
             if (eventType == FaceEventType.NoEvent) return;
-            faceEventUIDict[eventType].DOAnchorPosX(700, 0.5f);
+            faceEventUIDict[eventType].DOAnchorPosX(400, 0.3f);
         }
 
         private void HideFaceEventUI()
         {
-            faceEventUIParent.DOAnchorPosX(400, 0.5f);
+            faceEventUIParent.DOAnchorPosX(400, 0.3f);
         }
 
         private void ShowFaceEventUI(string toScene)
         {
-            faceEventUIParent.DOAnchorPosX(0, 0.5f).SetEase(Ease.OutElastic);
+            faceEventUIParent.DOAnchorPosX(0, 0.3f);
         }
     }
 }

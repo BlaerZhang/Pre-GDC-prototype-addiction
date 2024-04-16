@@ -126,7 +126,9 @@ public class FaceEventManager : SerializedMonoBehaviour
         discountPrice = originalPrice
             * (discountFormula.deltaPercentage * (float)Math.Tanh(tierDistance * discountFormula.tanhSteepness) + discountFormula.percentageOnTriggerTier) / 100;
 
-        discountPriceRounded = Mathf.RoundToInt(discountPrice);
+        int priceDigitsCount = Mathf.RoundToInt(discountPrice).ToString().Length;
+
+        discountPriceRounded = Mathf.RoundToInt(discountPrice / MathF.Pow(10, priceDigitsCount - 2)) * (int)Mathf.Pow(10, priceDigitsCount - 2);
         
         return discountPriceRounded;
     }
