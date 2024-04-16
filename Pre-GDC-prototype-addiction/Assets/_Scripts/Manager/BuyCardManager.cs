@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Interaction;
+using ScratchCardAsset;
 using ScratchCardGeneration;
 using ScratchCardGeneration.LayoutConstructor;
 using ScratchCardGeneration.Utilities;
@@ -233,6 +234,9 @@ namespace Manager
                     if (zoomInParticle && zoomInParticles.Count > 0) ; //TODO: Zoom In Particles
                     
                     print("Action Invoked");
+                    
+                    //TODO:Temp change sprite, will be deleted in future
+                    GameObject.Find("newScratchCard/ScratchCardBackground(Clone)/ScratchCard(Clone)").GetComponent<ScratchCardManager>().ScratchSurfaceSprite = card.cardSprite.sprite;
                     
                     Destroy(card.gameObject);
                 }));
