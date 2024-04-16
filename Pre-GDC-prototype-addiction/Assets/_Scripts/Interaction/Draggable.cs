@@ -44,7 +44,7 @@ namespace Interaction
             //Reorder in List and Sort order
             buyCardManager.cardsToBuy.Remove(this);
             buyCardManager.cardsToBuy.Insert(0,this);
-            buyCardManager.sortCardsOrder();
+            buyCardManager.SortCardsOrder();
             // cardSprite.sortingOrder = 10;
         
             //Scale

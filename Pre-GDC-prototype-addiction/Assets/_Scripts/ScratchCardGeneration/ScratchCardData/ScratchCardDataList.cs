@@ -21,7 +21,7 @@ namespace ScratchCardGeneration.ScratchCardData
         public class LevelPitySetting
         {
             [DictionaryDrawerSettings(KeyLabel = "Level", ValueLabel = "Pity Setting")]
-            public Dictionary<int, PitySetting> levelPitySetting;
+            public Dictionary<int, PitySetting> levelPitySetting = new Dictionary<int, PitySetting>();
         }
 
         [Serializable]

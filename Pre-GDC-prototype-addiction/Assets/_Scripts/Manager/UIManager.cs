@@ -15,7 +15,7 @@ namespace Manager
 
         [Header("Face Event")] 
         public RectTransform faceEventUIParent;
-        public Dictionary<FaceEventType, RectTransform> faceEventUIDict = new Dictionary<FaceEventType, RectTransform>();
+        public Dictionary<FaceEventType, RectTransform> faceEventUIDict;
     
         [Header("Incremental")]
         public TextMeshProUGUI upgradePrice;

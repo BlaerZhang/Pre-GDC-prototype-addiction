@@ -97,7 +97,7 @@ namespace Manager
             }
         }
 
-        public void sortCardsOrder()
+        public void SortCardsOrder()
         {
             if (cardsToBuy.Count <= 0) return;
             for (int i = 0; i < cardsToBuy.Count; i++)
@@ -106,7 +106,7 @@ namespace Manager
             }
         }
 
-        public void SpawnCardsToBuy()
+        private void SpawnCardsToBuy()
         {
             //set price
             price = GameManager.Instance.lastPickPrice;
@@ -130,7 +130,7 @@ namespace Manager
             for (int i = 0; i < 5; i++)
             {
                 cardsToBuy[i].transform.position = cardSpawnPos[i].position;
-                sortCardsOrder();
+                SortCardsOrder();
                 if (dealAudio && dealSounds.Count > 0)
                     GameManager.Instance.audioManager.PlaySound(dealSounds[Random.Range(0, dealSounds.Count)]);
                 yield return new WaitForSeconds(0.09f);
@@ -206,7 +206,8 @@ namespace Manager
             }
         }
 
-        public void ZoomInCard(Draggable card)
+        // TODO: onScratchCardSelected exception
+        private void ZoomInCard(Draggable card)
         {
             //set initial pos
             card.transform.rotation = Quaternion.Euler(Vector3.zero);
@@ -223,7 +224,7 @@ namespace Manager
                 .Insert(0, card.transform.DOScale(Vector3.one * 1.2f, 0.5f)).SetEase(Ease.OutQuad)
                 .AppendInterval(0.5f)
                 .Append(card.transform.DOScale(Vector3.one, 0.1f)).SetEase(Ease.Linear)
-                .OnComplete((() =>
+                .OnComplete(() =>
                 {
                     //set action to generate card
                     onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickPrice, transform.position);
@@ -236,10 +237,11 @@ namespace Manager
                     print("Action Invoked");
                     
                     //TODO:Temp change sprite, will be deleted in future
-                    GameObject.Find("newScratchCard/ScratchCardBackground(Clone)/ScratchCard(Clone)").GetComponent<ScratchCardManager>().ScratchSurfaceSprite = card.cardSprite.sprite;
+
+                    GameObject.Find("currentScratchCard/ScratchCardBackground(Clone)/ScratchCard(Clone)").GetComponent<ScratchCardManager>().ScratchSurfaceSprite = card.cardSprite.sprite;
                     
                     Destroy(card.gameObject);
-                }));
+                });
             
             // .AppendInterval(0.25f)
             // .Append(card.transform.DOShakeRotation(0.25f, new Vector3(0, 0, 2.5f), 50, 300F));

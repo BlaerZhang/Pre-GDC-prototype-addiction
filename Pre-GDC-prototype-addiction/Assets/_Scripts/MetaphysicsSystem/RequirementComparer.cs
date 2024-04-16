@@ -6,7 +6,7 @@ public class RequirementComparer : MonoBehaviour
 {
     public List<ScriptableMetaphysics> metaphysicsList;
 
-    private void Awake()
+    private void Start()
     {
         Init();
     }

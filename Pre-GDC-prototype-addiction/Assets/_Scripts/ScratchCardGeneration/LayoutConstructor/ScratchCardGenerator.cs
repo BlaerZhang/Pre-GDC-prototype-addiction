@@ -19,7 +19,7 @@ namespace ScratchCardGeneration.LayoutConstructor
         public ScratchCardPitySystemData prizePityData;
 
         [Header("Layout Setting")]
-        public Dictionary<ScratchCardBrand, ICardLayoutConstructor> cardLayoutConstructorDic;
+        public Dictionary<ScratchCardBrand, ICardLayoutConstructor> CardLayoutConstructorDic = new();
 
         [HideInInspector] public GameObject currentScratchCard;
 
@@ -48,14 +48,14 @@ namespace ScratchCardGeneration.LayoutConstructor
 
             // record total gold spent before winning
             GameManager.Instance.totalCostBeforeWinning += price;
-            Debug.Log($"totalCostBeforeWinning: {GameManager.Instance.totalCostBeforeWinning}");
+            // Debug.Log($"totalCostBeforeWinning: {GameManager.Instance.totalCostBeforeWinning}");
 
-            currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, generatePos);
+            currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, price, generatePos);
         }
 
         private ICardLayoutConstructor SwitchConstructor(ScratchCardBrand currentCardBrand)
         {
-            return cardLayoutConstructorDic[currentCardBrand];
+            return CardLayoutConstructorDic[currentCardBrand];
         }
     }
 }

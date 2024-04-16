@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Interaction;
@@ -9,13 +10,6 @@ namespace ScratchCardGeneration.LayoutConstructor
 {
     public class FruitiesLayoutConstructor : MonoBehaviour, ICardLayoutConstructor
     {
-
-        private GameObject currentScratchCard;
-        
-        [HideInInspector] public VariableMatrix<int> targetIndexMatrix;
-        [HideInInspector] public VariableMatrix<int> prizeIndexMatrix;
-        [HideInInspector] public VariableMatrix<Vector2> prizeCellPositionMatrix;
-
         [Header("Prize Distribution")]
         public int minPrizeSplitParts;
         public int maxPrizeSplitParts;
@@ -39,17 +33,26 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         public GameObject scratchIndicator;
 
-        public GameObject lightEffect;
-        public float prizeQualityThreshold;
+        public static Action<float, float> onScratchCardConstructed;
 
+        // private
+        private GameObject currentScratchCard;
+        private VariableMatrix<int> targetIndexMatrix;
+        private VariableMatrix<int> prizeIndexMatrix;
 
-        public GameObject ConstructCardLayout(float totalPrize, Vector3 generatePosition)
+        // for alpha light effect
+        [HideInInspector] public VariableMatrix<Vector2> PrizeCellPositionMatrix;
+        // set to true if fully scratched
+        [HideInInspector] public VariableMatrix<bool> ScratchingStatusMatrix;
+        [HideInInspector] public List<Vector2Int> prizeWinningGridList;
+
+        public GameObject ConstructCardLayout(float totalPrize, float price, Vector3 generatePosition)
         {
             if (currentScratchCard != null)
             {
                 Destroy(currentScratchCard);
             }
-            currentScratchCard = new GameObject("newScratchCard")
+            currentScratchCard = new GameObject("currentScratchCard")
             {
                 transform =
                 {
@@ -57,39 +60,16 @@ namespace ScratchCardGeneration.LayoutConstructor
                 }
             };
 
+            ScratchingStatusMatrix = new VariableMatrix<bool>(prizeAreaGridSize.x, prizeAreaGridSize.y, false);
+
             DistributeIcons(totalPrize);
+
+            onScratchCardConstructed?.Invoke(totalPrize, price);
 
             GenerateCardFace();
 
-            // DetermineLightEffectType(totalPrize);
-
             return currentScratchCard;
         }
-
-        private void DetermineLightEffectType(float totalPrize)
-        {
-            StatsTracker.onValueChanged(nameof(totalPrize), totalPrize);
-
-            Vector2Int hh = Utils.SelectRandomGridFromMatrix(3, 5);
-            print(hh);
-            print(prizeCellPositionMatrix.GetElement(hh));
-            if (totalPrize >= prizeQualityThreshold)
-            {
-                // generate light effect after probability check
-                // Instantiate(lightEffect, )
-            }
-            else if (totalPrize < prizeQualityThreshold || totalPrize > 0)
-            {
-                // generate light effect after probability check
-
-            }
-            else
-            {
-
-            }
-        }
-
-
 
         GameObject ConstructIconObject(Sprite iconSprite)
         {
@@ -100,38 +80,42 @@ namespace ScratchCardGeneration.LayoutConstructor
             return iconObject;
         }
 
-        private void AddFakePrizeRevealing(GameObject iconObject)
+        private void AddFakePrizeRevealing(GameObject iconObject, Vector2Int currentGrid)
         {
             // iconObject.AddComponent<FakePrizeRevealing>();
             var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
-            indicatorObject.AddComponent<PrizeRevealing>().isWinningPrize = false;
+            PrizeRevealing prizeRevealing = indicatorObject.AddComponent<PrizeRevealing>();
+            prizeRevealing.isWinningPrize = false;
+            prizeRevealing.currentGrid = currentGrid;
             indicatorObject.transform.SetParent(iconObject.transform);
         }
 
-        private void AddRealPrizeRevealing(GameObject iconObject, float prize)
+        private void AddRealPrizeRevealing(GameObject iconObject, Vector2Int currentGrid, float prize)
         {
             var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
             PrizeRevealing prizeRevealing = indicatorObject.AddComponent<PrizeRevealing>();
             prizeRevealing.prize = prize;
             prizeRevealing.isWinningPrize = true;
+            prizeRevealing.currentGrid = currentGrid;
+
             indicatorObject.transform.SetParent(iconObject.transform);
         }
 
         /// <summary>
         /// place the icon onto the card
         /// </summary>
-        private void PlaceIcons(VariableMatrix<int> iconIndexMatrix, Vector2 startPosition, float gapLength)
+        private void PlaceIcons(VariableMatrix<int> iconIndexMatrix)
         {
-            int row = iconIndexMatrix.GetRow();
-            int col = iconIndexMatrix.GetColumn();
+            int row = targetAreaGridSize.x;
+            int col = targetAreaGridSize.y;
 
-            Vector2 topLeftStartPosition = new Vector2(startPosition.x, startPosition.y + (row - 1) * (cellSize + gapLength));
+            Vector2 topLeftStartPosition = new Vector2(targetAreaStartPosition.x, targetAreaStartPosition.y + (row - 1) * (cellSize + targetGapLength));
 
             for (int i = 0; i < row; i++)
             {
                 for (int j = 0; j < col; j++)
                 {
-                    Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + gapLength), -i * (cellSize + gapLength));
+                    Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + targetGapLength), -i * (cellSize + targetGapLength));
 
                     int spriteIndex = iconIndexMatrix.GetElement(i, j);
                     GameObject icon = ConstructIconObject(iconSprites[spriteIndex]);
@@ -141,33 +125,36 @@ namespace ScratchCardGeneration.LayoutConstructor
             }
         }
 
-        private void PlaceIcons(VariableMatrix<int> iconIndexMatrix, Vector2 startPosition, float gapLength, List<int> targetIndexList, List<float> priceList)
+        private void PlaceIcons(VariableMatrix<int> iconIndexMatrix, List<int> targetIndexList, List<float> priceList)
         {
-            int row = iconIndexMatrix.GetRow();
-            int col = iconIndexMatrix.GetColumn();
+            int row = prizeAreaGridSize.x;
+            int col = prizeAreaGridSize.y;
             
             int winningPrizeCounter = 0;
 
-            Vector2 topLeftStartPosition = new Vector2(startPosition.x, startPosition.y + (row - 1) * (cellSize + gapLength));
+            Vector2 topLeftStartPosition = new Vector2(prizeAreaStartPosition.x, prizeAreaStartPosition.y + (row - 1) * (cellSize + prizeGapLength));
 
             for (int i = 0; i < row; i++)
             {
-                prizeCellPositionMatrix.AddRow();
+                PrizeCellPositionMatrix.AddRow();
                 for (int j = 0; j < col; j++)
                 {
-                    Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + gapLength), -i * (cellSize + gapLength));
-                    prizeCellPositionMatrix.AddElement(i, cellPosition);
+                    Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + prizeGapLength), -i * (cellSize + prizeGapLength));
+                    PrizeCellPositionMatrix.AddElement(i, cellPosition);
 
                     int spriteIndex = iconIndexMatrix.GetElement(i, j);
                     GameObject icon = ConstructIconObject(iconSprites[spriteIndex]);
 
+                    Vector2Int currentGrid = new Vector2Int(i, j);
+
                     if (!targetIndexList.Contains(spriteIndex))
                     {
-                        AddFakePrizeRevealing(icon);
+                        AddFakePrizeRevealing(icon, currentGrid);
                     }
                     else
                     {
-                        AddRealPrizeRevealing(icon, priceList[winningPrizeCounter]);
+                        prizeWinningGridList.Add(currentGrid);
+                        AddRealPrizeRevealing(icon, currentGrid, priceList[winningPrizeCounter]);
                         winningPrizeCounter++;
                     }
 
@@ -197,7 +184,7 @@ namespace ScratchCardGeneration.LayoutConstructor
            int targetX = targetAreaGridSize.x;
            int targetY = targetAreaGridSize.y;
 
-           targetIndexMatrix = Utils.ListToVariableMatrix(targetIndexList, targetY, targetX);
+           targetIndexMatrix = Utils.ListToVariableMatrix(targetIndexList, targetX, targetY);
            targetIndexMatrix.PrintMatrix();
 
            int prizeAmount = prizeAreaGridSize.x * prizeAreaGridSize.y;
@@ -227,16 +214,16 @@ namespace ScratchCardGeneration.LayoutConstructor
            int prizeX = prizeAreaGridSize.x;
            int prizeY = prizeAreaGridSize.y;
 
-           prizeIndexMatrix = Utils.ListToVariableMatrix(prizeIndexList, prizeY, prizeX);
+           prizeIndexMatrix = Utils.ListToVariableMatrix(prizeIndexList, prizeX, prizeY);
            prizeIndexMatrix.PrintMatrix();
 
-           prizeCellPositionMatrix = new VariableMatrix<Vector2>();
+           PrizeCellPositionMatrix = new VariableMatrix<Vector2>();
            
            // place icons
-           PlaceIcons(targetIndexMatrix, targetAreaStartPosition, targetGapLength);
-           PlaceIcons(prizeIndexMatrix, prizeAreaStartPosition, prizeGapLength, targetIndexList, splitPrizes);
+           PlaceIcons(targetIndexMatrix);
+           PlaceIcons(prizeIndexMatrix, targetIndexList, splitPrizes);
 
-           prizeCellPositionMatrix.PrintMatrix();
+           PrizeCellPositionMatrix.PrintMatrix();
        }
 
         void OnDrawGizmosSelected()
@@ -246,7 +233,7 @@ namespace ScratchCardGeneration.LayoutConstructor
             {
                 for (int j = 0; j < targetAreaGridSize.y; j++)
                 {
-                    Vector2 cellPosition = new Vector2(i * cellSize + targetGapLength * i, j * cellSize + targetGapLength * j) + targetAreaStartPosition;
+                    Vector2 cellPosition = new Vector2(j * (cellSize + targetGapLength), i * (cellSize + targetGapLength)) + targetAreaStartPosition;
                     Gizmos.DrawWireCube(cellPosition, cellSize * Vector2.one);
                 }
             }
@@ -256,7 +243,7 @@ namespace ScratchCardGeneration.LayoutConstructor
             {
                 for (int j = 0; j < prizeAreaGridSize.y; j++)
                 {
-                    Vector2 cellPosition = new Vector2(i * cellSize + prizeGapLength * i, j * cellSize + prizeGapLength * j) + prizeAreaStartPosition;
+                    Vector2 cellPosition = new Vector2(j * (cellSize + prizeGapLength), i * (cellSize + prizeGapLength)) + prizeAreaStartPosition;
                     Gizmos.DrawWireCube(cellPosition, cellSize * Vector2.one);
                 }
             }

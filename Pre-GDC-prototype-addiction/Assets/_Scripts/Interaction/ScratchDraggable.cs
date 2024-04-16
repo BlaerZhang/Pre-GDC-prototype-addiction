@@ -32,7 +32,7 @@ namespace Interaction
             cardSurfaceSprite = GameObject.Find("Scratch Surface Sprite").GetComponent<SpriteRenderer>();
             cardBackgroundSprite = GameObject.Find("ScratchCardBackground(Clone)").GetComponent<SpriteRenderer>();
             detectScratchArea = GetComponent<DetectScratchArea>();
-            currentCard = GameObject.Find("newScratchCard");
+            currentCard = GameObject.Find("currentScratchCard");
             scratchCardManager = GetComponentInParent<ScratchCardManager>();
             buyCardManager = FindObjectOfType<BuyCardManager>();
             initialPos = transform.position;

@@ -21,6 +21,18 @@ public class VariableMatrix<T>
         }
     }
 
+    public VariableMatrix(int rowIndex, int columnIndex, T defaultValue)
+    {
+        for (int i = 0; i < rowIndex; i++)
+        {
+            matrix.Add(new List<T>(columnIndex));
+            for (int j = 0; j < columnIndex; j++)
+            {
+                matrix[i].Add(defaultValue);
+            }
+        }
+    }
+
     public int GetRow()
     {
         return matrix.Count;
@@ -61,10 +73,10 @@ public class VariableMatrix<T>
         throw null!;
     }
 
-    public T GetElement(Vector2Int gridPosition)
+    public T GetElement(Vector2Int grid)
     {
-        int rowIndex = gridPosition.x;
-        int columnIndex = gridPosition.y;
+        int rowIndex = grid.x;
+        int columnIndex = grid.y;
 
         if (rowIndex < matrix.Count && columnIndex < matrix[rowIndex].Count)
         {
@@ -72,6 +84,28 @@ public class VariableMatrix<T>
         }
 
         throw null!;
+    }
+
+    public List<Vector2Int> GetIndexOfElement(T element)
+    {
+        List<Vector2Int> indicesList = new();
+
+        int currentRow = 0;
+        int currentCol = 0;
+
+        foreach (List<T> row in matrix)
+        {
+            foreach (T col in row)
+            {
+                if (col.Equals(element)) indicesList.Add(new Vector2Int(currentRow, currentCol));
+                currentCol++;
+            }
+
+            currentCol = 0;
+            currentRow++;
+        }
+
+        return indicesList;
     }
 
     public void SetElement(int rowIndex, int columnIndex, T value)
