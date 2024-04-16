@@ -83,6 +83,15 @@ public class FaceEventManager : SerializedMonoBehaviour
         }
     }
 
+    public void ClearDuration()
+    {
+        foreach (var key in faceEventDurationDict.Keys.ToList())
+        {
+            faceEventDurationDict[key] = 0;
+            onFaceEventEnd?.Invoke(key);
+        }
+    }
+
     public void UpdateFaceEventInfo(FaceEventType eventType, int eventDuration, ScratchCardTier triggerTier)
     {
         //update trigger tier
@@ -117,7 +126,9 @@ public class FaceEventManager : SerializedMonoBehaviour
         discountPrice = originalPrice
             * (discountFormula.deltaPercentage * (float)Math.Tanh(tierDistance * discountFormula.tanhSteepness) + discountFormula.percentageOnTriggerTier) / 100;
 
-        discountPriceRounded = Mathf.RoundToInt(discountPrice);
+        int priceDigitsCount = Mathf.RoundToInt(discountPrice).ToString().Length;
+
+        discountPriceRounded = Mathf.RoundToInt(discountPrice / MathF.Pow(10, priceDigitsCount - 2)) * (int)Mathf.Pow(10, priceDigitsCount - 2);
         
         return discountPriceRounded;
     }
