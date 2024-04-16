@@ -202,8 +202,14 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
         private void SwitchPrizeTypeThreshold(float price)
         {
-            prizeTypeThreshold = PrizeTypeThresholdDict[price];
-            print($"prizeTypeThreshold: {prizeTypeThreshold}");
+            if (PrizeTypeThresholdDict.TryGetValue(price, out prizeTypeThreshold))
+            {
+                print($"prizeTypeThreshold: {prizeTypeThreshold}");
+            }
+            else
+            {
+                Debug.LogError($"PrizeTypeThresholdDict No '{price}' Key Found");
+            }
         }
 
         private void SpawnLightEffectByType(FXType fxType)

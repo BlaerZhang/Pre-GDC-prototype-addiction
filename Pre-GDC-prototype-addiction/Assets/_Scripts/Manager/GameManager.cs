@@ -30,7 +30,7 @@ namespace Manager
 
         [HideInInspector] public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
 
-        [HideInInspector] public float lastMenuYPos = 0;
+        public float lastMenuYPos = 0;
     
         [HideInInspector] public float totalCostBeforeWinning = 0;
 
