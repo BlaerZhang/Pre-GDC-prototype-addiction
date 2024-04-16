@@ -79,12 +79,12 @@ namespace Manager
 
         private void OnEnable()
         {
-            SwitchSceneManager.onSceneChange += OnSceneChange;
+            SwitchSceneManager.onSceneChanged += OnSceneChange;
         }
 
         private void OnDisable()
         {
-            SwitchSceneManager.onSceneChange -= OnSceneChange;
+            SwitchSceneManager.onSceneChanged -= OnSceneChange;
         }
 
         private void OnSceneChange(string sceneLoaded)
@@ -166,7 +166,7 @@ namespace Manager
                 StatsTracker.onValueChanged?.Invoke(nameof(faceEventTypeResult), (int)faceEventTypeResult); //send to metaphysics center
             
                 //start collect + zoom
-                StartCoroutine(BuyCardCoroutineChain(true, card));
+                StartCoroutine(BuyCardCoroutineChain(true, card, faceEventTypeResult));
             }
             else
             {
@@ -243,9 +243,10 @@ namespace Manager
             zoomInCardAnimation.Play();
         }
     
-        IEnumerator BuyCardCoroutineChain(bool isPurchased, Draggable card)
+        IEnumerator BuyCardCoroutineChain(bool isPurchased, Draggable card, FaceEventType faceEventTypeResult)
         {
             DeactivateScratchOffButton();
+            if (faceEventTypeResult != FaceEventType.NoEvent) yield return new WaitForSeconds(1);
             yield return StartCoroutine(CollectCards(isPurchased));
             ZoomInCard(card);
         }

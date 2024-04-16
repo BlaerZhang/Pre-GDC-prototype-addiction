@@ -26,12 +26,12 @@ namespace Manager
     
         private void OnEnable()
         {
-            SwitchSceneManager.onSceneChange += InitializeButton;
+            SwitchSceneManager.onSceneChanged += InitializeButton;
         }
 
         private void OnDisable()
         {
-            SwitchSceneManager.onSceneChange -= InitializeButton;
+            SwitchSceneManager.onSceneChanged -= InitializeButton;
         }
     
         void Start()

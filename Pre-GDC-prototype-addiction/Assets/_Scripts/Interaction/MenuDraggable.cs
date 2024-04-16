@@ -85,13 +85,13 @@ namespace Interaction
 
         private void OnEnable()
         {
-            SwitchSceneManager.onSceneChange += DisplayDiscount;
+            SwitchSceneManager.onSceneChanged += DisplayDiscount;
             originalPrice = price;
         }
 
         private void OnDisable()
         {
-            SwitchSceneManager.onSceneChange -= DisplayDiscount;
+            SwitchSceneManager.onSceneChanged -= DisplayDiscount;
         }
 
         private void DisplayDiscount(string sceneName)

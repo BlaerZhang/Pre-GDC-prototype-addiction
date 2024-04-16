@@ -10,7 +10,7 @@ namespace Manager
 {
     public class SwitchSceneManager : SerializedMonoBehaviour
     {
-        [HideInInspector] public static Action<string> onSceneChange;
+        public static Action<string> onSceneChanged;
         public Dictionary<string, CinemachineVirtualCamera> sceneName_vCamDict;
         public bool isChangingScene = false;
         private string currentActiveScene;
@@ -71,7 +71,7 @@ namespace Manager
             isChangingScene = false;
         
             //invoke action
-            onSceneChange?.Invoke(toScene);
+            onSceneChanged?.Invoke(toScene);
         }
     }
 }
