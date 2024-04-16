@@ -264,30 +264,29 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
         private void SwitchActionProbabilityList(AlphaSquareFX currentFX, Vector2Int currentFullyScratchedGrid)
         {
+            foreach (var p in prizeWinningGridList)
+            {
+                print(p);
+            }
+
             if (currentFX.isPositive)
             {
-                // FX ~ fully scratched grid
                 if (currentFX.currentGrid.Equals(currentFullyScratchedGrid))
                 {
                     print(prizeWinningGridList.Contains(currentFX.currentGrid)
                         ? nameof(PositiveScratchFXAndFXOnWinningGridProbabilityList)
-                        // Destroy(gameObject);
                         : nameof(PositiveScratchFXButFXNotOnWinningGridProbabilityList));
 
-                    // FX ~ prize grid
                     ApplyProbabilityList(prizeWinningGridList.Contains(currentFX.currentGrid)
                         ? PositiveScratchFXAndFXOnWinningGridProbabilityList
-                        // Destroy(gameObject);
                         : PositiveScratchFXButFXNotOnWinningGridProbabilityList, currentFX);
-                    // MoveRandomly();
                 }
                 else
                 {
                     print(prizeWinningGridList.Contains(currentFX.currentGrid)
                         ? nameof(PositiveScratchNoFXButFXOnWinningGridProbabilityList)
-                        // Destroy(gameObject);
                         : nameof(PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList));
-                    // FX ~ prize grid
+
                     ApplyProbabilityList(prizeWinningGridList.Contains(currentFX.currentGrid)
                         ? PositiveScratchNoFXButFXOnWinningGridProbabilityList
                         : PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList, currentFX);
@@ -295,26 +294,22 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
             }
             else
             {
-                // FX ~ fully scratched grid
                 if (currentFX.currentGrid.Equals(currentFullyScratchedGrid))
                 {
                     print(prizeWinningGridList.Contains(currentFX.currentGrid)
                         ? nameof(NegativeScratchFXAndFXOnWinningGridProbabilityList)
-                        // Destroy(gameObject);
                         : nameof(NegativeScratchFXButFXNotOnWinningGridProbabilityList));
-                    // FX ~ prize grid
+
                     ApplyProbabilityList(prizeWinningGridList.Contains(currentFX.currentGrid)
                         ? NegativeScratchFXAndFXOnWinningGridProbabilityList
-                        // Destroy(gameObject);
                         : NegativeScratchFXButFXNotOnWinningGridProbabilityList, currentFX);
                 }
                 else
                 {
                     print(prizeWinningGridList.Contains(currentFX.currentGrid)
                         ? nameof(NegativeScratchNoFXButFXOnWinningGridProbabilityList)
-                        // Destroy(gameObject);
                         : nameof(NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList));
-                    // FX ~ prize grid
+
                     ApplyProbabilityList(prizeWinningGridList.Contains(currentFX.currentGrid)
                         ? NegativeScratchNoFXButFXOnWinningGridProbabilityList
                         : NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList, currentFX);
@@ -427,11 +422,11 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
             for (int i = 0; i < currentAlphaSquareFxList.Count - 1; i++)
             {
                 Vector2Int fxGrid = currentAlphaSquareFxList[i].currentGrid;
-                print("fxGrid" + fxGrid);
+                // print("fxGrid" + fxGrid);
                 for (int j = i + 1; j < currentAlphaSquareFxList.Count; j++)
                 {
                     Vector2Int otherFxGrid = currentAlphaSquareFxList[j].currentGrid;
-                    print("otherFxGrid" + otherFxGrid);
+                    // print("otherFxGrid" + otherFxGrid);
 
                     if (fxGrid.Equals(otherFxGrid))
                     {

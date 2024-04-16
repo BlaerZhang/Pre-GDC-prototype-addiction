@@ -60,7 +60,7 @@ namespace ScratchCardGeneration.LayoutConstructor
                 }
             };
 
-            ScratchingStatusMatrix = new VariableMatrix<bool>(prizeAreaGridSize.x, prizeAreaGridSize.y, false);
+            InitData();
 
             DistributeIcons(totalPrize);
 
@@ -69,6 +69,13 @@ namespace ScratchCardGeneration.LayoutConstructor
             GenerateCardFace();
 
             return currentScratchCard;
+        }
+
+        private void InitData()
+        {
+            prizeWinningGridList = new List<Vector2Int>();
+            PrizeCellPositionMatrix = new VariableMatrix<Vector2>();
+            ScratchingStatusMatrix = new VariableMatrix<bool>(prizeAreaGridSize.x, prizeAreaGridSize.y, false);
         }
 
         GameObject ConstructIconObject(Sprite iconSprite)
@@ -216,8 +223,6 @@ namespace ScratchCardGeneration.LayoutConstructor
 
            prizeIndexMatrix = Utils.ListToVariableMatrix(prizeIndexList, prizeX, prizeY);
            prizeIndexMatrix.PrintMatrix();
-
-           PrizeCellPositionMatrix = new VariableMatrix<Vector2>();
            
            // place icons
            PlaceIcons(targetIndexMatrix);
