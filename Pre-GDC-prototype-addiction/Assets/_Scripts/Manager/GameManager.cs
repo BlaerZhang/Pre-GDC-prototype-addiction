@@ -2,6 +2,7 @@ using Interaction;
 using ScratchCardGeneration.LayoutConstructor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Manager
 {
@@ -10,16 +11,28 @@ namespace Manager
         public static GameManager Instance;
 
         [HideInInspector] public UIManager uiManager;
+
         [HideInInspector] public SwitchSceneManager switchSceneManager;
+
         [HideInInspector] public ScratchCardGenerator scratchCardGenerator;
+
         [HideInInspector] public AudioManager audioManager;
+
         [HideInInspector] public ResourceManager resourceManager;
 
-        public bool incrementalLock = true;
-        public int lastPickPrice = 1;
-        public MenuDraggable.Tier lastPickTier = MenuDraggable.Tier.Level1;
-        public float lastMenuYPos = 0;
-        public float totalCostBeforeWinning = 0;
+        [HideInInspector] public CardPoolManager cardPoolManager;
+        
+        [HideInInspector] public FaceEventManager faceEventManager;
+
+        [HideInInspector] public bool incrementalLock = true;
+
+        [HideInInspector] public int lastPickPrice = 1;
+
+        [HideInInspector] public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
+
+        [HideInInspector] public float lastMenuYPos = 0;
+    
+        [HideInInspector] public float totalCostBeforeWinning = 0;
 
         private void Awake()
         {
@@ -38,6 +51,8 @@ namespace Manager
             scratchCardGenerator = GetComponentInChildren<ScratchCardGenerator>();
             audioManager = GetComponentInChildren<AudioManager>();
             resourceManager = GetComponentInChildren<ResourceManager>();
+            cardPoolManager = GetComponentInChildren<CardPoolManager>();
+            faceEventManager = GetComponentInChildren<FaceEventManager>();
         }
 
         void Update()

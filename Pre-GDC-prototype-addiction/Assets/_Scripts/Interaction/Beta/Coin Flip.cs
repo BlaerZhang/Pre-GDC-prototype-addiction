@@ -8,6 +8,7 @@ public class CoinFlip : MonoBehaviour
 {
     private bool isFace = true;
     private bool isFlipping = false;
+    // public Transform coinMesh;
     public KeyCode keycode;
     public List<AudioClip> flipSounds;
     public List<AudioClip> dropSounds;

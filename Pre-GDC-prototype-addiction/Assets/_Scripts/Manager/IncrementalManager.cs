@@ -26,17 +26,17 @@ namespace Manager
     
         private void OnEnable()
         {
-            GameManager.Instance.switchSceneManager.onSceneChange += InitializeButton;
+            SwitchSceneManager.onSceneChanged += InitializeButton;
         }
 
         private void OnDisable()
         {
-            GameManager.Instance.switchSceneManager.onSceneChange -= InitializeButton;
+            SwitchSceneManager.onSceneChanged -= InitializeButton;
         }
     
         void Start()
         {
-            resourceManager = GameManager.Instance.GetComponent<ResourceManager>();
+            resourceManager = GameManager.Instance.resourceManager;
             GameManager.Instance.uiManager.UpdateUpgradePrice(upgradePricePerLevel[resourceManager.ClickerLevel - 1]);
         }
 

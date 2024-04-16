@@ -1100,7 +1100,7 @@ GameObject:
   - component: {fileID: 1959796742}
   - component: {fileID: 1959796743}
   m_Layer: 5
-  m_Name: Scratch-off
+  m_Name: Lobby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1206,14 +1206,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Scratch
-
-    -
-
-    Off'
+  m_text: Lobby
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e0e2470cfe87e1840b5706f161f98789, type: 2}
-  m_sharedMaterial: {fileID: 2879727489709873859, guid: e0e2470cfe87e1840b5706f161f98789, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 03ee08f7faf20a5458c724913437f059, type: 2}
+  m_sharedMaterial: {fileID: 3768820367615246695, guid: 03ee08f7faf20a5458c724913437f059, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1243,7 +1239,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

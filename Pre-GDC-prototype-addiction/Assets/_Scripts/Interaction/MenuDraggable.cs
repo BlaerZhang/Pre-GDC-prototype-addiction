@@ -6,6 +6,7 @@ using ScratchCardGeneration.PrizeGenerator;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Interaction
@@ -17,20 +18,19 @@ namespace Interaction
         public Sprite lockedSprite;
         public int price = 1;
         public ScratchCardBrand cardBrand = ScratchCardBrand.Fruities;
-        public enum Tier
-        {
-            Level1,
-            Level2,
-            Level3,
-            Level4,
-            Level5
-        }
-        public Tier tier = Tier.Level1;
+        private int originalPrice;
+        private int discountPrice;
+      
+        public ScratchCardTier tier = ScratchCardTier.Level1;
         
         [Header("Drag")]
         public float dragSpeed = 25;
         public bool isDragging = false;
-        [FormerlySerializedAs("isInBuyArea")] public bool isInPickArea = false;
+        public bool isInPickArea = false;
+
+        [Header("Face Event")] 
+        public bool discount = false;
+        public ScratchCardTier eventTriggerTier;
     
         [Header("Feedback")] 
         public float hoverScale = 0.95f;
@@ -39,6 +39,7 @@ namespace Interaction
         private SpriteRenderer pricePanelSprite;
         private SortingGroup sortingGroup;
         private TextMeshPro priceText;
+        private SpriteRenderer discountCross;
         
         private Vector2 dragOffset = new Vector2(0, 0);
         private Vector2 originalLocalPos;
@@ -47,19 +48,60 @@ namespace Interaction
         {
             cardSprite = transform.Find("Poster Sprite").GetComponent<SpriteRenderer>();
             pricePanelSprite = transform.Find("Poster Sprite/Price Panel Sprite").GetComponent<SpriteRenderer>();
+            discountCross = transform.Find("Poster Sprite/Price Panel Sprite/Cross").GetComponent<SpriteRenderer>();
             sortingGroup = GetComponent<SortingGroup>();
             priceText = GetComponentInChildren<TextMeshPro>();
             
             isDragging = false;
             originalLocalPos = transform.localPosition;
             priceText.text = $"${price}";
-
+            
+            InitDiscount();
+            
             if (!unlock)
             {
                 cardSprite.sprite = lockedSprite;
                 pricePanelSprite.enabled = false;
+                discountCross.enabled = false;
                 priceText.enabled = false;
             }
+        }
+
+        private void InitDiscount()
+        { 
+            discount = GameManager.Instance.faceEventManager.faceEventDurationDict[FaceEventType.Discount] > 0
+                ? true
+                : false;
+
+            discountCross.enabled = false;
+
+            if (!discount) return;
+            
+            //calculate discount price
+            int tierDistance = tier - GameManager.Instance.faceEventManager.discountTriggerTier;
+            discountPrice = GameManager.Instance.faceEventManager.CalculateDiscount(tierDistance, originalPrice);
+            price = discountPrice;
+        }
+
+        private void OnEnable()
+        {
+            SwitchSceneManager.onSceneChanged += DisplayDiscount;
+            originalPrice = price;
+        }
+
+        private void OnDisable()
+        {
+            SwitchSceneManager.onSceneChanged -= DisplayDiscount;
+        }
+
+        private void DisplayDiscount(string sceneName)
+        {
+            if (sceneName != "Menu") return;
+            if (!discount || !unlock) return;
+            
+            pricePanelSprite.transform.DOLocalMoveY(-1.9f, 0.5f).SetEase(Ease.OutElastic);
+            discountCross.enabled = true;
+            priceText.text = $"${price}\n${originalPrice}";
         }
 
         protected override void OnMouseEnter()

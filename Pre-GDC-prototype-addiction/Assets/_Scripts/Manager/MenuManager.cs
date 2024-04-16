@@ -33,15 +33,15 @@ namespace Manager
 
         private void OnEnable()
         {
-            GameManager.Instance.switchSceneManager.onSceneChange += InitializeButton;
+            SwitchSceneManager.onSceneChanged += InitializeButton;
         }
 
         private void OnDisable()
         {
-            GameManager.Instance.switchSceneManager.onSceneChange -= InitializeButton;
+            SwitchSceneManager.onSceneChanged -= InitializeButton;
         }
     
-        public void PickCard(MenuDraggable card)
+        public void PickCard(Interaction.MenuDraggable card)
         {
             if (card.price <= GameManager.Instance.resourceManager.PlayerGold)
             {

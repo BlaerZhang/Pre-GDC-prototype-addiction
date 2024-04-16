@@ -3,22 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Interaction;
+using ScratchCardAsset;
 using ScratchCardGeneration;
 using ScratchCardGeneration.LayoutConstructor;
+using ScratchCardGeneration.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Sirenix.OdinInspector;
 
 namespace Manager
 {
-    public class BuyCardManager : MonoBehaviour
+    public class BuyCardManager : SerializedMonoBehaviour
     {
-        // public static BuyCardManager instance;
-    
         [Header("Spawn Cards")]
-        public List<Draggable> cardsToBuy = new List<Draggable>();
+        [HideInInspector] public List<Draggable> cardsToBuy = new List<Draggable>();
         public List<Transform> cardSpawnPos;
         public Transform cardPurchasePos;
-        public Draggable cardPrefab;
 
         [Header("Deal Cards Feedbacks")] 
         public bool dealAudio = true;
@@ -26,6 +26,7 @@ namespace Manager
 
         [Header("Buy Cards")] 
         public int price;
+        public ScratchCardTier tier;
         
         [Header("Buy Feedbacks")] 
         public bool buyAudio = true;
@@ -74,18 +75,17 @@ namespace Manager
 
         private void Awake()
         {
-            // instance = this;
             generator = GameManager.Instance.scratchCardGenerator;
         }
 
         private void OnEnable()
         {
-            GameManager.Instance.switchSceneManager.onSceneChange += OnSceneChange;
+            SwitchSceneManager.onSceneChanged += OnSceneChange;
         }
 
         private void OnDisable()
         {
-            GameManager.Instance.switchSceneManager.onSceneChange -= OnSceneChange;
+            SwitchSceneManager.onSceneChanged -= OnSceneChange;
         }
 
         private void OnSceneChange(string sceneLoaded)
@@ -108,12 +108,15 @@ namespace Manager
 
         private void SpawnCardsToBuy()
         {
+            //set price
             price = GameManager.Instance.lastPickPrice;
-            GameManager.Instance.uiManager.UpdateBuyPrice(price);
-        
-            for (int i = 0; i < 5; i++)
+            tier = GameManager.Instance.lastPickTier;
+            GameManager.Instance.uiManager.UpdateBuyPrice(price); //update UI
+            
+            //spawn card
+            foreach (var card in GameManager.Instance.cardPoolManager.CreateCardPool(tier))
             {
-                Draggable cardInstance = Instantiate(cardPrefab, new Vector3(100,100), Quaternion.identity);
+                Draggable cardInstance = Instantiate(card, new Vector3(100, 100), Quaternion.identity);
                 cardsToBuy.Add(cardInstance);
             }
 
@@ -134,7 +137,7 @@ namespace Manager
             }
         }
 
-        public void BuyCard(Draggable card)
+        public void TryBuyCard(Draggable card)
         {
             if (price <= GameManager.Instance.resourceManager.PlayerGold)
             {
@@ -159,9 +162,12 @@ namespace Manager
                 {
                     //TODO: Particle Effect
                 }
+                
+                FaceEventType faceEventTypeResult = Utils.CalculateMultiProbability(GameManager.Instance.cardPoolManager.eventTriggerWeightPerFaceTypeDict[card.faceType]); //draw face event
+                StatsTracker.onValueChanged?.Invoke(nameof(faceEventTypeResult), (int)faceEventTypeResult); //send to metaphysics center
             
                 //start collect + zoom
-                StartCoroutine(BuyCardCoroutineChain(true, card));
+                StartCoroutine(BuyCardCoroutineChain(true, card, faceEventTypeResult));
             }
             else
             {
@@ -230,6 +236,9 @@ namespace Manager
                     
                     print("Action Invoked");
                     
+                    //TODO:Temp change sprite, will be deleted in future
+                    GameObject.Find("newScratchCard/ScratchCardBackground(Clone)/ScratchCard(Clone)").GetComponent<ScratchCardManager>().ScratchSurfaceSprite = card.cardSprite.sprite;
+                    
                     Destroy(card.gameObject);
                 }));
             
@@ -239,9 +248,10 @@ namespace Manager
             zoomInCardAnimation.Play();
         }
     
-        IEnumerator BuyCardCoroutineChain(bool isPurchased, Draggable card)
+        IEnumerator BuyCardCoroutineChain(bool isPurchased, Draggable card, FaceEventType faceEventTypeResult)
         {
             DeactivateScratchOffButton();
+            if (faceEventTypeResult != FaceEventType.NoEvent) yield return new WaitForSeconds(1);
             yield return StartCoroutine(CollectCards(isPurchased));
             ZoomInCard(card);
         }
