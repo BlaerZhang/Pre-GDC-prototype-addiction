@@ -3991,8 +3991,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 91caf9060fbfa394fb0643c27ef8a73c, type: 2}
   faceEventType: 2
-  eventDuration: 3
+  eventDuration: 2
   strength: 0
+  triggerAudio: {fileID: 8300000, guid: bd5dbd56caba80f409231cbd7351dffb, type: 3}
 --- !u!114 &1604128128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4007,8 +4008,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 6a3a87331eef5084782019ae3a27d443, type: 2}
   faceEventType: 3
-  eventDuration: 3
+  eventDuration: 2
   strength: 0
+  triggerAudio: {fileID: 8300000, guid: bd5dbd56caba80f409231cbd7351dffb, type: 3}
 --- !u!114 &1604128129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4023,8 +4025,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: d655bc9c447413745b5c179fa4fb623f, type: 2}
   faceEventType: 0
-  eventDuration: 3
+  eventDuration: 0
   strength: 0
+  triggerAudio: {fileID: 0}
 --- !u!114 &1604128130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4039,8 +4042,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: e976d6a44809cb947bbbced41cefde65, type: 2}
   faceEventType: 1
-  eventDuration: 3
+  eventDuration: 2
   strength: 0
+  triggerAudio: {fileID: 8300000, guid: bd5dbd56caba80f409231cbd7351dffb, type: 3}
 --- !u!114 &1604128131
 MonoBehaviour:
   m_ObjectHideFlags: 0

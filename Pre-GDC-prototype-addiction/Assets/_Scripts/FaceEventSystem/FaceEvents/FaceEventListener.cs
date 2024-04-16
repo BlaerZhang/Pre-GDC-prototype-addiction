@@ -11,12 +11,15 @@ public class FaceEventListener : GameEventListenerBase
     public FaceEventType faceEventType;
     public int eventDuration = 3;
     public int strength = 0;
+    public AudioClip triggerAudio;
     public static Action<FaceEventType, int, ScratchCardTier> onFaceEventTriggered;
     public override void OnEventRaised()
     {
         if (faceEventType == FaceEventType.NoEvent) return;
         
         onFaceEventTriggered?.Invoke(faceEventType, eventDuration, GameManager.Instance.lastPickTier);
+        
+        GameManager.Instance.audioManager.PlaySound(triggerAudio);
         Debug.Log($"{faceEventType} triggered");
     }
 }
