@@ -183,7 +183,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
                 // randomly get a FX type
                 fxType = Utils.CalculateMultiProbability(FXTypeProbabilityDict[PrizeType.Big]);
             }
-            else if (totalPrize < prizeTypeThreshold || totalPrize > 0)
+            else if (totalPrize < prizeTypeThreshold & totalPrize > 0)
             {
                 fxType = Utils.CalculateMultiProbability(FXTypeProbabilityDict[PrizeType.Small]);
             }
