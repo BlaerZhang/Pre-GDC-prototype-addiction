@@ -14,7 +14,7 @@ namespace Interaction
     /// <summary>
     /// on winning prize icon
     /// </summary>
-    public class PrizeRevealing : MonoBehaviour
+    public class PrizeRevealing : ScratchProgressEvent
     {
         [HideInInspector] public bool isWinningPrize = false;
 
@@ -34,13 +34,7 @@ namespace Interaction
         public static Action<Vector2Int> onFullyScratched;
         public static Action<float> onPrizeRevealed;
 
-        private ScratchCardManager cardManager;
-
-        private void Start()
-        {
-            cardManager = GetComponent<ScratchCardManager>();
-            cardManager.Progress.OnProgress += OnScratchProgress;
-        }
+        // private ScratchCardManager cardManager;
 
         private void Update()
         {
@@ -65,7 +59,7 @@ namespace Interaction
             hasSubmitted = true;
         }
 
-        private void OnScratchProgress(float progress)
+        protected override void OnScratchProgress(float progress)
         {
             if (progress >= fullyScratchedThreshold)
             {
@@ -76,6 +70,9 @@ namespace Interaction
                         (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.CardLayoutConstructorDic[
                             ScratchCardBrand.Fruities];
                     fruitiesLayoutConstructor.ScratchingStatusMatrix.SetElement(currentGrid.x, currentGrid.y, true);
+
+                    // print("fully scratched, clear the grid");
+                    // cardManager.Card.ScratchHole(new Vector2(0f, 0f));
                     onFullyScratched?.Invoke(currentGrid);
                 }
                 

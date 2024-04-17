@@ -6145,7 +6145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: targetGapLength
-      value: 1
+      value: 1.095
       objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: scratchIndicator
@@ -6173,15 +6173,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: prizeAreaStartPosition.y
-      value: -2.5
+      value: -2.47
       objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: targetAreaStartPosition.x
-      value: -1
+      value: -1.06
       objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: targetAreaStartPosition.y
-      value: 0.9
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8032303680787762760, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: m_Name

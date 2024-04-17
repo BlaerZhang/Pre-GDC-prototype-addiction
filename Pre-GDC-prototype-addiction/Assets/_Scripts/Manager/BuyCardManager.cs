@@ -238,7 +238,7 @@ namespace Manager
                     
                     //TODO:Temp change sprite, will be deleted in future
 
-                    GameObject.Find("currentScratchCard/ScratchCardBackground(Clone)/ScratchCard(Clone)").GetComponent<ScratchCardManager>().ScratchSurfaceSprite = card.cardSprite.sprite;
+                    // GameObject.Find("currentScratchCard/ScratchCardBackground(Clone)/ScratchCard(Clone)").GetComponent<ScratchCardManager>().ScratchSurfaceSprite = card.cardSprite.sprite;
                     
                     Destroy(card.gameObject);
                 });

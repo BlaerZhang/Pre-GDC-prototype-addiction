@@ -15,6 +15,8 @@ namespace ScratchCardGeneration.LayoutConstructor
         [Header("Prize Setting")]
         [HideInInspector] public float currentCardPrize;
 
+        private List<float> prizeList = new();
+
         public ScratchCardPrizeDistributionData prizeDistributionData;
         public ScratchCardPitySystemData prizePityData;
 
@@ -22,6 +24,14 @@ namespace ScratchCardGeneration.LayoutConstructor
         public Dictionary<ScratchCardBrand, ICardLayoutConstructor> CardLayoutConstructorDic = new();
 
         [HideInInspector] public GameObject currentScratchCard;
+
+        private void Start()
+        {
+            foreach (var VARIABLE in prizeDistributionData.dataList.Values)
+            {
+                
+            }
+        }
 
         private void OnEnable()
         {
@@ -39,6 +49,8 @@ namespace ScratchCardGeneration.LayoutConstructor
 
             var prizeDistributionDataList = prizeDistributionData.dataList[currentCardBrand];
             var pityDataList = prizePityData.dataList[currentCardBrand];
+
+            // TODO: get price list, pass it to constructor
 
             var prizeDistribution = prizeDistributionDataList.levelDistribution[level];
             float costThreshold = pityDataList.levelPitySetting[level].costThreshold;

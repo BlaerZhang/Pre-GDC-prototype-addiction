@@ -12,7 +12,7 @@ namespace Interaction
     {
         [Header("Basic")]
         // public SpriteRenderer spriteRenderer;
-        public CinemachineVirtualCamera vCam;
+        [HideInInspector] public CinemachineVirtualCamera vCam;
 
         // [Header("Scratch")]
         // public float speed;

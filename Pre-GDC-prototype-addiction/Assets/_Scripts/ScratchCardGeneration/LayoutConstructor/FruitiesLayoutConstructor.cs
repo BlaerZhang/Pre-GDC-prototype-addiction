@@ -84,28 +84,25 @@ namespace ScratchCardGeneration.LayoutConstructor
             iconObject.AddComponent<SpriteRenderer>().sprite = iconSprite;
             iconObject.transform.SetParent(currentScratchCard.transform);
 
-            return iconObject;
+            var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
+            indicatorObject.transform.SetParent(iconObject.transform);
+
+            return indicatorObject;
         }
 
-        private void AddFakePrizeRevealing(GameObject iconObject, Vector2Int currentGrid)
+        private void AddFakePrizeRevealing(GameObject indicatorObject, Vector2Int currentGrid)
         {
-            // iconObject.AddComponent<FakePrizeRevealing>();
-            var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
-            PrizeRevealing prizeRevealing = indicatorObject.AddComponent<PrizeRevealing>();
+            if (!indicatorObject.TryGetComponent(out PrizeRevealing prizeRevealing)) indicatorObject.AddComponent<PrizeRevealing>();
             prizeRevealing.isWinningPrize = false;
             prizeRevealing.currentGrid = currentGrid;
-            indicatorObject.transform.SetParent(iconObject.transform);
         }
 
-        private void AddRealPrizeRevealing(GameObject iconObject, Vector2Int currentGrid, float prize)
+        private void AddRealPrizeRevealing(GameObject indicatorObject, Vector2Int currentGrid, float prize)
         {
-            var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
-            PrizeRevealing prizeRevealing = indicatorObject.AddComponent<PrizeRevealing>();
+            if (!indicatorObject.TryGetComponent(out PrizeRevealing prizeRevealing)) indicatorObject.AddComponent<PrizeRevealing>();
             prizeRevealing.prize = prize;
             prizeRevealing.isWinningPrize = true;
             prizeRevealing.currentGrid = currentGrid;
-
-            indicatorObject.transform.SetParent(iconObject.transform);
         }
 
         /// <summary>
@@ -125,9 +122,9 @@ namespace ScratchCardGeneration.LayoutConstructor
                     Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + targetGapLength), -i * (cellSize + targetGapLength));
 
                     int spriteIndex = iconIndexMatrix.GetElement(i, j);
-                    GameObject icon = ConstructIconObject(iconSprites[spriteIndex]);
+                    GameObject indicatorObject = ConstructIconObject(iconSprites[spriteIndex]);
 
-                    icon.transform.localPosition = cellPosition;
+                    indicatorObject.transform.parent.localPosition = cellPosition;
                 }
             }
         }
@@ -150,22 +147,22 @@ namespace ScratchCardGeneration.LayoutConstructor
                     PrizeCellPositionMatrix.AddElement(i, cellPosition);
 
                     int spriteIndex = iconIndexMatrix.GetElement(i, j);
-                    GameObject icon = ConstructIconObject(iconSprites[spriteIndex]);
+                    GameObject indicatorObject = ConstructIconObject(iconSprites[spriteIndex]);
 
                     Vector2Int currentGrid = new Vector2Int(i, j);
 
                     if (!targetIndexList.Contains(spriteIndex))
                     {
-                        AddFakePrizeRevealing(icon, currentGrid);
+                        AddFakePrizeRevealing(indicatorObject, currentGrid);
                     }
                     else
                     {
                         prizeWinningGridList.Add(currentGrid);
-                        AddRealPrizeRevealing(icon, currentGrid, priceList[winningPrizeCounter]);
+                        AddRealPrizeRevealing(indicatorObject, currentGrid, priceList[winningPrizeCounter]);
                         winningPrizeCounter++;
                     }
 
-                    icon.transform.localPosition = cellPosition;
+                    indicatorObject.transform.parent.localPosition = cellPosition;
                 }
             }
         }
@@ -266,9 +263,9 @@ namespace ScratchCardGeneration.LayoutConstructor
             scratchBackground.transform.SetParent(currentScratchCard.transform);
             scratchBackground.transform.localPosition = Vector2.zero;
 
-            GameObject scratchFieldObject = Instantiate(scratchFieldPrefab, new Vector3(0, 0,0.01f), Quaternion.identity);
-            scratchFieldObject.transform.SetParent(scratchBackground.transform);
-            scratchFieldObject.transform.localPosition = Vector2.zero;
+            // GameObject scratchFieldObject = Instantiate(scratchFieldPrefab, new Vector3(0, 0,0.01f), Quaternion.identity);
+            // scratchFieldObject.transform.SetParent(scratchBackground.transform);
+            // scratchFieldObject.transform.localPosition = Vector2.zero;
         }
     }
 }
