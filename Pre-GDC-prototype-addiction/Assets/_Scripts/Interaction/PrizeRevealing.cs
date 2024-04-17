@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Globalization;
+using DG.Tweening;
 using Manager;
 using ScratchCardAsset;
 using ScratchCardGeneration;
@@ -72,6 +73,8 @@ namespace Interaction
                     fruitiesLayoutConstructor.ScratchingStatusMatrix.SetElement(currentGrid.x, currentGrid.y, true);
 
                     // print("fully scratched, clear the grid");
+
+                    cardManager.SpriteRendererCard?.DOFade(0, 1f);
                     // cardManager.Card.ScratchHole(new Vector2(0f, 0f));
                     onFullyScratched?.Invoke(currentGrid);
                 }
