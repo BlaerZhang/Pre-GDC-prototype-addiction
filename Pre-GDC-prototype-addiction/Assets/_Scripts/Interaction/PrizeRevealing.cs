@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Globalization;
+using DG.Tweening;
 using Manager;
 using ScratchCardAsset;
 using ScratchCardGeneration;
@@ -22,6 +23,7 @@ namespace Interaction
 
         public float fullyScratchedThreshold = 0.7f;
         private bool isFullyScratched = false;
+        public float autoRevealingDuration = 1f;
 
         private bool isClickable = false;
         private bool hasClicked = false;
@@ -33,8 +35,6 @@ namespace Interaction
         // pass the current fully scratched grid
         public static Action<Vector2Int> onFullyScratched;
         public static Action<float> onPrizeRevealed;
-
-        // private ScratchCardManager cardManager;
 
         private void Update()
         {
@@ -72,6 +72,8 @@ namespace Interaction
                     fruitiesLayoutConstructor.ScratchingStatusMatrix.SetElement(currentGrid.x, currentGrid.y, true);
 
                     // print("fully scratched, clear the grid");
+
+                    cardManager.SpriteRendererCard?.DOFade(0, autoRevealingDuration);
                     // cardManager.Card.ScratchHole(new Vector2(0f, 0f));
                     onFullyScratched?.Invoke(currentGrid);
                 }
