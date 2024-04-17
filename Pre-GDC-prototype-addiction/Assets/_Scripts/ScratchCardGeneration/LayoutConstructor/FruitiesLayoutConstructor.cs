@@ -13,7 +13,7 @@ namespace ScratchCardGeneration.LayoutConstructor
         [Header("Prize Distribution")]
         public int minPrizeSplitParts;
         public int maxPrizeSplitParts;
-        public int minSplitValue;
+        private int minSplitValue;
 
         [Header("Icon Placement")]
         // include prize number and icon sprite
@@ -62,6 +62,8 @@ namespace ScratchCardGeneration.LayoutConstructor
 
             InitData();
 
+            SetPrizeMinSplitValue(totalPrize);
+
             DistributeIcons(totalPrize);
 
             onScratchCardConstructed?.Invoke(totalPrize, price);
@@ -74,6 +76,13 @@ namespace ScratchCardGeneration.LayoutConstructor
             prizeWinningGridList = new List<Vector2Int>();
             PrizeCellPositionMatrix = new VariableMatrix<Vector2>();
             ScratchingStatusMatrix = new VariableMatrix<bool>(prizeAreaGridSize.x, prizeAreaGridSize.y, false);
+        }
+
+        private void SetPrizeMinSplitValue(float prize)
+        {
+
+            minSplitValue = (int)Mathf.Pow(10, Utils.GetNumberPlace((int)prize));
+            print("minSplitValue: " + minSplitValue);
         }
 
         GameObject ConstructIconObject(Sprite iconSprite)

@@ -35,7 +35,7 @@ namespace Interaction
             textObject.transform.localRotation = Quaternion.Euler(0, 0, 30f);
             TextMeshPro textMeshPro = textObject.AddComponent<TextMeshPro>();
             textObject.GetComponent<RectTransform>().sizeDelta = Vector2.one;
-            textMeshPro.text = Utils.GenerateCleanNumber(1000).ToString();
+            textMeshPro.text = Utils.GenerateCleanNumber(1, 3).ToString();
             textMeshPro.enableWordWrapping = false;
             textMeshPro.font = fontAsset;
             textMeshPro.fontStyle = FontStyles.Bold;

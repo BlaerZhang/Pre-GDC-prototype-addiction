@@ -134,7 +134,7 @@ namespace Interaction
                 };
                 textMeshPro = textObject.AddComponent<TextMeshPro>();
                 textObject.GetComponent<RectTransform>().sizeDelta = Vector2.one;
-                textMeshPro.text = Utils.GenerateCleanNumber(1000).ToString();
+                textMeshPro.text = Utils.GenerateCleanNumber(1, 3).ToString();
                 textMeshPro.fontStyle = FontStyles.Italic;
                 textMeshPro.color = Color.white;
                 textMeshPro.fontSize = 5;

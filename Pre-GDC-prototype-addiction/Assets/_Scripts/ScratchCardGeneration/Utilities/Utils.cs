@@ -140,38 +140,33 @@ namespace ScratchCardGeneration.Utilities
         }
 
         /// <summary>
-        /// generate a number like x(1~9)000...
+        /// how many times of 10 this number has
         /// </summary>
-        public static int GenerateCleanNumber(int maxNumberPlace)
+        public static int GetNumberPlace(float number)
         {
-            List<int> numberPlaces = new List<int>();
+            int numberPlace = 0;
 
-            int currentNumberPlace = maxNumberPlace;
-            // TODO: fix the infinite loop here
-            while (currentNumberPlace != 1)
+            int currentNumberPlace = (int)number;
+
+            while (currentNumberPlace / 10 >= 1)
             {
-                numberPlaces.Add(currentNumberPlace);
+                numberPlace++;
                 currentNumberPlace /= 10;
-
-                if (currentNumberPlace % 10 != 0) break;
             }
 
-            int unitsPlace = Random.Range(1, 10);
-
-            int numberPlace = numberPlaces[Random.Range(0, numberPlaces.Count)];
-
-            int finalNumber = unitsPlace * numberPlace;
-
-            return finalNumber;
+            return numberPlace;
         }
 
-        public static int GenerateCleanNumber(List<int> maxNumberPlace)
+        /// <summary>
+        /// generate a number like x(1~9)000...
+        /// </summary>
+        public static int GenerateCleanNumber(int minNumberPlace, int maxNumberPlace)
         {
             int unitsPlace = Random.Range(1, 10);
 
-            int numberPlace = maxNumberPlace[Random.Range(0, maxNumberPlace.Count)];
+            int randNumberPlace = Random.Range(minNumberPlace, maxNumberPlace + 1);
 
-            int finalNumber = unitsPlace * numberPlace;
+            int finalNumber = unitsPlace * (int)Mathf.Pow(10, randNumberPlace);
 
             return finalNumber;
         }
