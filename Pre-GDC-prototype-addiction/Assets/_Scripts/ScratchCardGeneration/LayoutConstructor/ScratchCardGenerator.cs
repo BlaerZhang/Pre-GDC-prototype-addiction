@@ -15,8 +15,6 @@ namespace ScratchCardGeneration.LayoutConstructor
         [Header("Prize Setting")]
         [HideInInspector] public float currentCardPrize;
 
-        private List<float> prizeList = new();
-
         public ScratchCardPrizeDistributionData prizeDistributionData;
         public ScratchCardPitySystemData prizePityData;
 
@@ -24,14 +22,6 @@ namespace ScratchCardGeneration.LayoutConstructor
         public Dictionary<ScratchCardBrand, ICardLayoutConstructor> CardLayoutConstructorDic = new();
 
         [HideInInspector] public GameObject currentScratchCard;
-
-        private void Start()
-        {
-            foreach (var VARIABLE in prizeDistributionData.dataList.Values)
-            {
-                
-            }
-        }
 
         private void OnEnable()
         {
@@ -72,10 +62,7 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         [Header("Scratch Field Setting")]
         public GameObject scratchBackgroundPrefab;
-        // public GameObject scratchFieldPrefab;
 
-        // TODO: generate scratch field according to the sprite -> set native size of the scratch card
-        // TODO: dynamically generate bg position
         private void GenerateCardFace(Sprite cardFace)
         {
             if (!scratchBackgroundPrefab)
@@ -89,10 +76,6 @@ namespace ScratchCardGeneration.LayoutConstructor
             scratchBackground.transform.localPosition = Vector2.zero;
 
             if (scratchBackground.TryGetComponent(out SpriteRenderer spriteRenderer)) spriteRenderer.sprite = cardFace;
-
-            // GameObject scratchFieldObject = Instantiate(scratchFieldPrefab, new Vector3(0, 0,0.01f), Quaternion.identity);
-            // scratchFieldObject.transform.SetParent(scratchBackground.transform);
-            // scratchFieldObject.transform.localPosition = Vector2.zero;
         }
     }
 }
