@@ -49,17 +49,15 @@ namespace ScratchCardGeneration.LayoutConstructor
 
             var prizeDistributionDataList = prizeDistributionData.dataList[currentCardBrand];
             var pityDataList = prizePityData.dataList[currentCardBrand];
-
-            // TODO: get price list, pass it to constructor
-
+            
             var prizeDistribution = prizeDistributionDataList.levelDistribution[level];
-            float costThreshold = pityDataList.levelPitySetting[level].costThreshold;
-            float winningProbabilityOverThreshold = prizePityData.dataList[currentCardBrand].levelPitySetting[level].winningProbabilityOverThreshold;
+            float costThreshold = level < pityDataList.levelPitySetting.Count ? pityDataList.levelPitySetting[level].costThreshold : 0;
+            float winningProbabilityOverThreshold = level < pityDataList.levelPitySetting.Count ? pityDataList.levelPitySetting[level].winningProbabilityOverThreshold : 0;
 
             currentCardPrize = BasePrizeGenerator.GeneratePrize(prizeDistribution, costThreshold, winningProbabilityOverThreshold);
 
             // record total gold spent before winning
-            GameManager.Instance.totalCostBeforeWinning += price;
+            // GameManager.Instance.totalCostBeforeWinning += price;
             // Debug.Log($"totalCostBeforeWinning: {GameManager.Instance.totalCostBeforeWinning}");
 
             currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, price, generatePosition);
