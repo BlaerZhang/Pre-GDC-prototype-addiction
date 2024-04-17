@@ -18,22 +18,22 @@ namespace Interaction
         [Header("Feedback")] 
         public float hoverScale = 0.95f;
         
-        public SpriteRenderer cardSurfaceSprite;
-        public SpriteRenderer cardBackgroundSprite;
-        private DetectScratchArea detectScratchArea;
+        // public SpriteRenderer cardSurfaceSprite;
+        // public SpriteRenderer cardBackgroundSprite;
+        // private DetectScratchArea detectScratchArea;
         private Vector2 dragOffset = new Vector2(0, 0);
         private GameObject currentCard;
-        private ScratchCardManager scratchCardManager;
+        // private ScratchCardManager scratchCardManager;
         private BuyCardManager buyCardManager;
         private Vector2 initialPos;
     
         void Start()
         {
-            cardSurfaceSprite = GameObject.Find("Scratch Surface Sprite").GetComponent<SpriteRenderer>();
-            cardBackgroundSprite = GameObject.Find("ScratchCardBackground(Clone)").GetComponent<SpriteRenderer>();
-            detectScratchArea = GetComponent<DetectScratchArea>();
+            // cardSurfaceSprite = GameObject.Find("Scratch Surface Sprite").GetComponent<SpriteRenderer>();
+            // cardBackgroundSprite = GameObject.Find("ScratchCardBackground(Clone)").GetComponent<SpriteRenderer>();
+            // detectScratchArea = GetComponent<DetectScratchArea>();
             currentCard = GameObject.Find("currentScratchCard");
-            scratchCardManager = GetComponentInParent<ScratchCardManager>();
+            // scratchCardManager = GetComponentInParent<ScratchCardManager>();
             buyCardManager = FindObjectOfType<BuyCardManager>();
             initialPos = transform.position;
             isDragging = false;
@@ -49,10 +49,10 @@ namespace Interaction
             BuyCardManager.onChangeSubmissionStatus -= LockDrag;
         }
 
-        private void Update()
-        {
-            scratchCardManager.InputEnabled = !isDragging;
-        }
+        // private void Update()
+        // {
+        //     scratchCardManager.InputEnabled = !isDragging;
+        // }
 
         protected override void OnMouseEnter()
         {

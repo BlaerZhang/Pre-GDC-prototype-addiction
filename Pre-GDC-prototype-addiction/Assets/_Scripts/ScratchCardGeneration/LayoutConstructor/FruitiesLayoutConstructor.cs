@@ -66,8 +66,6 @@ namespace ScratchCardGeneration.LayoutConstructor
 
             onScratchCardConstructed?.Invoke(totalPrize, price);
 
-            GenerateCardFace();
-
             return currentScratchCard;
         }
 
@@ -249,23 +247,6 @@ namespace ScratchCardGeneration.LayoutConstructor
                     Gizmos.DrawWireCube(cellPosition, cellSize * Vector2.one);
                 }
             }
-        }
-
-        [Header("Scratch Field Setting")]
-        public GameObject scratchBackgroundPrefab;
-        public GameObject scratchFieldPrefab;
-
-        // TODO: generate scratch field according to the sprite -> set native size of the scratch card
-        // TODO: dynamically generate bg position
-        private void GenerateCardFace()
-        {
-            GameObject scratchBackground = Instantiate(scratchBackgroundPrefab, Vector3.zero, Quaternion.identity);
-            scratchBackground.transform.SetParent(currentScratchCard.transform);
-            scratchBackground.transform.localPosition = Vector2.zero;
-
-            // GameObject scratchFieldObject = Instantiate(scratchFieldPrefab, new Vector3(0, 0,0.01f), Quaternion.identity);
-            // scratchFieldObject.transform.SetParent(scratchBackground.transform);
-            // scratchFieldObject.transform.localPosition = Vector2.zero;
         }
     }
 }

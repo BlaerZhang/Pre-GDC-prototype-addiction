@@ -68,7 +68,7 @@ namespace Manager
         [Header("Move to Scratch-off")] 
         public RectTransform scratchOffButton;
 
-        public static Action<ScratchCardBrand, int, float, Vector3> onScratchCardSelected; //Buy Card Action
+        public static Action<ScratchCardBrand, int, float, Vector3, Sprite> onScratchCardSelected; //Buy Card Action
         public static Action onChangeSubmissionStatus; //Give Card Action
         public static Action<float> onSubmitScratchCard;
     
@@ -227,7 +227,7 @@ namespace Manager
                 .OnComplete(() =>
                 {
                     //set action to generate card
-                    onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickPrice, transform.position);
+                    onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickPrice, transform.position, card.cardSprite.sprite);
                     
                     //Feedback
                     if (zoomInAudio && zoomInSounds.Count > 0)

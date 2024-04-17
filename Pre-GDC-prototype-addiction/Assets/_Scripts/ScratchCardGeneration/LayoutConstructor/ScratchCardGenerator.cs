@@ -43,7 +43,7 @@ namespace ScratchCardGeneration.LayoutConstructor
             BuyCardManager.onScratchCardSelected -= AssembleScratchCard;
         }
 
-        private void AssembleScratchCard(ScratchCardBrand currentCardBrand, int level, float price, Vector3 generatePos)
+        private void AssembleScratchCard(ScratchCardBrand currentCardBrand, int level, float price, Vector3 generatePosition, Sprite cardFace)
         {
             print($"level: {level}");
 
@@ -62,12 +62,39 @@ namespace ScratchCardGeneration.LayoutConstructor
             GameManager.Instance.totalCostBeforeWinning += price;
             // Debug.Log($"totalCostBeforeWinning: {GameManager.Instance.totalCostBeforeWinning}");
 
-            currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, price, generatePos);
+            currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, price, generatePosition);
+
+            GenerateCardFace(cardFace);
         }
 
         private ICardLayoutConstructor SwitchConstructor(ScratchCardBrand currentCardBrand)
         {
             return CardLayoutConstructorDic[currentCardBrand];
+        }
+
+        [Header("Scratch Field Setting")]
+        public GameObject scratchBackgroundPrefab;
+        // public GameObject scratchFieldPrefab;
+
+        // TODO: generate scratch field according to the sprite -> set native size of the scratch card
+        // TODO: dynamically generate bg position
+        private void GenerateCardFace(Sprite cardFace)
+        {
+            if (!scratchBackgroundPrefab)
+            {
+                Debug.LogError("scratchBackgroundPrefab is null!");
+                return;
+            }
+
+            GameObject scratchBackground = Instantiate(scratchBackgroundPrefab, Vector3.zero, Quaternion.identity);
+            scratchBackground.transform.SetParent(currentScratchCard.transform);
+            scratchBackground.transform.localPosition = Vector2.zero;
+
+            if (scratchBackground.TryGetComponent(out SpriteRenderer spriteRenderer)) spriteRenderer.sprite = cardFace;
+
+            // GameObject scratchFieldObject = Instantiate(scratchFieldPrefab, new Vector3(0, 0,0.01f), Quaternion.identity);
+            // scratchFieldObject.transform.SetParent(scratchBackground.transform);
+            // scratchFieldObject.transform.localPosition = Vector2.zero;
         }
     }
 }
