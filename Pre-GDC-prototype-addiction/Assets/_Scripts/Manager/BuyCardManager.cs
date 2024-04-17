@@ -265,7 +265,7 @@ namespace Manager
             onChangeSubmissionStatus?.Invoke();
             onSubmitScratchCard?.Invoke(generator.currentCardPrize);
 
-            card.transform.DOMoveY(4.67f, 0.2f);
+            card.transform.DOMoveY(4.75f, 0.2f);
             card.transform.DOScale(0.9f, 0.2f);
             DOVirtual.DelayedCall(2, () =>
             {

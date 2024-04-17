@@ -73,7 +73,7 @@ namespace Interaction
 
                     // print("fully scratched, clear the grid");
 
-                    cardManager.SpriteRendererCard?.DOFade(0, autoRevealingDuration);
+                    cardManager.SpriteRendererCard?.DOFade(0, autoRevealingDuration).OnComplete(() => {cardManager.Card.Fill();});
                     // cardManager.Card.ScratchHole(new Vector2(0f, 0f));
                     onFullyScratched?.Invoke(currentGrid);
                 }
