@@ -123,6 +123,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &100769396
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5513172946490601260, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: SurfaceMaterial
+      value: 
+      objectReference: {fileID: 283058834}
+    - target: {fileID: 5686339270730752103, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_Name
+      value: TItleScreenGrid (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531602045751408763, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: titleGoTo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674806991845585932, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 283058834}
+    - target: {fileID: 8985640164255358702, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.484331
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985640164255358702, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.7842507
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985640164255358702, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985640164255358702, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985640164255358702, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985640164255358702, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985640164255358702, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985640164255358702, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985640164255358702, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985640164255358702, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
 --- !u!1 &117473389
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +425,42 @@ Material:
     m_Colors:
     - _Offset: {r: 0, g: 0, b: 1, a: 1}
   m_BuildTextureStacks: []
+--- !u!21 &283058834
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ScratchCard/Mask
+  m_Shader: {fileID: 4800000, guid: 091cc9a445340c04bbcfbc65c0bef43f, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 8bb2b4e090e9b4948b9bcdf3eff0879a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats: []
+    m_Colors:
+    - _Offset: {r: 0, g: 0, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &308642539
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +589,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: cf6128d6ebc81ed4cb548bd18e080a22, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2607,6 +2712,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 1519277768}
+    - target: {fileID: 8427196786546350948, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427196786546350948, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427196786546350948, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427196786546350948, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8985640164255358702, guid: a32ac3b74b5f4e340b2679d0502794bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3450,3 +3571,4 @@ SceneRoots:
   - {fileID: 610794888}
   - {fileID: 1691410128}
   - {fileID: 230141042}
+  - {fileID: 100769396}
