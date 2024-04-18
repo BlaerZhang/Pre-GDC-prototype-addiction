@@ -41,13 +41,28 @@ public class UIScratchEvent : ScratchProgressEvent
                             Camera.main.DOOrthoSize(0.5f,2f).OnComplete(() => { SceneManager.LoadScene("Menu");});
                             break;
                         case TitleGoTo.Settings:
-                            Camera.main.transform.DOMoveX(-19.2f, 1f);
+                            Camera.main.transform.DOMoveX(-19.2f, 1f).OnComplete(() =>
+                            {
+                                cardManager.Card.Clear();
+                                cardManager.SpriteRendererCard.color = Color.white;
+                                isFullyScratched = false;
+                            });
                             break;
                         case TitleGoTo.Credits:
-                            Camera.main.transform.DOMoveX(19.2f, 1f);
+                            Camera.main.transform.DOMoveX(19.2f, 1f).OnComplete(() =>
+                            {
+                                cardManager.Card.Clear();
+                                cardManager.SpriteRendererCard.color = Color.white;
+                                isFullyScratched = false;
+                            });
                             break;
                         case TitleGoTo.Title:
-                            Camera.main.transform.DOMoveX(0f, 1f);
+                            Camera.main.transform.DOMoveX(0f, 1f).OnComplete(() =>
+                            {
+                                cardManager.Card.Clear();
+                                cardManager.SpriteRendererCard.color = Color.white;
+                                isFullyScratched = false;
+                            });
                             break;
                         case TitleGoTo.Quit:
                             break;
@@ -56,7 +71,6 @@ public class UIScratchEvent : ScratchProgressEvent
                     }
                 });
             }
-            base.OnScratchProgress(progress);
         }
     }
 }
