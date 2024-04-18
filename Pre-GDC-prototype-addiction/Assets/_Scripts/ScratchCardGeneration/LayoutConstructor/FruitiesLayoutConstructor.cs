@@ -4,6 +4,7 @@ using System.Linq;
 using Interaction;
 using ScratchCardGeneration.Utilities;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace ScratchCardGeneration.LayoutConstructor
@@ -31,7 +32,8 @@ namespace ScratchCardGeneration.LayoutConstructor
         public float targetGapLength = 0.1f;
         public float prizeGapLength = 0.1f;
 
-        public GameObject scratchIndicator;
+        public GameObject scratchPrizeGrid;
+        public GameObject scratchTargetGrid;
 
         public static Action<float, float> onScratchCardConstructed;
 
@@ -85,13 +87,15 @@ namespace ScratchCardGeneration.LayoutConstructor
             print("minSplitValue: " + minSplitValue);
         }
 
-        GameObject ConstructIconObject(Sprite iconSprite)
+        GameObject ConstructIconObject(Sprite iconSprite, bool isTargetIcon)
         {
             GameObject iconObject = new GameObject("IconObject");
             iconObject.AddComponent<SpriteRenderer>().sprite = iconSprite;
             iconObject.transform.SetParent(currentScratchCard.transform);
 
-            var indicatorObject = Instantiate(scratchIndicator, iconObject.transform.position, Quaternion.identity);
+            var indicatorObject = isTargetIcon
+                ? Instantiate(scratchTargetGrid, iconObject.transform.position, Quaternion.identity)
+                : Instantiate(scratchPrizeGrid, iconObject.transform.position, Quaternion.identity);
             indicatorObject.transform.SetParent(iconObject.transform);
 
             return indicatorObject;
@@ -129,7 +133,7 @@ namespace ScratchCardGeneration.LayoutConstructor
                     Vector2 cellPosition = topLeftStartPosition + new Vector2(j * (cellSize + targetGapLength), -i * (cellSize + targetGapLength));
 
                     int spriteIndex = iconIndexMatrix.GetElement(i, j);
-                    GameObject indicatorObject = ConstructIconObject(iconSprites[spriteIndex]);
+                    GameObject indicatorObject = ConstructIconObject(iconSprites[spriteIndex], true);
 
                     indicatorObject.transform.parent.localPosition = cellPosition;
                 }
@@ -154,7 +158,7 @@ namespace ScratchCardGeneration.LayoutConstructor
                     PrizeCellPositionMatrix.AddElement(i, cellPosition);
 
                     int spriteIndex = iconIndexMatrix.GetElement(i, j);
-                    GameObject indicatorObject = ConstructIconObject(iconSprites[spriteIndex]);
+                    GameObject indicatorObject = ConstructIconObject(iconSprites[spriteIndex], false);
 
                     Vector2Int currentGrid = new Vector2Int(i, j);
 
