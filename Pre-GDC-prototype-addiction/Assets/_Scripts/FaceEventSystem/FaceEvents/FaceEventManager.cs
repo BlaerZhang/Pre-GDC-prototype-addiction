@@ -99,6 +99,8 @@ public class FaceEventManager : SerializedMonoBehaviour
         {
             case FaceEventType.Discount:
                 discountTriggerTier = triggerTier;
+                //TODO: Fix not discounting if not going to lobby
+                // GameManager.Instance.lastPickPrice = CalculateDiscount(0, GameManager.Instance.lastPickPrice);
                 break;
             case FaceEventType.Prize:
                 prizeTriggerTier = triggerTier;
