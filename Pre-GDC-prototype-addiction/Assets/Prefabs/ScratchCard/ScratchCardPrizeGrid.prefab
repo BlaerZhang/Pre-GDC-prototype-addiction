@@ -10158,7 +10158,7 @@ MonoBehaviour:
   isWinningPrize: 0
   currentGrid: {x: 0, y: 0}
   fullyScratchedThreshold: 0.7
-  autoRevealingDuration: 1
+  autoRevealingDuration: 0.5
   prize: 0
 --- !u!114 &5756209428792729246
 MonoBehaviour:
