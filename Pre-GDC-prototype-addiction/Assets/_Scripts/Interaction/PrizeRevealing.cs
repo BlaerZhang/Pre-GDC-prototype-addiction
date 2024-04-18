@@ -78,7 +78,7 @@ namespace Interaction
                     onFullyScratched?.Invoke(currentGrid);
                 }
                 
-                cardManager.Progress.OnProgress -= OnScratchProgress;
+                base.OnScratchProgress(progress);
                 if (!isWinningPrize) return;
                 isClickable = true;
                 Debug.Log($"User scratched {Math.Round(progress * 100f, 2)}% of surface");
