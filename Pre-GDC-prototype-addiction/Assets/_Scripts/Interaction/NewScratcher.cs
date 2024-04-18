@@ -11,16 +11,15 @@ namespace Interaction
     public class NewScratcher : MonoBehaviour
     {
         [Header("Basic")]
-        // public SpriteRenderer spriteRenderer;
         [HideInInspector] public CinemachineVirtualCamera vCam;
 
         // [Header("Scratch")]
         // public float speed;
         // public float pressure;
         // public float scratchOffset;
-        // public float progressSpeed = 0f;
-        // private float previousProgress = 0f;
-        // private float currentProgress = 0f;
+        public float progressSpeed = 0f;
+        private float previousProgress = 0f;
+        private float currentProgress = 0f;
         private float mouseDir = 0f;
 
         [Header("Feedback")]
@@ -29,26 +28,27 @@ namespace Interaction
         public float screenShake = 0;
         [Range(0,1)]
         public float chromaticAberrationAmount = 0;
+        public float mouseMovementDeadZone = 0.01f;
         public List<ParticleSystem> particles;
         // public AudioClip soundLayer1;
 
         [Header("Card")]
         public ScratchCard card;
         public SpriteRenderer cardSprite;
-        // public EraseProgress eraseProgress;
+        public EraseProgress eraseProgress;
         private PostProcessVolume postProcessVolume;
-
         private ChromaticAberration chromaticAberration;
 
         private void Start()
         {
-            // Cursor.visible = false;
-            // Cursor.lockState = CursorLockMode.Confined;
-
             postProcessVolume = FindObjectOfType<PostProcessVolume>();
             postProcessVolume.profile.TryGetSettings(out chromaticAberration);
-
             vCam = GameObject.Find("Buy Card vCam").GetComponent<CinemachineVirtualCamera>();
+
+            foreach (var particle in particles)
+            {
+                particle.Stop();
+            }
         }
 
         // private void OnEnable()
@@ -69,10 +69,10 @@ namespace Interaction
 
         private void OnProgress(float progress)
         {
-            // //Calculate Progress speed
-            // currentProgress = eraseProgress.GetProgress();
-            // progressSpeed = 10000 * (currentProgress - previousProgress) / Time.fixedDeltaTime;
-            // previousProgress = currentProgress;
+            //Calculate Progress speed
+            currentProgress = eraseProgress.GetProgress();
+            progressSpeed = 1000000 * (currentProgress - previousProgress) * Time.deltaTime;
+            previousProgress = currentProgress;
             
             // //scratch
             // if (Input.GetMouseButton(0))
@@ -85,9 +85,9 @@ namespace Interaction
             
             float mouseX = Input.GetAxis ("Mouse X") * 1.5f;
             float mouseY = Input.GetAxis ("Mouse Y") * 1.5f;
-            mouseDir = (mouseX == 0 && mouseY == 0) ? mouseDir : Mathf.Atan2(mouseY, mouseX) * Mathf.Rad2Deg;
+            mouseDir = (mouseX <= mouseMovementDeadZone && mouseY <= mouseMovementDeadZone) ? mouseDir : Mathf.Atan2(mouseY, mouseX) * Mathf.Rad2Deg;
 
-            if (card.IsScratched)
+            if (progressSpeed > 0)  
             { 
                 if (particles != null)
                 {
@@ -102,7 +102,8 @@ namespace Interaction
                 
                 vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = screenShake; 
                 chromaticAberration.intensity.value += Time.deltaTime * chromaticAberrationAmount; 
-                //sound
+                
+                //TODO: sound
             }
             else
             {
@@ -113,7 +114,8 @@ namespace Interaction
                 
                 vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
                 if (chromaticAberration.intensity.value > 0) chromaticAberration.intensity.value -= Time.deltaTime * 1f;
-                //sound stop
+                
+                //TODO:sound stop  
             }
         }
         

@@ -14,6 +14,9 @@ namespace Interaction
             cardManager.Progress.OnProgress += OnScratchProgress;
         }
 
-        protected virtual void OnScratchProgress(float progress) {}
+        protected virtual void OnScratchProgress(float progress)
+        {
+            cardManager.Progress.OnProgress -= OnScratchProgress;
+        }
     }
 }

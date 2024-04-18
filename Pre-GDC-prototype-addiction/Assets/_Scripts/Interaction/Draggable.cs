@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using Manager;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Interaction
 {
@@ -18,21 +19,23 @@ namespace Interaction
         [Header("Metaphysics")]
         public FaceType faceType;
 
-        [HideInInspector] public SpriteRenderer cardSprite;
+        [HideInInspector] public SpriteRenderer cardFaceSprite;
+        [HideInInspector] public SpriteRenderer cardBGSprite;
         private Vector2 dragOffset = new Vector2(0, 0);
 
         private BuyCardManager buyCardManager;
     
         void Start()
         {
-            cardSprite = GetComponentInChildren<SpriteRenderer>();
+            cardFaceSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+            cardBGSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
             buyCardManager = FindObjectOfType<BuyCardManager>();
             isDragging = false;
         }
 
         protected override void OnMouseEnter()
         {
-            if (!isDragging) cardSprite.DOColor(Color.gray, 0.1f);
+            if (!isDragging) cardFaceSprite.DOColor(Color.gray, 0.1f);
         }
         
         protected override void OnMouseDown()
@@ -48,7 +51,7 @@ namespace Interaction
             // cardSprite.sortingOrder = 10;
         
             //Scale
-            cardSprite.transform.DOScale(Vector3.one * hoverScale, 0.1f);
+            cardFaceSprite.transform.DOScale(Vector3.one * hoverScale, 0.1f);
         
             //Set Drag Point Offset
             dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -78,12 +81,12 @@ namespace Interaction
             if (buyAreaUpperEdgeYOnViewport > cardYPosOnViewport)
             {
                 isInBuyArea = true;
-                cardSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
+                cardFaceSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
             }
             else
             {
                 isInBuyArea = false;
-                cardSprite.DOColor(Color.gray, 0.1f);
+                cardFaceSprite.DOColor(Color.gray, 0.1f);
             }
 
         }
@@ -94,10 +97,10 @@ namespace Interaction
             base.OnMouseUp();
         
             //Scale
-            cardSprite.transform.DOScale(Vector3.one, 0.1f);
+            cardFaceSprite.transform.DOScale(Vector3.one, 0.1f);
             
             //Order
-            cardSprite.sortingOrder = 0;
+            cardFaceSprite.sortingOrder = 0;
         
             //Deactivate Buy Area
             buyCardManager.DeactivateBuyArea();
@@ -114,7 +117,7 @@ namespace Interaction
 
         protected override void OnMouseExit()
         {
-            if (!isDragging) cardSprite.DOColor(Color.white, 0.1f);
+            if (!isDragging) cardFaceSprite.DOColor(Color.white, 0.1f);
         }
     }
 }

@@ -73,12 +73,12 @@ namespace Interaction
 
                     // print("fully scratched, clear the grid");
 
-                    cardManager.SpriteRendererCard?.DOFade(0, autoRevealingDuration);
+                    cardManager.SpriteRendererCard?.DOFade(0, autoRevealingDuration).OnComplete(() => {cardManager.Card.Fill();});
                     // cardManager.Card.ScratchHole(new Vector2(0f, 0f));
                     onFullyScratched?.Invoke(currentGrid);
                 }
                 
-                cardManager.Progress.OnProgress -= OnScratchProgress;
+                base.OnScratchProgress(progress);
                 if (!isWinningPrize) return;
                 isClickable = true;
                 Debug.Log($"User scratched {Math.Round(progress * 100f, 2)}% of surface");

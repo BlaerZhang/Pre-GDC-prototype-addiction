@@ -213,21 +213,21 @@ namespace Manager
             card.transform.rotation = Quaternion.Euler(Vector3.zero);
         
             //set order
-            card.cardSprite.sortingOrder = 6;
+            card.cardFaceSprite.sortingOrder = 6;
         
             Sequence zoomInCardAnimation = DOTween.Sequence();
             zoomInCardAnimation
-                .Append(card.cardSprite.DOFade(0, 0))
+                .Append(card.cardFaceSprite.DOFade(0, 0))
                 .Append(card.transform.DOMove(this.transform.position,0))
                 .Append(card.transform.DOScale(Vector3.one * 10f, 0))
-                .Append(card.cardSprite.DOFade(1, 0.1f))
+                .Append(card.cardFaceSprite.DOFade(1, 0.1f))
                 .Insert(0, card.transform.DOScale(Vector3.one * 1.2f, 0.5f)).SetEase(Ease.OutQuad)
                 .AppendInterval(0.5f)
                 .Append(card.transform.DOScale(Vector3.one, 0.1f)).SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {
                     //set action to generate card
-                    onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickPrice, transform.position, card.cardSprite.sprite);
+                    onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickPrice, transform.position, card.cardBGSprite.sprite);
                     
                     //Feedback
                     if (zoomInAudio && zoomInSounds.Count > 0)
@@ -265,7 +265,7 @@ namespace Manager
             onChangeSubmissionStatus?.Invoke();
             onSubmitScratchCard?.Invoke(generator.currentCardPrize);
 
-            card.transform.DOMoveY(4.67f, 0.2f);
+            card.transform.DOMoveY(4.75f, 0.2f);
             card.transform.DOScale(0.9f, 0.2f);
             DOVirtual.DelayedCall(2, () =>
             {

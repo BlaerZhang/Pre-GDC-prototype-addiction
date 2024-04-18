@@ -5855,15 +5855,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4008778284931842146, guid: 7146e8019f0c00641a1ced3b719c880b, type: 3}
       propertyPath: m_Color.b
-      value: 0.85098046
+      value: 0.7803922
       objectReference: {fileID: 0}
     - target: {fileID: 4008778284931842146, guid: 7146e8019f0c00641a1ced3b719c880b, type: 3}
       propertyPath: m_Color.g
-      value: 0.8431373
+      value: 0.7725491
       objectReference: {fileID: 0}
     - target: {fileID: 4008778284931842146, guid: 7146e8019f0c00641a1ced3b719c880b, type: 3}
       propertyPath: m_Color.r
-      value: 0.83921576
+      value: 0.7686275
       objectReference: {fileID: 0}
     - target: {fileID: 6097440920941071547, guid: 7146e8019f0c00641a1ced3b719c880b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6114,6 +6114,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: scratchPrizeGrid
+      value: 
+      objectReference: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: scratchTargetGrid
+      value: 
+      objectReference: {fileID: 5686339270730752103, guid: 527b6795175eea547828a323a854851d, type: 3}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: maxPrizeSplitParts
       value: 3
       objectReference: {fileID: 0}
@@ -6139,19 +6147,19 @@ PrefabInstance:
       objectReference: {fileID: 828839226113459185, guid: 4a5f640ad8acf42bd875c9d06d2d55e1, type: 3}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: prizeAreaStartPosition.x
-      value: -2
+      value: -2.035
       objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: prizeAreaStartPosition.y
-      value: -2.47
+      value: -2.445
       objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: targetAreaStartPosition.x
-      value: -1.06
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: targetAreaStartPosition.y
-      value: 0.85
+      value: 0.88
       objectReference: {fileID: 0}
     - target: {fileID: 8032303680787762760, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: m_Name
