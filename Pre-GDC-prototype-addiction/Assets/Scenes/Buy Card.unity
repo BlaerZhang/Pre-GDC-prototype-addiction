@@ -2304,7 +2304,9 @@ MonoBehaviour:
   buyParticles: []
   zoomInAudio: 1
   zoomInSounds:
-  - {fileID: 8300000, guid: 14cc5907bc11d114ea4a70a80e2c6790, type: 3}
+  - {fileID: 8300000, guid: d0d92cc1d56626d44b8b84a1affb912f, type: 3}
+  - {fileID: 8300000, guid: 1563fb76d4bd3504aadb3a7948060b62, type: 3}
+  - {fileID: 8300000, guid: 3a04ecff35b77bf41afb71c45cf05aca, type: 3}
   zoomInParticle: 1
   zoomInParticles: []
   handAnimator: {fileID: 1191899901}
