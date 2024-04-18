@@ -132,6 +132,9 @@ public class FaceEventManager : SerializedMonoBehaviour
 
         discountPriceRounded = Mathf.RoundToInt(discountPrice / MathF.Pow(10, priceDigitsCount - 2)) * (int)Mathf.Pow(10, priceDigitsCount - 2);
         
+        //check if free
+        discountPriceRounded = discountPriceRounded == 0 ? 1 : discountPriceRounded;
+        
         return discountPriceRounded;
     }
 }
