@@ -10180,7 +10180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a765ce50c2543259bb0c0bd9f12e9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullyScratchedThreshold: 0.7
+  fullyScratchedThreshold: 0.5
   autoRevealingDuration: 0.5
 --- !u!1 &6141834433544553692
 GameObject:
