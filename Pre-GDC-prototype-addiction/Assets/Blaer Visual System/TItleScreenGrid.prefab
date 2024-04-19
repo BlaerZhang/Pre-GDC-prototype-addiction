@@ -187,7 +187,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0.074999996, y: 0.074999996, z: 0.074999996, w: 0.074999996}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.235, y: 1.235}
     newSize: {x: 8.71, y: 3.72}
@@ -10265,7 +10265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc970487f67b48418a89a15d2baed1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullyScratchedThreshold: 0.7
+  fullyScratchedThreshold: 0.5
   autoRevealingDuration: 0.5
   titleGoTo: 0
 --- !u!1 &6141834433544553692

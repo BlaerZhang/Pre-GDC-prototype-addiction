@@ -28,7 +28,7 @@ namespace Interaction
         public float screenShake = 0;
         [Range(0,1)]
         public float chromaticAberrationAmount = 0;
-        public float mouseMovementDeadZone = 0.01f;
+        public float mouseMovementDeadZone = 0.001f;
         public List<ParticleSystem> particles;
         // public AudioClip soundLayer1;
 
@@ -71,7 +71,9 @@ namespace Interaction
         {
             //Calculate Progress speed
             currentProgress = eraseProgress.GetProgress();
-            progressSpeed = 1000000 * (currentProgress - previousProgress) * Time.deltaTime;
+            progressSpeed = progressSpeed > 1000000 * (currentProgress - previousProgress) / Time.deltaTime
+                ? progressSpeed * 0.85f
+                : 1000000 * (currentProgress - previousProgress) * Time.deltaTime;
             previousProgress = currentProgress;
             
             // //scratch
@@ -86,8 +88,9 @@ namespace Interaction
             float mouseX = Input.GetAxis ("Mouse X") * 1.5f;
             float mouseY = Input.GetAxis ("Mouse Y") * 1.5f;
             mouseDir = (mouseX <= mouseMovementDeadZone && mouseY <= mouseMovementDeadZone) ? mouseDir : Mathf.Atan2(mouseY, mouseX) * Mathf.Rad2Deg;
-
-            if (progressSpeed > 0)  
+            if (mouseDir < 0) mouseDir += 360;
+            
+            if (progressSpeed > 0.001f)  
             { 
                 if (particles != null)
                 {
@@ -95,7 +98,7 @@ namespace Interaction
                     {
                         if (!particle.isPlaying) particle.Play();
                         particle.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                        particle.transform.rotation = Quaternion.Euler(180 - mouseDir, 90, -90);
+                        particle.transform.rotation = Quaternion.Euler(0, 0, mouseDir + 180);
                         // print("Particles!");
                     }
                 }
