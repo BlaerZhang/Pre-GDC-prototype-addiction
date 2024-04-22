@@ -60,7 +60,8 @@ namespace Manager
         {
             foreach (var resourceText in playerResource)
             {
-                resourceText.text = $"${resource}";
+                if (resourceText.text == $"${resource}") return;
+                resourceText.DOText($"${resource}", 1f,true, ScrambleMode.Numerals);
             }
         }
 

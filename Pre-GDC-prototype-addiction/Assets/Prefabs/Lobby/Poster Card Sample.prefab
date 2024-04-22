@@ -238,7 +238,7 @@ MonoBehaviour:
   isInPickArea: 0
   discount: 0
   eventTriggerTier: 0
-  hoverScale: 0.95
+  hoverScale: 1.05
 --- !u!61 &8180575029619347132
 BoxCollider2D:
   m_ObjectHideFlags: 0

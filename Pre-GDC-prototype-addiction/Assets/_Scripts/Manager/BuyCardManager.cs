@@ -26,6 +26,7 @@ namespace Manager
 
         [Header("Buy Cards")] 
         public int price;
+        public int originalPrice;
         public ScratchCardTier tier;
         
         [Header("Buy Feedbacks")] 
