@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7d220e892c431b8eb77cc0de792661, type: 3}
+  m_Name: ConsumableItemsData
+  m_EditorClassIdentifier: 
+  consumableItemsDataList:
+  - name: hand
+    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
+    type: 0
+    unlockLevel: 0
+    price: 0
+    description: 
+  - name: head
+    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
+    type: 1
+    unlockLevel: 0
+    price: 0
+    description: 
+  - name: eye
+    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
+    type: 2
+    unlockLevel: 0
+    price: 0
+    description: 
+  - name: pen
+    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
+    type: 3
+    unlockLevel: 0
+    price: 0
+    description: 
+  - name: leg
+    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
+    type: 0
+    unlockLevel: 0
+    price: 0
+    description: 
