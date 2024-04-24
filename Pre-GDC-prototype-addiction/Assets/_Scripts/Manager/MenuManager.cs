@@ -47,6 +47,7 @@ namespace Manager
             {
                 // card.transform.DOMove(cardPurchasePos.position, 0.1f);
                 GameManager.Instance.lastPickPrice = card.price;
+                GameManager.Instance.lastPickOriginalPrice = card.originalPrice;
                 GameManager.Instance.lastPickTier = card.tier;
                 GameManager.Instance.switchSceneManager.ChangeScene("Buy Card");
             }

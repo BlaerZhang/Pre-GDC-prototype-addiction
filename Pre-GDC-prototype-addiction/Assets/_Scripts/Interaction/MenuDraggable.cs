@@ -18,7 +18,7 @@ namespace Interaction
         public Sprite lockedSprite;
         public int price = 1;
         public ScratchCardBrand cardBrand = ScratchCardBrand.Fruities;
-        private int originalPrice;
+        [HideInInspector] public int originalPrice;
         private int discountPrice;
       
         public ScratchCardTier tier = ScratchCardTier.Level1;

@@ -29,6 +29,8 @@ namespace Manager
         [HideInInspector] public bool incrementalLock = true;
 
         [HideInInspector] public int lastPickPrice = 1;
+        
+        [HideInInspector] public int lastPickOriginalPrice = 1;
 
         [HideInInspector] public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
 

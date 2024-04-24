@@ -59,12 +59,14 @@ public class FaceEventManager : SerializedMonoBehaviour
     private void OnEnable()
     {
         FaceEventListener.onFaceEventTriggered += UpdateFaceEventInfo;
+        onFaceEventEnd += ResetDiscountPrice;
         BuyCardManager.onChangeSubmissionStatus += DurationCountDown;
     }
 
     private void OnDisable()
     {
         FaceEventListener.onFaceEventTriggered -= UpdateFaceEventInfo;
+        onFaceEventEnd += ResetDiscountPrice;
         BuyCardManager.onChangeSubmissionStatus -= DurationCountDown;
     }
 
@@ -99,8 +101,7 @@ public class FaceEventManager : SerializedMonoBehaviour
         {
             case FaceEventType.Discount:
                 discountTriggerTier = triggerTier;
-                //TODO: Fix not discounting if not going to lobby
-                // GameManager.Instance.lastPickPrice = CalculateDiscount(0, GameManager.Instance.lastPickPrice);
+                GameManager.Instance.lastPickPrice = CalculateDiscount(0, GameManager.Instance.lastPickOriginalPrice);
                 break;
             case FaceEventType.Prize:
                 prizeTriggerTier = triggerTier;
@@ -136,5 +137,11 @@ public class FaceEventManager : SerializedMonoBehaviour
         discountPriceRounded = discountPriceRounded == 0 ? 1 : discountPriceRounded;
         
         return discountPriceRounded;
+    }
+
+    public void ResetDiscountPrice(FaceEventType faceEventType)
+    {
+        if (faceEventType != FaceEventType.Discount) return;
+        GameManager.Instance.lastPickPrice = GameManager.Instance.lastPickOriginalPrice;
     }
 }
