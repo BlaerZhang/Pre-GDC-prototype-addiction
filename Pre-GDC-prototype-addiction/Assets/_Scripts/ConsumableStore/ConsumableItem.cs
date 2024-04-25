@@ -14,6 +14,8 @@ namespace _Scripts.ConsumableStore
 
         public static Action<ConsumableType> onItemConsumed;
 
+        private bool isUnlocked = false;
+
         public void InitializeItem(string itemName, ConsumableType consumableType, int unlockLevel, float price, string description)
         {
             this.itemName = itemName;
@@ -23,8 +25,29 @@ namespace _Scripts.ConsumableStore
             this.description = description;
         }
 
-        // TODO: triggered after the drag function
-        private void UseEffect() => onItemConsumed(consumableType);
+        private void UseEffect()
+        {
+            if (isUnlocked) onItemConsumed(consumableType);
+        }
+
+        // TODO: triggered after upgrade the membership level
+        private void UnlockItem(int currentLevel)
+        {
+            if (currentLevel == unlockLevel)
+            {
+                if (!isUnlocked)
+                {
+                    isUnlocked = true;
+
+                }
+            }
+
+        }
+
+        private void ChangeToUnlockState()
+        {
+
+        }
 
         protected override void ClickableEvent() => UseEffect();
     }

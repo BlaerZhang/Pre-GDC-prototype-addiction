@@ -6,7 +6,6 @@ using Manager;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using Interaction;
 
 public class CardPoolManager : SerializedMonoBehaviour
 {

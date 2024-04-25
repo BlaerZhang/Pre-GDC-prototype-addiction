@@ -1,21 +1,26 @@
 using System.Collections.Generic;
-using _Scripts.Helpers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Scripts.ConsumableStore
 {
-    public class ConsumableStoreInitializer : SerializedMonoBehaviour
+    public class ConsumableStoreInitializer : MonoBehaviour
     {
-        [Header("Consumable Item Data")]
+        [Title("Consumable Item Data")]
         [SerializeField] private ConsumableItemsData consumableItemsData;
 
-        [Header("Item Placement")]
-        [SerializeField] protected Vector2 startPosition;
-        [SerializeField] protected float cellSize;
-        [SerializeField] protected Vector2Int gridSize;
-        [SerializeField] protected float gapLengthX;
-        [SerializeField] protected float gapLengthY;
+        [Title("Item Placement")]
+        [SerializeField] private Sprite lockedIcon;
+
+        [SerializeField] private Vector2 startPosition;
+        [SerializeField] private float cellSize;
+        [SerializeField] private Vector2Int gridSize;
+        [SerializeField] private float gapLengthX;
+        [SerializeField] private float gapLengthY;
+
+        [Title("Item Tooltip Settings")]
+        [SerializeField] private SimpleTooltipStyle tooltipStyle;
+
 
         void Start() => PlaceItems();
 
@@ -27,6 +32,10 @@ namespace _Scripts.ConsumableStore
             GameObject consumableItem = new GameObject(itemName);
             consumableItem.AddComponent<SpriteRenderer>().sprite = icon;
             consumableItem.AddComponent<ConsumableItem>().InitializeItem(itemName, consumableType, unlockLevel, price, description);
+            var tooltip = consumableItem.AddComponent<SimpleTooltip>();
+
+            // TODO: put name, icon, price, description into the tooltip
+            tooltip.simpleTooltipStyle = tooltipStyle;
 
             return consumableItem;
         }
