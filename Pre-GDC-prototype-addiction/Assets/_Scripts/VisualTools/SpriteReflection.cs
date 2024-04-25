@@ -34,6 +34,7 @@ public class SpriteReflection : MonoBehaviour
         spriteMask = this.AddComponent<SpriteMask>();
         spriteMask.sprite = spriteRenderer.sprite;
         sortingGroup = this.AddComponent<SortingGroup>();
+        sortingGroup.sortingOrder = spriteRenderer.sortingOrder;
 
         reflectionParent = new GameObject("Reflection Parent");
         reflectionParent.transform.parent = this.transform;
