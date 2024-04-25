@@ -631,6 +631,7 @@ MonoBehaviour:
   statsTrackingManager: {fileID: 0}
   incrementalLock: 1
   lastPickPrice: 1
+  lastPickOriginalPrice: 1
   lastPickTier: 0
   lastMenuYPos: 9.25
   totalCostBeforeWinning: 0
