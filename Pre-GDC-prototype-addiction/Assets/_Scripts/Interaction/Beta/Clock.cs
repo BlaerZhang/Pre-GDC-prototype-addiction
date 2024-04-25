@@ -1,20 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
+using Manager;
 using TMPro;
 using UnityEngine;
+using ResourceManager = Manager.ResourceManager;
 
 public class Clock : MonoBehaviour
 {
-    public TextMeshPro timeText;
-    public 
+    public TextMeshProUGUI timeText;
     
-    void Start()
+    private void OnEnable()
     {
-        
+        ResourceManager.OnTimeChanged += UpdateClock;
+    }
+
+    private void OnDisable()
+    {
+        ResourceManager.OnTimeChanged -= UpdateClock;
     }
     
-    void Update()
+    private void UpdateClock(DateTime newTime)
     {
-        timeText.text = System.DateTime.Now.ToLongTimeString();
+        timeText.text = GameManager.Instance.resourceManager.CurrentTime.ToString("t");
     }
 }
