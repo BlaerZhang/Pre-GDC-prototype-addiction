@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using Manager;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
 namespace Interaction.Clickable
 {
-    public abstract class ClickableBase : MonoBehaviour
+    public abstract class ClickableUIBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
         [Header("Size Modifier")]
         [SerializeField] private float hoverSizeModifier = 1.1f;
@@ -17,34 +18,28 @@ namespace Interaction.Clickable
         [SerializeField] private List<AudioClip> pressSounds = new();
         [SerializeField] private List<AudioClip> exitSounds = new();
 
-        protected void OnEnable()
+        public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            var col = gameObject.AddComponent<BoxCollider2D>();
-            col.isTrigger = true;
-        }
-
-        protected virtual void OnMouseEnter()
-        {
-            transform.localScale *= hoverSizeModifier;
+            ScaleUpClickable(hoverSizeModifier);
             PlaySound(hoverSounds);
         }
 
-        protected virtual void OnMouseDown()
+        public virtual void OnPointerExit(PointerEventData eventData)
         {
-            transform.localScale *= pressSizeModifier;
+            ScaleDownClickable(hoverSizeModifier);
+            PlaySound(exitSounds);
+        }
+
+        public virtual void OnPointerDown(PointerEventData eventData)
+        {
+            ScaleUpClickable(pressSizeModifier);
             PlaySound(pressSounds);
             ClickableEvent();
         }
 
-        protected virtual void OnMouseUp()
+        public virtual void OnPointerUp(PointerEventData eventData)
         {
-            transform.localScale /= pressSizeModifier;
-        }
-
-        protected virtual void OnMouseExit()
-        {
-            transform.localScale /= hoverSizeModifier;
-            PlaySound(exitSounds);
+            ScaleDownClickable(pressSizeModifier);
         }
 
         protected abstract void ClickableEvent();
@@ -53,6 +48,16 @@ namespace Interaction.Clickable
         {
             if (audioClips.Count > 0)
                 GameManager.Instance.audioManager.PlaySound(audioClips[Random.Range(0, audioClips.Count)]);
+        }
+
+        private void ScaleUpClickable(float modifier)
+        {
+            transform.localScale *= modifier;
+        }
+
+        private void ScaleDownClickable(float modifier)
+        {
+            transform.localScale /= modifier;
         }
     }
 }

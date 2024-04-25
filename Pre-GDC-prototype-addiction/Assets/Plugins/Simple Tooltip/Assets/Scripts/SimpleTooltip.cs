@@ -15,6 +15,8 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private bool isUIObject = false;
     private bool showing = false;
 
+    [HideInInspector] public bool isEnabled = true;
+
     private void Awake()
     {
         eventSystem = FindObjectOfType<EventSystem>();
@@ -41,6 +43,8 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void Update()
     {
+        if (!isEnabled) return;
+
         if (!cursorInside)
             return;
 
@@ -54,6 +58,8 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void OnMouseOver()
     {
+        if (!isEnabled) return;
+
         if (isUIObject)
             return;
 
@@ -70,6 +76,8 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void OnMouseExit()
     {
+        if (!isEnabled) return;
+
         if (isUIObject)
             return;
         HideTooltip();
@@ -77,6 +85,8 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!isEnabled) return;
+
         if (!isUIObject)
             return;
         ShowTooltip();
@@ -84,6 +94,8 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!isEnabled) return;
+
         if (!isUIObject)
             return;
         HideTooltip();
