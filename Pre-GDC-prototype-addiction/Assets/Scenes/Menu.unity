@@ -2333,6 +2333,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample
       objectReference: {fileID: 0}
+    - target: {fileID: 3580790522045312806, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580790522045312806, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580790522045312806, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580790522045312806, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614837345165067547, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
