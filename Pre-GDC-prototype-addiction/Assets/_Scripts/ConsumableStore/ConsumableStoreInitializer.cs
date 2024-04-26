@@ -48,7 +48,7 @@ namespace _Scripts.ConsumableStore
         /// <summary>
         /// assemble items from the data list
         /// </summary>
-        private GameObject AssembleItems(string itemName, Sprite icon, ConsumableType consumableType, int unlockLevel, float price, string description)
+        private GameObject AssembleItems(string itemName, Sprite icon, ConsumableType consumableType, int unlockLevel, int price, string description)
         {
             GameObject consumableItem = new GameObject(itemName);
             var image = consumableItem.AddComponent<Image>();
@@ -60,6 +60,8 @@ namespace _Scripts.ConsumableStore
 
             // TODO: put name, icon, price, description into the tooltip
             if (tooltipStyle) tooltip.simpleTooltipStyle = tooltipStyle;
+            tooltip.infoLeft += itemName + "\n";
+            tooltip.infoLeft += description;
 
             consumableItem.AddComponent<ConsumableItem>().InitializeItem(itemName, consumableType, unlockLevel, price, description);
 

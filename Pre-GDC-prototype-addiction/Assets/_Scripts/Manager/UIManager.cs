@@ -10,18 +10,22 @@ namespace Manager
 {
     public class UIManager : SerializedMonoBehaviour
     {
-        [Header("Game")]
+        [Title("Game")]
         public List<TextMeshProUGUI> playerResource;
 
-        [Header("Face Event")] 
+        [Title("Face Event")]
         public RectTransform faceEventUIParent;
         public Dictionary<FaceEventType, RectTransform> faceEventUIDict;
     
-        [Header("Incremental")]
+        [Title("Incremental")]
         public TextMeshProUGUI upgradePrice;
 
-        [Header("Buy")] 
+        [Title("Buy")]
         public TextMeshProUGUI buyCardPrice;
+
+        [Title("Membership Card UI")]
+        [SerializeField] private Slider membershipProgressBar;
+        [SerializeField] private TextMeshProUGUI membershipLevelUI;
 
         private bool isPlayingNotEnoughAnimation = false;
 
@@ -73,6 +77,31 @@ namespace Manager
         public void UpdateBuyPrice(int price)
         { 
             buyCardPrice.text = $"${price}";
+        }
+
+        private void UpdateMembershipLevel(int currentLevel)
+        {
+            membershipLevelUI.text = currentLevel.ToString();
+        }
+
+        public Tween UpdateMembershipProgressUI(int toLevel, float targetValue, bool isResetRequired = false)
+        {
+            // TODO: change points left
+            return membershipProgressBar.DOValue(targetValue, 0.5f).SetEase(Ease.OutCubic)
+                .OnComplete(() =>
+                {
+                    if (isResetRequired)
+                    {
+                        ShowMembershipUpgradeEffect();
+                        UpdateMembershipLevel(toLevel);
+                        membershipProgressBar.value = 0;
+                    }
+                });
+        }
+
+        private void ShowMembershipUpgradeEffect()
+        {
+            // TODO:
         }
     
         public void PlayNotEnoughGoldAnimation()

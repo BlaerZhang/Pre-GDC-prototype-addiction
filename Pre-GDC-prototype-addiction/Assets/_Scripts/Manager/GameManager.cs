@@ -24,6 +24,8 @@ namespace Manager
         
         [HideInInspector] public FaceEventManager faceEventManager;
 
+        [HideInInspector] public MembershipManager membershipManager;
+
         [HideInInspector] public bool incrementalLock = true;
 
         [HideInInspector] public int lastPickPrice = 1;
@@ -53,6 +55,7 @@ namespace Manager
             resourceManager = GetComponentInChildren<ResourceManager>();
             cardPoolManager = GetComponentInChildren<CardPoolManager>();
             faceEventManager = GetComponentInChildren<FaceEventManager>();
+            membershipManager = GetComponentInChildren<MembershipManager>();
         }
 
         void Update()

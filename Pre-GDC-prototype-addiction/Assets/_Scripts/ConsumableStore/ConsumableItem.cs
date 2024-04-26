@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
+using Manager;
 
 namespace _Scripts.ConsumableStore
 {
@@ -12,14 +13,24 @@ namespace _Scripts.ConsumableStore
         private string itemName;
         private ConsumableType consumableType;
         private int unlockLevel;
-        private float price;
+        private int price;
         private string description;
 
         public static Action<ConsumableType> onItemConsumed;
 
         private bool isUnlocked = false;
 
-        public void InitializeItem(string itemName, ConsumableType consumableType, int unlockLevel, float price, string description)
+        private void OnEnable()
+        {
+            MembershipManager.onMembershipLevelUp += UnlockItem;
+        }
+
+        private void OnDisable()
+        {
+            MembershipManager.onMembershipLevelUp -= UnlockItem;
+        }
+
+        public void InitializeItem(string itemName, ConsumableType consumableType, int unlockLevel, int price, string description)
         {
             this.itemName = itemName;
             this.consumableType = consumableType;
@@ -59,7 +70,6 @@ namespace _Scripts.ConsumableStore
             if (isUnlocked) onItemConsumed(consumableType);
         }
 
-        // TODO: triggered after upgrade the membership level
         private void UnlockItem(int currentLevel)
         {
             if (currentLevel == unlockLevel)
@@ -79,6 +89,9 @@ namespace _Scripts.ConsumableStore
 
         }
 
-        protected override void ClickableEvent() => UseEffect();
+        protected override void ClickableEvent()
+        {
+            UseEffect();
+        }
     }
 }

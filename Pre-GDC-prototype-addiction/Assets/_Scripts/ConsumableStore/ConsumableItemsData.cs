@@ -18,7 +18,7 @@ namespace _Scripts.ConsumableStore
             public ConsumableType type;
             [TableColumnWidth(80, Resizable = false)]
             public int unlockLevel;
-            public float price;
+            public int price;
             [TextArea]
             public string description;
         }
