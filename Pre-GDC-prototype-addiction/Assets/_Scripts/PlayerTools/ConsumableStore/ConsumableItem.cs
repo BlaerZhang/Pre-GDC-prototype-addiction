@@ -1,4 +1,5 @@
 using System;
+using _Scripts.PlayerTools;
 using Interaction.Clickable;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,7 +9,7 @@ using Manager;
 
 namespace _Scripts.ConsumableStore
 {
-    public class ConsumableItem : ClickableUIBase
+    public class ConsumableItem : ClickableUIBase, IUnlockable
     {
         private string itemName;
         private ConsumableType consumableType;
@@ -70,7 +71,7 @@ namespace _Scripts.ConsumableStore
             if (isUnlocked) onItemConsumed(consumableType);
         }
 
-        private void UnlockItem(int currentLevel)
+        public void UnlockItem(int currentLevel)
         {
             if (currentLevel == unlockLevel)
             {
@@ -82,11 +83,6 @@ namespace _Scripts.ConsumableStore
                     isUnlocked = true;
                 }
             }
-        }
-
-        private void ChangeToUnlockState()
-        {
-
         }
 
         protected override void ClickableEvent()
