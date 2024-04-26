@@ -36,15 +36,22 @@ public class Clock : MonoBehaviour
 
     private void UpdateClock(DateTime newTime)
     {
+        //update time
         displayTime = newTime;
+        
+        //minute animation
         DOVirtual.Int(displayMinute, newTime.Minute, 1, value =>
         {
             minuteText.text = value.ToString("D2");
-        }).OnComplete(() => { displayMinute = newTime.Minute; });
+        }).SetEase(Ease.Linear).OnComplete(() => { displayMinute = newTime.Minute; });
 
+        //hour animation
         DOVirtual.Int(displayHour, newTime.Hour, 1, value =>
         {
             hourText.text = value.ToString("D2");
-        }).OnComplete(() => { displayHour = newTime.Hour; });
+        }).SetEase(Ease.Linear).OnComplete(() => { displayHour = newTime.Hour; });
+        
+        //Colun Feedback
+        colun.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0);
     }
 }

@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reflectionTimeInterval: 5
-  reflectionDuration: 1
+  reflectionDuration: 2
   reflectionAngle: -15
   reflectionSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   reflectionTransparency: 0.5
