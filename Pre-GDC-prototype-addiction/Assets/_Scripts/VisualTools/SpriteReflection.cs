@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -15,8 +16,6 @@ public class SpriteReflection : MonoBehaviour
     [Range(0, 1)] public float reflectionTransparency = 0.5f;
 
     private SpriteRenderer spriteRenderer;
-    private SpriteMask spriteMask;
-    private SortingGroup sortingGroup;
     private GameObject reflectionParent;
     
     void Start()
@@ -27,25 +26,25 @@ public class SpriteReflection : MonoBehaviour
         InvokeRepeating("Reflect", Random.Range(0f, 5f), reflectionTimeInterval);
     }
 
-    [ContextMenu("Initialize")]
+    [Button("Initialize")]
     void Init()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteMask = this.AddComponent<SpriteMask>();
-        spriteMask.sprite = spriteRenderer.sprite;
-        sortingGroup = this.AddComponent<SortingGroup>();
-        sortingGroup.sortingOrder = spriteRenderer.sortingOrder;
+        if (GetComponent<SpriteMask>() == null) this.AddComponent<SpriteMask>().sprite = spriteRenderer.sprite;
+        if(GetComponent<SortingGroup>() == null) this.AddComponent<SortingGroup>().sortingOrder = spriteRenderer.sortingOrder;
 
+        if (transform.Find("Reflection Parent") != null) return;
+        
         reflectionParent = new GameObject("Reflection Parent");
         reflectionParent.transform.parent = this.transform;
         reflectionParent.transform.localPosition = Vector3.zero;
-        
+            
         CreateReflection(-0.5f);
         CreateReflection(1);
         CreateReflection(0.5f);
+        
     }
 
-    [ContextMenu("Create Reflection")]
     void CreateReflection(float XPos)
     {
         GameObject square = new GameObject("Square");

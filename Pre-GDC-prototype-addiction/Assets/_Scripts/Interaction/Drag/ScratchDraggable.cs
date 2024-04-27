@@ -26,6 +26,7 @@ namespace Interaction
         // private ScratchCardManager scratchCardManager;
         private BuyCardManager buyCardManager;
         private Vector2 initialPos;
+        private SpriteShadow[] shadows;
     
         void Start()
         {
@@ -35,6 +36,7 @@ namespace Interaction
             currentCard = GameObject.Find("currentScratchCard");
             // scratchCardManager = GetComponentInParent<ScratchCardManager>();
             buyCardManager = FindObjectOfType<BuyCardManager>();
+            shadows = GetComponentsInChildren<SpriteShadow>();
             initialPos = transform.position;
             isDragging = false;
         }
@@ -58,8 +60,13 @@ namespace Interaction
         {
             if (!isDragging)
             {
-                // cardSurfaceSprite.DOColor(Color.gray, 0.1f);
-                // cardBackgroundSprite.DOColor(Color.gray, 0.1f);
+                print("Mouse Enter");
+                foreach (var shadow in shadows)
+                {
+                    print(shadow);
+                    SpriteRenderer shadowSprite = shadow.transform.Find("Shadow").GetComponent<SpriteRenderer>();
+                    shadowSprite.material.DOColor(shadow.hoverShadowColor, 0.1f);
+                }
             }
         }
 
@@ -139,8 +146,11 @@ namespace Interaction
         {
             if (!isDragging)
             {
-                // cardSurfaceSprite.DOColor(Color.white, 0.1f);
-                // cardBackgroundSprite.DOColor(Color.white, 0.1f);
+                foreach (var shadow in shadows)
+                {
+                    SpriteRenderer shadowSprite = shadow.transform.Find("Shadow").GetComponent<SpriteRenderer>();
+                    shadowSprite.material.DOColor(shadow.shadowColor, 0.1f);    
+                }
             }
         }
 
