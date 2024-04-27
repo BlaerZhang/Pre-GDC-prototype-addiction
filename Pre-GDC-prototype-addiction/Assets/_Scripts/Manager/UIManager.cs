@@ -98,12 +98,12 @@ namespace Manager
         private void CollapseFaceEventUI(FaceEventType eventType)
         {
             if (eventType == FaceEventType.NoEvent) return;
-            faceEventUIDict[eventType].DOAnchorPosX(400, 0.3f);
+            faceEventUIDict[eventType].DOAnchorPosX(600, 0.3f);
         }
 
         private void HideFaceEventUI()
         {
-            faceEventUIParent.DOAnchorPosX(400, 0.3f);
+            faceEventUIParent.DOAnchorPosX(600, 0.3f);
         }
 
         private void ShowFaceEventUI(string toScene)

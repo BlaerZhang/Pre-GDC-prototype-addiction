@@ -250,7 +250,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 484.65115, y: 197.67441}
+  m_SizeDelta: {x: 1042, y: 425}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &3452779185949230182
 CanvasRenderer:
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 10, y: -10}
   m_UseGraphicAlpha: 1
 --- !u!114 &2837161215822220678
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Padding: {x: 10, y: 10, z: 10, w: 7}
   m_Softness: {x: 0, y: 0}
 --- !u!1 &5421117978345665813
 GameObject:
@@ -700,7 +700,7 @@ RectTransform:
   m_GameObject: {fileID: 8198770558276772216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 5.5, y: 5.5, z: 5.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4882697491853645422}
