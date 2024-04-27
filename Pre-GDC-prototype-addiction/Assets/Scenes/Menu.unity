@@ -3171,7 +3171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2153688874752061479, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -264.375
+      value: -120
       objectReference: {fileID: 0}
     - target: {fileID: 2153688874752061479, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3630,14 +3630,14 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 700118757}
   - {fileID: 312405963}
   - {fileID: 1038965286}
   - {fileID: 599705514}
   - {fileID: 902621652}
-  - {fileID: 1189589571}
+  - {fileID: 700118757}
   - {fileID: 2080355672}
   - {fileID: 1165192623330922810}
+  - {fileID: 1189589571}
   - {fileID: 1787735784}
   m_Father: {fileID: 230012565}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4764,6 +4764,7 @@ GameObject:
   - component: {fileID: 1189589571}
   - component: {fileID: 1189589573}
   - component: {fileID: 1189589572}
+  - component: {fileID: 1189589575}
   - component: {fileID: 1189589574}
   m_Layer: 5
   m_Name: Light
@@ -4844,6 +4845,26 @@ MonoBehaviour:
   m_EffectColor: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 1}
   m_EffectDistance: {x: 10, y: -10}
   m_UseGraphicAlpha: 1
+--- !u!114 &1189589575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189589570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5f7a630b2748d4ab1c14b1c31d5800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeFeedback: 1
+  hoverSizeModifier: 1.1
+  pressSizeModifier: 0.8
+  hoverSounds: []
+  pressSounds: []
+  exitSounds: []
+  mask: {fileID: 1787735785}
+  lightOffColor: {r: 0, g: 0, b: 0, a: 0.98039216}
 --- !u!1 &1230983608
 GameObject:
   m_ObjectHideFlags: 0
@@ -6994,7 +7015,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787735783}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

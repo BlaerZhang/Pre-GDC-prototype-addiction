@@ -6,12 +6,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace Interaction.Clickable
 {
     public abstract class ClickableUIBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
-        [Header("Size Modifier")]
+        [Header("Size Modifier")] 
+        [SerializeField] private bool sizeFeedback = true;
         [SerializeField] private float hoverSizeModifier = 1.1f;
         [SerializeField] private float pressSizeModifier = 0.8f;
         private Vector3 originalLocalScale;
@@ -24,26 +26,26 @@ namespace Interaction.Clickable
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
             if (originalLocalScale == Vector3.zero) originalLocalScale = transform.localScale;
-            ScaleUpClickable(hoverSizeModifier);
+            if (sizeFeedback) ScaleUpClickable(hoverSizeModifier);
             PlaySound(hoverSounds);
         }
 
         public virtual void OnPointerExit(PointerEventData eventData)
         {
-            ScaleDownClickable(hoverSizeModifier);
+            if (sizeFeedback) ScaleDownClickable(hoverSizeModifier);
             PlaySound(exitSounds);
         }
 
         public virtual void OnPointerDown(PointerEventData eventData)
         {
-            ScaleUpClickable(pressSizeModifier);
+            if (sizeFeedback) ScaleUpClickable(pressSizeModifier);
             PlaySound(pressSounds);
             ClickableEvent();
         }
 
         public virtual void OnPointerUp(PointerEventData eventData)
         {
-            ScaleDownClickable(pressSizeModifier);
+            if (sizeFeedback) ScaleDownClickable(pressSizeModifier);
         }
 
         protected abstract void ClickableEvent();
