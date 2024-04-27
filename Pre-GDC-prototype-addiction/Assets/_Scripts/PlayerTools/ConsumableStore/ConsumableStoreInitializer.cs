@@ -15,7 +15,6 @@ namespace _Scripts.ConsumableStore
 
         [Title("Item Placement")]
         [SerializeField] private GridLayoutGroup consumableStore;
-        [SerializeField] private Transform startPosition;
         [SerializeField] private Vector2 cellSize;
         [SerializeField] private Vector2 gapLength;
         [SerializeField] private int gridLayoutSizeConstraint;
@@ -45,8 +44,6 @@ namespace _Scripts.ConsumableStore
 
         private void SetUpGridLayout()
         {
-            consumableStore.transform.position = startPosition.position;
-
             consumableStore.startCorner = GridLayoutGroup.Corner.UpperLeft;
             consumableStore.startAxis = GridLayoutGroup.Axis.Vertical;
             consumableStore.constraint = GridLayoutGroup.Constraint.FixedRowCount;
@@ -73,7 +70,7 @@ namespace _Scripts.ConsumableStore
             // add tooltip on consumable items
             AddTooltip(consumableItem, itemName, description);
 
-            consumableItem.AddComponent<ConsumableItemIcon>().InitializeItem(consumablePrefab, itemName, itemSprite, consumableType, unlockLevel);
+            consumableItem.AddComponent<ConsumableItemIcon>().InitializeItem(consumablePrefab, itemName, price, itemSprite, consumableType, unlockLevel);
 
             return consumableItem;
         }

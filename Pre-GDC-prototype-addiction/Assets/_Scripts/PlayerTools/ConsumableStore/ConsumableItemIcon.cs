@@ -42,10 +42,11 @@ namespace _Scripts.ConsumableStore
             if(usedItemName.Equals(itemName)) isOutOfStock = false;
         }
 
-        public void InitializeItem(GameObject consumablePrefab, string itemName, Sprite itemSprite, ConsumableType consumableType, int unlockLevel)
+        public void InitializeItem(GameObject consumablePrefab, string itemName, int price, Sprite itemSprite, ConsumableType consumableType, int unlockLevel)
         {
             this.consumablePrefab = consumablePrefab;
             this.itemName = itemName;
+            this.price = price;
             this.itemSprite = itemSprite;
             this.consumableType = consumableType;
             this.unlockLevel = unlockLevel;
@@ -92,7 +93,7 @@ namespace _Scripts.ConsumableStore
                 onTryBuyItem?.Invoke(AssembleItemObject(consumablePrefab));
 
                 if (DeskItemPlacement.isDeskFull) return;
-
+                
                 GameManager.Instance.resourceManager.PlayerGold -= price;
                 isOutOfStock = true;
             }
@@ -102,8 +103,17 @@ namespace _Scripts.ConsumableStore
         {
             newObject.name = itemName;
 
-            if (newObject.TryGetComponent(out Image image)) image.sprite = itemSprite;
-            else newObject.AddComponent<Image>().sprite = itemSprite;
+            if (newObject.TryGetComponent(out Image image))
+            {
+                image.sprite = itemSprite;
+                image.SetNativeSize();
+            }
+            else
+            {
+                Image newImage = newObject.AddComponent<Image>();
+                newImage.sprite = itemSprite;
+                newImage.SetNativeSize();
+            }
 
             if (newObject.TryGetComponent(out ConsumableItemBase consumableItemBase)) consumableItemBase.consumableType = consumableType;
             else consumablePrefab.AddComponent<ConsumableItemBase>();

@@ -13,27 +13,27 @@ MonoBehaviour:
   m_Name: ConsumableItemsData
   m_EditorClassIdentifier: 
   consumableItemsDataList:
-  - name: hand
-    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
-    itemSprite: {fileID: 21300000, guid: e898b2de13b104a8b8f0c11eee64e34e, type: 3}
-    type: 0
+  - name: Gum
+    icon: {fileID: 6881212354145439598, guid: d4f1fbce15ab094438d62181934ff44f, type: 3}
+    itemSprite: {fileID: 6881212354145439598, guid: d4f1fbce15ab094438d62181934ff44f, type: 3}
+    type: 3
     unlockLevel: 0
     price: 2
-    description: handhandhandhandhandhanhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhandhanddhandhandhand
-  - name: head
-    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
-    itemSprite: {fileID: 21300000, guid: 58c8e549c54d5044eb37d9ff7b98c6cf, type: 3}
+    description: GumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGum
+  - name: Soda
+    icon: {fileID: 21300000, guid: 01dbda64559a98a45a56f6f775a2ee43, type: 3}
+    itemSprite: {fileID: 21300000, guid: 01dbda64559a98a45a56f6f775a2ee43, type: 3}
     type: 1
     unlockLevel: 1
     price: 5
-    description: headheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadheadhead
-  - name: eye
-    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
-    itemSprite: {fileID: 21300000, guid: 96a061b38573ab8429a870a69d39951b, type: 3}
+    description: SodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSoda
+  - name: Coin
+    icon: {fileID: -7726162295296971363, guid: d4f1fbce15ab094438d62181934ff44f, type: 3}
+    itemSprite: {fileID: 1393203130177722561, guid: d4f1fbce15ab094438d62181934ff44f, type: 3}
     type: 2
     unlockLevel: 2
     price: 10
-    description: eyeeyeeyeeyeeyeeyeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeyeeeyeeyeeyeeyeeyeeye
+    description: CoinCoinCoinCoinCoinCoinCoinCoinCoinCoinCoin
   - name: pen
     icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
     itemSprite: {fileID: 0}
