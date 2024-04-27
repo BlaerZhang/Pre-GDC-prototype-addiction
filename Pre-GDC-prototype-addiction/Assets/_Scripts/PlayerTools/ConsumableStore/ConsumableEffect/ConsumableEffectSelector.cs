@@ -11,15 +11,15 @@ namespace _Scripts.ConsumableStore.ConsumableEffect
 
         private void OnEnable()
         {
-            ConsumableItem.onItemConsumed += SelectEffect;
+            ConsumableItemBase.onItemConsumed += SelectEffect;
         }
 
         private void OnDisable()
         {
-            ConsumableItem.onItemConsumed -= SelectEffect;
+            ConsumableItemBase.onItemConsumed -= SelectEffect;
         }
 
-        // TODO: add more effects, remove effects after finished
+        // TODO: add more effects, (remove effects after finished?)
         private void SelectEffect(ConsumableType consumableType)
         {
             if (effectDict.TryGetValue(consumableType, out IConsumableEffect effect))

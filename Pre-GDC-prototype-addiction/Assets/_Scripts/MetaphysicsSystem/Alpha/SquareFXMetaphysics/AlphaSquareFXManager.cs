@@ -416,7 +416,6 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
                 {
                     isMoving = false;
                     fx.currentGrid = newGrid;
-                    // TODO: trigger destroy when overlap
                     DestroyOverlappedFX();
                 });
         }

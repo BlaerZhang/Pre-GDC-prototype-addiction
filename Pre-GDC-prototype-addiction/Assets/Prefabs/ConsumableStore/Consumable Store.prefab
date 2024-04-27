@@ -116,8 +116,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consumableItemsData: {fileID: 11400000, guid: de7cafa8e2dc54034a0cd85babd5285e, type: 2}
+  consumablePrefab: {fileID: 7368714118387795211, guid: 5785e58bcb19f403db65f326fb9972e3, type: 3}
   consumableStore: {fileID: 7961014032718135995}
-  startPosition: {fileID: 0}
+  startPosition: {fileID: 3642830641752041529, guid: 9422a9db293e74816b3ee0dc7e153f44, type: 3}
   cellSize: {x: 100, y: 100}
   gapLength: {x: 10, y: 10}
   gridLayoutSizeConstraint: 2
@@ -142,9 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53d44835ed84dbfa0d42a1de44582af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
   unlockRequired: 0
   unlockPrice: 0
   unlockMembershipLevel: 0
+  lockedSprite: {fileID: 0}
   hideOffset: 400
   collapseDuration: 0.5
 --- !u!1001 &1164277048831043075

@@ -15,6 +15,8 @@ namespace _Scripts.ConsumableStore
             [TableColumnWidth(57, Resizable = false)]
             [PreviewField(Alignment = ObjectFieldAlignment.Center)]
             public Sprite icon;
+            [PreviewField(Alignment = ObjectFieldAlignment.Center)]
+            public Sprite itemSprite;
             public ConsumableType type;
             [TableColumnWidth(80, Resizable = false)]
             public int unlockLevel;

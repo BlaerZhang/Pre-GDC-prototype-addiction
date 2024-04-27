@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 namespace _Scripts.ConsumableStore
 {
-    // TODO: hide/show store
     public class ConsumableStoreInitializer : MonoBehaviour
     {
         [Title("Consumable Item Data")]
         [SerializeField] private ConsumableItemsData consumableItemsData;
+
+        [SerializeField] private GameObject consumablePrefab;
 
         [Title("Item Placement")]
         [SerializeField] private GridLayoutGroup consumableStore;
@@ -58,7 +59,7 @@ namespace _Scripts.ConsumableStore
         /// <summary>
         /// assemble items from the data list
         /// </summary>
-        private GameObject AssembleItems(string itemName, Sprite icon, ConsumableType consumableType, int unlockLevel, int price, string description)
+        private GameObject AssembleItemIcons(string itemName, Sprite icon, Sprite itemSprite, ConsumableType consumableType, int unlockLevel, int price, string description)
         {
             GameObject consumableItem = new GameObject(itemName);
             var image = consumableItem.AddComponent<Image>();
@@ -72,7 +73,7 @@ namespace _Scripts.ConsumableStore
             // add tooltip on consumable items
             AddTooltip(consumableItem, itemName, description);
 
-            consumableItem.AddComponent<ConsumableItem>().InitializeItem(consumableType, unlockLevel);
+            consumableItem.AddComponent<ConsumableItemIcon>().InitializeItem(consumablePrefab, itemName, itemSprite, consumableType, unlockLevel);
 
             return consumableItem;
         }
@@ -125,7 +126,7 @@ namespace _Scripts.ConsumableStore
             for (int i = 0; i < totalItemNumber; i++)
             {
                 var currentDataElement = consumableItemsData.consumableItemsDataList[i];
-                GameObject currentItem = AssembleItems(currentDataElement.name, currentDataElement.icon, currentDataElement.type, currentDataElement.unlockLevel, currentDataElement.price, currentDataElement.description);
+                GameObject currentItem = AssembleItemIcons(currentDataElement.name, currentDataElement.icon, currentDataElement.itemSprite, currentDataElement.type, currentDataElement.unlockLevel, currentDataElement.price, currentDataElement.description);
 
                 currentItem.transform.SetParent(consumableStore.transform);
                 currentItem.transform.localScale = Vector3.one;
