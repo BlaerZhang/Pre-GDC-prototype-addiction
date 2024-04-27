@@ -30,6 +30,10 @@ namespace _Scripts.PlayerTools
         private ItemSlot[] itemSlots;
         private int maxItems;
 
+        private ItemSlot firstAvailableSlot;
+
+        public static bool isDeskFull = false;
+
         private void Start()
         {
             InitializeItemSlots();
@@ -50,35 +54,42 @@ namespace _Scripts.PlayerTools
 
         private void OnEnable()
         {
-            ConsumableItemIcon.onItemBought += PlaceItemOnDesk;
+            ConsumableItemIcon.onTryBuyItem += CheckFirstAvailableSlot;
             ConsumableItemBase.onItemRemoved += RemoveItemFromDesk;
         }
 
         private void OnDisable()
         {
-            ConsumableItemIcon.onItemBought -= PlaceItemOnDesk;
+            ConsumableItemIcon.onTryBuyItem -= CheckFirstAvailableSlot;
             ConsumableItemBase.onItemRemoved -= RemoveItemFromDesk;
         }
 
-        private void PlaceItemOnDesk(GameObject newItem)
+        private void CheckFirstAvailableSlot(GameObject newItem)
         {
-            for (int i = 0; i < itemSlots.Length; i++)
+            int slotNumber = itemSlots.Length;
+            for (int i = 0; i < slotNumber; i++)
             {
                 if (itemSlots[i].itemHere == null)
                 {
-                    var item = Instantiate(newItem, itemSlots[i].slotPosition, Quaternion.identity);
-                    item.name = newItem.name;
-                    item.transform.SetParent(transform);
-
-                    itemSlots[i].itemHere = item;
-                    Debug.Log("Item added at position: " + i);
-
+                    firstAvailableSlot = itemSlots[i];
+                    PlaceItemOnDesk(newItem);
                     return;
                 }
             }
 
-            // TODO: add desk item capacity limit
-            // Debug.Log("No space available to add the item.");
+            // if no available space on desk
+            isDeskFull = true;
+            Debug.Log("No space available on desk to add the item.");
+        }
+
+        private void PlaceItemOnDesk(GameObject newItem)
+        {
+            var item = Instantiate(newItem, firstAvailableSlot.slotPosition, Quaternion.identity);
+            item.name = newItem.name;
+            item.transform.SetParent(transform);
+
+            firstAvailableSlot.itemHere = item;
+            Debug.Log("Item added at position: " + firstAvailableSlot.slotPosition);
         }
 
         private void RemoveItemFromDesk(string itemName)
@@ -93,6 +104,8 @@ namespace _Scripts.PlayerTools
                     // TODO: remove item effects
                     Destroy(itemHere);
                     slot.itemHere = null;
+
+                    if (isDeskFull) isDeskFull = false;
                 }
             }
         }

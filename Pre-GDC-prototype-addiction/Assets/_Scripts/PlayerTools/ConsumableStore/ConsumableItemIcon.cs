@@ -23,7 +23,7 @@ namespace _Scripts.ConsumableStore
         private bool isUnlocked = false;
         private bool isOutOfStock = false;
 
-        public static Action<GameObject> onItemBought;
+        public static Action<GameObject> onTryBuyItem;
 
         private void OnEnable()
         {
@@ -88,12 +88,12 @@ namespace _Scripts.ConsumableStore
                     return;
                 }
 
+                // check if there is enough space on desk, then decide whether successfully bought an item
+                onTryBuyItem?.Invoke(AssembleItemObject(consumablePrefab));
+
+                if (DeskItemPlacement.isDeskFull) return;
+
                 GameManager.Instance.resourceManager.PlayerGold -= price;
-
-                onItemBought?.Invoke(AssembleItemObject(Instantiate(consumablePrefab)));
-
-                // TODO: check if the desk has enough slots to place the item
-
                 isOutOfStock = true;
             }
         }
