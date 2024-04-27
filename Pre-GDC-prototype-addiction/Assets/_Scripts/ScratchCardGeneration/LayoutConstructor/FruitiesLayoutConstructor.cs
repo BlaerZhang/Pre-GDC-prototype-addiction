@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Interaction;
 using ScratchCardGeneration.Utilities;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -11,12 +12,12 @@ namespace ScratchCardGeneration.LayoutConstructor
 {
     public class FruitiesLayoutConstructor : MonoBehaviour, ICardLayoutConstructor
     {
-        [Header("Prize Distribution")]
+        [Title("Prize Distribution")]
         public int minPrizeSplitParts;
         public int maxPrizeSplitParts;
         private int minSplitValue;
 
-        [Header("Icon Placement")]
+        [Title("Icon Placement")]
         // include prize number and icon sprite
         public List<Sprite> iconSprites;
 

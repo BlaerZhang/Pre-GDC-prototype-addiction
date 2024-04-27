@@ -11,32 +11,21 @@ namespace Manager
         public static GameManager Instance;
 
         [HideInInspector] public UIManager uiManager;
-
         [HideInInspector] public SwitchSceneManager switchSceneManager;
-
         [HideInInspector] public ScratchCardGenerator scratchCardGenerator;
-
         [HideInInspector] public AudioManager audioManager;
-
         [HideInInspector] public ResourceManager resourceManager;
-
         [HideInInspector] public CardPoolManager cardPoolManager;
-        
         [HideInInspector] public FaceEventManager faceEventManager;
-
         [HideInInspector] public StatsTrackingManager statsTrackingManager;
+        [HideInInspector] public MembershipManager membershipManager;
 
         [HideInInspector] public bool incrementalLock = true;
-
         [HideInInspector] public int lastPickPrice = 1;
-        
         [HideInInspector] public int lastPickOriginalPrice = 1;
-
         [HideInInspector] public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
-
-        public float lastMenuYPos = 0;
     
-        [HideInInspector] public float totalCostBeforeWinning = 0;
+        // [HideInInspector] public float totalCostBeforeWinning = 0;
 
         private void Awake()
         {
@@ -58,6 +47,7 @@ namespace Manager
             cardPoolManager = GetComponentInChildren<CardPoolManager>();
             faceEventManager = GetComponentInChildren<FaceEventManager>();
             statsTrackingManager = GetComponentInChildren<StatsTrackingManager>();
+            membershipManager = GetComponentInChildren<MembershipManager>();
         }
 
         void Update()

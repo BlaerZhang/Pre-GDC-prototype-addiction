@@ -64,7 +64,7 @@ public class SpriteReflection : MonoBehaviour
 
     void Reflect()
     {
-        reflectionParent.transform.localPosition = new Vector3(spriteRenderer.bounds.size.x * 2, 0, 0);
-        reflectionParent.transform.DOLocalMoveX(-spriteRenderer.bounds.size.x * 2, reflectionDuration).SetEase(Ease.Linear);
+        reflectionParent.transform.localPosition = new Vector3(spriteRenderer.bounds.size.x * 2.5f, 0, 0);
+        reflectionParent.transform.DOLocalMoveX(-spriteRenderer.bounds.size.x * 2.5f, reflectionDuration).SetEase(Ease.Linear);
     }
 }

@@ -898,7 +898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counterIconPrefab: {fileID: 8363729834168705785, guid: 613d0dbadacc3194794c216744d32286, type: 3}
   iconEmpty: {fileID: 21300000, guid: 721d34cb279623147afe194e334fb690, type: 3}
-  iconHalf: {fileID: 21300000, guid: 3c90251294c1e3742bdc763ca84298a5, type: 3}
+  iconHalf: {fileID: 21300000, guid: cc19f703033b6ab4aa94feb65bda427e, type: 3}
   iconFull: {fileID: 21300000, guid: 2a66f3191d69d994d97d59e58033858c, type: 3}
   row: 3
   column: 4
