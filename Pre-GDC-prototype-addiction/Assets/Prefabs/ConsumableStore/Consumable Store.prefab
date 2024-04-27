@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 100061970755519050}
   - component: {fileID: 7961014032718135995}
   - component: {fileID: 7381797434029712070}
+  - component: {fileID: 1464302872218825695}
   m_Layer: 5
   m_Name: Consumable Store
   m_TagString: Untagged
@@ -121,6 +122,23 @@ MonoBehaviour:
   gapLength: {x: 10, y: 10}
   gridLayoutSizeConstraint: 2
   tooltipStyle: {fileID: 0}
+--- !u!114 &1464302872218825695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389126110959121967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53d44835ed84dbfa0d42a1de44582af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockRequired: 0
+  unlockPrice: 0
+  unlockMembershipLevel: 0
+  hideOffset: 400
+  collapseDuration: 0.5
 --- !u!1001 &1164277048831043075
 PrefabInstance:
   m_ObjectHideFlags: 0

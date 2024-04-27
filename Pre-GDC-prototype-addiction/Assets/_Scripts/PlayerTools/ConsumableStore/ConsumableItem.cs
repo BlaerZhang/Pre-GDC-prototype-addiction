@@ -73,7 +73,7 @@ namespace _Scripts.ConsumableStore
 
         public void UnlockItem(int currentLevel)
         {
-            if (currentLevel == unlockLevel)
+            if (currentLevel >= unlockLevel)
             {
                 if (!isUnlocked)
                 {

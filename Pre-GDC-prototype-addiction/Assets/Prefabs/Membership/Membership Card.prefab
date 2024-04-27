@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 2351509508095124612}
   - component: {fileID: 8604277145459866164}
   - component: {fileID: 4998239659846344406}
+  - component: {fileID: 5118873443692007861}
   m_Layer: 5
   m_Name: Membership Card
   m_TagString: Untagged
@@ -397,6 +398,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5989475929235681986}
   m_CullTransparentMesh: 1
+--- !u!114 &5118873443692007861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5989475929235681986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53d44835ed84dbfa0d42a1de44582af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockRequired: 0
+  unlockPrice: 0
+  unlockMembershipLevel: 0
+  hideOffset: 400
+  collapseDuration: 0.5
 --- !u!1 &6476586940474337551
 GameObject:
   m_ObjectHideFlags: 0
