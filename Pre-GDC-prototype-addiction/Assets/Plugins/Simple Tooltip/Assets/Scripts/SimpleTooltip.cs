@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public SimpleTooltipStyle simpleTooltipStyle;
-    [TextArea] public string infoLeft = "Hello";
+    [TextArea] public string infoLeft = "";
     [TextArea] public string infoRight = "";
     private STController tooltipController;
     private EventSystem eventSystem;
