@@ -121,6 +121,14 @@ MonoBehaviour:
   cellSize: {x: 100, y: 100}
   gapLength: {x: 10, y: 10}
   gridLayoutSizeConstraint: 2
+  priceTextOffset: {x: 0, y: -60}
+  priceTextColor: {r: 0, g: 0, b: 0, a: 1}
+  priceTextFont: {fileID: 11400000, guid: 03ee08f7faf20a5458c724913437f059, type: 2}
+  priceTextFontSize: 36
+  unlockLevelTextOffset: {x: 0, y: 0}
+  unlockLevelTextColor: {r: 0, g: 1, b: 0.14352083, a: 1}
+  unlockLevelTextFont: {fileID: 11400000, guid: 03ee08f7faf20a5458c724913437f059, type: 2}
+  unlockLevelTextFontSize: 36
   tooltipStyle: {fileID: 0}
 --- !u!114 &1464302872218825695
 MonoBehaviour:

@@ -4299,6 +4299,18 @@ PrefabInstance:
       propertyPath: startPosition
       value: 
       objectReference: {fileID: 1779495891}
+    - target: {fileID: 7381797434029712070, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: priceTextColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381797434029712070, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: priceTextFontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381797434029712070, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: priceTextOffset.y
+      value: -60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

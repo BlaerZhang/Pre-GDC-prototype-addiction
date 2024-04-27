@@ -36,14 +36,14 @@ public class MembershipManager : MonoBehaviour
         // print("totalPointsToNextLevel" + totalPointsToNextLevel);
     }
 
-    // private void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Space))
-    //     {
-    //         GainMembershipPoints(10000);
-    //         // print("currentPointsToNextLevel" + currentPointsToNextLevel);
-    //     }
-    // }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GainMembershipPoints(10000);
+            // print("currentPointsToNextLevel" + currentPointsToNextLevel);
+        }
+    }
 
     private void CreateData()
     {

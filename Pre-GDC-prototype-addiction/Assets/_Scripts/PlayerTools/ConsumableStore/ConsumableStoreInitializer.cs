@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,13 +14,24 @@ namespace _Scripts.ConsumableStore
 
         [Title("Item Placement")]
         [SerializeField] private GridLayoutGroup consumableStore;
-
         [SerializeField] private Transform startPosition;
         [SerializeField] private Vector2 cellSize;
         [SerializeField] private Vector2 gapLength;
         [SerializeField] private int gridLayoutSizeConstraint;
 
-        // [SerializeField] private Sprite lockedIcon;
+        [Title("Price Text Settings")]
+        [SerializeField] private Vector2 priceTextOffset = new Vector2(0, -60f);
+        [SerializeField] private Color priceTextColor = Color.black;
+        [SerializeField] private TMP_FontAsset priceTextFont;
+        [SerializeField] private int priceTextFontSize = 36;
+
+        [Title("Unlock Level Text Settings")]
+        [SerializeField] private Vector2 unlockLevelTextOffset = Vector2.zero;
+        [SerializeField] private Color unlockLevelTextColor = Color.black;
+        [SerializeField] private TMP_FontAsset unlockLevelTextFont;
+        [SerializeField] private int unlockLevelTextFontSize = 36;
+
+        // TODO: locked sprite for consumable
 
         [Title("Item Tooltip Settings")]
         [SerializeField] private SimpleTooltipStyle tooltipStyle;
@@ -41,8 +53,6 @@ namespace _Scripts.ConsumableStore
 
             consumableStore.cellSize = cellSize;
             consumableStore.spacing = gapLength;
-
-            // consumableStore.cellLayout
         }
 
         /// <summary>
@@ -55,17 +65,54 @@ namespace _Scripts.ConsumableStore
             image.sprite = icon;
             image.color = Color.black;
 
+            // add price, unlock level to each icon
+            AddPriceText(consumableItem.transform, price);
+            AddUnlockLevelText(consumableItem.transform, unlockLevel);
+
+            // add tooltip on consumable items
+            AddTooltip(consumableItem, itemName, description);
+
+            consumableItem.AddComponent<ConsumableItem>().InitializeItem(consumableType, unlockLevel);
+
+            return consumableItem;
+        }
+
+        private void AddPriceText(Transform parent, int price)
+        {
+            GameObject priceTextObject = new GameObject("priceText");
+            priceTextObject.transform.SetParent(parent);
+            priceTextObject.transform.position += (Vector3)priceTextOffset;
+            var textMeshPro = priceTextObject.AddComponent<TextMeshProUGUI>();
+            textMeshPro.text = price.ToString();
+
+            textMeshPro.color = priceTextColor;
+            textMeshPro.font = priceTextFont;
+            textMeshPro.fontSize = priceTextFontSize;
+            textMeshPro.alignment = TextAlignmentOptions.Center;
+        }
+
+        private void AddUnlockLevelText(Transform parent, int unlockLevel)
+        {
+            GameObject priceTextObject = new GameObject("unlockLevelText");
+            priceTextObject.transform.SetParent(parent);
+            priceTextObject.transform.position += (Vector3)unlockLevelTextOffset;
+            var textMeshPro = priceTextObject.AddComponent<TextMeshProUGUI>();
+            textMeshPro.text = unlockLevel.ToString();
+
+            textMeshPro.color = unlockLevelTextColor;
+            textMeshPro.font = unlockLevelTextFont;
+            textMeshPro.fontSize = unlockLevelTextFontSize;
+            textMeshPro.alignment = TextAlignmentOptions.Center;
+        }
+
+        private void AddTooltip(GameObject consumableItem, string itemName, string description)
+        {
             var tooltip = consumableItem.AddComponent<SimpleTooltip>();
             tooltip.isEnabled = false;
 
-            // TODO: put name, icon, price, description into the tooltip
             if (tooltipStyle) tooltip.simpleTooltipStyle = tooltipStyle;
             tooltip.infoLeft += itemName + "\n";
             tooltip.infoLeft += description;
-
-            consumableItem.AddComponent<ConsumableItem>().InitializeItem(itemName, consumableType, unlockLevel, price, description);
-
-            return consumableItem;
         }
 
         /// <summary>

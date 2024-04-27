@@ -6,12 +6,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 using Manager;
+using TMPro;
 
 namespace _Scripts.ConsumableStore
 {
+    // TODO: cannot buy if already got one
     public class ConsumableItem : ClickableUIBase, IUnlockable
     {
-        private string itemName;
         private ConsumableType consumableType;
         private int unlockLevel;
         private int price;
@@ -31,13 +32,10 @@ namespace _Scripts.ConsumableStore
             MembershipManager.onMembershipLevelUp -= UnlockItem;
         }
 
-        public void InitializeItem(string itemName, ConsumableType consumableType, int unlockLevel, int price, string description)
+        public void InitializeItem(ConsumableType consumableType, int unlockLevel)
         {
-            this.itemName = itemName;
             this.consumableType = consumableType;
             this.unlockLevel = unlockLevel;
-            this.price = price;
-            this.description = description;
 
             UnlockItem(0);
         }
@@ -79,6 +77,7 @@ namespace _Scripts.ConsumableStore
                 {
                     // change the icon sprite color to white
                     GetComponent<Image>().DOColor(Color.white, 1f);
+                    transform.Find("unlockLevelText").gameObject.SetActive(false);
                     GetComponent<SimpleTooltip>().isEnabled = true;
                     isUnlocked = true;
                 }
