@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -16,7 +17,7 @@ public class UIReflection : MonoBehaviour
     [Range(0, 1)] public float reflectionTransparency = 0.5f;
 
     private Image image;
-    private Mask uiMask;
+    private RectMask2D uiMask;
     private RectTransform reflectionParent;
     
     void Start()
@@ -27,11 +28,11 @@ public class UIReflection : MonoBehaviour
         InvokeRepeating("Reflect", Random.Range(0f, 5f), reflectionTimeInterval);
     }
 
-    [ContextMenu("Initialize")]
+    [Button("Initialize")]
     void Init()
     {
         image = GetComponent<Image>();
-        uiMask = this.AddComponent<Mask>();
+        uiMask = this.AddComponent<RectMask2D>();
 
         reflectionParent = new GameObject("Reflection Parent").AddComponent<RectTransform>();
         reflectionParent.transform.parent = this.transform;
@@ -42,8 +43,7 @@ public class UIReflection : MonoBehaviour
         CreateReflection(150);
         CreateReflection(75f);
     }
-
-    [ContextMenu("Create Reflection")]
+    
     void CreateReflection(float XPos)
     {
         GameObject square = new GameObject("Square");

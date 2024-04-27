@@ -17,9 +17,9 @@ public class CardCounter : MonoBehaviour
     [Header("Grid")] 
     public int row = 4;
     public int column = 4;
-    public Vector2 startOffset = new Vector2(40, -40);
-    public float gapBetweenIconsHorizontal = 60;
-    public float gapBetweenIconsVertical = 60;
+    private Vector2 startOffset;
+    private float gapBetweenIconsHorizontal;
+    private float gapBetweenIconsVertical;
 
     [Header("Feedback")] 
     [Range(0, 1)] public float iconPopDuration = 0.5f;
@@ -40,6 +40,16 @@ public class CardCounter : MonoBehaviour
     void Start()
     {
         currentIconList = new List<Image>();
+        
+        float bgWidth = GetComponent<Image>().rectTransform.rect.width;
+        float bgHeight = GetComponent<Image>().rectTransform.rect.height;
+        float iconWidth = counterIconPrefab.rectTransform.rect.width;
+        float iconHeight = counterIconPrefab.rectTransform.rect.height;
+
+        gapBetweenIconsHorizontal = iconWidth + (bgWidth - column * iconWidth) / (column + 1);
+        gapBetweenIconsVertical = iconHeight + (bgHeight - row * iconHeight) / (row + 1);
+        startOffset = new Vector2(gapBetweenIconsHorizontal - iconWidth / 2, -gapBetweenIconsVertical + iconHeight / 2);
+
     }
 
     public void UpdateCardCounter(int price, int prize)

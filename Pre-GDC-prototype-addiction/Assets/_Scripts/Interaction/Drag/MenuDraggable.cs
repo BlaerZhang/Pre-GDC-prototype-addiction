@@ -31,12 +31,14 @@ namespace Interaction
         [Header("Face Event")] 
         public bool discount = false;
         public ScratchCardTier eventTriggerTier;
+        public float discountPriceTagYPos;
     
         [Header("Feedback")] 
         public float hoverScale = 0.95f;
 
         private SpriteRenderer cardSprite;
         private SpriteRenderer pricePanelSprite;
+        private SpriteShadow[] shadows;
         private SortingGroup sortingGroup;
         private TextMeshPro priceText;
         private SpriteRenderer discountCross;
@@ -49,6 +51,7 @@ namespace Interaction
             cardSprite = transform.Find("Poster Sprite").GetComponent<SpriteRenderer>();
             pricePanelSprite = transform.Find("Poster Sprite/Price Panel Sprite").GetComponent<SpriteRenderer>();
             discountCross = transform.Find("Poster Sprite/Price Panel Sprite/Cross").GetComponent<SpriteRenderer>();
+            shadows = GetComponentsInChildren<SpriteShadow>();
             sortingGroup = GetComponent<SortingGroup>();
             priceText = GetComponentInChildren<TextMeshPro>();
             
@@ -61,7 +64,7 @@ namespace Interaction
             if (!unlock)
             {
                 cardSprite.sprite = lockedSprite;
-                pricePanelSprite.enabled = false;
+                pricePanelSprite.gameObject.SetActive(false);
                 discountCross.enabled = false;
                 priceText.enabled = false;
             }
@@ -99,14 +102,20 @@ namespace Interaction
             if (sceneName != "Menu") return;
             if (!discount || !unlock) return;
             
-            pricePanelSprite.transform.DOLocalMoveY(-1.9f, 0.5f).SetEase(Ease.OutElastic);
+            pricePanelSprite.transform.DOLocalMoveY(discountPriceTagYPos, 0.5f).SetEase(Ease.OutElastic);
             discountCross.enabled = true;
-            priceText.text = $"${price}\n${originalPrice}";
-        }
+            priceText.text = $"${price}\n${originalPrice}"; }
 
         protected override void OnMouseEnter()
         {
-            if (!isDragging) cardSprite.DOColor(Color.gray, 0.1f);
+            if (!isDragging)
+            {
+                foreach (var shadow in shadows)
+                {
+                    SpriteRenderer shadowSprite = shadow.transform.Find("Shadow").GetComponent<SpriteRenderer>();
+                    shadowSprite.material.DOColor(shadow.hoverShadowColor, 0.1f);
+                }
+            }
         }
 
         protected override void OnMouseDown()
@@ -158,12 +167,12 @@ namespace Interaction
             if (1 + pickAreaLeftEdgeXOnViewport < cardXPosOnViewport)
             {
                 isInPickArea = true;
-                cardSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
+                // cardSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
             }
             else
             {
                 isInPickArea = false;
-                cardSprite.DOColor(Color.gray, 0.1f);
+                // cardSprite.DOColor(Color.gray, 0.1f);
             }
 
         }
@@ -197,7 +206,14 @@ namespace Interaction
 
         protected override void OnMouseExit()
         {
-            if (!isDragging) cardSprite.DOColor(Color.white, 0.1f);
+            if (!isDragging)
+            {
+                foreach (var shadow in shadows)
+                {
+                    SpriteRenderer shadowSprite = shadow.transform.Find("Shadow").GetComponent<SpriteRenderer>();
+                    shadowSprite.material.DOColor(shadow.shadowColor, 0.1f);
+                }
+            }
         }
     }
 }

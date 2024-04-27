@@ -145,7 +145,7 @@ namespace Manager
                 GameManager.Instance.resourceManager.PlayerGold -= price;
 
                 // gain membership points
-                GameManager.Instance.membershipManager.GainMembershipPoints(price);
+                GameManager.Instance.membershipManager.GainMembershipPoints(GameManager.Instance.lastPickOriginalPrice);
             
                 //disable collider
                 card.GetComponent<BoxCollider2D>().enabled = false;
@@ -230,7 +230,7 @@ namespace Manager
                 .OnComplete(() =>
                 {
                     //set action to generate card
-                    onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickPrice, transform.position, card.cardBGSprite.sprite);
+                    onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickOriginalPrice, transform.position, card.cardBGSprite.sprite);
                     
                     //Feedback
                     if (zoomInAudio && zoomInSounds.Count > 0)
