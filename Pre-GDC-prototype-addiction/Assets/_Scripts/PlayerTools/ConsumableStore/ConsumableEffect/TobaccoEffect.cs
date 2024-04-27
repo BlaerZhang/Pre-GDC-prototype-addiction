@@ -6,7 +6,7 @@ namespace _Scripts.ConsumableStore.ConsumableEffect
     {
         public void Trigger()
         {
-            throw new System.NotImplementedException();
+            Debug.LogError("tobacco effect not implemented");
         }
     }
 }

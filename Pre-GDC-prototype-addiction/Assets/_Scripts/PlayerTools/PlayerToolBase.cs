@@ -2,17 +2,23 @@ using System;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Scripts.PlayerTools
 {
+    // TODO: unlock visual effects and sprites
     public class PlayerToolBase : MonoBehaviour, IUnlockable
     {
+        [SerializeField] private Sprite normalSprite;
+
         [Title("Unlock Settings")]
         [SerializeField] private bool unlockRequired = true;
         [ShowIf(nameof(unlockRequired))]
         [SerializeField] private int unlockPrice;
         [ShowIf(nameof(unlockRequired))]
         [SerializeField] private int unlockMembershipLevel;
+        [ShowIf(nameof(unlockRequired))]
+        [SerializeField] private Sprite lockedSprite;
 
         [Title("Collapse Settings")]
         [SerializeField] private float hideOffset;
@@ -30,6 +36,8 @@ namespace _Scripts.PlayerTools
             rectTransform = GetComponent<RectTransform>();
             originalPosition = rectTransform.anchoredPosition;
         }
+
+        #region Unlock Tool
 
         private void OnEnable()
         {
@@ -62,6 +70,10 @@ namespace _Scripts.PlayerTools
         }
 
         protected virtual void ShowUnlockEffect() {}
+
+        #endregion
+
+        #region Hide Tool
 
         // private void Update()
         // {
@@ -120,6 +132,10 @@ namespace _Scripts.PlayerTools
             MoveTool(originalPosition);
         }
 
+        /// <summary>
+        /// Hide/show tools
+        /// </summary>
+        /// <param name="targetPosition"></param>
         private void MoveTool(Vector2 targetPosition)
         {
             if (isCollapsing) return;
@@ -133,5 +149,6 @@ namespace _Scripts.PlayerTools
                 isCollapsed = !isCollapsed;
             });
         }
+        #endregion
     }
 }
