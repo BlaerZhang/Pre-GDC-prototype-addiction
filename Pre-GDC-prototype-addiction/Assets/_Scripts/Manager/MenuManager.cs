@@ -41,14 +41,16 @@ namespace Manager
             SwitchSceneManager.onSceneChanged -= InitializeButton;
         }
     
-        public void PickCard(Interaction.MenuDraggable card)
+        public void PickCard(MenuDraggable card)
         {
             if (card.price <= GameManager.Instance.resourceManager.PlayerGold)
             {
                 // card.transform.DOMove(cardPurchasePos.position, 0.1f);
                 GameManager.Instance.lastPickPrice = card.price;
+                GameManager.Instance.lastPickOriginalPrice = card.originalPrice;
                 GameManager.Instance.lastPickTier = card.tier;
                 GameManager.Instance.switchSceneManager.ChangeScene("Buy Card");
+                GameManager.Instance.resourceManager.ChangeTime(3);
             }
             else
             {

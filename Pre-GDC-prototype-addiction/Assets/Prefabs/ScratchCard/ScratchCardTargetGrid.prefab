@@ -10044,7 +10044,7 @@ MonoBehaviour:
   feedback: 1
   screenShake: 0.2
   chromaticAberrationAmount: 0
-  mouseMovementDeadZone: 0.05
+  mouseMovementDeadZone: 0.02
   particles:
   - {fileID: 2769591417891806625}
   - {fileID: 2512713546644256158}
