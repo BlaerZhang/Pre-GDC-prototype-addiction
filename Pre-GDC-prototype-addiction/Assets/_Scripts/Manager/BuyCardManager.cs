@@ -143,6 +143,9 @@ namespace Manager
             {
                 //set gold
                 GameManager.Instance.resourceManager.PlayerGold -= price;
+
+                // gain membership points
+                GameManager.Instance.membershipManager.GainMembershipPoints(price);
             
                 //disable collider
                 card.GetComponent<BoxCollider2D>().enabled = false;

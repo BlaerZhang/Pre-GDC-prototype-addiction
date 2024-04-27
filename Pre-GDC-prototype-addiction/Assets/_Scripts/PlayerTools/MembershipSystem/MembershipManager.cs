@@ -57,6 +57,7 @@ public class MembershipManager : MonoBehaviour
     /// <param name="itemPrice"></param>
     public void GainMembershipPoints(int itemPrice)
     {
+        print("Gain membership points!");
         // transform price to points gained
         if (!priceMembershipPointsDict.TryGetValue(itemPrice, out var pointsGained)) Debug.LogError($"membershipUpgradeData miss the key {itemPrice}");
 

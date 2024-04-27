@@ -7,13 +7,14 @@ namespace Interaction
 {
     public class ScrollView : MonoBehaviour
     {
-        public float initialPosY = 0;
+        // public float initialPosY = 0;
+        public float lastMenuYPosition = -2.25f;
         public Vector2 scrollLimits;
         public float currentScrollSpeed = 0f;
         // Start is called before the first frame update
         void Start()
         {
-            transform.position = new Vector3(transform.position.x, GameManager.Instance.lastMenuYPos, transform.position.z);
+            transform.position = new Vector3(transform.position.x, lastMenuYPosition, transform.position.z);
         }
 
         private void OnDisable()
@@ -39,7 +40,7 @@ namespace Interaction
 
         void RecordLastYPos()
         {
-            GameManager.Instance.lastMenuYPos = transform.position.y;
+            lastMenuYPosition = transform.position.y;
         }
     
     }

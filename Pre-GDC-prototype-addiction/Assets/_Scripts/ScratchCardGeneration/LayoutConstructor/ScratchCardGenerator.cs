@@ -37,8 +37,6 @@ namespace ScratchCardGeneration.LayoutConstructor
         {
             print($"level: {level}");
 
-            GameManager.Instance.membershipManager.GainMembershipPoints(price);
-
             var prizeDistributionDataList = prizeDistributionData.dataList[currentCardBrand];
             var pityDataList = prizePityData.dataList[currentCardBrand];
             
