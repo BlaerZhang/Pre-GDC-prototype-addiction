@@ -31,6 +31,7 @@ namespace Interaction
         [Header("Face Event")] 
         public bool discount = false;
         public ScratchCardTier eventTriggerTier;
+        public float discountPriceTagYPos;
     
         [Header("Feedback")] 
         public float hoverScale = 0.95f;
@@ -99,7 +100,7 @@ namespace Interaction
             if (sceneName != "Menu") return;
             if (!discount || !unlock) return;
             
-            pricePanelSprite.transform.DOLocalMoveY(-1.9f, 0.5f).SetEase(Ease.OutElastic);
+            pricePanelSprite.transform.DOLocalMoveY(discountPriceTagYPos, 0.5f).SetEase(Ease.OutElastic);
             discountCross.enabled = true;
             priceText.text = $"${price}\n${originalPrice}";
         }

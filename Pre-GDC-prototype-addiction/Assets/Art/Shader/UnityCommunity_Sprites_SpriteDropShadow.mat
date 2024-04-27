@@ -32,6 +32,6 @@ Material:
     - PixelSnap: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowOffset: {r: 0.09, g: -0.1, b: 0, a: 0}
+    - _ShadowColor: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 1}
+    - _ShadowOffset: {r: 0.1, g: -0.1, b: 0, a: 0}
   m_BuildTextureStacks: []

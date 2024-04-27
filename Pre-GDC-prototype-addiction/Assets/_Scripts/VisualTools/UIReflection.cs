@@ -16,7 +16,7 @@ public class UIReflection : MonoBehaviour
     [Range(0, 1)] public float reflectionTransparency = 0.5f;
 
     private Image image;
-    private Mask uiMask;
+    private RectMask2D uiMask;
     private RectTransform reflectionParent;
     
     void Start()
@@ -31,7 +31,7 @@ public class UIReflection : MonoBehaviour
     void Init()
     {
         image = GetComponent<Image>();
-        uiMask = this.AddComponent<Mask>();
+        uiMask = this.AddComponent<RectMask2D>();
 
         reflectionParent = new GameObject("Reflection Parent").AddComponent<RectTransform>();
         reflectionParent.transform.parent = this.transform;
