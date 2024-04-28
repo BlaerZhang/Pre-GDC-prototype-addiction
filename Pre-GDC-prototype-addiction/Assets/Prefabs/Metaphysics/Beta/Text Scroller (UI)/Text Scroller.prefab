@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollingTextTMPPrefab: {fileID: 258128239774618707, guid: b812d73cbb20ac447bd7880ee3d1d12a, type: 3}
-  scrollSpeed: 200
+  scrollSpeed: 500
   gapBetweenTexts: 100
   idleStrings:
   - There is no true randomness in computer software.

@@ -239,15 +239,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vCam: {fileID: 0}
+  progressSpeed: 0
   feedback: 1
   screenShake: 0.5
   chromaticAberrationAmount: 0
+  mouseMovementDeadZone: 0.001
   particles:
   - {fileID: 2338118698258766226}
   - {fileID: 4632963963545771111}
   - {fileID: 6827933319473070808}
   card: {fileID: 11474202}
   cardSprite: {fileID: 21281386}
+  eraseProgress: {fileID: 0}
 --- !u!1 &178426
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +373,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.05, y: 7.55}
+    oldSize: {x: 6.105, y: 7.605}
     newSize: {x: 8.71, y: 3.72}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -14886,9 +14889,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 437468}
     m_Modifications:
+    - target: {fileID: 338802049421057480, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 338802049421057480, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
+      propertyPath: m_Offset.x
+      value: -1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 338802049421057480, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 2995002503465087408, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
       propertyPath: m_Name
       value: Area Detector
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727467934695984613, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
+      propertyPath: m_Offset.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727467934695984613, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 7972724355681326241, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
       propertyPath: m_LocalPosition.x

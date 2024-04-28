@@ -28,7 +28,7 @@ public class CoinFlipVariant : MonoBehaviour
             Sequence flipSequence = DOTween.Sequence();
             flipSequence
                 .Append(transform.DOLocalRotate(new Vector3(flipAngle + 50, 0, 0), 1f, RotateMode.FastBeyond360).SetEase(Ease.InQuad))
-                .Insert(0, transform.DOLocalMoveY(transform.localPosition.y+5, 0.5f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo))
+                .Insert(0, transform.DOLocalMoveY(transform.localPosition.y+6, 0.5f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo))
                 .OnComplete((() =>
                 {
                     isFlipping = false;

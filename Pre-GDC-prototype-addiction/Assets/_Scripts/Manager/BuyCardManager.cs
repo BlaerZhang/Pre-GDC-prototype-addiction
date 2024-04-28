@@ -68,7 +68,7 @@ namespace Manager
         [Header("Move to Scratch-off")] 
         public RectTransform scratchOffButton;
 
-        public static Action<ScratchCardBrand, int, float, Vector3, Sprite> onScratchCardSelected; //Buy Card Action
+        public static Action<ScratchCardBrand, int, int, Vector3, Sprite> onScratchCardSelected; //Buy Card Action
         public static Action onChangeSubmissionStatus; //Give Card Action
         public static Action<float> onSubmitScratchCard;
     
@@ -143,6 +143,9 @@ namespace Manager
             {
                 //set gold
                 GameManager.Instance.resourceManager.PlayerGold -= price;
+
+                // gain membership points
+                GameManager.Instance.membershipManager.GainMembershipPoints(GameManager.Instance.lastPickOriginalPrice);
             
                 //disable collider
                 card.GetComponent<BoxCollider2D>().enabled = false;
@@ -227,7 +230,7 @@ namespace Manager
                 .OnComplete(() =>
                 {
                     //set action to generate card
-                    onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickPrice, transform.position, card.cardBGSprite.sprite);
+                    onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickOriginalPrice, transform.position, card.cardBGSprite.sprite);
                     
                     //Feedback
                     if (zoomInAudio && zoomInSounds.Count > 0)

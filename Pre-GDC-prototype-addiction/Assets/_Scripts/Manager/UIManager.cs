@@ -10,18 +10,23 @@ namespace Manager
 {
     public class UIManager : SerializedMonoBehaviour
     {
-        [Header("Game")]
+        [Title("Game")]
         public List<TextMeshProUGUI> playerResource;
 
-        [Header("Face Event")] 
+        [Title("Face Event")]
         public RectTransform faceEventUIParent;
         public Dictionary<FaceEventType, RectTransform> faceEventUIDict;
     
-        [Header("Incremental")]
+        [Title("Incremental")]
         public TextMeshProUGUI upgradePrice;
 
-        [Header("Buy")] 
+        [Title("Buy")]
         public TextMeshProUGUI buyCardPrice;
+
+        [Title("Membership Card UI")]
+        [SerializeField] private Slider membershipProgressBar;
+        [SerializeField] private TextMeshProUGUI membershipLevelUI;
+        public float progressBarZoomRatio = 1.3f;
 
         private bool isPlayingNotEnoughAnimation = false;
 
@@ -73,6 +78,43 @@ namespace Manager
         public void UpdateBuyPrice(int price)
         { 
             buyCardPrice.text = $"${price}";
+        }
+
+        private void UpdateMembershipLevel(int currentLevel)
+        {
+            Sequence levelUpSequence = DOTween.Sequence();
+            levelUpSequence
+                .Append(membershipLevelUI.rectTransform.DOScale(1.2f, 0.25f))
+                .Append(membershipLevelUI.rectTransform.DOLocalRotate(new Vector3(90, 0, 0), 0.25f))
+                .Append(membershipLevelUI.DOText(currentLevel.ToString(), 0))
+                .Append(membershipLevelUI.rectTransform.DOLocalRotate(new Vector3(0, 0, 0), 0.25f))
+                .Append(membershipLevelUI.rectTransform.DOScale(1f, 0.25f));
+            levelUpSequence.Play();
+        }
+
+        public Tween UpdateMembershipProgressUI(int toLevel, float targetValue, bool isResetRequired = false)
+        {
+            // TODO: change points left
+            return membershipProgressBar.DOValue(targetValue, 0.5f).SetEase(Ease.OutCubic)
+                .OnStart(() =>
+                {
+                    membershipProgressBar.transform.DOScale(progressBarZoomRatio, 0.25f).SetEase(Ease.OutCubic);
+                })
+                .OnComplete(() =>
+                {
+                    membershipProgressBar.transform.DOScale(1f, 0.25f).SetEase(Ease.InCubic);
+                    if (isResetRequired)
+                    {
+                        ShowMembershipUpgradeEffect();
+                        UpdateMembershipLevel(toLevel);
+                        membershipProgressBar.value = 0;
+                    }
+                });
+        }
+
+        private void ShowMembershipUpgradeEffect()
+        {
+            // TODO:
         }
     
         public void PlayNotEnoughGoldAnimation()

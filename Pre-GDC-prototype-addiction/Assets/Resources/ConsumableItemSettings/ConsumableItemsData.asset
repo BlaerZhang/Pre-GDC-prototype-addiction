@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7d220e892c431b8eb77cc0de792661, type: 3}
+  m_Name: ConsumableItemsData
+  m_EditorClassIdentifier: 
+  consumableItemsDataList:
+  - name: Gum
+    icon: {fileID: 6881212354145439598, guid: d4f1fbce15ab094438d62181934ff44f, type: 3}
+    itemSprite: {fileID: 6881212354145439598, guid: d4f1fbce15ab094438d62181934ff44f, type: 3}
+    type: 3
+    unlockLevel: 0
+    price: 2
+    description: GumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGum
+  - name: Soda
+    icon: {fileID: 21300000, guid: 01dbda64559a98a45a56f6f775a2ee43, type: 3}
+    itemSprite: {fileID: 21300000, guid: 01dbda64559a98a45a56f6f775a2ee43, type: 3}
+    type: 1
+    unlockLevel: 1
+    price: 5
+    description: SodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSoda
+  - name: Coin
+    icon: {fileID: -7726162295296971363, guid: d4f1fbce15ab094438d62181934ff44f, type: 3}
+    itemSprite: {fileID: 1393203130177722561, guid: d4f1fbce15ab094438d62181934ff44f, type: 3}
+    type: 2
+    unlockLevel: 2
+    price: 10
+    description: CoinCoinCoinCoinCoinCoinCoinCoinCoinCoinCoin
+  - name: pen
+    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
+    itemSprite: {fileID: 0}
+    type: 3
+    unlockLevel: 3
+    price: 20
+    description: penpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpen
+  - name: leg
+    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
+    itemSprite: {fileID: 0}
+    type: 0
+    unlockLevel: 5
+    price: 50
+    description: legleglegleglegleglegleglegleglegleglegleglegleglegleglegleglegleglegleglegleglegleglegleglegleglegleglegleglegleglegleglegleg

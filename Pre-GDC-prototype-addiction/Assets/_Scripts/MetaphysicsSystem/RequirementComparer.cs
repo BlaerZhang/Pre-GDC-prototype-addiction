@@ -34,11 +34,11 @@ public class RequirementComparer : MonoBehaviour
     /// </summary>
     private void CheckIfTriggerResponseEvent(string changedVariableName, float variableValue)
     {
-        print("CheckIfTriggerResponseEvent");
+        // print("CheckIfTriggerResponseEvent");
 
         if (metaphysicsList == null)
         {
-            print("Metaphysics List is null!");
+            Debug.LogError("Metaphysics List is null!");
             return;
         }
 

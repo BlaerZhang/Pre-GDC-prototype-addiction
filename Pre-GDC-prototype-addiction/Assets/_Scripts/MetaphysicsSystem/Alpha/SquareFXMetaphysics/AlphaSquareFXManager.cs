@@ -43,7 +43,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
         private float prizeTypeThreshold;
 
-        [Header("Price Threshold Generation")]
+        [Title("Price Threshold Generation")]
         [DictionaryDrawerSettings(KeyLabel = "Card Price", ValueLabel = "Price Type Threshold")]
         public readonly Dictionary<float, float> PrizeTypeThresholdDict = new()
         {
@@ -52,7 +52,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
             { 500, 200 },
         };
 
-        [Header("FX Type Generation")]
+        [Title("FX Type Generation")]
         [DictionaryDrawerSettings(KeyLabel = "Prize Type", ValueLabel = "FX Type Distribution")]
         public readonly Dictionary<PrizeType, Dictionary<FXType, float>> FXTypeProbabilityDict = new()
         {
@@ -76,7 +76,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
             }}
         };
 
-        [Header("Positive Effect")]
+        [TitleGroup("Positive Effect")]
         [Header("Scratch no FX and FX not on winning grid")]
         [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
         public Dictionary<FXActionName, float> PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList;
@@ -90,7 +90,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
         public Dictionary<FXActionName, float> PositiveScratchFXAndFXOnWinningGridProbabilityList;
 
-        [Header("Negative Effect")]
+        [TitleGroup("Negative Effect")]
         [Header("Scratch no FX and FX not on winning grid")]
         [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
         public Dictionary<FXActionName, float> NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList;
@@ -104,7 +104,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
         public Dictionary<FXActionName, float> NegativeScratchFXAndFXOnWinningGridProbabilityList;
 
-        [Header("FX Action Settings")]
+        [Title("FX Action Settings")]
         public float moveDuration = 0.1f;
         private bool isMoving = false;
 
@@ -416,7 +416,6 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
                 {
                     isMoving = false;
                     fx.currentGrid = newGrid;
-                    // TODO: trigger destroy when overlap
                     DestroyOverlappedFX();
                 });
         }

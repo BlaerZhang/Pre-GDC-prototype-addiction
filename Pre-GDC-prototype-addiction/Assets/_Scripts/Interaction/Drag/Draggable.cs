@@ -21,6 +21,7 @@ namespace Interaction
 
         [HideInInspector] public SpriteRenderer cardFaceSprite;
         [HideInInspector] public SpriteRenderer cardBGSprite;
+        [FormerlySerializedAs("shadowSprites")] [HideInInspector] public SpriteShadow[] shadows;
         private Vector2 dragOffset = new Vector2(0, 0);
 
         private BuyCardManager buyCardManager;
@@ -29,13 +30,19 @@ namespace Interaction
         {
             cardFaceSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
             cardBGSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+            shadows = GetComponentsInChildren<SpriteShadow>();
             buyCardManager = FindObjectOfType<BuyCardManager>();
             isDragging = false;
         }
 
         protected override void OnMouseEnter()
         {
-            if (!isDragging) cardFaceSprite.DOColor(Color.gray, 0.1f);
+            if (!isDragging)
+                foreach (var shadow in shadows)
+                {
+                    SpriteRenderer shadowSprite = shadow.transform.Find("Shadow").GetComponent<SpriteRenderer>();
+                    shadowSprite.material.DOColor(shadow.hoverShadowColor, 0.1f);
+                }
         }
         
         protected override void OnMouseDown()
@@ -81,12 +88,12 @@ namespace Interaction
             if (buyAreaUpperEdgeYOnViewport > cardYPosOnViewport)
             {
                 isInBuyArea = true;
-                cardFaceSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
+                // cardFaceSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
             }
             else
             {
                 isInBuyArea = false;
-                cardFaceSprite.DOColor(Color.gray, 0.1f);
+                // cardFaceSprite.DOColor(Color.gray, 0.1f);
             }
 
         }
@@ -117,7 +124,14 @@ namespace Interaction
 
         protected override void OnMouseExit()
         {
-            if (!isDragging) cardFaceSprite.DOColor(Color.white, 0.1f);
+            if (!isDragging)
+            {
+                foreach (var shadow in shadows)
+                {
+                    SpriteRenderer shadowSprite = shadow.transform.Find("Shadow").GetComponent<SpriteRenderer>();
+                    shadowSprite.material.DOColor(shadow.shadowColor, 0.1f);
+                }
+            }
         }
     }
 }

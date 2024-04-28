@@ -33,7 +33,7 @@ namespace ScratchCardGeneration.LayoutConstructor
             BuyCardManager.onScratchCardSelected -= AssembleScratchCard;
         }
 
-        private void AssembleScratchCard(ScratchCardBrand currentCardBrand, int level, float price, Vector3 generatePosition, Sprite cardFace)
+        private void AssembleScratchCard(ScratchCardBrand currentCardBrand, int level, int price, Vector3 generatePosition, Sprite cardFace)
         {
             print($"level: {level}");
 
