@@ -107,7 +107,7 @@ MonoBehaviour:
   unlockLevelTextColor: {r: 0, g: 1, b: 0.14352083, a: 1}
   unlockLevelTextFont: {fileID: 11400000, guid: 03ee08f7faf20a5458c724913437f059, type: 2}
   unlockLevelTextFontSize: 72
-  tooltipStyle: {fileID: 0}
+  tooltipStyle: {fileID: 11400000, guid: ea9f0a4b7d6b5c34ba5d87970521df9e, type: 2}
 --- !u!114 &1464302872218825695
 MonoBehaviour:
   m_ObjectHideFlags: 0

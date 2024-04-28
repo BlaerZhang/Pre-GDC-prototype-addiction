@@ -85,8 +85,9 @@ public class STController : MonoBehaviour
         if (showNow)
         {
             Vector2 newPosition = Input.mousePosition;
+            Vector2 tooltipScale = transform.localScale;
 
-            float rightEdgeToScreen = newPosition.x + rect.sizeDelta.x;
+            float rightEdgeToScreen = newPosition.x + rect.sizeDelta.x * tooltipScale.x;
             if (rightEdgeToScreen > Screen.width)
             {
                 newPosition.x -= (rightEdgeToScreen - Screen.width);
@@ -98,7 +99,7 @@ public class STController : MonoBehaviour
                 newPosition.x -= leftEdgeToScreen;
             }
 
-            float topEdgeToScreen = newPosition.y + rect.sizeDelta.y;
+            float topEdgeToScreen = newPosition.y + rect.sizeDelta.y * tooltipScale.y;
             if (topEdgeToScreen > Screen.height)
             {
                 newPosition.y -= (topEdgeToScreen - Screen.height);
@@ -177,6 +178,6 @@ public class STController : MonoBehaviour
     {
         showInFrames = -1;
         showNow = false;
-        rect.anchoredPosition = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
+        rect.anchoredPosition = new Vector2(Screen.width, Screen.height);
     }
 }
