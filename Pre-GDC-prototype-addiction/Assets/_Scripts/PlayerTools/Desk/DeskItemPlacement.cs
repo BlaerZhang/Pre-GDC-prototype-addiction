@@ -15,7 +15,7 @@ namespace _Scripts.PlayerTools
         }
 
         [Serializable]
-        public class ItemSlot
+        private class ItemSlot
         {
             [HideInInspector] public GameObject itemHere;
             public Vector2 slotPosition;
@@ -100,7 +100,7 @@ namespace _Scripts.PlayerTools
                 if (itemHere == null) continue;
                 if (itemHere.name.Equals(itemName))
                 {
-                    print($"{name} is removed from desk");
+                    print($"{itemName} is removed from desk");
                     // TODO: remove item effects
                     Destroy(itemHere);
                     slot.itemHere = null;
