@@ -1,25 +1,22 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
-using UnityEditor.EditorTools;
-using UnityEngine.Serialization;
+using Sirenix.OdinInspector;
 using Random = UnityEngine.Random;
 
-/// <summary>
-/// TODO:
-/// 3. 符合按下去之后的形态 (按下去之后会使周围的烟有位置上的改变， 也会根据周围环境
-/// 4. 不能浮在空中
-/// </summary>
+// TODO: drop after cetrain layers
 public class CigaretteButtGenerator : MonoBehaviour
 {
+
     public List<GameObject> cigarettePrefabs;
     public RectTransform ashTrayTransform;
+
+    [Title("Position And Rotation Settings")]
     public float generationPositionXOffset;
 
     public float minRotationAngle;
     public float maxRotationAngle;
-    
+
+    [Title("Layer Settings")]
     public int maxLayer = 4;
     public int maxCigarettesPerLayer = 5;
     public float layerHeight;
@@ -58,10 +55,16 @@ public class CigaretteButtGenerator : MonoBehaviour
         if (Input.GetKey(KeyCode.S)) RemoveCigarettes();
     }
 
-    private void OnValidate()
-    {
-        slotWidth = ashTrayWidth / maxCigarettesPerLayer;
-    }
+    // private void OnValidate()
+    // {
+    //     if (!Application.isPlaying) return;
+    //
+    //     ashTrayWidth = ashTrayTransform.rect.width - generationPositionXOffset * 2;
+    //     ashTrayHeight = ashTrayTransform.rect.height;
+    //
+    //     slotWidth = ashTrayWidth / maxCigarettesPerLayer;
+    //     slotDegree = (maxRotationAngle - minRotationAngle) / maxCigarettesPerLayer;
+    // }
 
     private void InitializeSlotAvailability()
     {
@@ -72,8 +75,7 @@ public class CigaretteButtGenerator : MonoBehaviour
             availableSlots?.Add(i);
         }
     }
-    
-    // TODO: 1. randomly fill slots
+
     void SetCigarettePositionAndRotation(GameObject cigarette)
     {
         // get an available random slot 
@@ -90,13 +92,10 @@ public class CigaretteButtGenerator : MonoBehaviour
             Random.Range(-ashTrayHeight / 2, ashTrayHeight / 2) + currentLayer * layerHeight,
             0);
         cigarette.transform.localPosition = localPosition;
-        
-        // TODO: set the rotation according to the current slot
+
         float minAngle = minRotationAngle + slotDegree * randSlotIndex;
         float maxAngle = minAngle + slotDegree;
-        float angle = Random.Range(minAngle, maxAngle); 
-        print("min " + minAngle);print("max " + maxAngle);
-        print("angle " + angle);
+        float angle = Random.Range(minAngle, maxAngle);
         cigarette.transform.localRotation = Quaternion.Euler(0, 0, angle);
     }
 

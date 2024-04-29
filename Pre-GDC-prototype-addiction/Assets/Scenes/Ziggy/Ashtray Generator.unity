@@ -566,6 +566,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6793288773616933592, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
+      propertyPath: maxLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793288773616933592, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
+      propertyPath: layerHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793288773616933592, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
+      propertyPath: maxCigarettesPerLayer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6910366905628995611, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: m_Name
       value: Ashtray Generator
