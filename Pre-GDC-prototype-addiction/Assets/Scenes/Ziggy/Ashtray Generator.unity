@@ -418,7 +418,7 @@ RectTransform:
   m_GameObject: {fileID: 1982416286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1404538719}
@@ -508,15 +508,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3850247460670804886, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3850247460670804886, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3850247460670804886, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3850247460670804886, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -552,7 +552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3850247460670804886, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -152
+      value: -299.375
       objectReference: {fileID: 0}
     - target: {fileID: 3850247460670804886, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -568,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6793288773616933592, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: maxLayer
-      value: 3
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6793288773616933592, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: layerHeight
@@ -576,7 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6793288773616933592, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: maxCigarettesPerLayer
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6910366905628995611, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: m_Name

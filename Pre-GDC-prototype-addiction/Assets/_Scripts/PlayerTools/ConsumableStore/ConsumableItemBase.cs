@@ -7,7 +7,8 @@ namespace _Scripts.ConsumableStore
 {
     public class ConsumableItemBase : ClickableUIBase
     {
-        [HideInInspector] public ConsumableType consumableType;
+        [Header("Item Settings")]
+        public ConsumableType consumableType;
 
         public static Action<ConsumableType> onItemConsumed;
         public static Action<string> onItemRemoved;
