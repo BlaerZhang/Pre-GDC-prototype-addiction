@@ -1,5 +1,6 @@
 using System;
 using _Scripts.ConsumableStore.ConsumableEffect;
+using DG.Tweening;
 using Interaction.Clickable;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -80,7 +81,7 @@ namespace _Scripts.ConsumableStore
         protected override void ClickableEvent()
         {
             if (isConsuming) return;
-
+            transform.DOScale(1, 0.3f).SetEase(Ease.OutElastic);
             UseItem();
             RemoveItem();
         }
