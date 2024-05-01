@@ -878,6 +878,7 @@ Transform:
   - {fileID: 342921199}
   - {fileID: 523836231}
   - {fileID: 1604128126}
+  - {fileID: 1397736059}
   - {fileID: 1725465080}
   - {fileID: 801151669}
   - {fileID: 561851532}
@@ -905,6 +906,7 @@ MonoBehaviour:
   faceEventManager: {fileID: 0}
   statsTrackingManager: {fileID: 0}
   membershipManager: {fileID: 0}
+  cursorManager: {fileID: 0}
   incrementalLock: 1
   lastPickPrice: 1
   lastPickOriginalPrice: 1
@@ -5472,6 +5474,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1918228486}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1397736058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1397736059}
+  - component: {fileID: 1397736060}
+  m_Layer: 0
+  m_Name: CursorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1397736059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397736058}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 230012565}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1397736060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397736058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ccd7357e0e04310885e94a1a911a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorData:
+  - type: 0
+    texture: {fileID: 2800000, guid: 6fe12c8865f1349a1929b5a776b0809f, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 1
+    texture: {fileID: 0}
+    hotspot: {x: 0, y: 0}
+  - type: 3
+    texture: {fileID: 2800000, guid: a0a5192569edc4f669a6bb2ea569ca29, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 2
+    texture: {fileID: 2800000, guid: 4e8b2eedac1fc40dca6af97ca41d1753, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 4
+    texture: {fileID: 2800000, guid: e16d75183a6c247409509ee89a535f30, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 5
+    texture: {fileID: 2800000, guid: d6ad0c3c90332478dadeae21b3cf0e79, type: 3}
+    hotspot: {x: 0, y: 0}
 --- !u!1001 &1461342543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6569,11 +6634,11 @@ MonoBehaviour:
     SerializationNodes:
     - Name: cardPrefabsDict
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[Interaction.Draggable, Assembly-CSharp],[System.Int32,
-        mscorlib]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[Interaction.SelectableScratchCard,
+        Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Interaction.Draggable,
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Interaction.SelectableScratchCard,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
@@ -7671,7 +7736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c180bfd2cb1079479d9e7d4db3f46b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastMenuYPosition: -2.25
+  lastMenuYPosition: 9.5
   scrollLimits: {x: -9.5, y: 9.5}
   currentScrollSpeed: 0
 --- !u!1 &1918228485

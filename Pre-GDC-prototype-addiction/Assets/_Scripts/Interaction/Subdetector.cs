@@ -1,24 +1,42 @@
+using System;
+using Manager;
 using UnityEngine;
 
 namespace Interaction
 {
     public class Subdetector : MonoBehaviour
     {
-        private DetectScratchArea detectScratchArea;
+        // private DetectScratchArea detectScratchArea;
     
-        void Start()
-        {
-            detectScratchArea = GetComponentInParent<DetectScratchArea>();
-        }
+        // void Start()
+        // {
+        //     detectScratchArea = GetComponentInParent<DetectScratchArea>();
+        // }
 
         private void OnMouseOver()
         {
-            detectScratchArea.isOverScratchArea = true;
+            DetectScratchArea.isOverScratchArea = true;
+        }
+
+        private void OnMouseEnter()
+        {
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.ScratchFieldHover);
         }
 
         private void OnMouseExit()
         {
-            detectScratchArea.isOverScratchArea = false;
+            DetectScratchArea.isOverScratchArea = false;
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.Idle);
+        }
+
+        private void OnMouseDown()
+        {
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.Scratching);
+        }
+
+        private void OnMouseUp()
+        {
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.ScratchFieldHover);
         }
     }
 }

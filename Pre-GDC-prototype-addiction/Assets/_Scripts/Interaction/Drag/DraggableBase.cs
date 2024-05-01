@@ -25,6 +25,7 @@ namespace Interaction
         protected virtual void OnMouseEnter()
         {
             //TODO
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.DragAreaHover);
         }
 
         protected virtual void OnMouseDown()
@@ -35,17 +36,19 @@ namespace Interaction
 
         protected virtual void OnMouseDrag()
         {
-            
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.Dragging);
         }
+
         protected virtual void OnMouseUp()
         {
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.DragAreaHover);
             if (dropAudio && dropSounds.Count > 0)
                 GameManager.Instance.audioManager.PlaySound(dropSounds[Random.Range(0, dropSounds.Count)]);
         }
 
         protected virtual void OnMouseExit()
         {
-            
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.Idle);
         }
     }
 }

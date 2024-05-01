@@ -16,7 +16,7 @@ namespace Manager
     public class BuyCardManager : SerializedMonoBehaviour
     {
         [Header("Spawn Cards")]
-        [HideInInspector] public List<Draggable> cardsToBuy = new List<Draggable>();
+        [HideInInspector] public List<SelectableScratchCard> cardsToBuy = new List<SelectableScratchCard>();
         public List<Transform> cardSpawnPos;
         public Transform cardPurchasePos;
 
@@ -116,7 +116,7 @@ namespace Manager
             //spawn card
             foreach (var card in GameManager.Instance.cardPoolManager.CreateCardPool(tier))
             {
-                Draggable cardInstance = Instantiate(card, new Vector3(100, 100), Quaternion.identity);
+                SelectableScratchCard cardInstance = Instantiate(card, new Vector3(100, 100), Quaternion.identity);
                 cardsToBuy.Add(cardInstance);
             }
 
@@ -137,7 +137,7 @@ namespace Manager
             }
         }
 
-        public void TryBuyCard(Draggable card)
+        public void TryBuyCard(SelectableScratchCard card)
         {
             if (price <= GameManager.Instance.resourceManager.PlayerGold)
             {
@@ -210,7 +210,7 @@ namespace Manager
         }
 
         // TODO: onScratchCardSelected exception
-        private void ZoomInCard(Draggable card)
+        private void ZoomInCard(SelectableScratchCard card)
         {
             //set initial pos
             card.transform.rotation = Quaternion.Euler(Vector3.zero);
@@ -252,7 +252,7 @@ namespace Manager
             zoomInCardAnimation.Play();
         }
     
-        IEnumerator BuyCardCoroutineChain(bool isPurchased, Draggable card, FaceEventType faceEventTypeResult)
+        IEnumerator BuyCardCoroutineChain(bool isPurchased, SelectableScratchCard card, FaceEventType faceEventTypeResult)
         {
             DeactivateScratchOffButton();
             if (faceEventTypeResult != FaceEventType.NoEvent) yield return new WaitForSeconds(1);

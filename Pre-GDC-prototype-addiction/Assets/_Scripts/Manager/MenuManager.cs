@@ -41,7 +41,7 @@ namespace Manager
             SwitchSceneManager.onSceneChanged -= InitializeButton;
         }
     
-        public void PickCard(MenuDraggable card)
+        public void PickCard(ScratchCardPoster card)
         {
             if (card.price <= GameManager.Instance.resourceManager.PlayerGold)
             {
