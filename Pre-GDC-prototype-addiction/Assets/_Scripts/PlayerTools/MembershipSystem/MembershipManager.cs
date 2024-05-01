@@ -57,7 +57,7 @@ public class MembershipManager : MonoBehaviour
     /// <param name="itemPrice"></param>
     public void GainMembershipPoints(int itemPrice)
     {
-        print("Gain membership points!");
+        // print("Gain membership points!");
         // transform price to points gained
         if (!priceMembershipPointsDict.TryGetValue(itemPrice, out var pointsGained)) Debug.LogError($"membershipUpgradeData miss the key {itemPrice}");
 
@@ -103,7 +103,7 @@ public class MembershipManager : MonoBehaviour
 
     private void UpgradeMembershipLevel()
     {
-        print("membership leveling up!");
+        // print("membership leveling up!");
         membershipLevel++;
         onMembershipLevelUp?.Invoke(membershipLevel);
     }

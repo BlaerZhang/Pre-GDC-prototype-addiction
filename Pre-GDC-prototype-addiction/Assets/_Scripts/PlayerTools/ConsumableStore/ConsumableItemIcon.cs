@@ -90,7 +90,8 @@ namespace _Scripts.ConsumableStore
                 }
 
                 // check if there is enough space on desk, then decide whether successfully bought an item
-                onTryBuyItem?.Invoke(AssembleItemObject(consumablePrefab));
+                GameObject itemBought = AssembleItemObject(consumablePrefab);
+                onTryBuyItem?.Invoke(itemBought);
 
                 if (DeskItemPlacement.isDeskFull) return;
                 

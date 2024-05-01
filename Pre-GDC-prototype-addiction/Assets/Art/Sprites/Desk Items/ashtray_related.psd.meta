@@ -106,11 +106,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ashtray sprites_0
+      name: ashtray_related_0
       rect:
         serializedVersion: 2
         x: 887
@@ -124,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1535e39ee6368d646b41f3b1677a35a8
-      internalID: 1333691931
+      spriteID: b3edbb62045b847d18b7fd951c0613c5
+      internalID: 1988539211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ashtray sprites_1
+      name: ashtray_related_1
       rect:
         serializedVersion: 2
-        x: 1043
-        y: 678
-        width: 48
-        height: 150
+        x: 1013
+        y: 616
+        width: 65
+        height: 162
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1603a26d2c12ef4993fdc29d273087a
-      internalID: 1431526163
+      spriteID: 51dd2c6308e654325b69c8a887867211
+      internalID: 110417584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ashtray sprites_2
+      name: ashtray_related_2
       rect:
         serializedVersion: 2
         x: 746
@@ -166,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f57076d22d241e4c9b857052cbf2a94
-      internalID: -1425726148
+      spriteID: 57f2ead43c3b14d14aa65036f3e42add
+      internalID: -486445847
       vertices: []
       indices: 
       edges: []
@@ -183,9 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ashtray sprites_0: 1333691931
-      ashtray sprites_1: 1431526163
-      ashtray sprites_2: -1425726148
+      ashtray_related_0: 1988539211
+      ashtray_related_1: 110417584
+      ashtray_related_2: -486445847
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

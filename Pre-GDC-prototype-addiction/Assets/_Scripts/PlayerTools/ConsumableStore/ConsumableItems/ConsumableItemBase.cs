@@ -1,7 +1,9 @@
 using System;
 using _Scripts.ConsumableStore.ConsumableEffect;
 using Interaction.Clickable;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace _Scripts.ConsumableStore
 {
@@ -13,20 +15,74 @@ namespace _Scripts.ConsumableStore
         public static Action<ConsumableType> onItemConsumed;
         public static Action<string> onItemRemoved;
 
-        private void UseItem()
-        {
-            print($"{name} is used");
-            onItemConsumed?.Invoke(consumableType);
+        protected bool isConsuming = false;
 
-            RemoveItem();
+        protected void Awake()
+        {
+            ConsumableItemIcon.onTryBuyItem += AddItem;
+            gameObject.SetActive(false);
         }
 
-        private void RemoveItem()
+        protected void OnDestroy()
         {
+            ConsumableItemIcon.onTryBuyItem -= AddItem;
+        }
+
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            if (isConsuming) return;
+            base.OnPointerEnter(eventData);
+        }
+
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            if (isConsuming) return;
+            base.OnPointerExit(eventData);
+        }
+
+        public override void OnPointerDown(PointerEventData eventData)
+        {
+            if (isConsuming) return;
+            base.OnPointerDown(eventData);
+        }
+
+        public override void OnPointerUp(PointerEventData eventData)
+        {
+            if (isConsuming) return;
+            base.OnPointerUp(eventData);
+        }
+
+
+        private void AddItem(GameObject item)
+        {
+            if (!item.name.Equals(name)) return;
+
+            gameObject.SetActive(true);
+        }
+
+        protected void UseItem()
+        {
+            isConsuming = true;
+
+            print($"{name} is used");
+            onItemConsumed?.Invoke(consumableType);
+        }
+
+        protected virtual void RemoveItem()
+        {
+            isConsuming = false;
+
+            gameObject.SetActive(false);
             print($"{name} is removed");
             onItemRemoved?.Invoke(gameObject.name);
         }
 
-        protected override void ClickableEvent() => UseItem();
+        protected override void ClickableEvent()
+        {
+            if (isConsuming) return;
+
+            UseItem();
+            RemoveItem();
+        }
     }
 }
