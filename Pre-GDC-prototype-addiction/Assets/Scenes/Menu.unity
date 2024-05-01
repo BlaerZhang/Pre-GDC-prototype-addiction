@@ -1491,6 +1491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b03eed837141394c89d0710d4005b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTimeStopped: 0
   initialGold: 300
 --- !u!1 &347867736
 GameObject:
@@ -3289,6 +3290,10 @@ PrefabInstance:
     - target: {fileID: 2389126110959121967, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: m_Name
       value: Consumable Store
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383017150360712836, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: effectDuration
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8189364240841987167, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -9145,6 +9150,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7657762004471930556, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 1431526163, guid: a7e5d89cdcf6b2142a5738ea7a9cf1d3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -115,6 +115,7 @@ namespace _Scripts.ConsumableStore
                 newImage.SetNativeSize();
             }
 
+            // TODO: select specific item script according to the consumable type
             if (newObject.TryGetComponent(out ConsumableItemBase consumableItemBase)) consumableItemBase.consumableType = consumableType;
             else consumablePrefab.AddComponent<ConsumableItemBase>();
 

@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 7373122595594101413}
   - component: {fileID: 4301460868932788365}
   - component: {fileID: 3559104786626738609}
-  - component: {fileID: 8655132248719936618}
+  - component: {fileID: 7657762004471930556}
   m_Layer: 5
   m_Name: Cigarette
   m_TagString: Untagged
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8655132248719936618
+--- !u!114 &7657762004471930556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1950462456879335099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a60d5323a78949939eac9c1643b6e128, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a0e0534e33646baafab9be25bcf085b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sizeFeedback: 1
@@ -189,7 +189,8 @@ MonoBehaviour:
   hoverSounds: []
   pressSounds: []
   exitSounds: []
-  consumableType: 0
+  consumableType: 2
+  hoverSprite: {fileID: 0}
 --- !u!1 &3842489177861357594
 GameObject:
   m_ObjectHideFlags: 0

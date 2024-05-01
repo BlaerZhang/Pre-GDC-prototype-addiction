@@ -6,9 +6,12 @@ namespace Manager
     public class ResourceManager : MonoBehaviour
     {
         private int playerGold = 0;
+
         private DateTime gameStartTime;
         private DateTime currentTime;
         public static Action<DateTime> OnTimeChanged;
+
+        public bool isTimeStopped = false;
 
         public int PlayerGold
         {
@@ -44,6 +47,7 @@ namespace Manager
 
         public void ChangeTime(double minutes)
         {
+            if (isTimeStopped) return;
             CurrentTime = CurrentTime.AddMinutes(minutes);
         }
     }

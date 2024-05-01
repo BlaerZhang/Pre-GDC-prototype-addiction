@@ -60,7 +60,7 @@ namespace Interaction
         {
             if (!isDragging)
             {
-                print("Mouse Enter");
+                // print("Mouse Enter");
                 foreach (var shadow in shadows)
                 {
                     print(shadow);

@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
+using _Scripts.ConsumableStore.ConsumableEffect;
 using Sirenix.OdinInspector;
 using Random = UnityEngine.Random;
 
-// TODO: drop after cetrain layers
+// TODO: drop after certain layers
 public class CigaretteButtGenerator : MonoBehaviour
 {
 
@@ -35,6 +37,9 @@ public class CigaretteButtGenerator : MonoBehaviour
     private float slotWidth;
     private float slotDegree;
 
+    [Title("Animation Settings")]
+
+
     private void Start()
     {
         ashTrayWidth = ashTrayTransform.rect.width - generationPositionXOffset * 2;
@@ -55,16 +60,15 @@ public class CigaretteButtGenerator : MonoBehaviour
         if (Input.GetKey(KeyCode.S)) RemoveCigarettes();
     }
 
-    // private void OnValidate()
-    // {
-    //     if (!Application.isPlaying) return;
-    //
-    //     ashTrayWidth = ashTrayTransform.rect.width - generationPositionXOffset * 2;
-    //     ashTrayHeight = ashTrayTransform.rect.height;
-    //
-    //     slotWidth = ashTrayWidth / maxCigarettesPerLayer;
-    //     slotDegree = (maxRotationAngle - minRotationAngle) / maxCigarettesPerLayer;
-    // }
+    private void OnEnable()
+    {
+        TobaccoEffect.onStopSmoking += AddCigarettes;
+    }
+
+    private void OnDisable()
+    {
+        TobaccoEffect.onStopSmoking -= AddCigarettes;
+    }
 
     private void InitializeSlotAvailability()
     {
@@ -99,6 +103,7 @@ public class CigaretteButtGenerator : MonoBehaviour
         cigarette.transform.localRotation = Quaternion.Euler(0, 0, angle);
     }
 
+    // TODO: add cigarette animation
     void AddCigarettes()
     {
         if (currentLayerCigarettesCount >= maxCigarettesPerLayer)
@@ -122,6 +127,7 @@ public class CigaretteButtGenerator : MonoBehaviour
         currentCigarettes.Add(cig);
     }
 
+    // TODO: remove automatically / or remove when the player click on the pile
     void RemoveCigarettes()
     {
         if (currentLayerCigarettesCount <= 0)
