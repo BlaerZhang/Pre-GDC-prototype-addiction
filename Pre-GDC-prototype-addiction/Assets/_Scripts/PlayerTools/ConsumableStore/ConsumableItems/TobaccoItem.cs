@@ -13,8 +13,9 @@ namespace _Scripts.ConsumableStore
         private Sprite normalSprite;
         [SerializeField] private Sprite hoverSprite;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             itemImage = GetComponent<Image>();
             normalSprite = itemImage.sprite;
         }

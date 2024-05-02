@@ -127,7 +127,6 @@ public class CigaretteButtGenerator : MonoBehaviour
         return angle;
     }
 
-    // TODO: add cigarette animation
     void AddCigarettes()
     {
         if (currentLayerCigarettesCount >= maxCigarettesPerLayer)

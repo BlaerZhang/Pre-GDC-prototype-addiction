@@ -22,10 +22,14 @@ namespace Interaction.Clickable
         [SerializeField] private List<AudioClip> hoverSounds = new();
         [SerializeField] private List<AudioClip> pressSounds = new();
         [SerializeField] private List<AudioClip> exitSounds = new();
-        
+
+        protected virtual void Start()
+        {
+            originalLocalScale = transform.localScale;
+        }
+
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            if (originalLocalScale == Vector3.zero) originalLocalScale = transform.localScale;
             if (sizeFeedback) ScaleUpClickable(hoverSizeModifier);
             PlaySound(hoverSounds);
         }
