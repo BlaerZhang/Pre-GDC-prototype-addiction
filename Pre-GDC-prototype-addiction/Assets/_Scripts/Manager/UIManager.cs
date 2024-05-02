@@ -32,7 +32,7 @@ namespace Manager
 
         private void OnEnable()
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
             FaceEventListener.onFaceEventTriggered += PopFaceEventUI;
             FaceEventManager.onFaceEventEnd += CollapseFaceEventUI;
             SwitchSceneManager.onSceneChanged += ShowFaceEventUI;
@@ -40,7 +40,7 @@ namespace Manager
 
         private void OnDisable()
         {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
             FaceEventListener.onFaceEventTriggered -= PopFaceEventUI;
             FaceEventManager.onFaceEventEnd -= CollapseFaceEventUI;
             SwitchSceneManager.onSceneChanged -= ShowFaceEventUI;

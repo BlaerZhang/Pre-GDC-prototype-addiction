@@ -13,6 +13,7 @@ using Sirenix.OdinInspector;
 
 namespace Manager
 {
+    // TODO: rework buy card
     public class BuyCardManager : SerializedMonoBehaviour
     {
         [Header("Spawn Cards")]

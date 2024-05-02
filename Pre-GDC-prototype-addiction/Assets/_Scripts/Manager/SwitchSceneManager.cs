@@ -12,19 +12,21 @@ namespace Manager
     {
         public static Action<string> onSceneChanged;
         public Dictionary<string, CinemachineVirtualCamera> sceneName_vCamDict;
-        public bool isChangingScene = false;
+        // public bool isChangingScene = false;
         private string currentActiveScene;
     
         // Start is called before the first frame update
         void Start()
         {
-            isChangingScene = false;
-            currentActiveScene = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("UIScene", LoadSceneMode.Additive);
+            // isChangingScene = false;
+            currentActiveScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         }
 
         // Update is called once per frame
-        void Update()
-        {
+        // void Update()
+        // {
             // if (Input.GetKeyDown(KeyCode.LeftArrow))
             // {
             //     ChangeScene("Incremental");
@@ -34,13 +36,13 @@ namespace Manager
             // {
             //     ChangeScene("Menu");
             // }
-        }
+        // }
 
         public void ChangeScene(string toScene)
         {
             //set bool lock
-            if (isChangingScene) return;
-            isChangingScene = true;
+            // if (isChangingScene) return;
+            // isChangingScene = true;
         
             //adjust cam priority
             foreach (var scene_vCam in sceneName_vCamDict)
@@ -62,13 +64,13 @@ namespace Manager
         IEnumerator UnloadScene(string fromScene, string toScene)
         {
             yield return new WaitForSeconds(Camera.main.GetComponent<CinemachineBrain>().m_DefaultBlend.BlendTime);
-            SceneManager.UnloadSceneAsync(fromScene);
+            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(fromScene);
         
             //update active scene
             currentActiveScene = toScene;
         
             //reset bool lock
-            isChangingScene = false;
+            // isChangingScene = false;
         
             //invoke action
             onSceneChanged?.Invoke(toScene);

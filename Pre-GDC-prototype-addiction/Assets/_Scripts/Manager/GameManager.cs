@@ -11,7 +11,7 @@ namespace Manager
         public static GameManager Instance;
 
         [HideInInspector] public UIManager uiManager;
-        [HideInInspector] public SwitchSceneManager switchSceneManager;
+        [FormerlySerializedAs("sceneManager")] [HideInInspector] public SwitchSceneManager switchSceneManager;
         [HideInInspector] public ScratchCardGenerator scratchCardGenerator;
         [HideInInspector] public AudioManager audioManager;
         [HideInInspector] public ResourceManager resourceManager;
@@ -61,7 +61,7 @@ namespace Manager
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
             }
         }
     }
