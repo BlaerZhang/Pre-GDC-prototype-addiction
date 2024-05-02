@@ -2,26 +2,27 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 using _Scripts.ConsumableStore.ConsumableEffect;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using Random = UnityEngine.Random;
 
-// TODO: drop after certain layers
+// TODO: drop after certain layers ?
 public class CigaretteButtGenerator : MonoBehaviour
 {
 
-    public List<GameObject> cigarettePrefabs;
-    public RectTransform ashTrayTransform;
+    [SerializeField] private List<GameObject> cigarettePrefabs;
+    [SerializeField] private RectTransform ashTrayTransform;
 
     [Title("Position And Rotation Settings")]
-    public float generationPositionXOffset;
+    [SerializeField] private float generationPositionXOffset;
 
-    public float minRotationAngle;
-    public float maxRotationAngle;
+    [SerializeField] private float minRotationAngle;
+    [SerializeField] private float maxRotationAngle;
 
     [Title("Layer Settings")]
-    public int maxLayer = 4;
-    public int maxCigarettesPerLayer = 5;
-    public float layerHeight;
+    [SerializeField] private int maxLayer = 4;
+    [SerializeField] private int maxCigarettesPerLayer = 5;
+    [SerializeField] private float layerHeight;
     
     private int currentLayer = 0;
     private int currentLayerCigarettesCount = 0;
@@ -38,6 +39,8 @@ public class CigaretteButtGenerator : MonoBehaviour
     private float slotDegree;
 
     [Title("Animation Settings")]
+    [SerializeField] private float animationStartDistance = 10f;
+    [SerializeField] private float animationDuration = 1f;
 
 
     private void Start()
@@ -82,25 +85,46 @@ public class CigaretteButtGenerator : MonoBehaviour
 
     void SetCigarettePositionAndRotation(GameObject cigarette)
     {
-        // get an available random slot 
+        // get an available random slot
         int randSlotIndex = availableSlots[Random.Range(0, availableSlots.Count)];
         occupiedSlots.Add(randSlotIndex);
         availableSlots.Remove(randSlotIndex);
-        
+
+        Vector2 finalPosition = GetCigarettePosition(randSlotIndex);
+        float angle = GetCigaretteRotation(randSlotIndex);
+
+        float startPositionXLength = Mathf.Sin(Mathf.Abs(angle) * Mathf.Deg2Rad) * animationStartDistance;
+        if (angle > 0) startPositionXLength = -startPositionXLength;
+
+        Vector2 startPosition = new Vector2(startPositionXLength, animationStartDistance) + finalPosition;
+
+        cigarette.transform.localPosition = startPosition;
+        cigarette.transform.localRotation = Quaternion.Euler(0, 0, angle);
+
+        cigarette.transform.DOLocalMove(finalPosition, animationDuration).SetEase(Ease.InExpo);
+    }
+
+    Vector2 GetCigarettePosition(int randSlotIndex)
+    {
         // calculate the slot bound
         float leftXBound = -ashTrayWidth / 2 + randSlotIndex * slotWidth;
         float rightXBound = leftXBound + slotWidth;
-        
+
         // get a random position within the slot
         Vector3 localPosition = new Vector3(Random.Range(leftXBound, rightXBound),
             Random.Range(-ashTrayHeight / 2, ashTrayHeight / 2) + currentLayer * layerHeight,
             0);
-        cigarette.transform.localPosition = localPosition;
 
+        return localPosition;
+    }
+
+    float GetCigaretteRotation(int randSlotIndex)
+    {
         float minAngle = minRotationAngle + slotDegree * randSlotIndex;
         float maxAngle = minAngle + slotDegree;
         float angle = Random.Range(minAngle, maxAngle);
-        cigarette.transform.localRotation = Quaternion.Euler(0, 0, angle);
+
+        return angle;
     }
 
     // TODO: add cigarette animation

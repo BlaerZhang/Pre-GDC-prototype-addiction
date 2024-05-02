@@ -620,6 +620,18 @@ PrefabInstance:
       propertyPath: maxLayer
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6793288773616933592, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
+      propertyPath: animationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793288773616933592, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
+      propertyPath: animationStartHeight
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793288773616933592, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
+      propertyPath: animationStartDistance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6910366905628995611, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: m_Name
       value: Ashtray Generator
@@ -3464,7 +3476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5383017150360712836, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: effectDuration
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5383017150360712836, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: smokeParticleSystem
