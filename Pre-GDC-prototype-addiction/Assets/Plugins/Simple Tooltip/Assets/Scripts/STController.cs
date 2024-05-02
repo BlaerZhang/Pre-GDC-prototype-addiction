@@ -49,7 +49,6 @@ public class STController : MonoBehaviour
 
     private void RescaleToMatchScreenResolution()
     {
-        print(Screen.width);
         transform.localScale = originalScale * (Screen.width * 3) / 3840;
     }
 
