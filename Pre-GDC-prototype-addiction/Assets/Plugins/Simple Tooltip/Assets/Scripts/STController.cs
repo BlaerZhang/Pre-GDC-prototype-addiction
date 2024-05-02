@@ -14,6 +14,8 @@ public class STController : MonoBehaviour
     private RectTransform rect;
     private int showInFrames = -1;
     private bool showNow = false;
+
+    private Vector3 originalScale;
     
     private void Awake()
     {
@@ -32,14 +34,23 @@ public class STController : MonoBehaviour
         panel = GetComponent<Image>();
         rect = GetComponent<RectTransform>();
 
+        originalScale = transform.localScale;
+
         // Hide at the start
         HideTooltip();
     }
 
     void Update()
     {
+        RescaleToMatchScreenResolution();
         ResizeToMatchText();
         UpdateShow();
+    }
+
+    private void RescaleToMatchScreenResolution()
+    {
+        print(Screen.width);
+        transform.localScale = originalScale * (Screen.width * 3) / 3840;
     }
 
     private void ResizeToMatchText()
