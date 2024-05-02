@@ -10,15 +10,15 @@ using Random = UnityEngine.Random;
 public class CardPoolManager : SerializedMonoBehaviour
 {
     [DictionaryDrawerSettings(KeyLabel = "Card Prefab", ValueLabel = "Weight in Pool")]
-    public Dictionary<Draggable, int> cardPrefabsDict;
+    public Dictionary<SelectableScratchCard, int> cardPrefabsDict;
     
-    private Dictionary<Draggable, int> initialPoolWeightDict;
+    private Dictionary<SelectableScratchCard, int> initialPoolWeightDict;
 
     [Serializable] public class CardsStatsPerTier
     {
         public ScratchCardTier tier;
         public bool poolRefreshLock = false;
-        public List<Draggable> currentCards;
+        public List<SelectableScratchCard> currentCards;
     }
 
     // [Serializable] public class EventTriggerWeightPerFaceType
@@ -125,9 +125,9 @@ public class CardPoolManager : SerializedMonoBehaviour
         cardStatsList[(int)GameManager.Instance.lastPickTier].poolRefreshLock = false;
     }
 
-    public List<Draggable> CreateCardPool(ScratchCardTier tier)
+    public List<SelectableScratchCard> CreateCardPool(ScratchCardTier tier)
     {
-        List<Draggable> cardsToBuy = new List<Draggable>();
+        List<SelectableScratchCard> cardsToBuy = new List<SelectableScratchCard>();
         
         if (cardStatsList[(int)tier].poolRefreshLock)
         {
@@ -137,7 +137,7 @@ public class CardPoolManager : SerializedMonoBehaviour
         else
         {
             //set up spawn pool to draw from
-            List<Draggable> spawnPool = new List<Draggable>();
+            List<SelectableScratchCard> spawnPool = new List<SelectableScratchCard>();
             foreach (var cardPrefabKeyValuePair in cardPrefabsDict)
             {
                 for (int i = 0; i < cardPrefabKeyValuePair.Value; i++)

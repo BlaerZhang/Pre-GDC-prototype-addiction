@@ -33,7 +33,7 @@ namespace Interaction
         // public AudioClip soundLayer1;
 
         [Header("Card")]
-        public ScratchCard card;
+        public ScratchCardAsset.ScratchCard card;
         public SpriteRenderer cardSprite;
         public EraseProgress eraseProgress;
         private PostProcessVolume postProcessVolume;

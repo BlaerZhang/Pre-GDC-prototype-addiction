@@ -28,7 +28,7 @@ namespace Interaction
         public List<ParticleSystem> particles;
         public AudioClip soundLayer1;
 
-        private ScratchCard card;
+        private ScratchCardAsset.ScratchCard card;
         private SpriteRenderer cardSprite;
         private EraseProgress eraseProgress;
         private PostProcessVolume postProcessVolume;
@@ -56,7 +56,7 @@ namespace Interaction
             MouseEnterDetector.onMouseExitEvent -= RemoveCurrentCard;
         }
 
-        private void InitializeCurrentCard(ScratchCard currentCard)
+        private void InitializeCurrentCard(ScratchCardAsset.ScratchCard currentCard)
         {
             card = currentCard;
             print(currentCard.name);
