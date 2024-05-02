@@ -5535,7 +5535,7 @@ MonoBehaviour:
     texture: {fileID: 2800000, guid: 31e350d90adad4b24842b66cb9b9f881, type: 3}
     hotspot: {x: 0, y: 0}
   - type: 1
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: c759ee85c6b644830b124e0b353fa5ed, type: 3}
     hotspot: {x: 0, y: 0}
   - type: 3
     texture: {fileID: 2800000, guid: 8bae67c0c25204bd39c712e7e50fdc7d, type: 3}
@@ -9309,7 +9309,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 5932745008112107404}
   m_FillRect: {fileID: 2911621432769292488}
   m_HandleRect: {fileID: 6079651221380799375}
