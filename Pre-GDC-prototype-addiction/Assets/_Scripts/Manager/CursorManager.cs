@@ -33,6 +33,8 @@ public class CursorManager : MonoBehaviour
 
     [SerializeField] private List<CursorData> cursorData;
 
+    [HideInInspector] public CursorType currentCursorType = CursorType.Idle;
+
     private Dictionary<CursorType, CursorData> cursorDictionary;
 
     void Awake()
@@ -55,6 +57,7 @@ public class CursorManager : MonoBehaviour
     {
         if (cursorDictionary.TryGetValue(type, out CursorData data))
         {
+            currentCursorType = type;
             Cursor.SetCursor(data.texture, data.hotspot, CursorMode.Auto);
         }
     }

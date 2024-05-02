@@ -29,6 +29,12 @@ namespace Interaction
             GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.Idle);
         }
 
+        private void OnMouseDrag()
+        {
+            if (GameManager.Instance.cursorManager.currentCursorType.Equals(CursorManager.CursorType.ScratchFieldHover))
+                GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.Scratching);
+        }
+
         private void OnMouseDown()
         {
             GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.Scratching);
