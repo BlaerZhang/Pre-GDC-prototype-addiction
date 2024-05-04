@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Scripts.CustomEventSystem;
+using Interaction;
 using Manager;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class FaceEventListener : GameEventListenerBase
     {
         if (faceEventType == FaceEventType.NoEvent) return;
         
-        onFaceEventTriggered?.Invoke(faceEventType, eventDuration, GameManager.Instance.lastPickTier);
+        onFaceEventTriggered?.Invoke(faceEventType, eventDuration, ScratchCardDealer.currentPickedCardTier);
         
         GameManager.Instance.audioManager.PlaySound(triggerAudio);
         Debug.Log($"{faceEventType} triggered");

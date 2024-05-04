@@ -107,10 +107,12 @@ public class CardPoolManager : SerializedMonoBehaviour
         initialPoolWeightDict = cardPrefabsDict;
         
         //set up cardStatsList
-        for (int tier = 0; tier < System.Enum.GetValues(typeof(ScratchCardTier)).Length; tier++)
+        for (int tier = 0; tier < Enum.GetValues(typeof(ScratchCardTier)).Length; tier++)
         {
-            CardsStatsPerTier cardStats = new CardsStatsPerTier();
-            cardStats.tier = (ScratchCardTier)tier;
+            CardsStatsPerTier cardStats = new CardsStatsPerTier
+            {
+                tier = (ScratchCardTier)tier
+            };
             cardStatsList.Add(cardStats);
         }
     }
@@ -122,10 +124,10 @@ public class CardPoolManager : SerializedMonoBehaviour
 
     public void ResetRefreshLock()
     {
-        cardStatsList[(int)GameManager.Instance.lastPickTier].poolRefreshLock = false;
+        cardStatsList[(int)ScratchCardDealer.currentPickedCardTier].poolRefreshLock = false;
     }
 
-    public List<SelectableScratchCard> CreateCardPool(ScratchCardTier tier)
+    public List<SelectableScratchCard> CreateCardPool(ScratchCardTier tier, int cardCount)
     {
         List<SelectableScratchCard> cardsToBuy = new List<SelectableScratchCard>();
         
@@ -147,7 +149,7 @@ public class CardPoolManager : SerializedMonoBehaviour
             }
             
             //draw 5
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < cardCount; i++)
             {
                 cardsToBuy.Add(spawnPool[Random.Range(0, spawnPool.Count)]);
             }

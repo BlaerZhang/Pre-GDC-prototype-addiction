@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _Scripts.MembershipSystem;
 using DG.Tweening;
+using Interaction;
 using Manager;
 using ScratchCardGeneration.LayoutConstructor;
 using ScratchCardGeneration.Utilities;
@@ -43,6 +44,22 @@ public class MembershipManager : MonoBehaviour
             GainMembershipPoints(10000);
             // print("currentPointsToNextLevel" + currentPointsToNextLevel);
         }
+    }
+
+    private void OnEnable()
+    {
+        ScratchCardPoster.onTryBuyPoster += (poster, isBought) =>
+        {
+            if (isBought) GainMembershipPoints(poster.originalPrice);
+        };
+    }
+
+    private void OnDisable()
+    {
+        ScratchCardPoster.onTryBuyPoster -= (poster, isBought) =>
+        {
+            if (isBought) GainMembershipPoints(poster.originalPrice);
+        };
     }
 
     private void CreateData()

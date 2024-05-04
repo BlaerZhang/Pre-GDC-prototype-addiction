@@ -35,7 +35,7 @@ namespace Interaction
             // detectScratchArea = GetComponent<DetectScratchArea>();
             currentCard = GameObject.Find("currentScratchCard");
             // scratchCardManager = GetComponentInParent<ScratchCardManager>();
-            buyCardManager = FindObjectOfType<BuyCardManager>();
+            // buyCardManager = FindObjectOfType<BuyCardManager>();
             shadows = GetComponentsInChildren<SpriteShadow>();
             initialPos = transform.position;
             isDragging = false;
@@ -85,7 +85,7 @@ namespace Interaction
             dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
             //Activate Give Area
-            buyCardManager.ActivateGiveArea();
+            // buyCardManager.ActivateGiveArea();
         }
 
         protected override void OnMouseDrag()
@@ -93,28 +93,28 @@ namespace Interaction
             if (dragLock) return;
             
             //Card Follow Mouse Y
-            Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)dragOffset;
-            float cardToTarget = targetPos.y - transform.position.y;
-            currentCard.transform.position += new Vector3(0, MathF.Pow(cardToTarget,1f) * dragSpeed * Time.deltaTime,0);
+            // Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)dragOffset;
+            // float cardToTarget = targetPos.y - transform.position.y;
+            // currentCard.transform.position += new Vector3(0, MathF.Pow(cardToTarget,1f) * dragSpeed * Time.deltaTime,0);
             
             //Adjust Give Area
-            buyCardManager.AdjustGiveArea(this.transform);
+            // buyCardManager.AdjustGiveArea(this.transform);
 
             //Check if in give area
-            float cardYPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).y;
-            float giveAreaLowerEdgeYOnViewport = Camera.main.ScreenToViewportPoint(buyCardManager.giveArea.anchoredPosition).y;
-            if (1 + giveAreaLowerEdgeYOnViewport < cardYPosOnViewport)
-            {
-                isInGiveArea = true;
+            // float cardYPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).y;
+            // float giveAreaLowerEdgeYOnViewport = Camera.main.ScreenToViewportPoint(buyCardManager.giveArea.anchoredPosition).y;
+            // if (1 + giveAreaLowerEdgeYOnViewport < cardYPosOnViewport)
+            // {
+            //     isInGiveArea = true;
                 // cardSurfaceSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
                 // cardBackgroundSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
-            }
-            else
-            {
-                isInGiveArea = false;
+            // }
+            // else
+            // {
+            //     isInGiveArea = false;
                 // cardSurfaceSprite.DOColor(Color.white, 0.1f);
                 // cardBackgroundSprite.DOColor(Color.white, 0.1f);
-            }
+            // }
 
         }
         protected override void OnMouseUp()
@@ -129,17 +129,17 @@ namespace Interaction
             currentCard.transform.DOScale(Vector3.one, 0.1f);
         
             //Deactivate Give Area
-            buyCardManager.DeactivateGiveArea();
+            // buyCardManager.DeactivateGiveArea();
         
             //Check if give
-            if (isInGiveArea)
-            {
-                buyCardManager.GiveCard();
-            }
-            else
-            {
-                currentCard.transform.DOMove(initialPos, 0.1f);
-            }
+            // if (isInGiveArea)
+            // {
+            //     buyCardManager.GiveCard();
+            // }
+            // else
+            // {
+            //     currentCard.transform.DOMove(initialPos, 0.1f);
+            // }
         }
 
         protected override void OnMouseExit()

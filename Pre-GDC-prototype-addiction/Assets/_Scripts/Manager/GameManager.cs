@@ -11,7 +11,7 @@ namespace Manager
         public static GameManager Instance;
 
         [HideInInspector] public UIManager uiManager;
-        [FormerlySerializedAs("sceneManager")] [HideInInspector] public SwitchSceneManager switchSceneManager;
+        [HideInInspector] public SwitchSceneManager switchSceneManager;
         [HideInInspector] public ScratchCardGenerator scratchCardGenerator;
         [HideInInspector] public AudioManager audioManager;
         [HideInInspector] public ResourceManager resourceManager;
@@ -22,9 +22,9 @@ namespace Manager
         [HideInInspector] public CursorManager cursorManager;
 
         [HideInInspector] public bool incrementalLock = true;
-        [HideInInspector] public int lastPickPrice = 1;
-        [HideInInspector] public int lastPickOriginalPrice = 1;
-        [HideInInspector] public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
+        // [HideInInspector] public int lastPickPrice = 1;
+        // [HideInInspector] public int lastPickOriginalPrice = 1;
+        // [HideInInspector] public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
     
         // [HideInInspector] public float totalCostBeforeWinning = 0;
 
@@ -61,7 +61,7 @@ namespace Manager
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }

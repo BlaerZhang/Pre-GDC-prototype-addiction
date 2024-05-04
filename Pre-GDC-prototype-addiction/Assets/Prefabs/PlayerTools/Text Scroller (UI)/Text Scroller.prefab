@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 3110068101950286301}
   - component: {fileID: 7048824219994728481}
   - component: {fileID: 8137483209852792258}
+  - component: {fileID: 8215879346862950201}
   m_Layer: 5
   m_Name: Text Scroller
   m_TagString: Untagged
@@ -300,6 +301,27 @@ MonoBehaviour:
   m_EffectColor: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 1}
   m_EffectDistance: {x: 20, y: -20}
   m_UseGraphicAlpha: 1
+--- !u!114 &8215879346862950201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2522331820477012276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53d44835ed84dbfa0d42a1de44582af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  unlockRequired: 1
+  unlockPrice: 0
+  unlockMembershipLevel: 0
+  lockedSprite: {fileID: 0}
+  hideWhenScratching: 1
+  currentHidingDirection: 0
+  hideOffset: 350
+  collapseDuration: 0.4
 --- !u!1 &3590865439423782685
 GameObject:
   m_ObjectHideFlags: 0

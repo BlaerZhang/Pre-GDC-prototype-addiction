@@ -1,4 +1,5 @@
 using System;
+using Interaction;
 using UnityEngine;
 
 namespace Manager
@@ -19,7 +20,7 @@ namespace Manager
             set
             {
                 playerGold = value;
-                GameManager.Instance.uiManager.UpdateResource(value);
+                GameManager.Instance.uiManager.UpdateGold(value);
                 StatsTracker.onValueChanged?.Invoke(nameof(playerGold), playerGold);
             }
         }
@@ -43,6 +44,22 @@ namespace Manager
             PlayerGold = initialGold;
             gameStartTime = DateTime.Now;
             CurrentTime = gameStartTime;
+        }
+
+        private void OnEnable()
+        {
+            ScratchCardPoster.onTryBuyPoster += (poster, isBought) =>
+            {
+                if (isBought) PlayerGold -= poster.price;
+            };
+        }
+
+        private void OnDisable()
+        {
+            ScratchCardPoster.onTryBuyPoster -= (poster, isBought) =>
+            {
+                if (isBought) PlayerGold -= poster.price;
+            };
         }
 
         public void ChangeTime(double minutes)

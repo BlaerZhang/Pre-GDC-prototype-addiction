@@ -578,10 +578,18 @@ PrefabInstance:
       propertyPath: maxCigarettesPerLayer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6793288773616933592, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
+      propertyPath: animationStartDistance
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6910366905628995611, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
       propertyPath: m_Name
       value: Ashtray Generator
       objectReference: {fileID: 0}
+    - target: {fileID: 7949531915628662773, guid: 8701f8ba46241f74da528b869c453d86, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -486445847, guid: a7e5d89cdcf6b2142a5738ea7a9cf1d3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -14,6 +14,5 @@ namespace Interaction
         {
             GameManager.Instance.faceEventManager.ClearDuration();
         }
-    
     }
 }

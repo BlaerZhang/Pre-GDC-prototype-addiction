@@ -4,6 +4,7 @@ using DG.Tweening;
 using Manager;
 using ScratchCardGeneration;
 using ScratchCardGeneration.PrizeGenerator;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -14,7 +15,7 @@ namespace Interaction
 {
     public class DraggableBase : MonoBehaviour
     {
-        [Header("Feedback")] 
+        [Title("Feedback")]
         public bool pickAudio = true;
         public List<AudioClip> pickSounds;
         public bool dropAudio = true;

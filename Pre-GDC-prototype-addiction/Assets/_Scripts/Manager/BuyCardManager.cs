@@ -110,12 +110,12 @@ namespace Manager
         private void SpawnCardsToBuy()
         {
             //set price
-            price = GameManager.Instance.lastPickPrice;
-            tier = GameManager.Instance.lastPickTier;
+            // price = GameManager.Instance.lastPickPrice;
+            // tier = GameManager.Instance.lastPickTier;
             GameManager.Instance.uiManager.UpdateBuyPrice(price); //update UI
             
             //spawn card
-            foreach (var card in GameManager.Instance.cardPoolManager.CreateCardPool(tier))
+            foreach (var card in GameManager.Instance.cardPoolManager.CreateCardPool(tier, 5))
             {
                 SelectableScratchCard cardInstance = Instantiate(card, new Vector3(100, 100), Quaternion.identity);
                 cardsToBuy.Add(cardInstance);
@@ -143,10 +143,10 @@ namespace Manager
             if (price <= GameManager.Instance.resourceManager.PlayerGold)
             {
                 //set gold
-                GameManager.Instance.resourceManager.PlayerGold -= price;
+                // GameManager.Instance.resourceManager.PlayerGold -= price;
 
                 // gain membership points
-                GameManager.Instance.membershipManager.GainMembershipPoints(GameManager.Instance.lastPickOriginalPrice);
+                // GameManager.Instance.membershipManager.GainMembershipPoints(ScratchCardDealer.lastPickOriginalPrice);
             
                 //disable collider
                 card.GetComponent<BoxCollider2D>().enabled = false;
@@ -167,11 +167,11 @@ namespace Manager
                     //TODO: Particle Effect
                 }
                 
-                FaceEventType faceEventTypeResult = Utils.CalculateMultiProbability(GameManager.Instance.cardPoolManager.eventTriggerWeightPerFaceTypeDict[card.faceType]); //draw face event
-                StatsTracker.onValueChanged?.Invoke(nameof(faceEventTypeResult), (int)faceEventTypeResult); //send to metaphysics center
+                // FaceEventType faceEventTypeResult = Utils.CalculateMultiProbability(GameManager.Instance.cardPoolManager.eventTriggerWeightPerFaceTypeDict[card.faceType]); //draw face event
+                // StatsTracker.onValueChanged?.Invoke(nameof(faceEventTypeResult), (int)faceEventTypeResult); //send to metaphysics center
             
                 //start collect + zoom
-                StartCoroutine(BuyCardCoroutineChain(true, card, faceEventTypeResult));
+                // StartCoroutine(BuyCardCoroutineChain(true, card, faceEventTypeResult));
             }
             else
             {
@@ -179,7 +179,7 @@ namespace Manager
             }
         }
 
-        IEnumerator CollectCards(bool isPurchased)
+        IEnumerator CollectCards()
         {
             //cards move to slots & disable drag
             for (int i = 0; i < cardsToBuy.Count; i++)
@@ -210,7 +210,6 @@ namespace Manager
             }
         }
 
-        // TODO: onScratchCardSelected exception
         private void ZoomInCard(SelectableScratchCard card)
         {
             //set initial pos
@@ -231,7 +230,7 @@ namespace Manager
                 .OnComplete(() =>
                 {
                     //set action to generate card
-                    onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)GameManager.Instance.lastPickTier, GameManager.Instance.lastPickOriginalPrice, transform.position, card.cardBGSprite.sprite);
+                    onScratchCardSelected?.Invoke(ScratchCardBrand.Fruities, (int)ScratchCardDealer.currentPickedCardTier, ScratchCardDealer.currentPickedCardOriginalPrice, transform.position, card.cardBGSprite.sprite);
                     
                     //Feedback
                     if (zoomInAudio && zoomInSounds.Count > 0)
@@ -253,13 +252,15 @@ namespace Manager
             zoomInCardAnimation.Play();
         }
     
-        IEnumerator BuyCardCoroutineChain(bool isPurchased, SelectableScratchCard card, FaceEventType faceEventTypeResult)
+        IEnumerator BuyCardCoroutineChain(SelectableScratchCard card, FaceEventType faceEventTypeResult)
         {
             DeactivateScratchOffButton();
             if (faceEventTypeResult != FaceEventType.NoEvent) yield return new WaitForSeconds(1);
-            yield return StartCoroutine(CollectCards(isPurchased));
+            yield return StartCoroutine(CollectCards());
             ZoomInCard(card);
         }
+
+        //TODO: ---------------------------------------------------------------------------------------------------------
     
         public void GiveCard()
         {
@@ -310,7 +311,7 @@ namespace Manager
     
         public void CollectCard(bool isPurchased)
         {
-            StartCoroutine(CollectCards(isPurchased));
+            StartCoroutine(CollectCards());
         }
 
         public void ActivateBuyArea()

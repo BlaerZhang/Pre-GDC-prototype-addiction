@@ -803,6 +803,7 @@ GameObject:
   - component: {fileID: 4426150133428202539}
   - component: {fileID: 5872518663644700732}
   - component: {fileID: 581912477651686157}
+  - component: {fileID: 1935106897654960958}
   m_Layer: 5
   m_Name: Card Counter
   m_TagString: Untagged
@@ -843,7 +844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -323.2}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 818, y: 518}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &6816117427397984536
@@ -950,6 +951,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: 10, y: 10, z: 10, w: 10}
   m_Softness: {x: 0, y: 0}
+--- !u!114 &1935106897654960958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6121326938929209919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53d44835ed84dbfa0d42a1de44582af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  unlockRequired: 1
+  unlockPrice: 0
+  unlockMembershipLevel: 0
+  lockedSprite: {fileID: 0}
+  hideWhenScratching: 1
+  currentHidingDirection: 1
+  hideOffset: 850
+  collapseDuration: 0.4
 --- !u!1 &6190585513264210658
 GameObject:
   m_ObjectHideFlags: 0

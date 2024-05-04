@@ -18,8 +18,8 @@ namespace Manager
         // Start is called before the first frame update
         void Start()
         {
-            SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
-            SceneManager.LoadScene("UIScene", LoadSceneMode.Additive);
+            // SceneManager.LoadScene("Game Scene", LoadSceneMode.Single);
+            // SceneManager.LoadScene("UI Scene", LoadSceneMode.Additive);
             // isChangingScene = false;
             currentActiveScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         }
