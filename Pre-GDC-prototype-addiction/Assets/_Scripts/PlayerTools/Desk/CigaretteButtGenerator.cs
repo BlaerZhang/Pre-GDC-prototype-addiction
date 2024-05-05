@@ -12,6 +12,7 @@ public class CigaretteButtGenerator : MonoBehaviour
 
     [SerializeField] private List<GameObject> cigarettePrefabs;
     [SerializeField] private RectTransform ashTrayTransform;
+    [SerializeField] private RectTransform cigaretteItemOnTableTransform;
 
     [Title("Position And Rotation Settings")]
     [SerializeField] private float generationPositionXOffset;
@@ -98,10 +99,23 @@ public class CigaretteButtGenerator : MonoBehaviour
 
         Vector2 startPosition = new Vector2(startPositionXLength, animationStartDistance) + finalPosition;
 
-        cigarette.transform.localPosition = startPosition;
-        cigarette.transform.localRotation = Quaternion.Euler(0, 0, angle);
+        // cigarette.transform.localPosition = startPosition;
+        // cigarette.transform.localRotation = Quaternion.Euler(0, 0, angle);
 
-        cigarette.transform.DOLocalMove(finalPosition, animationDuration).SetEase(Ease.InExpo);
+        cigarette.transform.position = cigaretteItemOnTableTransform.position;
+        cigarette.transform.rotation = cigaretteItemOnTableTransform.rotation;
+        
+        Sequence putCigaretteInAshtraySequence = DOTween.Sequence();
+        putCigaretteInAshtraySequence
+            .Append(cigarette.transform.DOLocalMove(startPosition, animationDuration / 2))
+            .Insert(0, cigarette.transform.DORotate(new Vector3(0, 0, angle), animationDuration / 2))
+            .OnComplete(() =>
+            {
+                cigarette.transform.SetParent(ashTrayTransform);
+                cigarette.transform.SetAsFirstSibling();
+                cigarette.transform.DOLocalMove(finalPosition, animationDuration / 2).SetEase(Ease.InExpo);
+            })
+            .Play();
     }
 
     Vector2 GetCigarettePosition(int randSlotIndex)
@@ -143,8 +157,8 @@ public class CigaretteButtGenerator : MonoBehaviour
             }
         }
         
-        GameObject cig = Instantiate(cigarettePrefabs[Random.Range(0, cigarettePrefabs.Count)], ashTrayTransform);
-        cig.transform.SetAsFirstSibling();
+        GameObject cig = Instantiate(cigarettePrefabs[Random.Range(0, cigarettePrefabs.Count)], this.transform);
+        cig.transform.SetAsLastSibling();
         SetCigarettePositionAndRotation(cig);
         currentLayerCigarettesCount++;
         currentCigarettes.Add(cig);

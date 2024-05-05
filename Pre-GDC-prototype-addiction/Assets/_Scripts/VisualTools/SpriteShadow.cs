@@ -7,9 +7,9 @@ using UnityEngine.Rendering;
 
 public class SpriteShadow : MonoBehaviour
 {
-    public Vector2 shadowOffset = new Vector2(0.2f, -0.2f);
+    public Vector2 shadowOffset = new Vector2(0.1f, -0.1f);
     public Color shadowColor = new Color(0.1015625f, 0.1015625f, 0.1015625f, 1);
-    public Color hoverShadowColor = Color.magenta;
+    public Color hoverShadowColor = new Color32(209, 118, 118, 255);
 
     private SpriteRenderer _shadowParentSpriteRenderer;
     private SpriteRenderer _shadow;
