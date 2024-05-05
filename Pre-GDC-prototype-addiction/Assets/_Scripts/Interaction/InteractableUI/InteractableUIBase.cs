@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 
 namespace Interaction.Clickable
 {
-    public abstract class ClickableUIBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+    public abstract class InteractableUIBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
         [Header("Size Modifier")] 
         [SerializeField] private bool sizeFeedback = true;

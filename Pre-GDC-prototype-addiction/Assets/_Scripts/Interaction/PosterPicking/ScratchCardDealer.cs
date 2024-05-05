@@ -165,6 +165,11 @@ namespace Interaction
 
         }
 
+        private void ShowRedeemArea()
+        {
+
+        }
+
         #endregion
     }
 }

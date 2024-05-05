@@ -25,6 +25,8 @@ namespace Interaction
         [Space]
         [SerializeField] private float scrollCollapsedY;
         [SerializeField] private float scrollCollapseDuration;
+        [Space]
+        [SerializeField] private float fullyHideY;
 
         private float recoverY;
 
@@ -40,6 +42,8 @@ namespace Interaction
             ScratchCardPoster.onPosterDragged += SemiCollapse;
             ScratchCardPoster.onPosterReleased += CheckIfPosterInPickingArea;
             ScratchCardPoster.onTryBuyPoster += SwitchCollapseState;
+            // ScrollViewHandle.onScrollViewHandleClicked += RecoverPosition;
+            // SelectableScratchCard.onScratchCardSelected += FullyHidePosterHolder;
         }
 
         private void OnDisable()
@@ -47,6 +51,8 @@ namespace Interaction
             ScratchCardPoster.onPosterDragged -= SemiCollapse;
             ScratchCardPoster.onPosterReleased -= CheckIfPosterInPickingArea;
             ScratchCardPoster.onTryBuyPoster -= SwitchCollapseState;
+            // ScrollViewHandle.onScrollViewHandleClicked -= RecoverPosition;
+            // SelectableScratchCard.onScratchCardSelected -= FullyHidePosterHolder;
         }
 
         private void SwitchCollapseState(ScratchCardPoster poster, bool isBought)
@@ -70,6 +76,12 @@ namespace Interaction
             recoverY = scrollViewHolder.position.y;
             scrollViewHolder.DOLocalMoveY(scrollCollapsedY, scrollCollapseDuration).SetEase(Ease.OutBack);
         }
+
+        // private void FullyHidePosterHolder(SelectableScratchCard selectableScratchCard, FaceEventType faceEventType)
+        // {
+        //     isScrollLocked = true;
+        //     scrollViewHolder.DOLocalMoveY(fullyHideY, 0.1f).SetEase(Ease.OutCubic);
+        // }
 
         // calculate relative position of scroll and poster holder
         private void RecoverPosition()

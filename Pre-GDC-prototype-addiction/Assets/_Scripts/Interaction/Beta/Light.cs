@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Light : ClickableUIBase
+public class Light : InteractableUIBase
 {
     [Title("Light")]
     public RawImage mask;

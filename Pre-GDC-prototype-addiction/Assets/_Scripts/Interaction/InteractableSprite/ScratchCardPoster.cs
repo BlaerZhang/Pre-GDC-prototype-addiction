@@ -12,7 +12,7 @@ using UnityEngine.Serialization;
 
 namespace Interaction
 {
-    public class ScratchCardPoster : DraggableBase
+    public class ScratchCardPoster : InteractableSpriteBase
     {
         public static bool isInteractable = true;
 

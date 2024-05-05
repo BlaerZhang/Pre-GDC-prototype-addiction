@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 namespace _Scripts.ConsumableStore
 {
-    public class ConsumableItemBase : ClickableUIBase
+    public class ConsumableItemBase : InteractableUIBase
     {
         [Header("Item Settings")]
         public ConsumableType consumableType;

@@ -13,7 +13,7 @@ using Random = UnityEngine.Random;
 
 namespace Interaction
 {
-    public class DraggableBase : MonoBehaviour
+    public class InteractableSpriteBase : MonoBehaviour
     {
         [Title("Feedback")]
         public bool pickAudio = true;

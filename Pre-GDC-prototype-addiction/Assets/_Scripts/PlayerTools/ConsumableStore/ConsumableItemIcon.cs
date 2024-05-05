@@ -10,7 +10,7 @@ using TMPro;
 
 namespace _Scripts.ConsumableStore
 {
-    public class ConsumableItemIcon : ClickableUIBase, IUnlockable
+    public class ConsumableItemIcon : InteractableUIBase, IUnlockable
     {
         private GameObject consumablePrefab;
         private string itemName;

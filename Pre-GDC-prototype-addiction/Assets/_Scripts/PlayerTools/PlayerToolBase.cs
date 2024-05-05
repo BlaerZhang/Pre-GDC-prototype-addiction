@@ -54,8 +54,9 @@ namespace _Scripts.PlayerTools
         {
             if (hideWhenScratching)
             {
-                ScratchCardPoster.onPosterDragged += SemiCollapse;
-                ScratchCardPoster.onTryBuyPoster += SwitchCollapseState;
+                SelectableScratchCard.onScratchCardSelected += Collapse;
+                // ScratchCardPoster.onPosterDragged += SemiCollapse;
+                // ScratchCardPoster.onTryBuyPoster += SwitchCollapseState;
             }
 
             if (!unlockRequired) return;
@@ -66,8 +67,9 @@ namespace _Scripts.PlayerTools
         {
             if (hideWhenScratching)
             {
-                ScratchCardPoster.onPosterDragged -= SemiCollapse;
-                ScratchCardPoster.onTryBuyPoster -= SwitchCollapseState;
+                SelectableScratchCard.onScratchCardSelected -= Collapse;
+                // ScratchCardPoster.onPosterDragged -= SemiCollapse;
+                // ScratchCardPoster.onTryBuyPoster -= SwitchCollapseState;
             }
 
             if (!unlockRequired) return;
@@ -112,18 +114,18 @@ namespace _Scripts.PlayerTools
             }
         }
 
-        private void SemiCollapse()
-        {
-            CollapseToEdge(semiHideOffset);
-        }
+        // private void SemiCollapse()
+        // {
+        //     CollapseToEdge(semiHideOffset);
+        // }
 
-        private void SwitchCollapseState(ScratchCardPoster poster, bool isCollapseSuccessful)
-        {
-            if (isCollapseSuccessful) Collapse();
-            else ExpandFromEdge();
-        }
+        // private void SwitchCollapseState(ScratchCardPoster poster, bool isCollapseSuccessful)
+        // {
+        //     if (isCollapseSuccessful) Collapse();
+        //     else ExpandFromEdge();
+        // }
 
-        private void Collapse()
+        private void Collapse(SelectableScratchCard selectableScratchCard, FaceEventType faceEventType)
         {
             CollapseToEdge(hideOffset);
         }
