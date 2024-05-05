@@ -5048,7 +5048,7 @@ MonoBehaviour:
   dealCardDuration: 0.5
   cardSlotPositions:
   - {x: -3, y: 0}
-  - {x: 0, y: -3}
+  - {x: 0, y: 0}
   - {x: 3, y: 0}
 --- !u!1 &1397736058
 GameObject:

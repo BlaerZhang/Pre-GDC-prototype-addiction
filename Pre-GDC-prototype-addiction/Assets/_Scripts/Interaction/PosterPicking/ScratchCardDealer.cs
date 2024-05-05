@@ -120,13 +120,12 @@ namespace Interaction
         private void SpawnCard(SelectableScratchCard selectedCard)
         {
             cardsToSelect.Remove(selectedCard);
-            selectedCard.transform.DOMove(Vector2.zero, 0.5f);
+            selectedCard.transform.position = new Vector2(0, 0.5f);
 
             // spawn card
             Sequence zoomInCardAnimation = DOTween.Sequence();
             zoomInCardAnimation
                 .Append(selectedCard.cardFaceSprite.DOFade(0, 0))
-                .Append(selectedCard.transform.DOMove(Vector2.zero,0))
                 .Append(selectedCard.transform.DOScale(Vector3.one * 10f, 0))
                 .Append(selectedCard.cardFaceSprite.DOFade(1, 0.1f))
                 .Insert(0, selectedCard.transform.DOScale(Vector3.one * 1.2f, 0.5f)).SetEase(Ease.OutQuad)
