@@ -162,7 +162,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: 145d0c5830d282c40940db0993dc28be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e5d048cd829e2df469d30b15af9dce60, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shadowOffset: {x: 0.1, y: -0.1}
   shadowColor: {r: 0.1015625, g: 0.1015625, b: 0.1015625, a: 1}
-  hoverShadowColor: {r: 1, g: 0, b: 1, a: 1}
+  hoverShadowColor: {r: 0.81960785, g: 0.4627451, b: 0.4627451, a: 1}
 --- !u!210 &1827989758415769051
 SortingGroup:
   m_ObjectHideFlags: 0

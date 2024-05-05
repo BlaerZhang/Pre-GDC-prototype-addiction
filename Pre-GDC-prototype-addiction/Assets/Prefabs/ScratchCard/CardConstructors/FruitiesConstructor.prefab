@@ -46,35 +46,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPrizeSplitParts: 1
   maxPrizeSplitParts: 3
-  minSplitValue: 5000
   iconSprites:
-  - {fileID: 21300000, guid: 8088d6c115609e14ba0c8dec0a12cc4f, type: 3}
-  - {fileID: 21300000, guid: 305df88bf83d3374991d5d9c81fb63cd, type: 3}
-  - {fileID: 21300000, guid: eb9e57cb504a0814ca7f22f867e78d8f, type: 3}
-  - {fileID: 21300000, guid: b569848a1528b084eae3fec3ebfa8753, type: 3}
-  - {fileID: 21300000, guid: 7d6f12fec43d0ed4b910a31087c6cc63, type: 3}
-  - {fileID: 21300000, guid: 302fa40f5fe8eb44f92683efcf90ec80, type: 3}
-  - {fileID: 21300000, guid: 792a68c8c2918d14cb5d2e6c37451d84, type: 3}
-  - {fileID: 21300000, guid: 7faa5326cc324f940b8c464a058267df, type: 3}
-  - {fileID: 21300000, guid: 9b9a205a28bd71d4785fd5b2cfe1ceb9, type: 3}
-  - {fileID: 21300000, guid: 1c5f89ae7c248a84d81560687b42d2ec, type: 3}
-  - {fileID: 21300000, guid: 01df33916b9b91648a0c49e90e1fdd97, type: 3}
-  - {fileID: 21300000, guid: e56abd72eca0780449d7a74e8a9f09b4, type: 3}
-  - {fileID: 21300000, guid: b37d19f367326924d954073480091c30, type: 3}
-  - {fileID: 21300000, guid: e6f65fbd476eb274b975a05add111b85, type: 3}
-  - {fileID: 21300000, guid: b3e5f94b263fe7749bc88f16ca136382, type: 3}
-  - {fileID: 21300000, guid: e2931e4f6e9dd0143a3fcf92744bce50, type: 3}
-  - {fileID: 21300000, guid: 819513540e008444aa321e714ca1f16e, type: 3}
-  - {fileID: 21300000, guid: 1cca86cddb09cc34ca1dcd8b2ee01e19, type: 3}
-  - {fileID: 21300000, guid: 25df5eebc337fc340b6cc260c78fd777, type: 3}
-  - {fileID: 21300000, guid: b28fb47b08364654f97e03f4df84be17, type: 3}
-  - {fileID: 21300000, guid: 97aec6a98e352d34dabd8b93804fcbcb, type: 3}
-  - {fileID: 21300000, guid: 974d80da382a0a84597f2eec444771d7, type: 3}
-  - {fileID: 21300000, guid: 95d63883a1acc4944834373772bf61d3, type: 3}
-  - {fileID: 21300000, guid: b525eae5494f181408b415226f872e21, type: 3}
-  - {fileID: 21300000, guid: a4566479f436e1a4f8cff52f8ecefd27, type: 3}
-  - {fileID: 21300000, guid: 01d7f3d909f35ad409d9a458045d0758, type: 3}
-  - {fileID: 21300000, guid: 6239590a9a7e5924fa11f7074ca7707b, type: 3}
+  - {fileID: 21300000, guid: 46485bd47dba7c347bc05ecdd0d1d75a, type: 3}
+  - {fileID: 21300000, guid: 5786ac2277493174886c0a20a3a8bc4a, type: 3}
+  - {fileID: 21300000, guid: 18b028c682fd2b245bc5c7ae47c4783a, type: 3}
+  - {fileID: 21300000, guid: 37924828e4898c24fa75774c526648e4, type: 3}
+  - {fileID: 21300000, guid: 7266ead8bed959f4fa33e377e805f1ac, type: 3}
+  - {fileID: 21300000, guid: fe8c9f1cdd8e5f743a9a29bf269cec68, type: 3}
+  - {fileID: 21300000, guid: 15d2ada319b5f4c4f8c4245a23fbd454, type: 3}
+  - {fileID: 21300000, guid: 035d2e497e23d2f4b979ca50172f3b86, type: 3}
+  - {fileID: 21300000, guid: 27f2a350499634044b0980e4b73dc988, type: 3}
+  - {fileID: 21300000, guid: 600e82cb7fe271245991224171f019f0, type: 3}
+  - {fileID: 21300000, guid: c4640ed163cb0da46a6b824118566c31, type: 3}
+  - {fileID: 21300000, guid: 8ba23919d39a4e141a348d906fa4aa31, type: 3}
+  - {fileID: 21300000, guid: 572b48e1548fa8d4a8cca2f238f75d1f, type: 3}
+  - {fileID: 21300000, guid: 89a5d9f8f4adab3428f213602a6776ce, type: 3}
+  - {fileID: 21300000, guid: 584b8df3e28943145988362d5f7f836d, type: 3}
+  - {fileID: 21300000, guid: 6549da6b8ced50049b337fe356fa171e, type: 3}
+  - {fileID: 21300000, guid: c0dcf451725aab3408fd5b49dc6599e1, type: 3}
+  - {fileID: 21300000, guid: fcb90a86f7c032e4f984c445e460da46, type: 3}
+  - {fileID: 21300000, guid: 79dd33d943089f24db94175b339bb602, type: 3}
+  - {fileID: 21300000, guid: 84bafc277a1c36244bc25e8bcb8fd7dc, type: 3}
   targetAreaStartPosition: {x: -1, y: 0.9}
   targetAreaGridSize: {x: 1, y: 2}
   prizeAreaStartPosition: {x: -2, y: -2.5}
@@ -82,7 +74,6 @@ MonoBehaviour:
   cellSize: 1
   targetGapLength: 1
   prizeGapLength: 0
-  scratchIndicator: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
+  scratchPrizeGrid: {fileID: 0}
+  scratchTargetGrid: {fileID: 0}
   prizeWinningGridList: []
-  scratchBackgroundPrefab: {fileID: 828839226113459185, guid: 4a5f640ad8acf42bd875c9d06d2d55e1, type: 3}
-  scratchFieldPrefab: {fileID: 137284, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
