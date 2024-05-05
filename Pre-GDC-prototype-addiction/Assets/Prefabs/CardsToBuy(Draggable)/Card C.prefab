@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5184272751378610711}
   - component: {fileID: 5428618916214216825}
   - component: {fileID: 658030348291219061}
-  - component: {fileID: 2275801553300790559}
-  - component: {fileID: 7383212346936830722}
+  - component: {fileID: 1493782177317413631}
+  - component: {fileID: 6082747123477124812}
   m_Layer: 0
   m_Name: Card Sprite
   m_TagString: Untagged
@@ -79,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 145c472284d8f914a8a37aa83b8af07e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b50a503ea755ce947bd1498c31f5b7af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.5, y: 3.5}
+  m_Size: {x: 14.47, y: 19.04}
   m_AdaptiveModeThreshold: 1
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
   shadowOffset: {x: 0.1, y: -0.1}
   shadowColor: {r: 0.1015625, g: 0.1015625, b: 0.1015625, a: 1}
   hoverShadowColor: {r: 0.81960785, g: 0.4627451, b: 0.4627451, a: 1}
---- !u!331 &2275801553300790559
+--- !u!331 &1493782177317413631
 SpriteMask:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,7 +142,7 @@ SpriteMask:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -163,7 +163,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 145c472284d8f914a8a37aa83b8af07e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b50a503ea755ce947bd1498c31f5b7af, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
@@ -173,7 +173,7 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
---- !u!210 &7383212346936830722
+--- !u!210 &6082747123477124812
 SortingGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -258,12 +258,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
-  m_Sprite: {fileID: 21300000, guid: 145c472284d8f914a8a37aa83b8af07e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b50a503ea755ce947bd1498c31f5b7af, type: 3}
   m_Color: {r: 0.1015625, g: 0.1015625, b: 0.1015625, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.105, y: 7.605}
+  m_Size: {x: 7.235, y: 9.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -365,7 +365,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 7.5}
+  m_Size: {x: 6.88, y: 9.21}
   m_EdgeRadius: 0
 --- !u!210 &-6326660499624134360
 SortingGroup:
@@ -738,12 +738,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: e5d048cd829e2df469d30b15af9dce60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59b3715d34c8ae04dbf89bf32eeeab77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.105, y: 7.605}
+  m_Size: {x: 7.23, y: 9.525}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

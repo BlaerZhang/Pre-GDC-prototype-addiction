@@ -119,6 +119,8 @@ MonoBehaviour:
   isInGiveArea: 0
   dragLock: 0
   hoverScale: 0.95
+  cardSurfaceSprite: {fileID: 0}
+  cardBackgroundSprite: {fileID: 0}
 --- !u!1 &3853939776826048195
 GameObject:
   m_ObjectHideFlags: 0

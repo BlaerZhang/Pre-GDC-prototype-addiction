@@ -55,7 +55,7 @@ namespace Interaction
 
         private void Update()
         {
-            scratchCardManager.InputEnabled = !isDragging;
+            // scratchCardManager.InputEnabled = !isDragging;
         }
 
         protected override void OnMouseEnter()

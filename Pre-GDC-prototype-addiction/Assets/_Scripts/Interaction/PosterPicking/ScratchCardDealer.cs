@@ -7,6 +7,7 @@ using ScratchCardGeneration;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Random = UnityEngine.Random;
 
 namespace Interaction
 {
@@ -23,6 +24,10 @@ namespace Interaction
         [SerializeField] private float dealCardDuration;
         [SerializeField] private List<Vector2> cardSlotPositions;
 
+        [Title("Feedback")] 
+        [SerializeField] private bool dealAudio = true;
+        [SerializeField] private List<AudioClip> dealSounds;
+        
         private ScratchCardBrand currentCardBrand;
         private List<SelectableScratchCard> cardsToSelect = new();
         private int cardSpawnCount;
@@ -83,8 +88,8 @@ namespace Interaction
                         {
                             spawnCard.gameObject.SetActive(true);
                             // TODO: play sound
-                            // if (dealAudio && dealSounds.Count > 0)
-                            //     GameManager.Instance.audioManager.PlaySound(dealSounds[Random.Range(0, dealSounds.Count)]);
+                            if (dealAudio && dealSounds.Count > 0)
+                                GameManager.Instance.audioManager.PlaySound(dealSounds[Random.Range(0, dealSounds.Count)]);
                         }));
             }
 
