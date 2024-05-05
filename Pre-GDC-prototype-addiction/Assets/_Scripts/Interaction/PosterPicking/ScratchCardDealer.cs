@@ -23,6 +23,7 @@ namespace Interaction
         [SerializeField] private Vector2 cardSpawnPosition;
         [SerializeField] private float dealCardDuration;
         [SerializeField] private List<Vector2> cardSlotPositions;
+        [SerializeField] private float cardZoomEndScale = 1f;
 
         [Title("Feedback")] 
         [SerializeField] private bool dealAudio = true;
@@ -135,7 +136,7 @@ namespace Interaction
                 .Append(selectedCard.cardFaceSprite.DOFade(1, 0.1f))
                 .Insert(0, selectedCard.transform.DOScale(Vector3.one * 1.2f, 0.5f)).SetEase(Ease.OutQuad)
                 .AppendInterval(0.5f)
-                .Append(selectedCard.transform.DOScale(Vector3.one, 0.1f)).SetEase(Ease.Linear)
+                .Append(selectedCard.transform.DOScale(Vector3.one * cardZoomEndScale, 0.1f)).SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {
                     print("SpawnCard complete");

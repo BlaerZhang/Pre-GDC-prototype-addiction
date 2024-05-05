@@ -14,15 +14,17 @@ namespace Interaction
         public bool isDragging = false;
         public bool isInGiveArea = false;
         public bool dragLock = false;
+        public Vector3 scratchCardScale = Vector3.one;
     
         [Header("Feedback")] 
-        public float hoverScale = 0.95f;
+        public float hoverScale = 1.05f;
         
         public SpriteRenderer cardSurfaceSprite;
         public SpriteRenderer cardBackgroundSprite;
         private DetectScratchArea detectScratchArea;
         private Vector2 dragOffset = new Vector2(0, 0);
         private GameObject currentCard;
+        private Vector3 currentCardOriginalScale;
         private ScratchCardManager scratchCardManager;
         private BuyCardManager buyCardManager;
         private Vector2 initialPos;
@@ -36,6 +38,8 @@ namespace Interaction
             cardBackgroundSprite = GameObject.Find("ScratchCardBackground(Clone)").GetComponent<SpriteRenderer>();
             detectScratchArea = GetComponent<DetectScratchArea>();
             currentCard = GameObject.Find("currentScratchCard");
+            currentCard.transform.localScale = scratchCardScale;
+            currentCardOriginalScale = currentCard.transform.localScale;
             scratchCardManager = GetComponentInParent<ScratchCardManager>();
             // buyCardManager = FindObjectOfType<BuyCardManager>();
             shadows = GetComponentsInChildren<SpriteShadow>();
@@ -81,7 +85,7 @@ namespace Interaction
             base.OnMouseDown();
         
             //Scale
-            currentCard.transform.DOScale(Vector3.one * hoverScale, 0.1f);
+            currentCard.transform.DOScale(scratchCardScale * hoverScale, 0.1f);
         
             //Set Drag Point Offset
             dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -128,7 +132,7 @@ namespace Interaction
             base.OnMouseUp();
         
             //Scale
-            currentCard.transform.DOScale(Vector3.one, 0.1f);
+            currentCard.transform.DOScale(scratchCardScale, 0.1f);
         
             //Deactivate Give Area
             // buyCardManager.DeactivateGiveArea();

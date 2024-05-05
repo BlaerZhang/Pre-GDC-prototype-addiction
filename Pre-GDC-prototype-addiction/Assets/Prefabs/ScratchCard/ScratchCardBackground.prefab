@@ -403,6 +403,22 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.57
       objectReference: {fileID: 0}
+    - target: {fileID: 1002119165718636770, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
+      propertyPath: hoverScale
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002119165718636770, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
+      propertyPath: scratchCardScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002119165718636770, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
+      propertyPath: scratchCardScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002119165718636770, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
+      propertyPath: scratchCardScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2995002503465087408, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
       propertyPath: m_Name
       value: Area Detector

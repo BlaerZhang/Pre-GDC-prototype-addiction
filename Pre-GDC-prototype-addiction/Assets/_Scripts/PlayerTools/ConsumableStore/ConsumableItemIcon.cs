@@ -136,7 +136,7 @@ namespace _Scripts.ConsumableStore
                 if (!isUnlocked)
                 {
                     // change the icon sprite color to white
-                    GetComponent<Image>().DOColor(Color.white, 1f);
+                    transform.GetChild(0).GetComponent<Image>().DOColor(Color.clear, 1f);
                     transform.Find("unlockLevelText").gameObject.SetActive(false);
                     GetComponent<SimpleTooltip>().isEnabled = true;
                     isUnlocked = true;

@@ -30,6 +30,7 @@ namespace _Scripts.ConsumableStore
         [SerializeField] private Color unlockLevelTextColor = Color.black;
         [SerializeField] private TMP_FontAsset unlockLevelTextFont;
         [SerializeField] private int unlockLevelTextFontSize = 36;
+        [SerializeField] private GameObject lockedImagePrefab;
 
         // TODO: locked sprite for consumable
 
@@ -59,10 +60,12 @@ namespace _Scripts.ConsumableStore
         private GameObject AssembleItemIcons(string itemName, Sprite icon, Sprite itemSprite, ConsumableType consumableType, int unlockLevel, int price, string description)
         {
             GameObject consumableItem = new GameObject(itemName);
+            
             var image = consumableItem.AddComponent<Image>();
-            // image.SetNativeSize();
+            // // image.SetNativeSize();
             image.sprite = icon;
-            image.color = Color.black;
+            // image.color = Color.black;
+            GameObject lockMask = Instantiate(lockedImagePrefab, image.transform);
 
             // add price, unlock level to each icon
             AddPriceText(consumableItem.transform, price);
