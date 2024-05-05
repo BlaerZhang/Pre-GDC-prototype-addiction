@@ -33,7 +33,7 @@ namespace Interaction
         // public AudioClip soundLayer1;
 
         [Header("Card")]
-        public ScratchCard card;
+        public ScratchCardAsset.ScratchCard card;
         public SpriteRenderer cardSprite;
         public EraseProgress eraseProgress;
         private PostProcessVolume postProcessVolume;
@@ -43,7 +43,7 @@ namespace Interaction
         {
             postProcessVolume = FindObjectOfType<PostProcessVolume>();
             postProcessVolume.profile.TryGetSettings(out chromaticAberration);
-            vCam = GameObject.Find("Buy Card vCam").GetComponent<CinemachineVirtualCamera>();
+            // vCam = GameObject.Find("Buy Card vCam").GetComponent<CinemachineVirtualCamera>();
 
             foreach (var particle in particles)
             {
@@ -103,7 +103,7 @@ namespace Interaction
                     }
                 }
                 
-                vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = screenShake; 
+                // vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = screenShake;
                 chromaticAberration.intensity.value += Time.deltaTime * chromaticAberrationAmount; 
                 
                 //TODO: sound
@@ -115,7 +115,7 @@ namespace Interaction
                     if (particle.isPlaying) particle.Stop();
                 }
                 
-                vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
+                // vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
                 if (chromaticAberration.intensity.value > 0) chromaticAberration.intensity.value -= Time.deltaTime * 1f;
                 
                 //TODO:sound stop  

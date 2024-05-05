@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Manager
 {
+    // TODO: adjustable volume
     public class AudioManager : MonoBehaviour
     {
         public void PlaySound(AudioClip audioClip)

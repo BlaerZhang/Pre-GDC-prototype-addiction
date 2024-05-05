@@ -5,6 +5,7 @@ using Interaction;
 using ScratchCardGeneration.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -92,6 +93,11 @@ namespace ScratchCardGeneration.LayoutConstructor
         {
             GameObject iconObject = new GameObject("IconObject");
             iconObject.AddComponent<SpriteRenderer>().sprite = iconSprite;
+
+            var sortingGroup = iconObject.AddComponent<SortingGroup>();
+            sortingGroup.sortingLayerName = "Scratch Card";
+            sortingGroup.sortingOrder = 2;
+
             iconObject.transform.SetParent(currentScratchCard.transform);
 
             var indicatorObject = isTargetIcon

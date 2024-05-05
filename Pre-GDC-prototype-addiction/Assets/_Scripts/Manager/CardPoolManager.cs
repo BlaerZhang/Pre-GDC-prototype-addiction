@@ -10,15 +10,15 @@ using Random = UnityEngine.Random;
 public class CardPoolManager : SerializedMonoBehaviour
 {
     [DictionaryDrawerSettings(KeyLabel = "Card Prefab", ValueLabel = "Weight in Pool")]
-    public Dictionary<Draggable, int> cardPrefabsDict;
+    public Dictionary<SelectableScratchCard, int> cardPrefabsDict;
     
-    private Dictionary<Draggable, int> initialPoolWeightDict;
+    private Dictionary<SelectableScratchCard, int> initialPoolWeightDict;
 
     [Serializable] public class CardsStatsPerTier
     {
         public ScratchCardTier tier;
         public bool poolRefreshLock = false;
-        public List<Draggable> currentCards;
+        public List<SelectableScratchCard> currentCards;
     }
 
     // [Serializable] public class EventTriggerWeightPerFaceType
@@ -107,10 +107,12 @@ public class CardPoolManager : SerializedMonoBehaviour
         initialPoolWeightDict = cardPrefabsDict;
         
         //set up cardStatsList
-        for (int tier = 0; tier < System.Enum.GetValues(typeof(ScratchCardTier)).Length; tier++)
+        for (int tier = 0; tier < Enum.GetValues(typeof(ScratchCardTier)).Length; tier++)
         {
-            CardsStatsPerTier cardStats = new CardsStatsPerTier();
-            cardStats.tier = (ScratchCardTier)tier;
+            CardsStatsPerTier cardStats = new CardsStatsPerTier
+            {
+                tier = (ScratchCardTier)tier
+            };
             cardStatsList.Add(cardStats);
         }
     }
@@ -122,12 +124,12 @@ public class CardPoolManager : SerializedMonoBehaviour
 
     public void ResetRefreshLock()
     {
-        cardStatsList[(int)GameManager.Instance.lastPickTier].poolRefreshLock = false;
+        cardStatsList[(int)ScratchCardDealer.currentPickedCardTier].poolRefreshLock = false;
     }
 
-    public List<Draggable> CreateCardPool(ScratchCardTier tier)
+    public List<SelectableScratchCard> CreateCardPool(ScratchCardTier tier, int cardCount)
     {
-        List<Draggable> cardsToBuy = new List<Draggable>();
+        List<SelectableScratchCard> cardsToBuy = new List<SelectableScratchCard>();
         
         if (cardStatsList[(int)tier].poolRefreshLock)
         {
@@ -137,7 +139,7 @@ public class CardPoolManager : SerializedMonoBehaviour
         else
         {
             //set up spawn pool to draw from
-            List<Draggable> spawnPool = new List<Draggable>();
+            List<SelectableScratchCard> spawnPool = new List<SelectableScratchCard>();
             foreach (var cardPrefabKeyValuePair in cardPrefabsDict)
             {
                 for (int i = 0; i < cardPrefabKeyValuePair.Value; i++)
@@ -147,7 +149,7 @@ public class CardPoolManager : SerializedMonoBehaviour
             }
             
             //draw 5
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < cardCount; i++)
             {
                 cardsToBuy.Add(spawnPool[Random.Range(0, spawnPool.Count)]);
             }

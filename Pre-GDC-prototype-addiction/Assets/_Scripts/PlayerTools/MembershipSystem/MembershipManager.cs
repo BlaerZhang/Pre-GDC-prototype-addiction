@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _Scripts.MembershipSystem;
 using DG.Tweening;
+using Interaction;
 using Manager;
 using ScratchCardGeneration.LayoutConstructor;
 using ScratchCardGeneration.Utilities;
@@ -45,6 +46,22 @@ public class MembershipManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        ScratchCardPoster.onTryBuyPoster += (poster, isBought) =>
+        {
+            if (isBought) GainMembershipPoints(poster.originalPrice);
+        };
+    }
+
+    private void OnDisable()
+    {
+        ScratchCardPoster.onTryBuyPoster -= (poster, isBought) =>
+        {
+            if (isBought) GainMembershipPoints(poster.originalPrice);
+        };
+    }
+
     private void CreateData()
     {
         priceMembershipPointsDict = Utils.DeepCopyDictionary(membershipPointsCostData.PriceMembershipPointsDict);
@@ -57,7 +74,7 @@ public class MembershipManager : MonoBehaviour
     /// <param name="itemPrice"></param>
     public void GainMembershipPoints(int itemPrice)
     {
-        print("Gain membership points!");
+        // print("Gain membership points!");
         // transform price to points gained
         if (!priceMembershipPointsDict.TryGetValue(itemPrice, out var pointsGained)) Debug.LogError($"membershipUpgradeData miss the key {itemPrice}");
 
@@ -103,7 +120,7 @@ public class MembershipManager : MonoBehaviour
 
     private void UpgradeMembershipLevel()
     {
-        print("membership leveling up!");
+        // print("membership leveling up!");
         membershipLevel++;
         onMembershipLevelUp?.Invoke(membershipLevel);
     }

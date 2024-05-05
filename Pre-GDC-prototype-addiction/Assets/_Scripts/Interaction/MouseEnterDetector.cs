@@ -6,14 +6,14 @@ namespace Interaction
 {
     public class MouseEnterDetector : MonoBehaviour
     {
-        public static Action<ScratchCard> onMouseEnterEvent;
+        public static Action<ScratchCardAsset.ScratchCard> onMouseEnterEvent;
         public static Action onMouseExitEvent;
 
-        private ScratchCard _scratchCard;
+        private ScratchCardAsset.ScratchCard _scratchCard;
 
         private void Start()
         {
-            _scratchCard = transform.parent.transform.Find("Scratch Card").GetComponent<ScratchCard>();
+            _scratchCard = transform.parent.transform.Find("Scratch Card").GetComponent<ScratchCardAsset.ScratchCard>();
         }
 
         private void OnMouseEnter()

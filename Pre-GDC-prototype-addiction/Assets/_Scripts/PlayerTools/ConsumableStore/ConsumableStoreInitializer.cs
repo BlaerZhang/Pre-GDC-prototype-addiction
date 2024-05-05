@@ -60,6 +60,7 @@ namespace _Scripts.ConsumableStore
         {
             GameObject consumableItem = new GameObject(itemName);
             var image = consumableItem.AddComponent<Image>();
+            // image.SetNativeSize();
             image.sprite = icon;
             image.color = Color.black;
 

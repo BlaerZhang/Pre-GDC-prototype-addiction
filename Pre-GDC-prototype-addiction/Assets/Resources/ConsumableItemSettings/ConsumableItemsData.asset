@@ -34,16 +34,16 @@ MonoBehaviour:
     unlockLevel: 2
     price: 10
     description: CoinCoinCoinCoinCoinCoinCoinCoinCoinCoinCoin
-  - name: pen
-    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
-    itemSprite: {fileID: 0}
-    type: 3
+  - name: Cigarette
+    icon: {fileID: 1988539211, guid: a7e5d89cdcf6b2142a5738ea7a9cf1d3, type: 3}
+    itemSprite: {fileID: 1988539211, guid: a7e5d89cdcf6b2142a5738ea7a9cf1d3, type: 3}
+    type: 2
     unlockLevel: 3
     price: 20
     description: penpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpenpen
-  - name: leg
-    icon: {fileID: 21300000, guid: 8d750f1f945eb4dd98735575c8c8ed2a, type: 3}
-    itemSprite: {fileID: 0}
+  - name: Drug
+    icon: {fileID: 1257450175232140386, guid: d4f1fbce15ab094438d62181934ff44f, type: 3}
+    itemSprite: {fileID: 1257450175232140386, guid: d4f1fbce15ab094438d62181934ff44f, type: 3}
     type: 0
     unlockLevel: 5
     price: 50

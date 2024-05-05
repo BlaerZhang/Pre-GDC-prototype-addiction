@@ -73,12 +73,12 @@ public class CardCounter : MonoBehaviour
         
         //place icon
         int iconRow = Mathf.CeilToInt((float)currentIconList.Count / column); //calc row
-        print($"row{row}");
+        // print($"row{row}");
         int iconColumn = currentIconList.Count % column == 0 ? column : currentIconList.Count % column; //calc column
-        print($"column{column}");
+        // print($"column{column}");
         Vector2 iconPos = new Vector2(startOffset.x + (iconColumn - 1) * gapBetweenIconsHorizontal,
             startOffset.y - (iconRow - 1) * gapBetweenIconsVertical); //calc pos
-        print($"pos{iconPos}");
+        // print($"pos{iconPos}");
         newIcon.rectTransform.anchoredPosition = iconPos; //set pos
         newIcon.transform.DOScale(1, iconPopDuration).SetEase(Ease.OutElastic);
     }

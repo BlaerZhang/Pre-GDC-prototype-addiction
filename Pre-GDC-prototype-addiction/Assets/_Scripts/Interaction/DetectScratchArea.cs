@@ -1,11 +1,13 @@
+using System;
+using Manager;
 using UnityEngine;
 
 namespace Interaction
 {
     public class DetectScratchArea : MonoBehaviour
     {
-        public bool isOverCard = false;
-        public bool isOverScratchArea = false;
+        public static bool isOverCard = false;
+        public static bool isOverScratchArea = false;
 
         private Subdetector subdetector;
 
@@ -19,9 +21,31 @@ namespace Interaction
             isOverCard = true;
         }
 
+        private void OnMouseEnter()
+        {
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.DragAreaHover);
+        }
+
+        private void OnMouseDown()
+        {
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.Dragging);
+        }
+
+        private void OnMouseDrag()
+        {
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.Dragging);
+        }
+
+        private void OnMouseUp()
+        {
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.DragAreaHover);
+        }
+
         private void OnMouseExit()
         {
             isOverCard = false;
+
+            GameManager.Instance.cursorManager.SetCursor(CursorManager.CursorType.Idle);
         }
     }
 }

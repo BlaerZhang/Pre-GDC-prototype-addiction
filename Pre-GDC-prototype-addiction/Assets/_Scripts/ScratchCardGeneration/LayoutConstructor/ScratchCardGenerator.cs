@@ -1,39 +1,42 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Interaction;
 using Manager;
 using ScratchCardGeneration.PrizeGenerator;
 using ScratchCardGeneration.ScratchCardData;
 using ScratchCardGeneration.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace ScratchCardGeneration.LayoutConstructor
 {
     public class ScratchCardGenerator : SerializedMonoBehaviour
     {
-        [Header("Prize Setting")]
+        [Title("Prize Setting")]
         [HideInInspector] public float currentCardPrize;
 
-        public ScratchCardPrizeDistributionData prizeDistributionData;
-        public ScratchCardPitySystemData prizePityData;
+        [SerializeField] public ScratchCardPrizeDistributionData prizeDistributionData;
+        [SerializeField] public ScratchCardPitySystemData prizePityData;
 
-        [Header("Layout Setting")]
-        public Dictionary<ScratchCardBrand, ICardLayoutConstructor> CardLayoutConstructorDic = new();
+        [Title("Layout Setting")]
+        [SerializeField] public Dictionary<ScratchCardBrand, ICardLayoutConstructor> CardLayoutConstructorDic = new();
+        [SerializeField] private Vector2 cardGenerationPosition;
 
         [HideInInspector] public GameObject currentScratchCard;
 
         private void OnEnable()
         {
-            BuyCardManager.onScratchCardSelected += AssembleScratchCard;
+            ScratchCardDealer.onToScratchStage += AssembleScratchCard;
         }
 
         private void OnDisable()
         {
-            BuyCardManager.onScratchCardSelected -= AssembleScratchCard;
+            ScratchCardDealer.onToScratchStage -= AssembleScratchCard;
         }
 
-        private void AssembleScratchCard(ScratchCardBrand currentCardBrand, int level, int price, Vector3 generatePosition, Sprite cardFace)
+        private void AssembleScratchCard(ScratchCardBrand currentCardBrand, int level, int originalPrice, Sprite cardFace)
         {
             print($"level: {level}");
 
@@ -50,7 +53,10 @@ namespace ScratchCardGeneration.LayoutConstructor
             // GameManager.Instance.totalCostBeforeWinning += price;
             // Debug.Log($"totalCostBeforeWinning: {GameManager.Instance.totalCostBeforeWinning}");
 
-            currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, price, generatePosition);
+            currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, originalPrice, cardGenerationPosition);
+            var sortingGroup = currentScratchCard.AddComponent<SortingGroup>();
+            sortingGroup.sortingLayerName = "Scratch Card";
+            sortingGroup.sortingOrder = 1;
 
             GenerateCardFace(cardFace);
         }
@@ -65,9 +71,16 @@ namespace ScratchCardGeneration.LayoutConstructor
 
         private void GenerateCardFace(Sprite cardFace)
         {
+            print("cardFace " + cardFace);
             if (!scratchBackgroundPrefab)
             {
                 Debug.LogError("scratchBackgroundPrefab is null!");
+                return;
+            }
+
+            if (!cardFace)
+            {
+                Debug.LogError("cardFace is null!");
                 return;
             }
 

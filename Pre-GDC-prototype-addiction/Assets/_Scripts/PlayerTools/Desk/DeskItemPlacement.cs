@@ -44,8 +44,6 @@ namespace _Scripts.PlayerTools
             maxItems = transform.childCount;
             itemSlots = new ItemSlot[maxItems];
 
-            print(itemSlots.Length);
-
             for (int i = 0; i < itemSlots.Length; i++)
             {
                 itemSlots[i] = new ItemSlot(transform.GetChild(i).position);

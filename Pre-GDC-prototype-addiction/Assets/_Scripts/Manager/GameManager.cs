@@ -19,11 +19,12 @@ namespace Manager
         [HideInInspector] public FaceEventManager faceEventManager;
         [HideInInspector] public StatsTrackingManager statsTrackingManager;
         [HideInInspector] public MembershipManager membershipManager;
+        [HideInInspector] public CursorManager cursorManager;
 
         [HideInInspector] public bool incrementalLock = true;
-        [HideInInspector] public int lastPickPrice = 1;
-        [HideInInspector] public int lastPickOriginalPrice = 1;
-        [HideInInspector] public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
+        // [HideInInspector] public int lastPickPrice = 1;
+        // [HideInInspector] public int lastPickOriginalPrice = 1;
+        // [HideInInspector] public ScratchCardTier lastPickTier = ScratchCardTier.Level1;
     
         // [HideInInspector] public float totalCostBeforeWinning = 0;
 
@@ -48,6 +49,7 @@ namespace Manager
             faceEventManager = GetComponentInChildren<FaceEventManager>();
             statsTrackingManager = GetComponentInChildren<StatsTrackingManager>();
             membershipManager = GetComponentInChildren<MembershipManager>();
+            cursorManager = GetComponentInChildren<CursorManager>();
         }
 
         void Update()

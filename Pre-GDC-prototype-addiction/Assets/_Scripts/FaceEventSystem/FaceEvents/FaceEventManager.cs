@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Interaction;
 using Manager;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -101,7 +102,7 @@ public class FaceEventManager : SerializedMonoBehaviour
         {
             case FaceEventType.Discount:
                 discountTriggerTier = triggerTier;
-                GameManager.Instance.lastPickPrice = CalculateDiscount(0, GameManager.Instance.lastPickOriginalPrice);
+                ScratchCardDealer.currentPickedCardPrice = CalculateDiscount(0, ScratchCardDealer.currentPickedCardOriginalPrice);
                 break;
             case FaceEventType.Prize:
                 prizeTriggerTier = triggerTier;
@@ -142,6 +143,6 @@ public class FaceEventManager : SerializedMonoBehaviour
     public void ResetDiscountPrice(FaceEventType faceEventType)
     {
         if (faceEventType != FaceEventType.Discount) return;
-        GameManager.Instance.lastPickPrice = GameManager.Instance.lastPickOriginalPrice;
+        ScratchCardDealer.currentPickedCardPrice = ScratchCardDealer.currentPickedCardOriginalPrice;
     }
 }

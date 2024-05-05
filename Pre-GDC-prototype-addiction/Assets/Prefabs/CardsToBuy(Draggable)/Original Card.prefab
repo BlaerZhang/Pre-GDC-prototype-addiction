@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5184272751378610711}
   - component: {fileID: 7231671994509942469}
   - component: {fileID: 4877648087849453856}
-  - component: {fileID: 686962245718119904}
-  - component: {fileID: 5192286067328295914}
+  - component: {fileID: 4510224497718708980}
+  - component: {fileID: 1908797931444920727}
   m_Layer: 0
   m_Name: Card Sprite
   m_TagString: Untagged
@@ -79,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2dac7e568053b0c46a8044393eaa1e95, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b50a503ea755ce947bd1498c31f5b7af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.5, y: 3.5}
+  m_Size: {x: 7.23, y: 9.525}
   m_AdaptiveModeThreshold: 1
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -122,7 +122,19 @@ MonoBehaviour:
   shadowOffset: {x: 0.1, y: -0.1}
   shadowColor: {r: 0.1015625, g: 0.1015625, b: 0.1015625, a: 1}
   hoverShadowColor: {r: 0.81960785, g: 0.4627451, b: 0.4627451, a: 1}
---- !u!331 &686962245718119904
+--- !u!210 &4510224497718708980
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86394350672723831}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+--- !u!331 &1908797931444920727
 SpriteMask:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,7 +154,7 @@ SpriteMask:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -163,7 +175,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2dac7e568053b0c46a8044393eaa1e95, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b50a503ea755ce947bd1498c31f5b7af, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
@@ -173,18 +185,6 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
---- !u!210 &5192286067328295914
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86394350672723831}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
 --- !u!1 &2932669954305132293
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,12 +258,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: f770409fcd4894f4abd061e72ba42b03, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59b3715d34c8ae04dbf89bf32eeeab77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.105, y: 7.605}
+  m_Size: {x: 7.23, y: 9.525}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 385042819690785474}
   - component: {fileID: 6831996590865958706}
   - component: {fileID: 846922715040881144}
+  - component: {fileID: -329599998990894179}
   m_Layer: 0
   m_Name: Original Card
   m_TagString: Untagged
@@ -316,17 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52d5fcd8d61e9045b250dfdcc60efdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickAudio: 1
-  pickSounds:
-  - {fileID: 8300000, guid: 6655024329b44594e8157c100d084027, type: 3}
-  - {fileID: 8300000, guid: 00c4bc5eba5a4a04798f1dab5bad2087, type: 3}
-  dropAudio: 1
-  dropSounds:
-  - {fileID: 8300000, guid: 14cc5907bc11d114ea4a70a80e2c6790, type: 3}
-  - {fileID: 8300000, guid: 3ea9efcfbc64756469555c668ca07af6, type: 3}
-  dropParticle: 1
-  dropParticles: []
-  dragSpeed: 25
   hoverScale: 1.05
   faceType: 0
   cardFaceSprite: {fileID: 0}
@@ -375,8 +365,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 7.5}
+  m_Size: {x: 6.88, y: 9.21}
   m_EdgeRadius: 0
+--- !u!210 &-329599998990894179
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3413574631249698230}
+  m_Enabled: 1
+  m_SortingLayerID: 969988853
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &4933713759138818267
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,12 +536,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
-  m_Sprite: {fileID: 21300000, guid: 2dac7e568053b0c46a8044393eaa1e95, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b50a503ea755ce947bd1498c31f5b7af, type: 3}
   m_Color: {r: 0.1015625, g: 0.1015625, b: 0.1015625, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.105, y: 7.605}
+  m_Size: {x: 7.235, y: 9.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

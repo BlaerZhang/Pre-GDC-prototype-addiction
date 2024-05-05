@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Top-Down Desk
+    uniqueID: 1724410075
+    locked: 0
+  - name: Poster Holder
+    uniqueID: 1726441453
+    locked: 0
+  - name: Scratch Card
+    uniqueID: 969988853
+    locked: 0

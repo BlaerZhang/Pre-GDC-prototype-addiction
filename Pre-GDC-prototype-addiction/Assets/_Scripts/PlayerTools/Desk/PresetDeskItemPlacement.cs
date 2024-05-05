@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Scripts.ConsumableStore;
@@ -9,27 +10,16 @@ public class PresetDeskItemPlacement : MonoBehaviour
     [OnInspectorGUI]
     private void OnInspectorGUI()
     {
-        UnityEditor.EditorGUILayout.HelpBox("Set items as this object's child", UnityEditor.MessageType.Info);
+        UnityEditor.EditorGUILayout.HelpBox("Set slot as this object's child, slot must have the same with the item", UnityEditor.MessageType.Info);
     }
 
-    private struct FixedItemSlot
+    // item name / item
+    private List<GameObject> deskItemList = new();
+
+    private void Start()
     {
-        [HideInInspector] public GameObject itemHere;
-        public Vector2 slotPosition;
-
-        public FixedItemSlot(Vector2 slotPosition)
-        {
-            itemHere = null;
-            this.slotPosition = slotPosition;
-        }
+        InitializeItem();
     }
-
-    private FixedItemSlot[] fixedItemSlots;
-    private int maxItems;
-
-    private FixedItemSlot firstAvailableSlot;
-
-    public static bool isDeskFull = false;
 
     private void OnEnable()
     {
@@ -43,53 +33,45 @@ public class PresetDeskItemPlacement : MonoBehaviour
         ConsumableItemBase.onItemRemoved -= RemoveItemFromDesk;
     }
 
-    private void InitializeItemSlots()
+    private void InitializeItem()
     {
+        int itemCount = transform.childCount;
 
+        if (itemCount == 0) return;
+
+        for (int i = 0; i < itemCount; i++)
+        {
+            var item = transform.GetChild(i).gameObject;
+            deskItemList.Add(item);
+            item.SetActive(false);
+        }
     }
 
     private void CheckFirstAvailableSlot(GameObject newItem)
     {
-        int slotNumber = fixedItemSlots.Length;
-        for (int i = 0; i < slotNumber; i++)
+        foreach (var item in deskItemList)
         {
-            if (fixedItemSlots[i].itemHere == null)
+            if (item.name.Equals(newItem.name))
             {
-                firstAvailableSlot = fixedItemSlots[i];
-                PlaceItemOnDesk(newItem);
+                item.SetActive(true);
                 return;
             }
         }
 
-        // if no available space on desk
-        isDeskFull = true;
-        Debug.Log("No space available on desk to add the item.");
-    }
-
-    private void PlaceItemOnDesk(GameObject newItem)
-    {
-        var item = Instantiate(newItem, firstAvailableSlot.slotPosition, Quaternion.identity);
-        item.name = newItem.name;
-        item.transform.SetParent(transform);
-
-        firstAvailableSlot.itemHere = item;
-        Debug.Log("Item added at position: " + firstAvailableSlot.slotPosition);
+        Debug.LogError("No preset item found on desk when adding");
     }
 
     private void RemoveItemFromDesk(string itemName)
     {
-        foreach (var slot in fixedItemSlots)
+        foreach (var item in deskItemList)
         {
-            var itemHere = slot.itemHere;
-            if (itemHere == null) continue;
-            if (itemHere.name.Equals(itemName))
+            if (item.name.Equals(itemName))
             {
-                print($"{name} is removed from desk");
-                // TODO: remove item effects
-                slot.itemHere.SetActive(false);
-
-                if (isDeskFull) isDeskFull = false;
+                item.SetActive(false);
+                return;
             }
         }
+
+        Debug.LogError("No preset item found on desk when removing");
     }
 }

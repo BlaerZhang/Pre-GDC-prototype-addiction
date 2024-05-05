@@ -10,7 +10,7 @@ using TMPro;
 
 namespace _Scripts.ConsumableStore
 {
-    public class ConsumableItemIcon : ClickableUIBase, IUnlockable
+    public class ConsumableItemIcon : InteractableUIBase, IUnlockable
     {
         private GameObject consumablePrefab;
         private string itemName;
@@ -90,7 +90,8 @@ namespace _Scripts.ConsumableStore
                 }
 
                 // check if there is enough space on desk, then decide whether successfully bought an item
-                onTryBuyItem?.Invoke(AssembleItemObject(consumablePrefab));
+                GameObject itemBought = AssembleItemObject(consumablePrefab);
+                onTryBuyItem?.Invoke(itemBought);
 
                 if (DeskItemPlacement.isDeskFull) return;
                 
@@ -115,6 +116,7 @@ namespace _Scripts.ConsumableStore
                 newImage.SetNativeSize();
             }
 
+            // TODO: select specific item script according to the consumable type
             if (newObject.TryGetComponent(out ConsumableItemBase consumableItemBase)) consumableItemBase.consumableType = consumableType;
             else consumablePrefab.AddComponent<ConsumableItemBase>();
 

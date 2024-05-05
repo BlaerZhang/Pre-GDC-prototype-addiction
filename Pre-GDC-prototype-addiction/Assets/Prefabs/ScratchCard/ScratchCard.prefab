@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 437468}
   - component: {fileID: 11486244}
   - component: {fileID: 6549681928109394430}
+  - component: {fileID: 8297257405520429996}
   m_Layer: 0
   m_Name: ScratchCard
   m_TagString: Untagged
@@ -251,6 +252,18 @@ MonoBehaviour:
   card: {fileID: 11474202}
   cardSprite: {fileID: 21281386}
   eraseProgress: {fileID: 0}
+--- !u!210 &8297257405520429996
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137284}
+  m_Enabled: 1
+  m_SortingLayerID: 969988853
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &178426
 GameObject:
   m_ObjectHideFlags: 0

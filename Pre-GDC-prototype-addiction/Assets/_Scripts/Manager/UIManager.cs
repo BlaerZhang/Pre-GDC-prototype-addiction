@@ -10,8 +10,8 @@ namespace Manager
 {
     public class UIManager : SerializedMonoBehaviour
     {
-        [Title("Game")]
-        public List<TextMeshProUGUI> playerResource;
+        [Title("Resource")]
+        public TextMeshProUGUI goldUI;
 
         [Title("Face Event")]
         public RectTransform faceEventUIParent;
@@ -32,7 +32,7 @@ namespace Manager
 
         private void OnEnable()
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
             FaceEventListener.onFaceEventTriggered += PopFaceEventUI;
             FaceEventManager.onFaceEventEnd += CollapseFaceEventUI;
             SwitchSceneManager.onSceneChanged += ShowFaceEventUI;
@@ -61,13 +61,11 @@ namespace Manager
             HideFaceEventUI();
         }
 
-        public void UpdateResource(int resource)
+        public void UpdateGold(int resource)
         {
-            foreach (var resourceText in playerResource)
-            {
-                if (resourceText.text == $"${resource}") return;
-                resourceText.DOText($"${resource}", 1f,true, ScrambleMode.Numerals);
-            }
+            if (!goldUI) return;
+            if (goldUI.text == $"${resource}") return;
+            goldUI.DOText($"${resource}", 1f,true, ScrambleMode.Numerals);
         }
 
         public void UpdateUpgradePrice(int price)
@@ -121,14 +119,13 @@ namespace Manager
         {
             if(isPlayingNotEnoughAnimation) return;
             isPlayingNotEnoughAnimation = true;
-            foreach (var resourceText in playerResource)
+
+            goldUI.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0);
+            goldUI.rectTransform.DOShakeAnchorPos(0.5f, Vector3.right * 10f, 10).OnComplete((() =>
             {
-                resourceText.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0);
-                resourceText.rectTransform.DOShakeAnchorPos(0.5f, Vector3.right * 10f, 10).OnComplete((() =>
-                {
-                    isPlayingNotEnoughAnimation = false;
-                }));
-            }
+                isPlayingNotEnoughAnimation = false;
+            }));
+
         }
 
         private void PopFaceEventUI(FaceEventType eventType, int eventDuration, ScratchCardTier triggerTier)

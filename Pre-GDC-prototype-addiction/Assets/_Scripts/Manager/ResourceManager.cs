@@ -1,4 +1,5 @@
 using System;
+using Interaction;
 using UnityEngine;
 
 namespace Manager
@@ -6,9 +7,12 @@ namespace Manager
     public class ResourceManager : MonoBehaviour
     {
         private int playerGold = 0;
+
         private DateTime gameStartTime;
         private DateTime currentTime;
         public static Action<DateTime> OnTimeChanged;
+
+        public bool isTimeStopped = false;
 
         public int PlayerGold
         {
@@ -16,7 +20,7 @@ namespace Manager
             set
             {
                 playerGold = value;
-                GameManager.Instance.uiManager.UpdateResource(value);
+                GameManager.Instance.uiManager.UpdateGold(value);
                 StatsTracker.onValueChanged?.Invoke(nameof(playerGold), playerGold);
             }
         }
@@ -42,8 +46,25 @@ namespace Manager
             CurrentTime = gameStartTime;
         }
 
+        private void OnEnable()
+        {
+            ScratchCardPoster.onTryBuyPoster += (poster, isBought) =>
+            {
+                if (isBought) PlayerGold -= poster.price;
+            };
+        }
+
+        private void OnDisable()
+        {
+            ScratchCardPoster.onTryBuyPoster -= (poster, isBought) =>
+            {
+                if (isBought) PlayerGold -= poster.price;
+            };
+        }
+
         public void ChangeTime(double minutes)
         {
+            if (isTimeStopped) return;
             CurrentTime = CurrentTime.AddMinutes(minutes);
         }
     }

@@ -92,8 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528a450e71e47e243a353af5a62a55bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOverCard: 0
-  isOverScratchArea: 0
 --- !u!114 &1002119165718636770
 MonoBehaviour:
   m_ObjectHideFlags: 0
