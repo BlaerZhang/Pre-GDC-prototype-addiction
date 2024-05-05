@@ -14,6 +14,7 @@ namespace Interaction
         [SerializeField] protected float initialYPosition = -2.25f;
         [SerializeField] protected Vector2 scrollLimits; // 滚动限制
         [SerializeField] protected float smoothTime = 0.3f; // 平滑时间
+        [SerializeField] [PropertyRange(100, 10000)] protected float scrollSpeedSensitivity = 300f;
 
         private float currentVelocity = 0f; // 当前速度，用于平滑减速
 
@@ -36,7 +37,7 @@ namespace Interaction
         private void Scroll()
         {
             float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-            float targetVelocity = scrollInput * 300f; // 目标速度基于输入和一个自定义系数
+            float targetVelocity = scrollInput * scrollSpeedSensitivity; // 目标速度基于输入和一个自定义系数
 
             // 平滑过渡当前速度到目标速度
             currentVelocity = Mathf.Lerp(currentVelocity, targetVelocity, Time.deltaTime / smoothTime);

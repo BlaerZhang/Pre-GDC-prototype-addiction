@@ -36,7 +36,7 @@ namespace _Scripts.VisualTools
                     break;
             }
 
-            transform.DOMoveY(floatRange, floatDuration)
+            transform.DOLocalMoveY(floatRange, floatDuration)
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetRelative(true)
                 .SetEase(Ease.InOutSine);

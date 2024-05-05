@@ -2,16 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TextScroller : MonoBehaviour
 {
-    [Header("Basic")] 
+    [Title("Basic")] 
     public TextMeshProUGUI scrollingTextTMPPrefab;
     public float scrollSpeed = 1;
     public float gapBetweenTexts = 100;
+
+    [Title("Text")] 
+    public string textHeader = "■";
     public List<string> idleStrings;
 
     private int currentIdleIndex = 0;
@@ -61,7 +65,7 @@ public class TextScroller : MonoBehaviour
     public TextMeshProUGUI PopScrollingText(string textContent)
     {
          TextMeshProUGUI textInstance = Instantiate(scrollingTextTMPPrefab, this.transform); //instantiate prefab
-         textInstance.text = $"■ {textContent}"; //set text
+         textInstance.text = $"{textHeader} {textContent}"; //set text
          textInstance.rectTransform.anchoredPosition = new Vector2(0, 0); //init pos
          currentScrollingText = textInstance; //update status
          float currentTextWidth = currentScrollingText.preferredWidth; //get text width

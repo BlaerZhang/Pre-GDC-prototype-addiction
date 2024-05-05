@@ -36,7 +36,7 @@ namespace Interaction
         void Start()
         {
             cardFaceSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
-            cardBGSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+            cardBGSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
             shadows = GetComponentsInChildren<SpriteShadow>();
             // buyCardManager = FindObjectOfType<BuyCardManager>();
             // isDragging = false;
