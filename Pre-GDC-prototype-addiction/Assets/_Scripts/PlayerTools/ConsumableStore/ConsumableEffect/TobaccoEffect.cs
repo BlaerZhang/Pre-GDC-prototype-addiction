@@ -10,7 +10,7 @@ namespace _Scripts.ConsumableStore.ConsumableEffect
         public static Action onStopSmoking;
 
         [SerializeField] private ParticleSystem smokeParticleSystemPrefab;
-        [SerializeField] private Vector2 smokeGeneratePosition;
+        [SerializeField] private Vector3 smokeGeneratePosition;
         [SerializeField] private float effectDuration = 5f;
 
         private GameObject smokeParticleObject;

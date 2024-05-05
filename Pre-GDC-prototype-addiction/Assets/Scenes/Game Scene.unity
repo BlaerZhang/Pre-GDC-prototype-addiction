@@ -1158,7 +1158,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: a96c9b645df27684aa96c269f32d7f76, type: 3}
-  m_Color: {r: 0.4433962, g: 0.29533255, b: 0.13594696, a: 1}
+  m_Color: {r: 0.1137255, g: 0.42352945, b: 0.12941177, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -3506,6 +3506,10 @@ PrefabInstance:
     - target: {fileID: 5383017150360712836, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: smokeGeneratePosition.y
       value: -3.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383017150360712836, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: smokeGeneratePosition.z
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 5383017150360712836, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: smokeParticleSystemPrefab
@@ -9060,6 +9064,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 801151669}
     m_Modifications:
+    - target: {fileID: 1576921190447208502, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576921190447208502, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 306
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576921190447208502, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 249
+      objectReference: {fileID: 0}
     - target: {fileID: 1838284352962514818, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -9084,6 +9100,10 @@ PrefabInstance:
       propertyPath: cigaretteItemOnTableTransform
       value: 
       objectReference: {fileID: 8185150}
+    - target: {fileID: 4949461325466325394, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c9525b72e63156a4e92e082a05f65eb5, type: 3}
     - target: {fileID: 5736810917035735281, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
       propertyPath: m_Name
       value: Desk (Preset)
