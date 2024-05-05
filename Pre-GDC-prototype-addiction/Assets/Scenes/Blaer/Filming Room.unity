@@ -4227,6 +4227,7 @@ RectTransform:
   - {fileID: 1165192623330922810}
   - {fileID: 6394662626831330823}
   - {fileID: 1189589571}
+  - {fileID: 1606483639}
   - {fileID: 1787735784}
   - {fileID: 729096701}
   m_Father: {fileID: 230012565}
@@ -4870,6 +4871,36 @@ PrefabInstance:
     - target: {fileID: 8215879346862950201, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
       propertyPath: hideOffset
       value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771582410171222105, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
+      propertyPath: idleStrings.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771582410171222105, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
+      propertyPath: idleStrings.Array.data[0]
+      value: 'Tips: Does computer software generate true randomness?  Answer: NO.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771582410171222105, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
+      propertyPath: idleStrings.Array.data[1]
+      value: 'Member of the month: YOU'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771582410171222105, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
+      propertyPath: idleStrings.Array.data[2]
+      value: A side effect of dazzling happiness can lead to time-related cognitive
+        dissonance.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771582410171222105, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
+      propertyPath: idleStrings.Array.data[3]
+      value: Do not remove the screws on the membership card without authorization,
+        or all consequences will be borne by the member.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771582410171222105, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
+      propertyPath: idleStrings.Array.data[4]
+      value: Contact with other members is only allowed in-store.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771582410171222105, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
+      propertyPath: idleStrings.Array.data[5]
+      value: 'Tips: Listen to the rhythm, everything is interconnected.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6157,11 +6188,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1726441453
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0676490b634ac044caef3792e3670093, type: 3}
-  m_Color: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6932,6 +6963,103 @@ MonoBehaviour:
     - {x: 3, y: 95.257416}
     - {x: 4, y: 98.20138}
     - {x: 5, y: 99.33071}
+--- !u!1 &1606483638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1606483639}
+  - component: {fileID: 1606483641}
+  - component: {fileID: 1606483640}
+  - component: {fileID: 1606483642}
+  m_Layer: 5
+  m_Name: Payphone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1606483639
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606483638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 801151669}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 583, y: 622}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &1606483640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606483638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fa322aaa1bc79a944b64fb4673c2155d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1606483641
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606483638}
+  m_CullTransparentMesh: 1
+--- !u!114 &1606483642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606483638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53d44835ed84dbfa0d42a1de44582af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  unlockRequired: 1
+  unlockPrice: 0
+  unlockMembershipLevel: 0
+  lockedSprite: {fileID: 0}
+  hideWhenScratching: 1
+  currentHidingDirection: 3
+  hideOffset: 583
+  collapseDuration: 0.5
 --- !u!1 &1617103019
 GameObject:
   m_ObjectHideFlags: 0
