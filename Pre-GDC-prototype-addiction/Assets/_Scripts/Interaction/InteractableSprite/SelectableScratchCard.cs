@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _Scripts.VisualTools;
 using DG.Tweening;
 using Manager;
 using ScratchCardGeneration;
