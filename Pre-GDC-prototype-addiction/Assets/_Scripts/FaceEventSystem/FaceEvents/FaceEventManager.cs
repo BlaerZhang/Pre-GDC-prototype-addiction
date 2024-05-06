@@ -61,14 +61,14 @@ public class FaceEventManager : SerializedMonoBehaviour
     {
         FaceEventListener.onFaceEventTriggered += UpdateFaceEventInfo;
         onFaceEventEnd += ResetDiscountPrice;
-        BuyCardManager.onChangeSubmissionStatus += DurationCountDown;
+        ScratchCardDealer.onChangeSubmissionStatus += DurationCountDown;
     }
 
     private void OnDisable()
     {
         FaceEventListener.onFaceEventTriggered -= UpdateFaceEventInfo;
         onFaceEventEnd += ResetDiscountPrice;
-        BuyCardManager.onChangeSubmissionStatus -= DurationCountDown;
+        ScratchCardDealer.onChangeSubmissionStatus -= DurationCountDown;
     }
 
     public void DurationCountDown()

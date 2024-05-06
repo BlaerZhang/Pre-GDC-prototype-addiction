@@ -10,13 +10,13 @@ namespace Interaction
         private bool hasSubmitted = false;
         private void OnEnable()
         {
-            BuyCardManager.onChangeSubmissionStatus += ChangeSubmissionStatus;
+            ScratchCardDealer.onChangeSubmissionStatus += ChangeSubmissionStatus;
             NumberRoller.onRollingEnds += GeneratePrizeNumber;
         }
 
         private void OnDisable()
         {
-            BuyCardManager.onChangeSubmissionStatus -= ChangeSubmissionStatus;
+            ScratchCardDealer.onChangeSubmissionStatus -= ChangeSubmissionStatus;
             NumberRoller.onRollingEnds -= GeneratePrizeNumber;
         }
 

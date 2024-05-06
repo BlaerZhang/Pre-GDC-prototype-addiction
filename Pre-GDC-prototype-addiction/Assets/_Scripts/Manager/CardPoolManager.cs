@@ -94,12 +94,12 @@ public class CardPoolManager : SerializedMonoBehaviour
     
     private void OnEnable()
     {
-        BuyCardManager.onChangeSubmissionStatus += ResetRefreshLock;
+        ScratchCardDealer.onChangeSubmissionStatus += ResetRefreshLock;
     }
 
     private void OnDisable()
     {
-        BuyCardManager.onChangeSubmissionStatus -= ResetRefreshLock;
+        ScratchCardDealer.onChangeSubmissionStatus -= ResetRefreshLock;
     }
 
     private void Start()

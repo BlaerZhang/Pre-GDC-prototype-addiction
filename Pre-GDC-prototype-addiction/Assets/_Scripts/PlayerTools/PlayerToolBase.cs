@@ -55,6 +55,7 @@ namespace _Scripts.PlayerTools
             if (hideWhenScratching)
             {
                 SelectableScratchCard.onScratchCardSelected += Collapse;
+                ScratchCardDealer.onPrizeRedeemed += ExpandFromEdge;
                 // ScratchCardPoster.onPosterDragged += SemiCollapse;
                 // ScratchCardPoster.onTryBuyPoster += SwitchCollapseState;
             }
@@ -68,6 +69,7 @@ namespace _Scripts.PlayerTools
             if (hideWhenScratching)
             {
                 SelectableScratchCard.onScratchCardSelected -= Collapse;
+                ScratchCardDealer.onPrizeRedeemed -= ExpandFromEdge;
                 // ScratchCardPoster.onPosterDragged -= SemiCollapse;
                 // ScratchCardPoster.onTryBuyPoster -= SwitchCollapseState;
             }

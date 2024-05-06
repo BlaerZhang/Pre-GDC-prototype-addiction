@@ -42,6 +42,8 @@ namespace Interaction
             ScratchCardPoster.onPosterDragged += SemiCollapse;
             ScratchCardPoster.onPosterReleased += CheckIfPosterInPickingArea;
             ScratchCardPoster.onTryBuyPoster += SwitchCollapseState;
+
+            ScratchCardDealer.onPrizeRedeemed += RecoverPosition;
             // ScrollViewHandle.onScrollViewHandleClicked += RecoverPosition;
             // SelectableScratchCard.onScratchCardSelected += FullyHidePosterHolder;
         }
@@ -51,6 +53,8 @@ namespace Interaction
             ScratchCardPoster.onPosterDragged -= SemiCollapse;
             ScratchCardPoster.onPosterReleased -= CheckIfPosterInPickingArea;
             ScratchCardPoster.onTryBuyPoster -= SwitchCollapseState;
+
+            ScratchCardDealer.onPrizeRedeemed += RecoverPosition;
             // ScrollViewHandle.onScrollViewHandleClicked -= RecoverPosition;
             // SelectableScratchCard.onScratchCardSelected -= FullyHidePosterHolder;
         }
@@ -87,16 +91,17 @@ namespace Interaction
         private void RecoverPosition()
         {
             float duration = CalculateMovementDuration(recoverY);
-            scrollViewHolder.DOLocalMoveY(recoverY, duration).SetEase(Ease.OutCubic)
-            .OnStart(() =>
-            {
-                ScratchCardPoster.isInteractable = false;
-            })
-            .OnComplete(() =>
-            {
-                isScrollLocked = false;
-                ScratchCardPoster.isInteractable = true;
-            });
+            scrollViewHolder.DOLocalMoveY(recoverY, duration)
+                .SetEase(Ease.OutCubic)
+                .OnStart(() =>
+                {
+                    ScratchCardPoster.isInteractable = false;
+                })
+                .OnComplete(() =>
+                {
+                    isScrollLocked = false;
+                    ScratchCardPoster.isInteractable = true;
+                });
         }
 
         private float CalculateMovementDuration(float targetY)
@@ -111,12 +116,6 @@ namespace Interaction
 
             RecoverPosition();
             return false;
-        }
-
-        // called when drag the scroll down
-        private void ReturnToPosterMenu()
-        {
-            onReturnPosterMenu?.Invoke();
         }
 
         private void OnDrawGizmosSelected()

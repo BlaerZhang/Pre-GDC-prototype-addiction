@@ -26,13 +26,13 @@ namespace ScratchCardGeneration.Utilities
         private void OnEnable()
         {
             PrizeRevealing.onPrizeRevealed += StartRolling;
-            BuyCardManager.onSubmitScratchCard += StartRolling;
+            ScratchCardDealer.onSubmitScratchCard += StartRolling;
         }
 
         private void OnDisable()
         {
             PrizeRevealing.onPrizeRevealed -= StartRolling;
-            BuyCardManager.onSubmitScratchCard -= StartRolling;
+            ScratchCardDealer.onSubmitScratchCard -= StartRolling;
         }
 
         private void StartRolling(float prize)
