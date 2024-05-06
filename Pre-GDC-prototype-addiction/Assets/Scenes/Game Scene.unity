@@ -1940,6 +1940,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5496876320122343833, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496876320122343833, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
       propertyPath: m_fontColor.b
       value: 0.14117648
       objectReference: {fileID: 0}
@@ -8110,6 +8114,7 @@ MonoBehaviour:
   initialYPosition: 4
   scrollLimits: {x: -15, y: 4}
   smoothTime: 0.3
+  scrollSpeedSensitivity: 300
   posterHolderInitialY: 0
   pickingArea:
     serializedVersion: 2

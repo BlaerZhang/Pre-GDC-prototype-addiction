@@ -103,6 +103,7 @@ namespace Interaction
                     ScratchCardPoster.isInteractable = true;
                 });
         }
+        
 
         private float CalculateMovementDuration(float targetY)
         {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.PlayerTools;
 using DG.Tweening;
 using Manager;
 using UnityEngine;
@@ -80,7 +81,11 @@ public class CardCounter : MonoBehaviour
             startOffset.y - (iconRow - 1) * gapBetweenIconsVertical); //calc pos
         // print($"pos{iconPos}");
         newIcon.rectTransform.anchoredPosition = iconPos; //set pos
-        newIcon.transform.DOScale(1, iconPopDuration).SetEase(Ease.OutElastic);
+
+        float collapseDuration = GetComponent<PlayerToolBase>().collapseDuration;
+        DOVirtual.DelayedCall(collapseDuration,
+            () => { newIcon.transform.DOScale(1, iconPopDuration).SetEase(Ease.OutElastic); }).Play(); // pop after ui showed
+
     }
 
     public void ClearRow(int price, int prize)

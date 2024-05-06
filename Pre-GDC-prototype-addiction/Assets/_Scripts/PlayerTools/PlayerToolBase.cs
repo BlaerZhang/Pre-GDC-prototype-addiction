@@ -25,7 +25,7 @@ namespace _Scripts.PlayerTools
         [SerializeField] private bool hideWhenScratching = false;
         [SerializeField] private HidingDirection currentHidingDirection;
         [SerializeField] private float hideOffset;
-        [SerializeField] private float collapseDuration = 0.5f;
+        [SerializeField] public float collapseDuration = 0.5f;
         private float semiHideOffset;
 
         public enum HidingDirection
