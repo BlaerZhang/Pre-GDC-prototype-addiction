@@ -3,6 +3,7 @@ using _Scripts.VisualTools;
 using DG.Tweening;
 using Manager;
 using ScratchCardAsset;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,38 +11,40 @@ namespace Interaction
 {
     public class ScratchDraggable : InteractableSpriteBase
     {
-        [Header("Drag")]
+        [Title("Drag")]
         public float dragSpeed = 1;
-        public bool isDragging = false;
-        public bool isInGiveArea = false;
-        public bool dragLock = false;
         public Vector3 scratchCardScale = Vector3.one;
+        private bool isDragging = false;
+        private bool dragLock = false;
+        private bool isInRedeemArea = false;
     
-        [Header("Feedback")] 
-        public float hoverScale = 1.05f;
-        
+        [Title("Feedback")]
         public SpriteRenderer cardSurfaceSprite;
         public SpriteRenderer cardBackgroundSprite;
-        private DetectScratchArea detectScratchArea;
+        public float hoverScale = 1.05f;
+
+        // private DetectScratchArea detectScratchArea;
         private Vector2 dragOffset = new Vector2(0, 0);
         private GameObject currentCard;
-        private Vector3 currentCardOriginalScale;
+        // private Vector3 currentCardOriginalScale;
         private ScratchCardManager scratchCardManager;
         private BuyCardManager buyCardManager;
         private Vector2 initialPos;
         private SpriteShadow[] shadows;
 
-        public static Action<float> onScratchCardRedeeming;
-    
+        public static Action onScratchCardClicked;
+        public static Func<Vector2, Vector2> onScratchCardDragging;
+        public static Action<bool> onScratchCardReleased;
+
         void Start()
         {
             cardSurfaceSprite = GameObject.Find("Scratch Surface Sprite").GetComponent<SpriteRenderer>();
             cardBackgroundSprite = GameObject.Find("ScratchCardBackground(Clone)").GetComponent<SpriteRenderer>();
-            detectScratchArea = GetComponent<DetectScratchArea>();
+            // detectScratchArea = GetComponent<DetectScratchArea>();
             currentCard = GameObject.Find("currentScratchCard");
             currentCard.transform.localScale = scratchCardScale;
-            currentCardOriginalScale = currentCard.transform.localScale;
-            scratchCardManager = GetComponentInParent<ScratchCardManager>();
+            // currentCardOriginalScale = currentCard.transform.localScale;
+            // scratchCardManager = transform.parent.GetComponentInChildren<ScratchCardManager>();
             // buyCardManager = FindObjectOfType<BuyCardManager>();
             shadows = GetComponentsInChildren<SpriteShadow>();
             initialPos = transform.position;
@@ -50,12 +53,12 @@ namespace Interaction
 
         private void OnEnable()
         {
-            BuyCardManager.onChangeSubmissionStatus += LockDrag;
+            ScratchCardDealer.onChangeSubmissionStatus += LockDrag;
         }
 
         private void OnDisable()
         {
-            BuyCardManager.onChangeSubmissionStatus -= LockDrag;
+            ScratchCardDealer.onChangeSubmissionStatus -= LockDrag;
         }
 
         private void Update()
@@ -92,6 +95,7 @@ namespace Interaction
             dragOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
             //Activate Give Area
+            onScratchCardClicked?.Invoke();
             // buyCardManager.ActivateGiveArea();
         }
 
@@ -100,29 +104,30 @@ namespace Interaction
             if (dragLock) return;
             
             //Card Follow Mouse Y
-            Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)dragOffset;
-            float cardToTarget = targetPos.y - transform.position.y;
+            Vector2 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)dragOffset;
+            float cardToTarget = targetPosition.y - transform.position.y;
             currentCard.transform.position += new Vector3(0, MathF.Pow(cardToTarget,1f) * dragSpeed * Time.deltaTime,0);
             
             //Adjust Give Area
+            Vector2 redeemArea = (Vector2)onScratchCardDragging?.Invoke(transform.position);
             // buyCardManager.AdjustGiveArea(this.transform);
 
             //Check if in give area
-            float cardYPosOnViewport = Camera.main.WorldToViewportPoint(this.transform.position).y;
-            float giveAreaLowerEdgeYOnViewport = Camera.main.ScreenToViewportPoint(buyCardManager.giveArea.anchoredPosition).y;
-            if (1 + giveAreaLowerEdgeYOnViewport < cardYPosOnViewport)
+            float cardYPositionOnViewport = Camera.main.WorldToViewportPoint(transform.position).y;
+            float giveAreaLowerEdgeYOnViewport = Camera.main.ScreenToViewportPoint(redeemArea).y;
+            if (1 + giveAreaLowerEdgeYOnViewport < cardYPositionOnViewport)
             {
-                isInGiveArea = true;
-                cardSurfaceSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
-                cardBackgroundSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
+                isInRedeemArea = true;
+                // TODO: change shadow color
+                // cardSurfaceSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
+                // cardBackgroundSprite.DOColor(new Color(1,1,1,0.5f), 0.1f);
             }
             else
             {
-                isInGiveArea = false;
-                cardSurfaceSprite.DOColor(Color.white, 0.1f);
-                cardBackgroundSprite.DOColor(Color.white, 0.1f);
+                isInRedeemArea = false;
+                // cardSurfaceSprite.DOColor(Color.white, 0.1f);
+                // cardBackgroundSprite.DOColor(Color.white, 0.1f);
             }
-
         }
         protected override void OnMouseUp()
         {
@@ -135,16 +140,17 @@ namespace Interaction
             //Scale
             currentCard.transform.DOScale(scratchCardScale, 0.1f);
         
-            //Deactivate Give Area
-            // buyCardManager.DeactivateGiveArea();
-        
             //Check if give
-            if (isInGiveArea)
+            if (isInRedeemArea)
             {
+                onScratchCardReleased?.Invoke(true);
                 // buyCardManager.GiveCard();
             }
             else
             {
+                //Deactivate Give Area
+                // buyCardManager.DeactivateGiveArea();
+                onScratchCardReleased?.Invoke(false);
                 currentCard.transform.DOMove(initialPos, 0.1f);
             }
         }

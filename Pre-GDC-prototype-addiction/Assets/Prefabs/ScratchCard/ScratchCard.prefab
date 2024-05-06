@@ -14918,6 +14918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Area Detector
       objectReference: {fileID: 0}
+    - target: {fileID: 2995002503465087408, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7727467934695984613, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
       propertyPath: m_Offset.x
       value: 1

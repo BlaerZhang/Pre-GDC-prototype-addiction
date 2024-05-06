@@ -20,10 +20,13 @@ namespace _Scripts.VisualTools
     
         void Start()
         {
-            reflectionParent = transform.Find("Reflection Parent").GetComponent<RectTransform>();
+            reflectionParent = transform.Find("Reflection Parent")?.GetComponent<RectTransform>();
             image = GetComponent<Image>();
-            reflectionParent.anchoredPosition = new Vector3(image.rectTransform.rect.width * 2, 0, 0);
-            InvokeRepeating("Reflect", Random.Range(0f, 5f), reflectionTimeInterval);
+            if (reflectionParent)
+            {
+                reflectionParent.anchoredPosition = new Vector3(image.rectTransform.rect.width * 2, 0, 0);
+                InvokeRepeating("Reflect", Random.Range(0f, 5f), reflectionTimeInterval);
+            }
         }
 
         [Button("Initialize")]

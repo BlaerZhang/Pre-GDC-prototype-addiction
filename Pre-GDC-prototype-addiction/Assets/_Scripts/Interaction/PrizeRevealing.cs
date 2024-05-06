@@ -44,13 +44,13 @@ namespace Interaction
         private void OnEnable()
         {
             NumberRoller.onRollingEnds += GeneratePrizeNumber;
-            if (!isWinningPrize) BuyCardManager.onChangeSubmissionStatus += ChangeSubmissionStatus;
+            if (!isWinningPrize) ScratchCardDealer.onChangeSubmissionStatus += ChangeSubmissionStatus;
         }
 
         private void OnDisable()
         {
             NumberRoller.onRollingEnds -= GeneratePrizeNumber;
-            if (!isWinningPrize) BuyCardManager.onChangeSubmissionStatus -= ChangeSubmissionStatus;
+            if (!isWinningPrize) ScratchCardDealer.onChangeSubmissionStatus -= ChangeSubmissionStatus;
         }
 
         private void ChangeSubmissionStatus()

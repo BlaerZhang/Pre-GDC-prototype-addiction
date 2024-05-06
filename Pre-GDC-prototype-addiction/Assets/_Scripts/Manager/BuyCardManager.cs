@@ -70,8 +70,8 @@ namespace Manager
         public RectTransform scratchOffButton;
 
         public static Action<ScratchCardBrand, int, int, Vector3, Sprite> onScratchCardSelected; //Buy Card Action
-        public static Action onChangeSubmissionStatus; //Give Card Action
-        public static Action<float> onSubmitScratchCard;
+        // public static Action onChangeSubmissionStatus; //Give Card Action
+        // public static Action<float> onSubmitScratchCard;
     
 
         private void Awake()
@@ -267,8 +267,8 @@ namespace Manager
             GameObject card = generator.currentScratchCard;
             
             //set action
-            onChangeSubmissionStatus?.Invoke();
-            onSubmitScratchCard?.Invoke(generator.currentCardPrize);
+            // onChangeSubmissionStatus?.Invoke();
+            // onSubmitScratchCard?.Invoke(generator.currentCardPrize);
 
             card.transform.DOMoveY(4.75f, 0.2f);
             card.transform.DOScale(0.9f, 0.2f);

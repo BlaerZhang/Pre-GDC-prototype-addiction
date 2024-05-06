@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Manager;
 using ScratchCardGeneration;
+using ScratchCardGeneration.LayoutConstructor;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -18,6 +19,8 @@ namespace Interaction
         public static ScratchCardTier currentPickedCardTier = ScratchCardTier.Level1;
 
         public static Action<ScratchCardBrand, int, int, Sprite> onToScratchStage;
+        public static Action onChangeSubmissionStatus; //Give Card Action
+        public static Action<float> onSubmitScratchCard;
 
         [Title("Card Dealing Settings")]
         [SerializeField] private Vector2 cardSpawnPosition;
@@ -25,10 +28,20 @@ namespace Interaction
         [SerializeField] private List<Vector2> cardSlotPositions;
         [SerializeField] private float cardZoomEndScale = 1f;
 
+        [Title("Redeem")]
+        [SerializeField] private RectTransform redeemArea;
+        [Range(0,1)] public float redeemAreaActivateThreshold = 0.5f;
+        public float redeemAreaActivateDistance = 200;
+        [Range(0,1)] public float redeemAreaStopThreshold = 0.2f;
+        public float redeemAreaMoveAmount = 1000;
+        public float redeemCardStayYOffset;
+
+        public static Action onPrizeRedeemed;
+
         [Title("Feedback")] 
         [SerializeField] private bool dealAudio = true;
         [SerializeField] private List<AudioClip> dealSounds;
-        
+
         private ScratchCardBrand currentCardBrand;
         private List<SelectableScratchCard> cardsToSelect = new();
         private int cardSpawnCount;
@@ -42,12 +55,20 @@ namespace Interaction
         {
             ScratchCardPoster.onTryBuyPoster += SpawnCardsToBuy;
             SelectableScratchCard.onScratchCardSelected += TransitionToScratching;
+
+            ScratchDraggable.onScratchCardClicked += ActivateRedeemArea;
+            ScratchDraggable.onScratchCardDragging += AdjustRedeemArea;
+            ScratchDraggable.onScratchCardReleased += OnScratchCardReleased;
         }
 
         private void OnDisable()
         {
             ScratchCardPoster.onTryBuyPoster -= SpawnCardsToBuy;
             SelectableScratchCard.onScratchCardSelected -= TransitionToScratching;
+
+            ScratchDraggable.onScratchCardClicked -= ActivateRedeemArea;
+            ScratchDraggable.onScratchCardDragging -= AdjustRedeemArea;
+            ScratchDraggable.onScratchCardReleased -= OnScratchCardReleased;
         }
 
         #region Deal Cards
@@ -163,18 +184,63 @@ namespace Interaction
         }
         #endregion
 
-        #region Redeem
-
+        #region Redeem Prize
         private void RedeemPrize()
         {
+            ScratchCardGenerator generator = GameManager.Instance.scratchCardGenerator;
+            GameObject currentCard = generator.currentScratchCard;
 
+            //set action
+            onChangeSubmissionStatus?.Invoke();
+            onSubmitScratchCard?.Invoke(generator.currentCardPrize);
+
+            currentCard.transform.DOMoveY(redeemCardStayYOffset, 0.2f);
+            currentCard.transform.DOScale(0.9f, 0.2f);
+            DOVirtual.DelayedCall(2, () =>
+            {
+                GameManager.Instance.resourceManager.PlayerGold += (int)generator.currentCardPrize;
+                GameManager.Instance.statsTrackingManager.UpdatePricePrizeHistory(currentPickedCardOriginalPrice, (int)generator.currentCardPrize);
+                GameManager.Instance.resourceManager.ChangeTime(5);
+                currentCard.transform.DOMoveY(currentCard.transform.position.y + 10, 0.1f).OnComplete(() =>
+                {
+                    Destroy(currentCard.gameObject);
+
+                    // back to the poster
+                    onPrizeRedeemed?.Invoke();
+                });
+                //Feedback
+                // if (generator.currentCardPrize <= 0) return;
+                // if (giveAudio && giveSounds.Count > 0)
+                //     GameManager.Instance.audioManager.PlaySound(giveSounds[Random.Range(0, giveSounds.Count)]);
+                // if (giveParticle && giveParticles.Count > 0) ; //TODO: Give Particles
+            }).Play();
         }
 
-        private void ShowRedeemArea()
+        private void OnScratchCardReleased(bool isRedeemed)
         {
-
+            DeactivateRedeemArea();
+            if (isRedeemed) RedeemPrize();
         }
 
+        private Vector2 AdjustRedeemArea(Vector2 cardPosition)
+        {
+            float cardYPositionOnViewport = Camera.main.WorldToViewportPoint(cardPosition).y;
+
+            if(cardYPositionOnViewport > redeemAreaActivateThreshold && cardYPositionOnViewport < redeemAreaStopThreshold)
+                redeemArea.anchoredPosition = new Vector2(redeemArea.anchoredPosition.x, -redeemAreaActivateDistance + (redeemAreaActivateThreshold - cardYPositionOnViewport) * redeemAreaMoveAmount);
+
+            return redeemArea.anchoredPosition;
+        }
+
+        private void ActivateRedeemArea()
+        {
+            redeemArea.DOAnchorPosY(-redeemAreaActivateDistance, 0.1f);
+        }
+
+        private void DeactivateRedeemArea()
+        {
+            redeemArea.DOAnchorPosY(0, 0.1f);
+        }
         #endregion
     }
 }

@@ -115,12 +115,10 @@ MonoBehaviour:
   dropParticle: 1
   dropParticles: []
   dragSpeed: 25
-  isDragging: 0
-  isInGiveArea: 0
-  dragLock: 0
-  hoverScale: 0.95
+  scratchCardScale: {x: 1, y: 1, z: 1}
   cardSurfaceSprite: {fileID: 0}
   cardBackgroundSprite: {fileID: 0}
+  hoverScale: 0.95
 --- !u!1 &3853939776826048195
 GameObject:
   m_ObjectHideFlags: 0
