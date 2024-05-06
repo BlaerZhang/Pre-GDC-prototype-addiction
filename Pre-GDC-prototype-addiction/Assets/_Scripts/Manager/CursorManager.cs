@@ -58,7 +58,7 @@ public class CursorManager : MonoBehaviour
         if (cursorDictionary.TryGetValue(type, out CursorData data))
         {
             currentCursorType = type;
-            Cursor.SetCursor(data.texture, data.hotspot, CursorMode.Auto);
+            Cursor.SetCursor(data.texture, data.hotspot, CursorMode.ForceSoftware);
         }
     }
 }

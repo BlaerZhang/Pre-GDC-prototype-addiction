@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reflectionTimeInterval: 5
-  reflectionDuration: 1
+  reflectionDuration: 2
   reflectionAngle: -15
   reflectionSprite: {fileID: 0}
   reflectionTransparency: 0.5
@@ -604,18 +604,18 @@ PrefabInstance:
     - target: {fileID: 235190823256872177, guid: 92ddbc78e4b9e4cc28181bbfa9ce55f3, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 235190823256872177, guid: 92ddbc78e4b9e4cc28181bbfa9ce55f3, type: 3}
     - target: {fileID: 235190823256872177, guid: 92ddbc78e4b9e4cc28181bbfa9ce55f3, type: 3}
       propertyPath: serializationData.SerializedFormat
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 235190823256872177, guid: 92ddbc78e4b9e4cc28181bbfa9ce55f3, type: 3}
       propertyPath: serializationData.SerializedBytes.Array.size
-      value: 747
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 235190823256872177, guid: 92ddbc78e4b9e4cc28181bbfa9ce55f3, type: 3}
       propertyPath: serializationData.SerializationNodes.Array.size
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 235190823256872177, guid: 92ddbc78e4b9e4cc28181bbfa9ce55f3, type: 3}
       propertyPath: serializationData.SerializedBytes.Array.data[0]
