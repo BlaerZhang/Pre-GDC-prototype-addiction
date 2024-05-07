@@ -65,7 +65,8 @@ namespace _Scripts.ConsumableStore
             // // image.SetNativeSize();
             image.sprite = icon;
             // image.color = Color.black;
-            GameObject lockMask = Instantiate(lockedImagePrefab, image.transform);
+            GameObject lockMask;
+            if (lockedImagePrefab) lockMask = Instantiate(lockedImagePrefab, image.transform);
 
             // add price, unlock level to each icon
             AddPriceText(consumableItem.transform, price);
