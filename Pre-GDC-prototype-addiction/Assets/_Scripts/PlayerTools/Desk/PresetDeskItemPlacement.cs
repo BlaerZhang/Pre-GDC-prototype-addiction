@@ -7,11 +7,13 @@ using UnityEngine;
 
 public class PresetDeskItemPlacement : MonoBehaviour
 {
+#if UNITY_EDITOR
     [OnInspectorGUI]
     private void OnInspectorGUI()
     {
         UnityEditor.EditorGUILayout.HelpBox("Set slot as this object's child, slot must have the same with the item", UnityEditor.MessageType.Info);
     }
+#endif
 
     // item name / item
     private List<GameObject> deskItemList = new();

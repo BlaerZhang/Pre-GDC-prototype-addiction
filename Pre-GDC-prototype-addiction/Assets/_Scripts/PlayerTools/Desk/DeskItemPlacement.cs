@@ -8,11 +8,13 @@ namespace _Scripts.PlayerTools
 {
     public class DeskItemPlacement : MonoBehaviour
     {
+#if UNITY_EDITOR
         [OnInspectorGUI]
         private void OnInspectorGUI()
         {
             UnityEditor.EditorGUILayout.HelpBox("Please place position holder as this object's child to indicates the item slot position", UnityEditor.MessageType.Info);
         }
+#endif
 
         [Serializable]
         private class ItemSlot

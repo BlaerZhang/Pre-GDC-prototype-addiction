@@ -411,7 +411,9 @@ namespace ScratchCardAsset
 					//create a Sprite from cropped texture
 					if (sprite.packed)
 					{
+#if UNITY_EDITOR
 						scratchTexture = SpriteUtility.GetSpriteTexture(sprite, false);
+#endif
 					}
 					else
 					{
