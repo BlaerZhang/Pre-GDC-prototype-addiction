@@ -4,7 +4,6 @@ using Cinemachine;
 using ScratchCardAsset;
 using ScratchCardAsset.Core;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 namespace Interaction
 {
@@ -36,13 +35,13 @@ namespace Interaction
         public ScratchCardAsset.ScratchCard card;
         public SpriteRenderer cardSprite;
         public EraseProgress eraseProgress;
-        private PostProcessVolume postProcessVolume;
-        private ChromaticAberration chromaticAberration;
+        // private PostProcessVolume postProcessVolume;
+        // private ChromaticAberration chromaticAberration;
 
         private void Start()
         {
-            postProcessVolume = FindObjectOfType<PostProcessVolume>();
-            postProcessVolume.profile.TryGetSettings(out chromaticAberration);
+            // postProcessVolume = FindObjectOfType<PostProcessVolume>();
+            // postProcessVolume.profile.TryGetSettings(out chromaticAberration);
             // vCam = GameObject.Find("Buy Card vCam").GetComponent<CinemachineVirtualCamera>();
 
             foreach (var particle in particles)
@@ -104,7 +103,7 @@ namespace Interaction
                 }
                 
                 // vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = screenShake;
-                chromaticAberration.intensity.value += Time.deltaTime * chromaticAberrationAmount; 
+                // chromaticAberration.intensity.value += Time.deltaTime * chromaticAberrationAmount;
                 
                 //TODO: sound
             }
@@ -116,7 +115,7 @@ namespace Interaction
                 }
                 
                 // vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
-                if (chromaticAberration.intensity.value > 0) chromaticAberration.intensity.value -= Time.deltaTime * 1f;
+                // if (chromaticAberration.intensity.value > 0) chromaticAberration.intensity.value -= Time.deltaTime * 1f;
                 
                 //TODO:sound stop  
             }
