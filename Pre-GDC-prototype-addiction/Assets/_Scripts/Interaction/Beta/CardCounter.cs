@@ -55,14 +55,20 @@ public class CardCounter : MonoBehaviour
 
     public void UpdateCardCounter(int price, int prize)
     {
-        if (currentIconList.Count >= row * column) //check if full
-        {
-            ClearRow(price, prize);
-        }
-        else
-        {
-            AddCounterIcon(price, prize);
-        }
+        float collapseDuration = GetComponent<PlayerToolBase>().collapseDuration;
+        DOVirtual.DelayedCall(collapseDuration,
+            () =>
+            {
+                if (currentIconList.Count >= row * column) //check if full
+                {
+                    ClearRow(price, prize);
+                }
+                else
+                {
+                    AddCounterIcon(price, prize);
+                }
+            }).Play(); // update after ui showed
+       
     }
 
     public void AddCounterIcon(int price, int prize)
@@ -81,10 +87,7 @@ public class CardCounter : MonoBehaviour
             startOffset.y - (iconRow - 1) * gapBetweenIconsVertical); //calc pos
         // print($"pos{iconPos}");
         newIcon.rectTransform.anchoredPosition = iconPos; //set pos
-
-        float collapseDuration = GetComponent<PlayerToolBase>().collapseDuration;
-        DOVirtual.DelayedCall(collapseDuration,
-            () => { newIcon.transform.DOScale(1, iconPopDuration).SetEase(Ease.OutElastic); }).Play(); // pop after ui showed
+        newIcon.transform.DOScale(1, iconPopDuration).SetEase(Ease.OutElastic); // pop after ui showed
 
     }
 
@@ -93,7 +96,7 @@ public class CardCounter : MonoBehaviour
         GameObject tempIconParent = new GameObject(); //instantiate empty
         RectTransform tempRect = tempIconParent.AddComponent<RectTransform>(); //add rect
         tempIconParent.transform.parent = this.transform; //set parent
-        foreach (var icon in currentIconList) { icon.transform.parent = tempIconParent.transform; } //set children
+        foreach (var icon in currentIconList) { icon.transform.SetParent(tempIconParent.transform); } //set children
         tempRect.DOAnchorPosY(tempRect.anchoredPosition.y + gapBetweenIconsVertical, iconClearDuration).SetEase(Ease.OutElastic).OnComplete(() =>
         {
             foreach (var icon in tempIconParent.GetComponentsInChildren<Image>()) { icon.transform.parent = this.transform; } //detach all icons and set card counter as parent
