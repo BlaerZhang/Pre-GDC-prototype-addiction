@@ -138,12 +138,15 @@ namespace Interaction
 
         protected void OnMouseUp()
         {
+            //Scale
+            cardFaceSprite.transform.DOScale(Vector3.one, 0.1f);
+        }
+
+        protected void OnMouseUpAsButton()
+        {
             // isDragging = false;
 
             // base.OnMouseUp();
-        
-            //Scale
-            cardFaceSprite.transform.DOScale(Vector3.one, 0.1f);
             
             //Order
             // cardFaceSprite.sortingOrder = 0;
