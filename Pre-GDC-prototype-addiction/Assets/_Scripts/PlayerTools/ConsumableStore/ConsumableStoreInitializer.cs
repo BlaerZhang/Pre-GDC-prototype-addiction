@@ -119,7 +119,7 @@ namespace _Scripts.ConsumableStore
             if (tooltipStyle) tooltip.simpleTooltipStyle = tooltipStyle;
             tooltip.infoLeft += "~" + itemName + "\n";
             tooltip.infoLeft += "^" + description;
-            tooltip.infoRight += "@$ " + price;
+            tooltip.infoRight += "@$" + price;
         }
 
         /// <summary>
