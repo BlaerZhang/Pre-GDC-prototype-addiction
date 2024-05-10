@@ -109,7 +109,7 @@ namespace _Scripts.ConsumableStore
         }
 
         /// <summary>
-        /// ~ for title; # for default text; @ for price
+        /// ~ for title; ^ for default text; @ for price
         /// </summary>
         private void AddTooltip(GameObject consumableItem, string itemName, string description, int price)
         {
@@ -118,7 +118,7 @@ namespace _Scripts.ConsumableStore
 
             if (tooltipStyle) tooltip.simpleTooltipStyle = tooltipStyle;
             tooltip.infoLeft += "~" + itemName + "\n";
-            tooltip.infoLeft += "#" + description;
+            tooltip.infoLeft += "^" + description;
             tooltip.infoRight += "@$ " + price;
         }
 
