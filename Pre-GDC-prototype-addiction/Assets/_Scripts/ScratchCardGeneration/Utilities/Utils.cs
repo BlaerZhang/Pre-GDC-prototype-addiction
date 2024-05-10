@@ -8,6 +8,18 @@ namespace ScratchCardGeneration.Utilities
 {
     public static class Utils
     {
+        public static void Shuffle<T>(this IList<T> list)
+        {
+            int count = list.Count;
+            while (count > 1)
+            {
+                count--;
+                System.Random random = new System.Random();
+                int randomIndex = random.Next(count + 1);
+                (list[randomIndex], list[count]) = (list[count], list[randomIndex]);
+            }
+        }
+
         public static T GetRandomElementFromList<T>(List<T> list)
         {
             int randIndex = Random.Range(0, list.Count);
@@ -83,7 +95,7 @@ namespace ScratchCardGeneration.Utilities
 
             if (availableNumbers.Count == 0)
             {
-                throw new System.InvalidOperationException("No numbers available for random selection.");
+                throw new InvalidOperationException("No numbers available for random selection.");
             }
 
             int randomIndex = Random.Range(0, availableNumbers.Count);

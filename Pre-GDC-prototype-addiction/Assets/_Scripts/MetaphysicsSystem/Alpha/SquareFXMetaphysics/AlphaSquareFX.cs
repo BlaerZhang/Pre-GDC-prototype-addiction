@@ -13,6 +13,7 @@ public class AlphaSquareFX : MonoBehaviour
         AlphaSquareFX newAlphaSquareFX = newFX.GetComponent<AlphaSquareFX>();
         newAlphaSquareFX.currentGrid = initGrid;
         newAlphaSquareFX.transform.SetParent(GameObject.Find("currentScratchCard").transform);
+        newAlphaSquareFX.transform.localScale = transform.localScale;
         newAlphaSquareFX.isPositive = isPositive;
         return newAlphaSquareFX;
     }

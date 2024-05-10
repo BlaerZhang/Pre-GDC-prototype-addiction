@@ -1230,6 +1230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 230012565}
   - component: {fileID: 230012569}
+  - component: {fileID: 230012570}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1287,6 +1288,19 @@ MonoBehaviour:
   membershipManager: {fileID: 0}
   cursorManager: {fileID: 0}
   incrementalLock: 1
+--- !u!114 &230012570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230012564}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96324f6fe7ac245ec9184ab0444e0a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSpriteRenderer: {fileID: 0}
 --- !u!114 &270031067 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4602296115199158278, guid: 1e9c1039922fb47bc869b652818ea510, type: 3}
@@ -5896,7 +5910,15 @@ PrefabInstance:
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: negativeIconExchangeProbability
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: positiveIconExchangeProbability
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6341,6 +6363,10 @@ PrefabInstance:
     - target: {fileID: 5068154525443692965, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477659986601866781, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
+      propertyPath: scratchCardScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8032303680787762760, guid: 5a3c5189f4596eb46bbf814454ad0709, type: 3}
       propertyPath: m_Name
@@ -10962,6 +10988,8 @@ MonoBehaviour:
       Data: 
   positiveLightEffectPrefab: {fileID: 523018379551594819, guid: 76762074a52e341bcbe889638dfae060, type: 3}
   negativeLightEffectPrefab: {fileID: 1761492123442763582, guid: 6c07982eab1644927b0729ba74249d2d, type: 3}
+  positiveIconExchangeProbability: 0
+  negativeIconExchangeProbability: 0
   moveDuration: 0.3
 --- !u!1001 &9215125477347444417
 PrefabInstance:

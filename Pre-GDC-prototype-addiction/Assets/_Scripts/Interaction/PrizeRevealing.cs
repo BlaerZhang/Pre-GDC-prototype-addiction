@@ -18,6 +18,7 @@ namespace Interaction
     public class PrizeRevealing : ScratchProgressEvent
     {
         [HideInInspector] public bool isWinningPrize = false;
+        [HideInInspector] public float prize;
 
         [HideInInspector] public Vector2Int currentGrid;
 
@@ -28,7 +29,6 @@ namespace Interaction
         private bool isClickable = false;
         private bool hasClicked = false;
         private bool hasNumberShown = false;
-        [HideInInspector] public float prize;
 
         private bool hasSubmitted = false;
 

@@ -104,6 +104,10 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         [DictionaryDrawerSettings(KeyLabel = "Action Name", ValueLabel = "Probability")]
         public Dictionary<FXActionName, float> NegativeScratchFXAndFXOnWinningGridProbabilityList;
 
+        [Title("Icon Switch")]
+        public float positiveIconExchangeProbability;
+        public float negativeIconExchangeProbability;
+
         [Title("FX Action Settings")]
         public float moveDuration = 0.1f;
         private bool isMoving = false;
@@ -112,12 +116,13 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         private FruitiesLayoutConstructor fruitiesLayoutConstructor;
         private Vector2Int gridSize;
         // if the grid is true, means it has been fully scratched
-        private VariableMatrix<bool> scratchingStatusMatrix;
+        private VariableMatrix<bool> fullyScratchingStatusMatrix;
         private List<Vector2Int> prizeWinningGridList;
+        private List<Vector2Int> notWinningGridList;
         private VariableMatrix<Vector2> gridPositionMatrix;
+        private VariableMatrix<GameObject> iconObjectMatrix;
 
         private List<AlphaSquareFX> currentAlphaSquareFxList = new();
-        private int fxCounter = 0;
 
         private void OnEnable()
         {
@@ -160,9 +165,15 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
         private void FetchDataFromConstructor()
         {
             fruitiesLayoutConstructor = (FruitiesLayoutConstructor)GameManager.Instance.scratchCardGenerator.CardLayoutConstructorDic[ScratchCardBrand.Fruities];
+
+            // dynamic
             prizeWinningGridList = fruitiesLayoutConstructor.prizeWinningGridList;
+            notWinningGridList = fruitiesLayoutConstructor.notWinningGridList;
+            fullyScratchingStatusMatrix = fruitiesLayoutConstructor.ScratchingStatusMatrix;
+
+            // static
             gridPositionMatrix = fruitiesLayoutConstructor.PrizeCellPositionMatrix;
-            scratchingStatusMatrix = fruitiesLayoutConstructor.ScratchingStatusMatrix;
+            iconObjectMatrix = fruitiesLayoutConstructor.IconObjectMatrix;
             gridSize = fruitiesLayoutConstructor.prizeAreaGridSize;
         }
         #endregion
@@ -195,9 +206,8 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
             print($"fxType: {fxType}");
             // for (int i = 0; i < 2; i++)
             // {
-                SpawnLightEffectByType(fxType);
+            SpawnLightEffectByType(fxType);
             // }
-
         }
 
         private void SwitchPrizeTypeThreshold(float price)
@@ -253,22 +263,60 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
             if (currentAlphaSquareFxList.Count == 0) return;
 
             var copyFxList = Utils.DeepCopyList(currentAlphaSquareFxList);
-            fxCounter = 0;
 
             foreach (var fx in copyFxList)
             {
                 if (!fx) continue; 
                 SwitchActionProbabilityList(fx, currentFullyScratchedGrid);
-                fxCounter++;
             }
 
             // StartCoroutine(DelayedOverlappingCheck(moveDuration));
         }
 
-        IEnumerator DelayedOverlappingCheck(float waitTime)
+        // IEnumerator DelayedOverlappingCheck(float waitTime)
+        // {
+        //     yield return new WaitForSeconds(waitTime);
+        //     DestroyOverlappedFX();
+        // }
+
+        /// <summary>
+        /// return true if any prize winning grids are not fully scratched
+        /// </summary>
+        /// <returns></returns>
+        private bool IsAnyPrizeWinningGridNotFullyScratched()
         {
-            yield return new WaitForSeconds(waitTime);
-            DestroyOverlappedFX();
+            foreach (var prizeWinningGrid in prizeWinningGridList)
+            {
+                if (!fullyScratchingStatusMatrix.GetElement(prizeWinningGrid)) return true;
+            }
+
+            return false;
+        }
+
+        private Vector2Int FindNotFullyScratchedPrizeWinningGrid()
+        {
+            // randomize the order of each element
+            prizeWinningGridList.Shuffle();
+            foreach (var prizeWinningGrid in prizeWinningGridList)
+            {
+                if (!fullyScratchingStatusMatrix.GetElement(prizeWinningGrid)) return prizeWinningGrid;
+            }
+
+            // not found
+            print("No Not Fully Scratched Prize-Winning Grid Found");
+            return Vector2Int.zero;
+        }
+
+        private void SwitchIcons(Vector2Int gridOne, Vector2Int gridTwo)
+        {
+            var spriteRendererOne = iconObjectMatrix.GetElement(gridOne).GetComponent<SpriteRenderer>();
+            var spriteRendererTwo = iconObjectMatrix.GetElement(gridTwo).GetComponent<SpriteRenderer>();
+
+            Sprite spriteOne = spriteRendererOne.sprite;
+            Sprite spriteTwo = spriteRendererTwo.sprite;
+
+            spriteRendererOne.sprite = spriteTwo;
+            spriteRendererTwo.sprite = spriteOne;
         }
 
         private void SwitchActionProbabilityList(AlphaSquareFX currentFX, Vector2Int currentFullyScratchedGrid)
@@ -292,13 +340,53 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
                 }
                 else
                 {
-                    print(prizeWinningGridList.Contains(currentFX.currentGrid)
-                        ? nameof(PositiveScratchNoFXButFXOnWinningGridProbabilityList)
-                        : nameof(PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList));
+                    Dictionary<FXActionName, float> currentProbabilityList = new();
 
-                    ApplyProbabilityList(prizeWinningGridList.Contains(currentFX.currentGrid)
-                        ? PositiveScratchNoFXButFXOnWinningGridProbabilityList
-                        : PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList, currentFX);
+                    if (prizeWinningGridList.Contains(currentFX.currentGrid))
+                    {
+                        currentProbabilityList = PositiveScratchNoFXButFXOnWinningGridProbabilityList;
+                    }
+                    else
+                    {
+                        // if exists prize grid is not fully scratched
+                        if (IsAnyPrizeWinningGridNotFullyScratched())
+                        {
+                            print("Positive Icon Exchange: Not Fully Scratched Prize-Winning Grid Found");
+                            if (Random.value <= positiveIconExchangeProbability)
+                            {
+                                print("Exchange Icons!");
+                                Vector2Int randomNotFullyScratchedWinningGrid = FindNotFullyScratchedPrizeWinningGrid();
+
+                                notWinningGridList.Add(randomNotFullyScratchedWinningGrid);
+                                prizeWinningGridList.Remove(randomNotFullyScratchedWinningGrid);
+                                prizeWinningGridList.Add(currentFX.currentGrid);
+                                notWinningGridList.Remove(currentFX.currentGrid);
+
+                                // change the prizeRevealing on the iconObject
+                                var winningPrizeRevealing = iconObjectMatrix.GetElement(randomNotFullyScratchedWinningGrid).GetComponentInChildren<PrizeRevealing>();
+                                float currentPrize = winningPrizeRevealing.prize;
+                                winningPrizeRevealing.isWinningPrize = false;
+
+                                var currentFXGridPrizeRevealing = iconObjectMatrix.GetElement(currentFX.currentGrid).GetComponentInChildren<PrizeRevealing>();
+                                currentFXGridPrizeRevealing.prize = currentPrize;
+                                currentFXGridPrizeRevealing.isWinningPrize = true;
+
+                                SwitchIcons(currentFX.currentGrid, randomNotFullyScratchedWinningGrid);
+                            }
+                        }
+                        currentProbabilityList = PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList;
+                    }
+
+                    ApplyProbabilityList(currentProbabilityList, currentFX);
+
+
+                    // print(prizeWinningGridList.Contains(currentFX.currentGrid)
+                    //     ? nameof(PositiveScratchNoFXButFXOnWinningGridProbabilityList)
+                    //     : nameof(PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList));
+
+                    // ApplyProbabilityList(prizeWinningGridList.Contains(currentFX.currentGrid)
+                    //     ? PositiveScratchNoFXButFXOnWinningGridProbabilityList
+                    //     : PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList, currentFX);
                 }
             }
             else
@@ -315,13 +403,35 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
                 }
                 else
                 {
-                    print(prizeWinningGridList.Contains(currentFX.currentGrid)
-                        ? nameof(NegativeScratchNoFXButFXOnWinningGridProbabilityList)
-                        : nameof(NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList));
+                    Dictionary<FXActionName, float> currentProbabilityList = new();
 
-                    ApplyProbabilityList(prizeWinningGridList.Contains(currentFX.currentGrid)
-                        ? NegativeScratchNoFXButFXOnWinningGridProbabilityList
-                        : NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList, currentFX);
+                    if (prizeWinningGridList.Contains(currentFX.currentGrid))
+                    {
+                        currentProbabilityList = NegativeScratchNoFXButFXOnWinningGridProbabilityList;
+                    }
+                    else
+                    {
+                        // if exists prize grid is not fully scratched
+                        if (IsAnyPrizeWinningGridNotFullyScratched())
+                        {
+                            print("Negative Icon Exchange: Not Fully Scratched Prize-Winning Grid Found");
+                            if (Random.value <= negativeIconExchangeProbability)
+                            {
+                                print("Exchange Icons!");
+                                SwitchIcons(currentFX.currentGrid, Utils.GetRandomElementFromList(notWinningGridList));
+                            }
+                        }
+                        currentProbabilityList = NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList;
+                    }
+
+                    ApplyProbabilityList(currentProbabilityList, currentFX);
+                    // print(prizeWinningGridList.Contains(currentFX.currentGrid)
+                    //     ? nameof(NegativeScratchNoFXButFXOnWinningGridProbabilityList)
+                    //     : nameof(NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList));
+
+                    // ApplyProbabilityList(prizeWinningGridList.Contains(currentFX.currentGrid)
+                    //     ? NegativeScratchNoFXButFXOnWinningGridProbabilityList
+                    //     : NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList, currentFX);
                 }
             }
         }
@@ -350,13 +460,14 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
         private void MoveFXRandomly(AlphaSquareFX currentFX)
         {
-            var notFullyScratchedGridList = scratchingStatusMatrix.GetIndexOfElement(false);
+            var notFullyScratchedGridList = fullyScratchingStatusMatrix.GetIndexOfElement(false);
 
             if (notFullyScratchedGridList.Count == 0) return;
 
             Vector2Int newGrid = Utils.GetRandomElementFromList(notFullyScratchedGridList);
 
-            Vector2 newWorldPosition = gridPositionMatrix.GetElement(newGrid) + (Vector2)currentFX.transform.parent.position;
+            // Vector2 newWorldPosition = gridPositionMatrix.GetElement(newGrid) + (Vector2)currentFX.transform.parent.position;
+            Vector2 newWorldPosition = gridPositionMatrix.GetElement(newGrid);
 
             MoveFX(currentFX, newWorldPosition, newGrid);
         }
@@ -383,7 +494,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
             foreach (var grid in notFullyScratchedGridNearby.ToList())
             {
-                if (scratchingStatusMatrix.GetElement(grid))
+                if (fullyScratchingStatusMatrix.GetElement(grid))
                 {
                     notFullyScratchedGridNearby.Remove(grid);
                 }
@@ -395,7 +506,8 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
             // int randIndex = Random.Range(0, notFullyScratchedGridNearby.Count);
             // Vector2Int spawnGrid = notFullyScratchedGridNearby[randIndex];
             Vector2Int spawnGrid = Utils.GetRandomElementFromList(notFullyScratchedGridNearby);
-            Vector2 spawnPosition = gridPositionMatrix.GetElement(spawnGrid) + (Vector2)currentFX.transform.parent.position;;
+            // Vector2 spawnPosition = gridPositionMatrix.GetElement(spawnGrid) + (Vector2)currentFX.transform.parent.position;
+            Vector2 spawnPosition = gridPositionMatrix.GetElement(spawnGrid);
 
             AlphaSquareFX newFx = currentFX.Replicate(currentFX.transform.position, spawnGrid);
             MoveFX(newFx, spawnPosition, spawnGrid);
@@ -407,7 +519,7 @@ namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
 
         private void MoveFX(AlphaSquareFX fx, Vector2 destination, Vector2Int newGrid)
         {
-            fx.transform.DOMove(destination, moveDuration)
+            fx.transform.DOLocalMove(destination, moveDuration)
                 .OnStart(() =>
                 {
                     isMoving = true;

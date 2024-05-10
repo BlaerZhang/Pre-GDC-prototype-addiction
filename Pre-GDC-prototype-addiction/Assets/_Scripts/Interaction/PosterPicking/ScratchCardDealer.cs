@@ -146,6 +146,8 @@ namespace Interaction
 
         private void SpawnCard(SelectableScratchCard selectedCard)
         {
+            if (!selectedCard) return;
+
             cardsToSelect.Remove(selectedCard);
             selectedCard.transform.position = new Vector2(0, 0.5f);
 
