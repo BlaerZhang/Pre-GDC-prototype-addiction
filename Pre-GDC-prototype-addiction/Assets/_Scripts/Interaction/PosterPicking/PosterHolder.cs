@@ -77,7 +77,7 @@ namespace Interaction
         private void Collapse()
         {
             isScrollLocked = true;
-            recoverY = scrollViewHolder.position.y;
+            // recoverY = scrollViewHolder.position.y;
             scrollViewHolder.DOLocalMoveY(scrollCollapsedY, scrollCollapseDuration).SetEase(Ease.OutBack);
         }
 

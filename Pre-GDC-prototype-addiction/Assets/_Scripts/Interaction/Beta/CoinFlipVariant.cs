@@ -22,6 +22,8 @@ public class CoinFlipVariant : MonoBehaviour
         {
             isFlipping = true;
             
+            GameManager.Instance.resourceManager.ChangeTime(1);
+            
             int flipAngle = Random.Range(5, 7) * 180 * (Random.Range(0, 2) * 2 - 1);
             isFace = ((flipAngle / 180) % 2 == 0) == isFace ? isFace : !isFace;
             
