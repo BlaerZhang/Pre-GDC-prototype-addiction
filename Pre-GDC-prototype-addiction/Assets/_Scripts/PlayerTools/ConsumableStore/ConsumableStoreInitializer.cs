@@ -73,7 +73,7 @@ namespace _Scripts.ConsumableStore
             AddUnlockLevelText(consumableItem.transform, unlockLevel);
 
             // add tooltip on consumable items
-            AddTooltip(consumableItem, itemName, description);
+            AddTooltip(consumableItem, itemName, description, price);
 
             consumableItem.AddComponent<ConsumableItemIcon>().InitializeItem(consumablePrefab, itemName, price, itemSprite, consumableType, unlockLevel);
 
@@ -108,14 +108,18 @@ namespace _Scripts.ConsumableStore
             textMeshPro.alignment = TextAlignmentOptions.Center;
         }
 
-        private void AddTooltip(GameObject consumableItem, string itemName, string description)
+        /// <summary>
+        /// ~ for title; # for default text; @ for price
+        /// </summary>
+        private void AddTooltip(GameObject consumableItem, string itemName, string description, int price)
         {
             var tooltip = consumableItem.AddComponent<SimpleTooltip>();
             tooltip.isEnabled = false;
 
             if (tooltipStyle) tooltip.simpleTooltipStyle = tooltipStyle;
-            tooltip.infoLeft += itemName + "\n";
-            tooltip.infoLeft += description;
+            tooltip.infoLeft += "~" + itemName + "\n";
+            tooltip.infoLeft += "#" + description;
+            tooltip.infoRight += "@$ " + price;
         }
 
         /// <summary>

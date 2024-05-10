@@ -32,7 +32,19 @@ namespace Interaction
         // private BuyCardManager buyCardManager;
 
         public static Action<SelectableScratchCard, FaceEventType> onScratchCardSelected;
-    
+
+        private bool isCardSelected = false;
+
+        private void OnEnable()
+        {
+            onScratchCardSelected += ChangeSelectableState;
+        }
+
+        private void OnDisable()
+        {
+            onScratchCardSelected -= ChangeSelectableState;
+        }
+
         void Start()
         {
             cardFaceSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -51,6 +63,11 @@ namespace Interaction
             // StartCoroutine(BuyCardCoroutineChain(faceEventTypeResult));
 
             onScratchCardSelected?.Invoke(this, faceEventTypeResult);
+        }
+
+        private void ChangeSelectableState(SelectableScratchCard card, FaceEventType type)
+        {
+            isCardSelected = true;
         }
 
         // IEnumerator BuyCardCoroutineChain(FaceEventType faceEventTypeResult)
@@ -138,12 +155,15 @@ namespace Interaction
 
         protected void OnMouseUp()
         {
+            //Scale
+            cardFaceSprite.transform.DOScale(Vector3.one, 0.1f);
+        }
+
+        protected void OnMouseUpAsButton()
+        {
             // isDragging = false;
 
             // base.OnMouseUp();
-        
-            //Scale
-            cardFaceSprite.transform.DOScale(Vector3.one, 0.1f);
             
             //Order
             // cardFaceSprite.sortingOrder = 0;
@@ -160,7 +180,7 @@ namespace Interaction
             //     buyCardManager.TryBuyCard(this);
             // }
 
-            PickCard();
+            if (!isCardSelected) PickCard();
         }
 
         protected void OnMouseExit()

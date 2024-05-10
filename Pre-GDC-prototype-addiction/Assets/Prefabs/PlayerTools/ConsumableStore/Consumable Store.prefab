@@ -137,18 +137,18 @@ MonoBehaviour:
   consumableItemsData: {fileID: 11400000, guid: de7cafa8e2dc54034a0cd85babd5285e, type: 2}
   consumablePrefab: {fileID: 7368714118387795211, guid: 5785e58bcb19f403db65f326fb9972e3, type: 3}
   consumableStore: {fileID: 7396930427974719061}
-  cellSize: {x: 100, y: 100}
-  gapLength: {x: 175, y: 125}
+  cellSize: {x: 177, y: 177}
+  gapLength: {x: 50, y: 50}
   gridLayoutSizeConstraint: 2
   priceTextOffset: {x: 0, y: -70}
   priceTextColor: {r: 0, g: 0, b: 0, a: 1}
   priceTextFont: {fileID: 11400000, guid: 03ee08f7faf20a5458c724913437f059, type: 2}
-  priceTextFontSize: 72
+  priceTextFontSize: 0
   unlockLevelTextOffset: {x: 0, y: 0}
   unlockLevelTextColor: {r: 0, g: 1, b: 0.14352083, a: 1}
   unlockLevelTextFont: {fileID: 11400000, guid: 03ee08f7faf20a5458c724913437f059, type: 2}
-  unlockLevelTextFontSize: 72
-  lockedImagePrefab: {fileID: 0}
+  unlockLevelTextFontSize: 0
+  lockedImagePrefab: {fileID: 7368714118387795211, guid: bcdcc2e2598c2a14c9691927c0c5bfec, type: 3}
   tooltipStyle: {fileID: 11400000, guid: ea9f0a4b7d6b5c34ba5d87970521df9e, type: 2}
 --- !u!114 &1464302872218825695
 MonoBehaviour:
@@ -250,7 +250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -125}
+  m_AnchoredPosition: {x: 130, y: -170}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7396930427974719061
@@ -303,7 +303,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3505608324961143269}
   m_LocalRotation: {x: -0, y: -0, z: -0.1305262, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0, z: 1079.9999}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -378,7 +378,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6343276474675859286}
   m_LocalRotation: {x: -0, y: -0, z: -0.1305262, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0, z: 1079.9999}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -453,7 +453,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8467587446726587650}
   m_LocalRotation: {x: -0, y: -0, z: -0.1305262, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0, z: 1079.9999}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2133,6 +2133,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConsumableEffectSelector
       objectReference: {fileID: 0}
+    - target: {fileID: 6529100557366530183, guid: 92ddbc78e4b9e4cc28181bbfa9ce55f3, type: 3}
+      propertyPath: effectDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529100557366530183, guid: 92ddbc78e4b9e4cc28181bbfa9ce55f3, type: 3}
+      propertyPath: smokeGeneratePosition.x
+      value: -4.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529100557366530183, guid: 92ddbc78e4b9e4cc28181bbfa9ce55f3, type: 3}
+      propertyPath: smokeGeneratePosition.y
+      value: -3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529100557366530183, guid: 92ddbc78e4b9e4cc28181bbfa9ce55f3, type: 3}
+      propertyPath: smokeGeneratePosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529100557366530183, guid: 92ddbc78e4b9e4cc28181bbfa9ce55f3, type: 3}
+      propertyPath: smokeParticleSystemPrefab
+      value: 
+      objectReference: {fileID: 2488799713830201487, guid: cd323227742d64f0281743bc47418bf0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

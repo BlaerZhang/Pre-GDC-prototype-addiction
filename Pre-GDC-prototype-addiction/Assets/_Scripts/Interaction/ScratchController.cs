@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Cinemachine;
 using ScratchCardAsset;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 namespace Interaction
 {
@@ -31,17 +30,17 @@ namespace Interaction
         private ScratchCardAsset.ScratchCard card;
         private SpriteRenderer cardSprite;
         private EraseProgress eraseProgress;
-        private PostProcessVolume postProcessVolume;
+        // private PostProcessVolume postProcessVolume;
 
-        private ChromaticAberration chromaticAberration;
+        // private ChromaticAberration chromaticAberration;
 
         private void Start()
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
 
-            postProcessVolume = FindObjectOfType<PostProcessVolume>();
-            postProcessVolume.profile.TryGetSettings(out chromaticAberration);
+            // postProcessVolume = FindObjectOfType<PostProcessVolume>();
+            // postProcessVolume.profile.TryGetSettings(out chromaticAberration);
         }
 
         private void OnEnable()
@@ -122,7 +121,7 @@ namespace Interaction
                     }
                 }
                 vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = screenShake;
-                chromaticAberration.intensity.value += Time.deltaTime * 2;
+                // chromaticAberration.intensity.value += Time.deltaTime * 2;
                 //sound
             }
 
@@ -136,7 +135,7 @@ namespace Interaction
                     }
                 }
                 vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
-                if (chromaticAberration.intensity.value > 0) chromaticAberration.intensity.value -= Time.deltaTime;
+                // if (chromaticAberration.intensity.value > 0) chromaticAberration.intensity.value -= Time.deltaTime;
                 //sound stop
             }
         }

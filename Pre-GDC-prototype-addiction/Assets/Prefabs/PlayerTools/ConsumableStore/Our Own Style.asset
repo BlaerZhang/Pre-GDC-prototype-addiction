@@ -16,4 +16,22 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   fontAsset: {fileID: 11400000, guid: a46ba2c00f69a384c85a469120609bec, type: 2}
   defaultColor: {r: 0.9607844, g: 0.8941177, b: 0.7843138, a: 1}
-  fontStyles: []
+  fontStyles:
+  - tag: ~
+    color: {r: 0.9607844, g: 0.8941177, b: 0.7843138, a: 0}
+    bold: 1
+    italic: 0
+    underline: 1
+    strikethrough: 0
+  - tag: '@'
+    color: {r: 1, g: 1, b: 0, a: 0}
+    bold: 1
+    italic: 1
+    underline: 0
+    strikethrough: 0
+  - tag: '#'
+    color: {r: 0.9607844, g: 0.8941177, b: 0.7843138, a: 0}
+    bold: 0
+    italic: 0
+    underline: 0
+    strikethrough: 0
