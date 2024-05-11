@@ -63,7 +63,8 @@ namespace Interaction
         void Update()
         {
             if (card is null) return;
-            OnProgress(0);
+            if (Input.GetMouseButton(0)) OnProgress(0);
+            if(Input.GetMouseButtonUp(0)) foreach (var particle in particles) if (particle.isPlaying) particle.Stop();
         }
 
         private void OnProgress(float progress)
