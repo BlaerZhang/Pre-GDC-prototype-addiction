@@ -1,24 +1,22 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Manager;
-using Unity.VisualScripting;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 namespace Interaction.Clickable
 {
     public abstract class InteractableUIBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
-        [Header("Size Modifier")] 
+        [Title("Size Modifier")]
         [SerializeField] private bool sizeFeedback = true;
         [SerializeField] private float hoverSizeModifier = 1.1f;
         [SerializeField] private float pressSizeModifier = 0.8f;
         private Vector3 originalLocalScale;
 
-        [Header("Sound")]
+        [Title("Sound")]
         [SerializeField] private List<AudioClip> hoverSounds = new();
         [SerializeField] private List<AudioClip> pressSounds = new();
         [SerializeField] private List<AudioClip> exitSounds = new();
