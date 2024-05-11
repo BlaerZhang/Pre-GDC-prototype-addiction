@@ -168,12 +168,14 @@ public class PayphoneManager : InteractableUIBase
             })
             .OnComplete(() =>
             {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(textBubbleLayoutGroup.GetComponent<RectTransform>());
                 isTextShowing = false;
             })
             .OnPause(() =>
             {
                 // replace directly with complete text on kill
                 textUI.text = completeText;
+                LayoutRebuilder.ForceRebuildLayoutImmediate(textBubbleLayoutGroup.GetComponent<RectTransform>());
                 isTextShowing = false;
             }).Play();
 
@@ -194,7 +196,7 @@ public class PayphoneManager : InteractableUIBase
         GameObject newTextBubble = Instantiate(textBubblePrefab, textBubbleLayoutGroup.transform, false);
         newTextBubble.transform.localScale = Vector3.one;
 
-        // newTextBubble.transform.SetAsFirstSibling();
+        newTextBubble.transform.SetAsLastSibling();
         return newTextBubble;
     }
 
