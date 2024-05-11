@@ -196,7 +196,7 @@ public class PayphoneManager : InteractableUIBase
         GameObject newTextBubble = Instantiate(textBubblePrefab, textBubbleLayoutGroup.transform, false);
         newTextBubble.transform.localScale = Vector3.one;
 
-        newTextBubble.transform.SetAsLastSibling();
+        // newTextBubble.transform.SetAsFirstSibling();
         return newTextBubble;
     }
 
