@@ -9,10 +9,10 @@ namespace Interaction
         [HideInInspector] public bool isScrollLocked = false;
 
         [Title("Scroll View Settings")]
-        [SerializeField] protected Transform scrollViewHolder;
+        [SerializeField] public Transform scrollViewHolder;
 
         [SerializeField] protected float initialYPosition = -2.25f;
-        [SerializeField] protected Vector2 scrollLimits; // 滚动限制
+        [SerializeField] public Vector2 scrollLimits; // 滚动限制
         [SerializeField] protected float smoothTime = 0.3f; // 平滑时间
         [SerializeField] [PropertyRange(100, 10000)] protected float scrollSpeedSensitivity = 300f;
 

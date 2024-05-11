@@ -11,6 +11,7 @@ namespace Interaction
     {
         [Title("Poster Holder Settings")]
         [SerializeField] private float posterHolderInitialY;
+        [SerializeField] private Transform posterHolderScrollIndicator;
 
         [Title("Poster Picking Settings")]
         [InfoBox("The vector2 is the left-top point of the rect")]
@@ -70,6 +71,7 @@ namespace Interaction
         {
             isScrollLocked = true;
             recoverY = scrollViewHolder.position.y;
+            posterHolderScrollIndicator.SetParent(scrollViewHolder); //set parent to follow collapse
             scrollViewHolder.DOLocalMoveY(scrollSemiCollapsedY, scrollSemiCollapseDuration).SetEase(Ease.OutBack);
         }
 
@@ -78,6 +80,7 @@ namespace Interaction
         {
             isScrollLocked = true;
             // recoverY = scrollViewHolder.position.y;
+            posterHolderScrollIndicator.SetParent(scrollViewHolder); //set parent to follow collapse
             scrollViewHolder.DOLocalMoveY(scrollCollapsedY, scrollCollapseDuration).SetEase(Ease.OutBack);
         }
 
@@ -100,6 +103,7 @@ namespace Interaction
                 .OnComplete(() =>
                 {
                     isScrollLocked = false;
+                    posterHolderScrollIndicator.SetParent(this.transform); //set parent to unfollow collapse
                     ScratchCardPoster.isInteractable = true;
                 });
         }
