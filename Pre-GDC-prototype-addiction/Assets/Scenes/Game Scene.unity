@@ -11294,6 +11294,8 @@ MonoBehaviour:
       Data: 
   positiveLightEffectPrefab: {fileID: 523018379551594819, guid: 76762074a52e341bcbe889638dfae060, type: 3}
   negativeLightEffectPrefab: {fileID: 1761492123442763582, guid: 6c07982eab1644927b0729ba74249d2d, type: 3}
+  positiveIconExchangeProbability: 0
+  negativeIconExchangeProbability: 0
   moveDuration: 0.3
 --- !u!1001 &9215125477347444417
 PrefabInstance:
