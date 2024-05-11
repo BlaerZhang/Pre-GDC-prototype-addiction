@@ -197,7 +197,8 @@ namespace Interaction
         }
         protected override void OnMouseUp()
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (!isDragging) return;
+            // if (EventSystem.current.IsPointerOverGameObject()) return;
             if (!isInteractable) return;
 
             if(!unlock) return;
@@ -258,7 +259,7 @@ namespace Interaction
 
         protected override void OnMouseExit()
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            // if (EventSystem.current.IsPointerOverGameObject()) return;
             if (!isDragging)
             {
                 base.OnMouseExit();
