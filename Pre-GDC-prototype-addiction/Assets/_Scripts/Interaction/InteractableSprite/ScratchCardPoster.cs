@@ -166,7 +166,7 @@ namespace Interaction
 
         protected override void OnMouseDrag()
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (EventSystem.current.IsPointerOverGameObject() && !isDragging) return;
             if (!isInteractable) return;
 
             if (!unlock) return;
