@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: ConsumableItemsData
   m_EditorClassIdentifier: 
   consumableItemsDataList:
-  - name: Gum
+  - name: Chewable Jolly
     icon: {fileID: 21300000, guid: d87977e76ecf5c44a87111ee32fa4309, type: 3}
     itemSprite: {fileID: 6881212354145439598, guid: d4f1fbce15ab094438d62181934ff44f, type: 3}
     type: 3
     unlockLevel: 0
     price: 2
     description: GumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGumGum
-  - name: Soda
+  - name: Drinkable Jolly
     icon: {fileID: 21300000, guid: b84cce48742e5fa41b2161a118e2f207, type: 3}
     itemSprite: {fileID: 21300000, guid: 01dbda64559a98a45a56f6f775a2ee43, type: 3}
     type: 1
     unlockLevel: 1
     price: 5
     description: SodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSodaSoda
-  - name: Cigarette
+  - name: Puffable Jolly
     icon: {fileID: 21300000, guid: d9e8ea62ebfde7a44987ecd10e5015a0, type: 3}
     itemSprite: {fileID: 1988539211, guid: a7e5d89cdcf6b2142a5738ea7a9cf1d3, type: 3}
     type: 2

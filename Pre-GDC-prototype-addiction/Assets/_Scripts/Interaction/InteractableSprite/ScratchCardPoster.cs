@@ -7,6 +7,7 @@ using ScratchCardGeneration.PrizeGenerator;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -115,6 +116,7 @@ namespace Interaction
 
         protected override void OnMouseEnter()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             // if (!isInteractable) return;
 
             if (!isDragging)
@@ -130,6 +132,7 @@ namespace Interaction
 
         protected override void OnMouseDown()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (!isInteractable) return;
 
             if (unlock)
@@ -163,6 +166,7 @@ namespace Interaction
 
         protected override void OnMouseDrag()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (!isInteractable) return;
 
             if (!unlock) return;
@@ -193,6 +197,7 @@ namespace Interaction
         }
         protected override void OnMouseUp()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (!isInteractable) return;
 
             if(!unlock) return;
@@ -253,6 +258,7 @@ namespace Interaction
 
         protected override void OnMouseExit()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (!isDragging)
             {
                 base.OnMouseExit();

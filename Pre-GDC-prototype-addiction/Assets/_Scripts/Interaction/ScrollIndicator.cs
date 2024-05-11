@@ -39,7 +39,7 @@ public class ScrollIndicator : MonoBehaviour
         int targetDotIndex = Mathf.RoundToInt((dotList.Count - 1) * scrollPercentage);
 
         targetDot = dotList[targetDotIndex];
-
+        
         return targetDot;
     }
 
