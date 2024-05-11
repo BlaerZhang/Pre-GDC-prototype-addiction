@@ -42,9 +42,9 @@ public class TitleDoor : InteractableUIBase
         isOpened = true;
         leftDoor.DOScaleX(0f, 1f);
         rightDoor.DOScaleX(0f, 1f);
-        uiScale.DOScale(Vector3.one * 10, 1f).OnComplete(() =>
+        uiScale.DOScale(Vector3.one * 20, 1f).OnComplete(() =>
         {
-            doorMask.DOColor(Color.black, 0.25f).OnComplete(() => SceneManager.LoadScene("Game Scene"));
+            doorMask.DOFade(1, 0.25f).OnComplete(() => SceneManager.LoadScene("Game Scene"));
         });
 
     }
