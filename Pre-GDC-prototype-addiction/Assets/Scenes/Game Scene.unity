@@ -896,6 +896,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 285760280}
+  - {fileID: 1297599987}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &94099919
@@ -1923,8 +1924,8 @@ MonoBehaviour:
   redeemAreaActivateThreshold: 0.5
   redeemAreaActivateDistance: 200
   redeemAreaStopThreshold: 0.8
-  redeemAreaMoveAmount: 2000
-  redeemCardStayYOffset: 5.5
+  redeemAreaMoveAmount: 2400
+  redeemCardStayYOffset: 5.25
   dealAudio: 1
   dealSounds:
   - {fileID: 8300000, guid: 1729a20b18d06904b999c3b53ef33d48, type: 3}
@@ -2013,6 +2014,7 @@ GameObject:
   - component: {fileID: 310462307}
   - component: {fileID: 310462309}
   - component: {fileID: 310462308}
+  - component: {fileID: 310462310}
   m_Layer: 5
   m_Name: Redeem Area
   m_TagString: Untagged
@@ -2029,15 +2031,15 @@ RectTransform:
   m_GameObject: {fileID: 310462306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0001597, y: 2.0001597, z: 2.0001597}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 801151669}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 750, y: 1000}
+  m_AnchoredPosition: {x: -262, y: 0}
+  m_SizeDelta: {x: 3208, y: 1378.4375}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &310462308
 MonoBehaviour:
@@ -2059,7 +2061,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e16487b27e6e510499aa2048fb666c34, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2077,6 +2079,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310462306}
   m_CullTransparentMesh: 1
+--- !u!114 &310462310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310462306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecefd69a79c0423a9f41ca2b7a2a76fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialFade: {fileID: 1685756590}
 --- !u!1 &312405962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,152 +2555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f3d0e9b97e7084a95f1518b4013ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &393036219
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 801151669}
-    m_Modifications:
-    - target: {fileID: 506003742298409598, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496876320122343833, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496876320122343833, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.14117648
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496876320122343833, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.69411767
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496876320122343833, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.9058824
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496876320122343833, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496876320122343833, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4280594919
-      objectReference: {fileID: 0}
-    - target: {fileID: 6537253359817303472, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.9979998
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.9979998
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.9979998
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9010402316716844852, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-      propertyPath: m_Name
-      value: Number Roller
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
---- !u!224 &393036220 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8999737584710232741, guid: 2f8a6c0900ba05344a9822813272b1ae, type: 3}
-  m_PrefabInstance: {fileID: 393036219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &397233013
 GameObject:
   m_ObjectHideFlags: 3
@@ -2748,81 +2617,6 @@ MonoBehaviour:
   m_AmplitudeGain: 0
   m_FrequencyGain: 1
   mNoiseOffsets: {x: 0, y: 0, z: 0}
---- !u!1 &398904099
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 398904100}
-  - component: {fileID: 398904102}
-  - component: {fileID: 398904101}
-  m_Layer: 5
-  m_Name: Green Mask
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &398904100
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398904099}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 129113647}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.00005340576}
-  m_SizeDelta: {x: 396, y: 50.6}
-  m_Pivot: {x: 0.5, y: 1}
---- !u!114 &398904101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398904099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.1137255, g: 0.42352945, b: 0.12941177, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &398904102
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398904099}
-  m_CullTransparentMesh: 1
 --- !u!1 &407363029
 GameObject:
   m_ObjectHideFlags: 0
@@ -3115,12 +2909,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: faceEventUIDict
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[UnityEngine.RectTransform,
-        UnityEngine.CoreModule]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[UnityEngine.RectTransform, UnityEngine.CoreModule]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FaceEventType, Assembly-CSharp]],
-        mscorlib
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3313,12 +3107,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: CardLayoutConstructorDic
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[ScratchCardGeneration.ScratchCardBrand,
-        Assembly-CSharp],[ScratchCardGeneration.LayoutConstructor.ICardLayoutConstructor,
+      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.ScratchCardGeneration.ScratchCardBrand,
+        Assembly-CSharp],[_Scripts.ScratchCardGeneration.LayoutConstructor.ICardLayoutConstructor,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ScratchCardGeneration.ScratchCardBrand,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.ScratchCardGeneration.ScratchCardBrand,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -3353,7 +3147,7 @@ MonoBehaviour:
   currentCardPrize: 0
   prizeDistributionData: {fileID: 11400000, guid: c34e2992b33634cfd92791dbf4e32413, type: 2}
   prizePityData: {fileID: 11400000, guid: 088ec434be36b4d4cbe4d2c7bd983333, type: 2}
-  cardGenerationPosition: {x: 0, y: 0.5}
+  cardGenerationPosition: {x: -1.25, y: 0.5}
   currentScratchCard: {fileID: 0}
   scratchBackgroundPrefab: {fileID: 828839226113459185, guid: 4a5f640ad8acf42bd875c9d06d2d55e1, type: 3}
 --- !u!1 &537177232
@@ -3744,12 +3538,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 737191375582525072, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1429617218}
-    - targetCorrespondingSourceObject: {fileID: 13868407726025601, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 634890165}
     - targetCorrespondingSourceObject: {fileID: 7857175621562899094, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -4383,24 +4171,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633279806}
   m_CullTransparentMesh: 1
---- !u!1 &634890160 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 13868407726025601, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
-  m_PrefabInstance: {fileID: 562985141}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &634890165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634890160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecefd69a79c0423a9f41ca2b7a2a76fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorialFade: {fileID: 1685756590}
 --- !u!1001 &664283354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5602,7 +5372,6 @@ RectTransform:
   - {fileID: 2080355672}
   - {fileID: 129113647}
   - {fileID: 312405963}
-  - {fileID: 393036220}
   - {fileID: 729096701}
   - {fileID: 1685756589}
   m_Father: {fileID: 707862734}
@@ -7275,6 +7044,118 @@ MonoBehaviour:
   - {fileID: 19896284}
   - {fileID: 1936185622}
   mouse: {fileID: 696222727}
+--- !u!1 &1297599986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1297599987}
+  - component: {fileID: 1297599988}
+  - component: {fileID: 1297599989}
+  - component: {fileID: 1297599990}
+  m_Layer: 0
+  m_Name: Highlight Area Indicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1297599987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297599986}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -4.52, z: 0}
+  m_LocalScale: {x: 9.38, y: 3.86, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 63288065}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1297599988
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297599986}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 16556ca18a634cd469064812f6770fbe, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 2
+  m_SpriteSortPoint: 0
+--- !u!114 &1297599989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297599986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecefd69a79c0423a9f41ca2b7a2a76fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialFade: {fileID: 1685756590}
+--- !u!114 &1297599990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297599986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace5477898983a84387bf1c2a0e43e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollViewBackground: {fileID: 1911409775}
 --- !u!1001 &1377008977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7647,24 +7528,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5551484211195397926, guid: 0b4184024a901419e9f7460c0ac0d3ef, type: 3}
   m_PrefabInstance: {fileID: 1412201499}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1429617213 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 737191375582525072, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
-  m_PrefabInstance: {fileID: 562985141}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1429617218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429617213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecefd69a79c0423a9f41ca2b7a2a76fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorialFade: {fileID: 1685756590}
 --- !u!1001 &1461342543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8563,12 +8426,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: faceEventDurationDict
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Int32,
-        mscorlib]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FaceEventType, Assembly-CSharp]],
-        mscorlib
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -8860,11 +8723,11 @@ MonoBehaviour:
     SerializationNodes:
     - Name: cardPrefabsDict
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[Interaction.SelectableScratchCard,
+      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.Interaction.InteractableSprite.SelectableScratchCard,
         Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Interaction.SelectableScratchCard,
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[_Scripts.Interaction.InteractableSprite.SelectableScratchCard,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
@@ -8940,12 +8803,13 @@ MonoBehaviour:
       Data: 
     - Name: eventTriggerWeightPerFaceTypeDict
       Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[FaceType, Assembly-CSharp],[System.Collections.Generic.Dictionary`2[[FaceEventType,
+      Data: 2|System.Collections.Generic.Dictionary`2[[_Scripts.Interaction.FaceType,
+        Assembly-CSharp],[System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[FaceType, Assembly-CSharp]],
-        mscorlib
+      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.Interaction.FaceType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -8966,12 +8830,12 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 4|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Single,
-        mscorlib]], mscorlib
+      Data: 4|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[FaceEventType, Assembly-CSharp]],
-        mscorlib
+      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -9049,8 +8913,8 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: 6|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Single,
-        mscorlib]], mscorlib
+      Data: 6|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 5
@@ -9122,8 +8986,8 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 7
-      Data: 7|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Single,
-        mscorlib]], mscorlib
+      Data: 7|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 5
@@ -9195,8 +9059,8 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 7
-      Data: 8|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Single,
-        mscorlib]], mscorlib
+      Data: 8|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 5
@@ -9268,8 +9132,8 @@ MonoBehaviour:
       Data: 4
     - Name: $v
       Entry: 7
-      Data: 9|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Single,
-        mscorlib]], mscorlib
+      Data: 9|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 5
@@ -9382,6 +9246,7 @@ GameObject:
   - component: {fileID: 1685756589}
   - component: {fileID: 1685756591}
   - component: {fileID: 1685756590}
+  - component: {fileID: 1685756592}
   m_Layer: 5
   m_Name: Tutorial Mask
   m_TagString: Untagged
@@ -9422,7 +9287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 802428459}
   m_Color: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 0.78431374}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9447,6 +9312,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685756588}
   m_CullTransparentMesh: 1
+--- !u!114 &1685756592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685756588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b127a9f6909ef4f8177b23c66a5a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1723227501
 GameObject:
   m_ObjectHideFlags: 0
@@ -9964,6 +9841,7 @@ GameObject:
   - component: {fileID: 1911409775}
   - component: {fileID: 1911409774}
   - component: {fileID: 1911409773}
+  - component: {fileID: 1911409776}
   m_Layer: 5
   m_Name: Scroll View Background
   m_TagString: Untagged
@@ -10066,6 +9944,57 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!331 &1911409776
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911409771}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: a96c9b645df27684aa96c269f32d7f76, type: 3}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1912299528
 GameObject:
@@ -10584,6 +10513,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 602965261}
+  - {fileID: 7166216610430332283}
   - {fileID: 878656683}
   - {fileID: 1412201500}
   - {fileID: 1787735784}
@@ -10652,7 +10582,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -10976,6 +10906,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!224 &2158654032370553618
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174945579547995352}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7166216610430332283}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &2477502696043932842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11093,6 +11042,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c97034314b22749ada12fc406e45adc2, type: 3}
+--- !u!225 &3020992786115348477
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3252572844861701982}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!4 &3040260873467042779
 Transform:
   m_ObjectHideFlags: 0
@@ -11134,6 +11095,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68712590858779507}
   m_Mesh: {fileID: -4165814508769011603, guid: bad13f4ae123aab4699e896f8ca8c242, type: 3}
+--- !u!1 &3252572844861701982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7166216610430332283}
+  - component: {fileID: 6440888210258737047}
+  - component: {fileID: 6537253359467815947}
+  - component: {fileID: 3639186598640093247}
+  - component: {fileID: 3020992786115348477}
+  m_Layer: 5
+  m_Name: NumberRoller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &3639186598640093247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3252572844861701982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266ab3b053e7a4c7f97d949b6efd9232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberText: {fileID: 5496876319873126434}
+  duration: 3
+  fontAsset: {fileID: 11400000, guid: aa80d0602316feb4e9487f74ec4d76a1, type: 2}
 --- !u!4 &3679881161154957482
 Transform:
   m_ObjectHideFlags: 0
@@ -11169,6 +11165,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 801151669}
     m_Modifications:
+    - target: {fileID: 6517994683583707551, guid: 1e9c1039922fb47bc869b652818ea510, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6612974405320042393, guid: 1e9c1039922fb47bc869b652818ea510, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -11311,6 +11311,14 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!222 &4581337272418760486
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174945579547995352}
+  m_CullTransparentMesh: 1
 --- !u!212 &5263953158533781250
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11443,6 +11451,133 @@ MonoBehaviour:
   reflectionAngle: -15
   reflectionSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   reflectionTransparency: 0.5
+--- !u!114 &5496876319873126434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174945579547995352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 999999
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: aa80d0602316feb4e9487f74ec4d76a1, type: 2}
+  m_sharedMaterial: {fileID: 8445212276532546709, guid: aa80d0602316feb4e9487f74ec4d76a1, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4280463592
+  m_fontColor: {r: 0.909804, g: 0.6901961, b: 0.13333334, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 500
+  m_fontSizeBase: 500
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &6440888210258737047
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3252572844861701982}
+  m_CullTransparentMesh: 1
+--- !u!114 &6537253359467815947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3252572844861701982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &6722899509281127686 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4209284724154204731, guid: 1e9c1039922fb47bc869b652818ea510, type: 3}
@@ -11454,6 +11589,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &7166216610430332283
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3252572844861701982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 2158654032370553618}
+  m_Father: {fileID: 2045035532}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7642541511706453881
 GameObject:
   m_ObjectHideFlags: 0
@@ -11727,9 +11882,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4578774009389544024, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1928468249}
-    - targetCorrespondingSourceObject: {fileID: 4578774009389544024, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 398904100}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
 --- !u!4 &8396039969177300143
@@ -11984,12 +12136,12 @@ MonoBehaviour:
       Data: 
     - Name: FXTypeProbabilityDict
       Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
-        Assembly-CSharp],[System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+      Data: 2|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
+        Assembly-CSharp],[System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
+      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -12011,11 +12163,11 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 4|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+      Data: 4|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -12082,7 +12234,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: 6|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+      Data: 6|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12143,7 +12295,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 7
-      Data: 7|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+      Data: 7|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12204,11 +12356,11 @@ MonoBehaviour:
       Data: 
     - Name: PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList
       Entry: 7
-      Data: 8|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 8|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 9|System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 9|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -12278,7 +12430,7 @@ MonoBehaviour:
       Data: 
     - Name: PositiveScratchNoFXButFXOnWinningGridProbabilityList
       Entry: 7
-      Data: 10|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 10|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12342,7 +12494,7 @@ MonoBehaviour:
       Data: 
     - Name: PositiveScratchFXButFXNotOnWinningGridProbabilityList
       Entry: 7
-      Data: 11|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 11|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12406,7 +12558,7 @@ MonoBehaviour:
       Data: 
     - Name: PositiveScratchFXAndFXOnWinningGridProbabilityList
       Entry: 7
-      Data: 12|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 12|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12470,7 +12622,7 @@ MonoBehaviour:
       Data: 
     - Name: NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList
       Entry: 7
-      Data: 13|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 13|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12534,7 +12686,7 @@ MonoBehaviour:
       Data: 
     - Name: NegativeScratchNoFXButFXOnWinningGridProbabilityList
       Entry: 7
-      Data: 14|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 14|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12598,7 +12750,7 @@ MonoBehaviour:
       Data: 
     - Name: NegativeScratchFXButFXNotOnWinningGridProbabilityList
       Entry: 7
-      Data: 15|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 15|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12662,7 +12814,7 @@ MonoBehaviour:
       Data: 
     - Name: NegativeScratchFXAndFXOnWinningGridProbabilityList
       Entry: 7
-      Data: 16|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 16|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12729,6 +12881,39 @@ MonoBehaviour:
   positiveIconExchangeProbability: 0
   negativeIconExchangeProbability: 0
   moveDuration: 0.3
+--- !u!1 &9174945579547995352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2158654032370553618}
+  - component: {fileID: 4581337272418760486}
+  - component: {fileID: 5496876319873126434}
+  - component: {fileID: 9174945579547995353}
+  m_Layer: 5
+  m_Name: Number
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &9174945579547995353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174945579547995352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

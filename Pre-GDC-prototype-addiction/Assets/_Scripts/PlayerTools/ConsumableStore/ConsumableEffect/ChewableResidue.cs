@@ -1,4 +1,4 @@
-using Interaction.Clickable;
+using _Scripts.Interaction.InteractableUI;
 using UnityEngine;
 
 namespace _Scripts.ConsumableStore.ConsumableEffect

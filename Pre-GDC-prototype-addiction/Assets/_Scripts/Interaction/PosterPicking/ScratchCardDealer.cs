@@ -150,7 +150,7 @@ namespace _Scripts.Interaction.PosterPicking
             if (!selectedCard) return;
 
             cardsToSelect.Remove(selectedCard);
-            selectedCard.transform.position = new Vector2(0, 0.5f);
+            selectedCard.transform.position = GameManager.Instance.scratchCardGenerator.cardGenerationPosition;
 
             // spawn card
             Sequence zoomInCardAnimation = DOTween.Sequence();
@@ -204,6 +204,7 @@ namespace _Scripts.Interaction.PosterPicking
                 GameManager.Instance.resourceManager.PlayerGold += (int)generator.currentCardPrize;
                 GameManager.Instance.statsTrackingManager.UpdatePricePrizeHistory(currentPickedCardOriginalPrice, (int)generator.currentCardPrize);
                 GameManager.Instance.resourceManager.ChangeTime(5);
+                DeactivateRedeemArea();
                 currentCard.transform.DOMoveY(currentCard.transform.position.y + 10, 0.1f).OnComplete(() =>
                 {
                     Destroy(currentCard.gameObject);
@@ -221,7 +222,7 @@ namespace _Scripts.Interaction.PosterPicking
 
         private void OnScratchCardReleased(bool isRedeemed)
         {
-            DeactivateRedeemArea();
+            if (!isRedeemed) DeactivateRedeemArea();
             if (isRedeemed) RedeemPrize();
         }
 
