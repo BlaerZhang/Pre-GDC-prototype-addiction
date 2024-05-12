@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Scripts.ConsumableStore.ConsumableEffect
 {
-    public class TobaccoEffect : MonoBehaviour, IConsumableEffect
+    public class PuffableEffect : MonoBehaviour, IConsumableEffect
     {
         public static Action onStopSmoking;
 
@@ -34,11 +34,12 @@ namespace _Scripts.ConsumableStore.ConsumableEffect
                     var mainModule = smokeParticleSystemPrefab.main;
                     mainModule.duration = effectDuration;
                     mainModule.loop = false;
+                    mainModule.playOnAwake = true;
                 }
             }
             else
             {
-                smokeParticleObject.GetComponent<ParticleSystem>().Play();
+                smokeParticleObject.GetComponent<ParticleSystem>()?.Play();
             }
 
             // start effect countdown, interactions will not consume time in this duration
@@ -46,7 +47,7 @@ namespace _Scripts.ConsumableStore.ConsumableEffect
             print("start smoking");
             yield return new WaitForSeconds(effectDuration);
             print("stop smoking");
-            smokeParticleObject.GetComponent<ParticleSystem>().Stop();
+            smokeParticleObject.GetComponent<ParticleSystem>()?.Stop();
             GameManager.Instance.resourceManager.isTimeStopped = false;
 
             // when the effect ends, tell ashtray generator to generate a new stub

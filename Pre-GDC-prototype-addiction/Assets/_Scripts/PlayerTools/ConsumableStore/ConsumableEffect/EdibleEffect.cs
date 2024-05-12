@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace _Scripts.ConsumableStore.ConsumableEffect
 {
-    public class DrugEffect : MonoBehaviour, IConsumableEffect
+    public class EdibleEffect : MonoBehaviour, IConsumableEffect
     {
         public static Action onDrugEffectStop;
 

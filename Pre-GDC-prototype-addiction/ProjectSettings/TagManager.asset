@@ -50,3 +50,6 @@ TagManager:
   - name: Scratch Card
     uniqueID: 969988853
     locked: 0
+  - name: Overlay
+    uniqueID: 3623190157
+    locked: 0

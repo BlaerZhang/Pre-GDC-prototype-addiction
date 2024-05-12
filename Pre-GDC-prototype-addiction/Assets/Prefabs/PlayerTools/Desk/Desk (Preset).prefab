@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4190929961220917866}
   - component: {fileID: 556901445974757987}
   - component: {fileID: 7855598061312141568}
-  - component: {fileID: 3872966903464472382}
+  - component: {fileID: 5089485901366672387}
   - component: {fileID: 3680147492213814318}
   m_Layer: 5
   m_Name: Drinkable Jolly
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3872966903464472382
+--- !u!114 &5089485901366672387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 534861445181124983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a60d5323a78949939eac9c1643b6e128, type: 3}
+  m_Script: {fileID: 11500000, guid: 77490955814b45518b33180ae09c6031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sizeFeedback: 1
@@ -95,7 +95,7 @@ MonoBehaviour:
   hoverSounds: []
   pressSounds: []
   exitSounds: []
-  consumableType: 1
+  consumableType: 0
   hoverSprite: {fileID: 0}
 --- !u!114 &3680147492213814318
 MonoBehaviour:
@@ -206,7 +206,7 @@ MonoBehaviour:
   hoverSounds: []
   pressSounds: []
   exitSounds: []
-  consumableType: 3
+  consumableType: 2
   hoverSprite: {fileID: 0}
 --- !u!1 &1719900558966034610
 GameObject:
@@ -343,7 +343,7 @@ MonoBehaviour:
   pressSounds:
   - {fileID: 8300000, guid: dd4dd5c6921474d319fb8f0ca5af2e64, type: 3}
   exitSounds: []
-  consumableType: 2
+  consumableType: 1
   hoverSprite: {fileID: 110417584, guid: a7e5d89cdcf6b2142a5738ea7a9cf1d3, type: 3}
 --- !u!1 &4086175560605167020
 GameObject:
@@ -514,7 +514,7 @@ MonoBehaviour:
   hoverSounds: []
   pressSounds: []
   exitSounds: []
-  consumableType: 4
+  consumableType: 3
   hoverSprite: {fileID: 0}
 --- !u!1 &5117080936537029888
 GameObject:

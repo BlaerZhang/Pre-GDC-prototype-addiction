@@ -13,7 +13,8 @@ public class CursorManager : MonoBehaviour
         Dragging,
         DragAreaHover,
         ScratchFieldHover,
-        Scratching
+        Scratching,
+        Drinking
     }
 
     [Serializable]

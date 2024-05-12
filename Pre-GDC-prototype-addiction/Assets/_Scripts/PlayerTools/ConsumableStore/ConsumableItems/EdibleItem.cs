@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace _Scripts.ConsumableStore
 {
-    public class DrugItem : ConsumableItemBase
+    public class EdibleItem : ConsumableItemBase
     {
         
     }
