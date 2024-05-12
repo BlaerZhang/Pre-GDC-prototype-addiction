@@ -62,6 +62,7 @@ public class PayphoneManager : InteractableUIBase
 
     private void Update()
     {
+        // TODO: delete / change in the build
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             if (currentMessageList == null) RetrieveMessage("0");
@@ -72,9 +73,9 @@ public class PayphoneManager : InteractableUIBase
             if (currentMessageList == null) RetrieveMessage("1");
         }
 
-        if (Input.GetMouseButtonDown(1) & inTextDisplayMode)
+        if (Input.GetMouseButtonDown(0))
         {
-            CheckTextDisplay();
+            if (inTextDisplayMode) CheckTextDisplay();
         }
     }
 
@@ -220,7 +221,8 @@ public class PayphoneManager : InteractableUIBase
 
         print("Replaying last message");
         currentMessageList = lastMessageList;
-        DisplayMessage();
+        inTextDisplayMode = true;
+        // DisplayMessage();
     }
 
     public override void OnPointerDown(PointerEventData eventData)
