@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Interaction
+namespace _Scripts.Interaction
 {
     public class ButtonHoverStopAnimator : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {

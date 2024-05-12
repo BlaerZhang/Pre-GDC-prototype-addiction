@@ -1,12 +1,12 @@
 using System.Collections.Generic;
+using _Scripts.Manager;
 using DG.Tweening;
-using Manager;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Random = UnityEngine.Random;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
-namespace Interaction.Clickable
+namespace _Scripts.Interaction.InteractableUI
 {
     public abstract class InteractableUIBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {

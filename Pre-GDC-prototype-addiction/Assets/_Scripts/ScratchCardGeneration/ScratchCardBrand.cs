@@ -1,4 +1,4 @@
-namespace ScratchCardGeneration
+namespace _Scripts.ScratchCardGeneration
 {
     public enum ScratchCardBrand
     {

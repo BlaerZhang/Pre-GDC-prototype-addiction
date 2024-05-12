@@ -1,18 +1,10 @@
-using System;
 using System.Collections.Generic;
-using DG.Tweening;
-using Manager;
-using ScratchCardGeneration;
-using ScratchCardGeneration.PrizeGenerator;
+using _Scripts.Manager;
 using Sirenix.OdinInspector;
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-namespace Interaction
+namespace _Scripts.Interaction.InteractableSprite
 {
     public class InteractableSpriteBase : MonoBehaviour
     {

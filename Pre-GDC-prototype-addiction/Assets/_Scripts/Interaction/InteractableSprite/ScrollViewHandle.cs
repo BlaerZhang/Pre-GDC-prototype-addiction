@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Interaction
+namespace _Scripts.Interaction.InteractableSprite
 {
     [RequireComponent(typeof(BoxCollider2D))]
     public class ScrollViewHandle : InteractableSpriteBase

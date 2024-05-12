@@ -1,7 +1,7 @@
-using Manager;
+using _Scripts.Manager;
 using UnityEngine;
 
-namespace Interaction
+namespace _Scripts.Interaction
 {
     public class ButtonFunctionUtils : MonoBehaviour
     {

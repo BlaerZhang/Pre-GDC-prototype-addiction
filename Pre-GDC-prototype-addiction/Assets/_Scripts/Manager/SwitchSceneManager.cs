@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Manager
+namespace _Scripts.Manager
 {
     public class SwitchSceneManager : SerializedMonoBehaviour
     {

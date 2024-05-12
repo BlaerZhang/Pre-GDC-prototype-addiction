@@ -1,9 +1,9 @@
-using Manager;
-using ScratchCardGeneration.Utilities;
+using _Scripts.Interaction.PosterPicking;
+using _Scripts.ScratchCardGeneration.Utilities;
 using TMPro;
 using UnityEngine;
 
-namespace Interaction
+namespace _Scripts.Interaction
 {
     public class FakePrizeRevealing : MonoBehaviour
     {

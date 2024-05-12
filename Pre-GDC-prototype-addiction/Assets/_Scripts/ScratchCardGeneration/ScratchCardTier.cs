@@ -1,9 +1,12 @@
-public enum ScratchCardTier
+namespace _Scripts.ScratchCardGeneration
 {
-    Level1,
-    Level2,
-    Level3,
-    Level4,
-    Level5,
-    Level6,
+    public enum ScratchCardTier
+    {
+        Level1,
+        Level2,
+        Level3,
+        Level4,
+        Level5,
+        Level6,
+    }
 }

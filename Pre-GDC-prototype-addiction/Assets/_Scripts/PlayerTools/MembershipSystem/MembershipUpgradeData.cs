@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace _Scripts.MembershipSystem
+namespace _Scripts.PlayerTools.MembershipSystem
 {
     [CreateAssetMenu(fileName = "MembershipUpgradeSetting", menuName = "ScriptableObjects/MembershipUpgradeSetting", order = 0)]
     public class MembershipUpgradeData : SerializedScriptableObject

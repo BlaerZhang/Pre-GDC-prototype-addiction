@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using _Scripts.FaceEventSystem;
+using _Scripts.FaceEventSystem.FaceEvents;
+using _Scripts.ScratchCardGeneration;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -6,7 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Manager
+namespace _Scripts.Manager
 {
     public class UIManager : SerializedMonoBehaviour
     {

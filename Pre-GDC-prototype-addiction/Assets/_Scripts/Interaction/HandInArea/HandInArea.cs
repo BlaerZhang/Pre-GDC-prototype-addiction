@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Interaction
+namespace _Scripts.Interaction.HandInArea
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class HandInArea : MonoBehaviour

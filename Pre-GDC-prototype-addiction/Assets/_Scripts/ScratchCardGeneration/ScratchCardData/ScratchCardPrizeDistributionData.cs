@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace ScratchCardGeneration.ScratchCardData
+namespace _Scripts.ScratchCardGeneration.ScratchCardData
 {
     [CreateAssetMenu(fileName = "ScratchCardPrizeDistributionData", menuName = "ScriptableObjects/ScratchCardPrizeDistribution", order = 0)]
     public class ScratchCardPrizeDistributionData : SerializedScriptableObject

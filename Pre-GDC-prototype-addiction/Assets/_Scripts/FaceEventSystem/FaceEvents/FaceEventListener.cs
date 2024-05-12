@@ -1,26 +1,27 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using _Scripts.CustomEventSystem;
-using Interaction;
-using Manager;
-using Unity.VisualScripting;
+using _Scripts.Interaction.PosterPicking;
+using _Scripts.Manager;
+using _Scripts.ScratchCardGeneration;
 using UnityEngine;
 
-public class FaceEventListener : GameEventListenerBase
+namespace _Scripts.FaceEventSystem.FaceEvents
 {
-    public FaceEventType faceEventType;
-    public int eventDuration = 3;
-    public int strength = 0;
-    public AudioClip triggerAudio;
-    public static Action<FaceEventType, int, ScratchCardTier> onFaceEventTriggered;
-    public override void OnEventRaised()
+    public class FaceEventListener : GameEventListenerBase
     {
-        if (faceEventType == FaceEventType.NoEvent) return;
+        public FaceEventType faceEventType;
+        public int eventDuration = 3;
+        public int strength = 0;
+        public AudioClip triggerAudio;
+        public static Action<FaceEventType, int, ScratchCardTier> onFaceEventTriggered;
+        public override void OnEventRaised()
+        {
+            if (faceEventType == FaceEventType.NoEvent) return;
         
-        onFaceEventTriggered?.Invoke(faceEventType, eventDuration, ScratchCardDealer.currentPickedCardTier);
+            onFaceEventTriggered?.Invoke(faceEventType, eventDuration, ScratchCardDealer.currentPickedCardTier);
         
-        GameManager.Instance.audioManager.PlaySound(triggerAudio);
-        Debug.Log($"{faceEventType} triggered");
+            GameManager.Instance.audioManager.PlaySound(triggerAudio);
+            Debug.Log($"{faceEventType} triggered");
+        }
     }
 }

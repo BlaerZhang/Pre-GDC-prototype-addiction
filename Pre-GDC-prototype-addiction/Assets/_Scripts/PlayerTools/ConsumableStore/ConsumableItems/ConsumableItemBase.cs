@@ -1,12 +1,12 @@
 using System;
+using _Scripts.Interaction.InteractableUI;
 using DG.Tweening;
-using Interaction.Clickable;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace _Scripts.ConsumableStore
+namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
 {
     public class ConsumableItemBase : InteractableUIBase
     {

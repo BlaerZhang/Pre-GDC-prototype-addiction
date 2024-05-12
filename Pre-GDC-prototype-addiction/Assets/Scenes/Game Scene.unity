@@ -2053,7 +2053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4920,6 +4920,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Consumable Store
       objectReference: {fileID: 0}
+    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: screenBorderOffset
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: overlayCanvasObject
+      value: 
+      objectReference: {fileID: 2045035531}
+    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: generationBoundRect.x
+      value: -8.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: generationBoundRect.y
+      value: -4.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: chewableResiduePrefabs
+      value: 
+      objectReference: {fileID: 4562464324445495068, guid: 6403b3d10b7ee4cb7a0ecc6e05b31627, type: 3}
+    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: generationBoundRect.width
+      value: 16.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: generationBoundRect.height
+      value: 8.65
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5677,7 +5705,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Aspect: 1.7777779
-    - _Smoothness: 0.02
+    - _Smoothness: 0.01
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &874094101 stripped
@@ -9410,7 +9438,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
-  smoothness: 0.02
+  smoothness: 0.01
 --- !u!222 &1685756591
 CanvasRenderer:
   m_ObjectHideFlags: 0

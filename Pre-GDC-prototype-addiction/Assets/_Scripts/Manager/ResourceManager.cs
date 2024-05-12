@@ -1,8 +1,9 @@
 using System;
-using Interaction;
+using _Scripts.Interaction.InteractableSprite;
+using _Scripts.MetaphysicsSystem;
 using UnityEngine;
 
-namespace Manager
+namespace _Scripts.Manager
 {
     public class ResourceManager : MonoBehaviour
     {

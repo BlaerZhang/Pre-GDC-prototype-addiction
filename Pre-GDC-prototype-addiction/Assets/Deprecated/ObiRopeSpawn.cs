@@ -1,3 +1,4 @@
+using _Scripts.Interaction;
 using Obi;
 using ScratchCardAsset;
 using UnityEngine;
