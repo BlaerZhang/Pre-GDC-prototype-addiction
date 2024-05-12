@@ -11,7 +11,7 @@ public class PresetDeskItemPlacement : MonoBehaviour
     [OnInspectorGUI]
     private void OnInspectorGUI()
     {
-        UnityEditor.EditorGUILayout.HelpBox("Set slot as this object's child, slot must have the same with the item", UnityEditor.MessageType.Info);
+        UnityEditor.EditorGUILayout.HelpBox("Set slot as this object's child, slot must have the same name with the item", UnityEditor.MessageType.Info);
     }
 #endif
 
@@ -43,6 +43,7 @@ public class PresetDeskItemPlacement : MonoBehaviour
 
         for (int i = 0; i < itemCount; i++)
         {
+            if (i == 0) continue;
             var item = transform.GetChild(i).gameObject;
             deskItemList.Add(item);
             item.SetActive(false);

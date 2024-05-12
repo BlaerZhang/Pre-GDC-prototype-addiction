@@ -1,17 +1,21 @@
 using System;
-using _Scripts.ConsumableStore.ConsumableEffect;
 using DG.Tweening;
 using Interaction.Clickable;
-using Unity.VisualScripting;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace _Scripts.ConsumableStore
 {
     public class ConsumableItemBase : InteractableUIBase
     {
-        [Header("Item Settings")]
+        [Title("Item Settings")]
         public ConsumableType consumableType;
+
+        protected Image itemImage;
+        protected Sprite normalSprite;
+        [SerializeField] protected Sprite hoverSprite;
 
         public static Action<ConsumableType> onItemConsumed;
         public static Action<string> onItemRemoved;
@@ -24,6 +28,13 @@ namespace _Scripts.ConsumableStore
             gameObject.SetActive(false);
         }
 
+        protected override void Start()
+        {
+            base.Start();
+            if (TryGetComponent(out itemImage)) normalSprite = itemImage.sprite;
+            else gameObject.AddComponent<Image>();
+        }
+
         protected void OnDestroy()
         {
             ConsumableItemIcon.onTryBuyItem -= AddItem;
@@ -33,12 +44,16 @@ namespace _Scripts.ConsumableStore
         {
             if (isConsuming) return;
             base.OnPointerEnter(eventData);
+            if (hoverSprite) itemImage.sprite = hoverSprite;
+            // else Debug.LogError("Hover sprite is null!");
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
             if (isConsuming) return;
             base.OnPointerExit(eventData);
+            if (itemImage.sprite) itemImage.sprite = normalSprite;
+            else Debug.LogError("itemImage is null!");
         }
 
         public override void OnPointerDown(PointerEventData eventData)
@@ -71,6 +86,8 @@ namespace _Scripts.ConsumableStore
 
         protected virtual void RemoveItem()
         {
+            itemImage.sprite = normalSprite;
+
             isConsuming = false;
 
             gameObject.SetActive(false);

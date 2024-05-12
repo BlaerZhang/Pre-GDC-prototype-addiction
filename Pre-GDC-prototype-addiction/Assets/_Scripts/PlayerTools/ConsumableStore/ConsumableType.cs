@@ -5,6 +5,7 @@ namespace _Scripts.ConsumableStore
         AlcoholicBeverage,
         NonAlcoholicBeverage,
         Tobacco,
-        Chewable
+        Chewable,
+        Drug
     }
 }

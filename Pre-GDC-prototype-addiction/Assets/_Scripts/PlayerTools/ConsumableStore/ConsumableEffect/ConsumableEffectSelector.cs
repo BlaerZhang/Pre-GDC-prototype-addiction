@@ -19,7 +19,7 @@ namespace _Scripts.ConsumableStore.ConsumableEffect
             ConsumableItemBase.onItemConsumed -= SelectEffect;
         }
 
-        // TODO: add more effects, (remove effects after finished?)
+        // TODO: remove effects after finished?
         private void SelectEffect(ConsumableType consumableType)
         {
             if (effectDict.TryGetValue(consumableType, out IConsumableEffect effect))
