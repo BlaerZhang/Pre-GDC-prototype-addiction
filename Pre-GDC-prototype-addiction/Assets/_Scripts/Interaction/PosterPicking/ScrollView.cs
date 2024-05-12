@@ -18,6 +18,16 @@ namespace Interaction
 
         private float currentVelocity = 0f; // 当前速度，用于平滑减速
 
+        private void OnEnable()
+        {
+            PayphoneManager.onPhoneStateChanged += SetScrollLock;
+        }
+        
+        private void OnDisable()
+        {
+            PayphoneManager.onPhoneStateChanged -= SetScrollLock;
+        }
+
         void Start()
         {
             ResetScrollViewToInitialPosition();
@@ -56,6 +66,11 @@ namespace Interaction
         {
             // 设置初始位置
             scrollViewHolder.position = new Vector3(scrollViewHolder.position.x, initialYPosition, scrollViewHolder.position.z);
+        }
+
+        protected void SetScrollLock(bool lockState)
+        {
+            isScrollLocked = lockState;
         }
 
         // void RecordLastYPosition()

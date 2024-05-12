@@ -29,6 +29,7 @@ public class PayphoneManager : InteractableUIBase
     [SerializeField] private float textShowSpeed;
     [SerializeField] private float textFadeModifier;
     [SerializeField] private float textFadeDuration;
+    [SerializeField] private GameObject raycastBlocker;
 
     // reset required
     private List<string> lastMessageList;
@@ -42,6 +43,9 @@ public class PayphoneManager : InteractableUIBase
 
     // come with the message id that could be used in the dictionary to retrieve the message text
     public static Action<string> onPhoneMessageSent;
+    
+    // broadcast payphone state, true is IN Message, false is OUT OF Message
+    public static Action<bool> onPhoneStateChanged;
 
     private void OnEnable()
     {
@@ -58,6 +62,7 @@ public class PayphoneManager : InteractableUIBase
         base.Start();
         currentDisplayBubbles = new List<GameObject>(maxBubbleAmount);
         textDisplayVolume.enabled = false;
+        raycastBlocker.SetActive(false);
     }
 
     private void Update()
@@ -103,6 +108,9 @@ public class PayphoneManager : InteractableUIBase
 
     private void ResetStatesAfterMessage()
     {
+        //unlock interactions
+        raycastBlocker.SetActive(false);
+        
         // remove blur background
         textDisplayVolume.enabled = false;
 
@@ -121,6 +129,9 @@ public class PayphoneManager : InteractableUIBase
         // set last msg list for next use
         lastMessageList = Utils.DeepCopyList(currentMessageList);
         currentMessageList = null;
+        
+        //broadcast state
+        onPhoneStateChanged?.Invoke(false);
     }
 
     /// <summary>
@@ -130,6 +141,7 @@ public class PayphoneManager : InteractableUIBase
     {
         inTextDisplayMode = true;
         // TODO: lock all other interactions: panel block UI interaction, lock sprite
+        raycastBlocker.SetActive(true);
         // blur background
         textDisplayVolume.enabled = true;
         // textDisplayVolume.TryGet(out DepthOfField depthOfField);
@@ -190,6 +202,9 @@ public class PayphoneManager : InteractableUIBase
 
         currentDisplayBubbles.Add(newTextBubble);
         messageIndexCounter++;
+        
+        //broadcast state
+        onPhoneStateChanged?.Invoke(true);
     }
 
     private GameObject AddTextBubble()
