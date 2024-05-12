@@ -4,7 +4,7 @@ using Cinemachine;
 using ScratchCardAsset;
 using UnityEngine;
 
-namespace Interaction
+namespace _Scripts.Interaction
 {
     public class ScratchController : MonoBehaviour
     {
@@ -27,7 +27,7 @@ namespace Interaction
         public List<ParticleSystem> particles;
         public AudioClip soundLayer1;
 
-        private ScratchCardAsset.ScratchCard card;
+        private global::ScratchCardAsset.ScratchCard card;
         private SpriteRenderer cardSprite;
         private EraseProgress eraseProgress;
         // private PostProcessVolume postProcessVolume;
@@ -55,7 +55,7 @@ namespace Interaction
             MouseEnterDetector.onMouseExitEvent -= RemoveCurrentCard;
         }
 
-        private void InitializeCurrentCard(ScratchCardAsset.ScratchCard currentCard)
+        private void InitializeCurrentCard(global::ScratchCardAsset.ScratchCard currentCard)
         {
             card = currentCard;
             print(currentCard.name);

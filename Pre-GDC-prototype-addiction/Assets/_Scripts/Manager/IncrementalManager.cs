@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Manager
+namespace _Scripts.Manager
 {
     public class IncrementalManager : MonoBehaviour
     {

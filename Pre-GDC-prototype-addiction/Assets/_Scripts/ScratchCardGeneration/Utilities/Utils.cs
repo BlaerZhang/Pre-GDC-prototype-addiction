@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace ScratchCardGeneration.Utilities
+namespace _Scripts.ScratchCardGeneration.Utilities
 {
     public static class Utils
     {
@@ -14,7 +14,7 @@ namespace ScratchCardGeneration.Utilities
             while (count > 1)
             {
                 count--;
-                System.Random random = new System.Random();
+                global::System.Random random = new global::System.Random();
                 int randomIndex = random.Next(count + 1);
                 (list[randomIndex], list[count]) = (list[count], list[randomIndex]);
             }

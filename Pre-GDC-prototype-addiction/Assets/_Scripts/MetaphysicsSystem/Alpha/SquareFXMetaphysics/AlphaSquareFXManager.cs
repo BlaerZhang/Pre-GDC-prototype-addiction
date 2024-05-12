@@ -1,18 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.Interaction;
+using _Scripts.Manager;
+using _Scripts.ScratchCardGeneration;
+using _Scripts.ScratchCardGeneration.LayoutConstructor;
+using _Scripts.ScratchCardGeneration.Utilities;
 using DG.Tweening;
-using Interaction;
-using Manager;
-using ScratchCardGeneration;
-using ScratchCardGeneration.LayoutConstructor;
-using ScratchCardGeneration.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace MetaphysicsSystem.Alpha.SquareFXMetaphysics
+namespace _Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics
 {
     public class AlphaSquareFXManager : SerializedMonoBehaviour
     {

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI
+namespace _Scripts.VisualTools
 {
     public class ColorFillShadow : BaseMeshEffect
     {

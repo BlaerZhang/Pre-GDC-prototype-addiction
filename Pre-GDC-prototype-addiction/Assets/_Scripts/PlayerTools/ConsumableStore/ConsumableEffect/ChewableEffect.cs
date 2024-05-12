@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Scripts.ConsumableStore.ConsumableEffect
+namespace _Scripts.PlayerTools.ConsumableStore.ConsumableEffect
 {
     public class ChewableEffect : MonoBehaviour, IConsumableEffect
     {

@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using Manager;
-using ScratchCardGeneration.Utilities;
+using _Scripts.ScratchCardGeneration.Utilities;
 using UnityEngine;
 
-namespace ScratchCardGeneration.PrizeGenerator
+namespace _Scripts.ScratchCardGeneration.PrizeGenerator
 {
     public static class BasePrizeGenerator
     {

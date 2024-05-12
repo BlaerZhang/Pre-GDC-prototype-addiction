@@ -1,17 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.FaceEventSystem;
+using _Scripts.Interaction.InteractableSprite;
+using _Scripts.Interaction.PosterPicking;
+using _Scripts.ScratchCardGeneration;
+using _Scripts.ScratchCardGeneration.LayoutConstructor;
 using DG.Tweening;
-using Interaction;
-using ScratchCardAsset;
-using ScratchCardGeneration;
-using ScratchCardGeneration.LayoutConstructor;
-using ScratchCardGeneration.Utilities;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using Sirenix.OdinInspector;
 
-namespace Manager
+namespace _Scripts.Manager
 {
     // TODO: rework buy card
     public class BuyCardManager : SerializedMonoBehaviour

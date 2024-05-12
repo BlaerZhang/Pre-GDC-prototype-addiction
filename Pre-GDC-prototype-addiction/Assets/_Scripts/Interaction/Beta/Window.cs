@@ -1,43 +1,44 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Manager;
+using _Scripts.Manager;
 using UnityEngine;
 
-public class Window : MonoBehaviour
+namespace _Scripts.Interaction.Beta
 {
-    private Animator windowAnimator;
-    private int windowIndex = 0; //Window Index: 0=morning; 1=noon; 2=night
+    public class Window : MonoBehaviour
+    {
+        private Animator windowAnimator;
+        private int windowIndex = 0; //Window Index: 0=morning; 1=noon; 2=night
 
-    private void OnEnable()
-    {
-        windowAnimator = GetComponent<Animator>();
-        ResourceManager.OnTimeChanged += UpdateWindowState;
-    }
-
-    private void OnDisable()
-    {
-        ResourceManager.OnTimeChanged -= UpdateWindowState;
-    }
-    
-    void UpdateWindowState(DateTime currentDateTime)
-    {
-        switch (currentDateTime.Hour)
+        private void OnEnable()
         {
-            case <4:
-                windowIndex = 2;
-                break;
-            case <14:
-                windowIndex = 0;
-                break;
-            case <20:
-                windowIndex = 1;
-                break;
-            case >=20:
-                windowIndex = 2;
-                break;
+            windowAnimator = GetComponent<Animator>();
+            ResourceManager.OnTimeChanged += UpdateWindowState;
         }
 
-        windowAnimator.SetInteger("Window Index", windowIndex);
+        private void OnDisable()
+        {
+            ResourceManager.OnTimeChanged -= UpdateWindowState;
+        }
+    
+        void UpdateWindowState(DateTime currentDateTime)
+        {
+            switch (currentDateTime.Hour)
+            {
+                case <4:
+                    windowIndex = 2;
+                    break;
+                case <14:
+                    windowIndex = 0;
+                    break;
+                case <20:
+                    windowIndex = 1;
+                    break;
+                case >=20:
+                    windowIndex = 2;
+                    break;
+            }
+
+            windowAnimator.SetInteger("Window Index", windowIndex);
+        }
     }
 }

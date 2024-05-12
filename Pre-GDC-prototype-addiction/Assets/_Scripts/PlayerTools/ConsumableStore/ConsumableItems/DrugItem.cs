@@ -1,10 +1,4 @@
-using _Scripts.ConsumableStore.ConsumableEffect;
-using DG.Tweening;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
-
-namespace _Scripts.ConsumableStore
+namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
 {
     public class DrugItem : ConsumableItemBase
     {

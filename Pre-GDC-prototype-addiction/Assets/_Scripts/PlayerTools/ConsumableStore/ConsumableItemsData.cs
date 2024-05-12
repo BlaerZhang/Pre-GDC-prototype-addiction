@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Sirenix.OdinInspector;
-using UnityEngine.Serialization;
+using UnityEngine;
 
-namespace _Scripts.ConsumableStore
+namespace _Scripts.PlayerTools.ConsumableStore
 {
     [CreateAssetMenu(fileName = "ConsumableItemsData", menuName = "ScriptableObjects/ConsumableItemsData", order = 0)]
     public class ConsumableItemsData : ScriptableObject

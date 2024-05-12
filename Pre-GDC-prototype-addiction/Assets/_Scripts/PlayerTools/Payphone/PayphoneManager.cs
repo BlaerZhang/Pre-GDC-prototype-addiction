@@ -1,267 +1,269 @@
 using System;
 using System.Collections.Generic;
-using _Scripts.PlayerTools.Payphone;
+using _Scripts.Interaction.InteractableUI;
+using _Scripts.ScratchCardGeneration.Utilities;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using DG.Tweening;
-using Interaction.Clickable;
-using ScratchCardGeneration.Utilities;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class PayphoneManager : InteractableUIBase
+namespace _Scripts.PlayerTools.Payphone
 {
-    [Title("Message Data")]
-    [SerializeField] private ScriptablePayphoneMessages scriptablePayphoneMessages;
+    public class PayphoneManager : InteractableUIBase
+    {
+        [Title("Message Data")]
+        [SerializeField] private ScriptablePayphoneMessages scriptablePayphoneMessages;
 
-    [Title("Text Bubble")]
-    [SerializeField] private GameObject textBubbleLayoutGroup;
-    [SerializeField] private GameObject textBubblePrefab;
-    [SerializeField] private int maxBubbleAmount;
+        [Title("Text Bubble")]
+        [SerializeField] private GameObject textBubbleLayoutGroup;
+        [SerializeField] private GameObject textBubblePrefab;
+        [SerializeField] private int maxBubbleAmount;
 
-    private List<GameObject> currentDisplayBubbles;
-    private int currentBubbleAmount = 0;
+        private List<GameObject> currentDisplayBubbles;
+        private int currentBubbleAmount = 0;
 
-    [Title("Text Displaying")]
-    [SerializeField] private Volume textDisplayVolume;
-    [SerializeField] private float textShowSpeed;
-    [SerializeField] private float textFadeModifier;
-    [SerializeField] private float textFadeDuration;
-    [SerializeField] private GameObject raycastBlocker;
+        [Title("Text Displaying")]
+        [SerializeField] private Volume textDisplayVolume;
+        [SerializeField] private float textShowSpeed;
+        [SerializeField] private float textFadeModifier;
+        [SerializeField] private float textFadeDuration;
+        [SerializeField] private GameObject raycastBlocker;
 
-    // reset required
-    private List<string> lastMessageList;
-    private List<string> currentMessageList;
-    private int messageIndexCounter = 0;
+        // reset required
+        private List<string> lastMessageList;
+        private List<string> currentMessageList;
+        private int messageIndexCounter = 0;
 
-    private bool inTextDisplayMode = false;
-    private bool isTextShowing = false;
+        private bool inTextDisplayMode = false;
+        private bool isTextShowing = false;
 
-    private Tween currentTextDisplayTween;
+        private Tween currentTextDisplayTween;
 
-    // come with the message id that could be used in the dictionary to retrieve the message text
-    public static Action<string> onPhoneMessageSent;
+        // come with the message id that could be used in the dictionary to retrieve the message text
+        public static Action<string> onPhoneMessageSent;
     
-    // broadcast payphone state, true is IN Message, false is OUT OF Message
-    public static Action<bool> onPhoneStateChanged;
+        // broadcast payphone state, true is IN Message, false is OUT OF Message
+        public static Action<bool> onPhoneStateChanged;
 
-    private void OnEnable()
-    {
-        onPhoneMessageSent += RetrieveMessage;
-    }
-
-    private void OnDisable()
-    {
-        onPhoneMessageSent -= RetrieveMessage;
-    }
-
-    protected override void Start()
-    {
-        base.Start();
-        currentDisplayBubbles = new List<GameObject>(maxBubbleAmount);
-        textDisplayVolume.enabled = false;
-        raycastBlocker.SetActive(false);
-    }
-
-    private void Update()
-    {
-        // TODO: delete / change in the build
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        private void OnEnable()
         {
-            if (currentMessageList == null) RetrieveMessage("0");
+            onPhoneMessageSent += RetrieveMessage;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        private void OnDisable()
         {
-            if (currentMessageList == null) RetrieveMessage("1");
+            onPhoneMessageSent -= RetrieveMessage;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        protected override void Start()
         {
-            if (inTextDisplayMode) CheckTextDisplay();
-        }
-    }
-
-    private void RetrieveMessage(string messageId)
-    {
-        if (!scriptablePayphoneMessages.PhoneMessageDict.TryGetValue(messageId, out List<string> messageList))
-        {
-            Debug.LogError("No message found in scriptable payphone message lists, please check your message id");
-            return;
+            base.Start();
+            currentDisplayBubbles = new List<GameObject>(maxBubbleAmount);
+            textDisplayVolume.enabled = false;
+            raycastBlocker.SetActive(false);
         }
 
-        currentMessageList = messageList;
-        DisplayMessage();
-    }
-
-    private void CheckTextDisplay()
-    {
-        if (isTextShowing)
+        private void Update()
         {
-            // stop the tween
-            currentTextDisplayTween.Pause();
-        }
-        else DisplayMessage();
-    }
-
-    private void ResetStatesAfterMessage()
-    {
-        //unlock interactions
-        raycastBlocker.SetActive(false);
-        
-        // remove blur background
-        textDisplayVolume.enabled = false;
-
-        // remove all bubbles
-        foreach (var bubble in currentDisplayBubbles)
-        {
-            RemoveTextBubble(bubble);
-        }
-        currentDisplayBubbles.Clear();
-
-        // reset states
-        messageIndexCounter = 0;
-        inTextDisplayMode = false;
-        currentBubbleAmount = 0;
-
-        // set last msg list for next use
-        lastMessageList = Utils.DeepCopyList(currentMessageList);
-        currentMessageList = null;
-        
-        //broadcast state
-        onPhoneStateChanged?.Invoke(false);
-    }
-
-    /// <summary>
-    /// called when click the screen when in the messaging mode
-    /// </summary>
-    private void DisplayMessage()
-    {
-        inTextDisplayMode = true;
-        // TODO: lock all other interactions: panel block UI interaction, lock sprite
-        raycastBlocker.SetActive(true);
-        // blur background
-        textDisplayVolume.enabled = true;
-        // textDisplayVolume.TryGet(out DepthOfField depthOfField);
-
-        // when all messages are played
-        if (messageIndexCounter >= currentMessageList.Count)
-        {
-            ResetStatesAfterMessage();
-            return;
-        }
-
-        if (currentBubbleAmount == maxBubbleAmount)
-        {
-            GameObject textBubbleToRemove = currentDisplayBubbles[0];
-            currentDisplayBubbles.RemoveAt(0);
-            RemoveTextBubble(textBubbleToRemove);
-        }
-        else
-        {
-            currentBubbleAmount++;
-        }
-
-        GameObject newTextBubble = AddTextBubble();
-        var textUI = newTextBubble.GetComponentInChildren<TextMeshProUGUI>();
-
-        // text displays one by one
-        textUI.text = "";
-        int stringLength = currentMessageList[messageIndexCounter].Length;
-        float textPlayDuration = stringLength / textShowSpeed;
-        string completeText = currentMessageList[messageIndexCounter];
-        currentTextDisplayTween = textUI.DOText(completeText, textPlayDuration)
-            .SetEase(Ease.Linear)
-            .OnStart(() =>
+            // TODO: delete / change in the build
+            if (Input.GetKeyDown(KeyCode.Alpha0))
             {
-                isTextShowing = true;
-            })
-            .OnComplete(() =>
-            {
-                LayoutRebuilder.ForceRebuildLayoutImmediate(textBubbleLayoutGroup.GetComponent<RectTransform>());
-                isTextShowing = false;
-            })
-            .OnPause(() =>
-            {
-                // replace directly with complete text on kill
-                textUI.text = completeText;
-                LayoutRebuilder.ForceRebuildLayoutImmediate(textBubbleLayoutGroup.GetComponent<RectTransform>());
-                isTextShowing = false;
-            }).Play();
+                if (currentMessageList == null) RetrieveMessage("0");
+            }
 
-        // fade older bubbles
-        if (currentDisplayBubbles.Count > 0)
-        {
-            GameObject lastNewAddedBubble = currentDisplayBubbles[^1];
-            lastNewAddedBubble.GetComponent<Image>().DOFade(textFadeModifier, textFadeDuration);
-            lastNewAddedBubble.GetComponentInChildren<TextMeshProUGUI>().DOFade(textFadeModifier, textFadeDuration);
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                if (currentMessageList == null) RetrieveMessage("1");
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (inTextDisplayMode) CheckTextDisplay();
+            }
         }
 
-        currentDisplayBubbles.Add(newTextBubble);
-        messageIndexCounter++;
+        private void RetrieveMessage(string messageId)
+        {
+            if (!scriptablePayphoneMessages.PhoneMessageDict.TryGetValue(messageId, out List<string> messageList))
+            {
+                Debug.LogError("No message found in scriptable payphone message lists, please check your message id");
+                return;
+            }
+
+            currentMessageList = messageList;
+            DisplayMessage();
+        }
+
+        private void CheckTextDisplay()
+        {
+            if (isTextShowing)
+            {
+                // stop the tween
+                currentTextDisplayTween.Pause();
+            }
+            else DisplayMessage();
+        }
+
+        private void ResetStatesAfterMessage()
+        {
+            //unlock interactions
+            raycastBlocker.SetActive(false);
         
-        //broadcast state
-        onPhoneStateChanged?.Invoke(true);
-    }
+            // remove blur background
+            textDisplayVolume.enabled = false;
 
-    private GameObject AddTextBubble()
-    {
-        GameObject newTextBubble = Instantiate(textBubblePrefab, textBubbleLayoutGroup.transform, false);
-        newTextBubble.transform.localScale = Vector3.one;
+            // remove all bubbles
+            foreach (var bubble in currentDisplayBubbles)
+            {
+                RemoveTextBubble(bubble);
+            }
+            currentDisplayBubbles.Clear();
 
-        // newTextBubble.transform.SetAsFirstSibling();
-        return newTextBubble;
-    }
+            // reset states
+            messageIndexCounter = 0;
+            inTextDisplayMode = false;
+            currentBubbleAmount = 0;
 
-    private void RemoveTextBubble(GameObject textBubbleToRemove)
-    {
-        // TODO: remove effects
-        Destroy(textBubbleToRemove);
-    }
-
-    /// <summary>
-    /// called when click on the payphone
-    /// </summary>
-    private void ReplayLastMessageList()
-    {
-        // if there are messages played before
-        if (lastMessageList == null)
-        {
-            Debug.LogError("No previous message found!");
-            return;
+            // set last msg list for next use
+            lastMessageList = Utils.DeepCopyList(currentMessageList);
+            currentMessageList = null;
+        
+            //broadcast state
+            onPhoneStateChanged?.Invoke(false);
         }
 
-        print("Replaying last message");
-        currentMessageList = lastMessageList;
-        inTextDisplayMode = true;
-        // DisplayMessage();
-    }
+        /// <summary>
+        /// called when click the screen when in the messaging mode
+        /// </summary>
+        private void DisplayMessage()
+        {
+            inTextDisplayMode = true;
+            // TODO: lock all other interactions: panel block UI interaction, lock sprite
+            raycastBlocker.SetActive(true);
+            // blur background
+            textDisplayVolume.enabled = true;
+            // textDisplayVolume.TryGet(out DepthOfField depthOfField);
 
-    public override void OnPointerDown(PointerEventData eventData)
-    {
-        if (inTextDisplayMode) return;
-        base.OnPointerDown(eventData);
-    }
+            // when all messages are played
+            if (messageIndexCounter >= currentMessageList.Count)
+            {
+                ResetStatesAfterMessage();
+                return;
+            }
 
-    public override void OnPointerEnter(PointerEventData eventData)
-    {
-        if (inTextDisplayMode) return;
-        base.OnPointerEnter(eventData);
-    }
+            if (currentBubbleAmount == maxBubbleAmount)
+            {
+                GameObject textBubbleToRemove = currentDisplayBubbles[0];
+                currentDisplayBubbles.RemoveAt(0);
+                RemoveTextBubble(textBubbleToRemove);
+            }
+            else
+            {
+                currentBubbleAmount++;
+            }
 
-    public override void OnPointerExit(PointerEventData eventData)
-    {
-        if (inTextDisplayMode) return;
-        base.OnPointerExit(eventData);
-    }
+            GameObject newTextBubble = AddTextBubble();
+            var textUI = newTextBubble.GetComponentInChildren<TextMeshProUGUI>();
 
-    public override void OnPointerUp(PointerEventData eventData)
-    {
-        if (inTextDisplayMode) return;
-        base.OnPointerUp(eventData);
-    }
+            // text displays one by one
+            textUI.text = "";
+            int stringLength = currentMessageList[messageIndexCounter].Length;
+            float textPlayDuration = stringLength / textShowSpeed;
+            string completeText = currentMessageList[messageIndexCounter];
+            currentTextDisplayTween = textUI.DOText(completeText, textPlayDuration)
+                .SetEase(Ease.Linear)
+                .OnStart(() =>
+                {
+                    isTextShowing = true;
+                })
+                .OnComplete(() =>
+                {
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(textBubbleLayoutGroup.GetComponent<RectTransform>());
+                    isTextShowing = false;
+                })
+                .OnPause(() =>
+                {
+                    // replace directly with complete text on kill
+                    textUI.text = completeText;
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(textBubbleLayoutGroup.GetComponent<RectTransform>());
+                    isTextShowing = false;
+                }).Play();
 
-    protected override void ClickableEvent() => ReplayLastMessageList();
+            // fade older bubbles
+            if (currentDisplayBubbles.Count > 0)
+            {
+                GameObject lastNewAddedBubble = currentDisplayBubbles[^1];
+                lastNewAddedBubble.GetComponent<Image>().DOFade(textFadeModifier, textFadeDuration);
+                lastNewAddedBubble.GetComponentInChildren<TextMeshProUGUI>().DOFade(textFadeModifier, textFadeDuration);
+            }
+
+            currentDisplayBubbles.Add(newTextBubble);
+            messageIndexCounter++;
+        
+            //broadcast state
+            onPhoneStateChanged?.Invoke(true);
+        }
+
+        private GameObject AddTextBubble()
+        {
+            GameObject newTextBubble = Instantiate(textBubblePrefab, textBubbleLayoutGroup.transform, false);
+            newTextBubble.transform.localScale = Vector3.one;
+
+            // newTextBubble.transform.SetAsFirstSibling();
+            return newTextBubble;
+        }
+
+        private void RemoveTextBubble(GameObject textBubbleToRemove)
+        {
+            // TODO: remove effects
+            Destroy(textBubbleToRemove);
+        }
+
+        /// <summary>
+        /// called when click on the payphone
+        /// </summary>
+        private void ReplayLastMessageList()
+        {
+            // if there are messages played before
+            if (lastMessageList == null)
+            {
+                Debug.LogError("No previous message found!");
+                return;
+            }
+
+            print("Replaying last message");
+            currentMessageList = lastMessageList;
+            inTextDisplayMode = true;
+            // DisplayMessage();
+        }
+
+        public override void OnPointerDown(PointerEventData eventData)
+        {
+            if (inTextDisplayMode) return;
+            base.OnPointerDown(eventData);
+        }
+
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            if (inTextDisplayMode) return;
+            base.OnPointerEnter(eventData);
+        }
+
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            if (inTextDisplayMode) return;
+            base.OnPointerExit(eventData);
+        }
+
+        public override void OnPointerUp(PointerEventData eventData)
+        {
+            if (inTextDisplayMode) return;
+            base.OnPointerUp(eventData);
+        }
+
+        protected override void ClickableEvent() => ReplayLastMessageList();
+    }
 }

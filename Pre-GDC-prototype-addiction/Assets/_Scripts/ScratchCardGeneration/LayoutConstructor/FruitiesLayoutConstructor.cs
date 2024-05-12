@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Interaction;
-using ScratchCardGeneration.Utilities;
+using _Scripts.Interaction;
+using _Scripts.ScratchCardGeneration.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-namespace ScratchCardGeneration.LayoutConstructor
+namespace _Scripts.ScratchCardGeneration.LayoutConstructor
 {
     public class FruitiesLayoutConstructor : MonoBehaviour, ICardLayoutConstructor
     {

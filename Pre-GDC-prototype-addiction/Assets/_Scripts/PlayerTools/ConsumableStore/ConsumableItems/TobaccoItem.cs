@@ -1,11 +1,8 @@
-using System;
-using _Scripts.ConsumableStore.ConsumableEffect;
+using _Scripts.PlayerTools.ConsumableStore.ConsumableEffect;
 using DG.Tweening;
-using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
-namespace _Scripts.ConsumableStore
+namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
 {
     public class TobaccoItem : ConsumableItemBase
     {

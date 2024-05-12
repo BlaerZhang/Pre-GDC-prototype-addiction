@@ -1,15 +1,14 @@
 using System;
-using System.Collections;
+using _Scripts.FaceEventSystem;
+using _Scripts.Manager;
+using _Scripts.MetaphysicsSystem;
+using _Scripts.ScratchCardGeneration.Utilities;
 using _Scripts.VisualTools;
 using DG.Tweening;
-using Manager;
-using ScratchCardGeneration;
-using ScratchCardGeneration.Utilities;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
-namespace Interaction
+namespace _Scripts.Interaction.InteractableSprite
 {
     public class SelectableScratchCard : MonoBehaviour
     {
@@ -89,6 +88,7 @@ namespace Interaction
 
         protected void OnMouseEnter()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             // if (!isDragging)
             // {
                 // base.OnMouseEnter();
@@ -102,6 +102,7 @@ namespace Interaction
         
         protected void OnMouseDown()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             // isDragging = true;
             
             // base.OnMouseDown();
@@ -155,12 +156,14 @@ namespace Interaction
 
         protected void OnMouseUp()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             //Scale
             cardFaceSprite.transform.DOScale(Vector3.one, 0.1f);
         }
 
         protected void OnMouseUpAsButton()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             // isDragging = false;
 
             // base.OnMouseUp();
@@ -185,6 +188,7 @@ namespace Interaction
 
         protected void OnMouseExit()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             // if (!isDragging)
             // {
             //     base.OnMouseExit();

@@ -1,7 +1,10 @@
-public enum FaceEventType
+namespace _Scripts.FaceEventSystem
 {
-    NoEvent = 0,
-    Discount = 1,
-    WinningChance = 2,
-    Prize = 3
+    public enum FaceEventType
+    {
+        NoEvent = 0,
+        Discount = 1,
+        WinningChance = 2,
+        Prize = 3
+    }
 }

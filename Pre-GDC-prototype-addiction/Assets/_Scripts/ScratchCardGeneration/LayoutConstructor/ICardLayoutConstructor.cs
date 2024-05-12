@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ScratchCardGeneration.LayoutConstructor
+namespace _Scripts.ScratchCardGeneration.LayoutConstructor
 {
     public interface ICardLayoutConstructor
     {

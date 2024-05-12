@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Scripts.ConsumableStore
+namespace _Scripts.PlayerTools.ConsumableStore
 {
     public class ConsumableStoreInitializer : MonoBehaviour
     {

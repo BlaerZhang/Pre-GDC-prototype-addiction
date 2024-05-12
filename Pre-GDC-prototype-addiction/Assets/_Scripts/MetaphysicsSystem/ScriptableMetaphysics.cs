@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using _Scripts.CustomEventSystem;
-using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-namespace MetaphysicsSystem
+namespace _Scripts.MetaphysicsSystem
 {
     /// <summary>
     /// single metaphysics data

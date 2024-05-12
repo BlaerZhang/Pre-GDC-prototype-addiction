@@ -1,7 +1,6 @@
 using DG.Tweening;
-using UnityEngine;
 
-namespace Interaction
+namespace _Scripts.Interaction
 {
     public class AutoRevealing : ScratchProgressEvent
     {

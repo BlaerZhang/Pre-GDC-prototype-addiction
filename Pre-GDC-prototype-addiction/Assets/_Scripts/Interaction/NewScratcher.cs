@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using Cinemachine;
 using ScratchCardAsset;
-using ScratchCardAsset.Core;
 using UnityEngine;
 
-namespace Interaction
+namespace _Scripts.Interaction
 {
     public class NewScratcher : MonoBehaviour
     {
@@ -32,7 +30,7 @@ namespace Interaction
         // public AudioClip soundLayer1;
 
         [Header("Card")]
-        public ScratchCardAsset.ScratchCard card;
+        public global::ScratchCardAsset.ScratchCard card;
         public SpriteRenderer cardSprite;
         public EraseProgress eraseProgress;
         // private PostProcessVolume postProcessVolume;
