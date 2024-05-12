@@ -22,9 +22,8 @@ public class PresetDeskItemPlacement : MonoBehaviour
 
     private void InitializeItem()
     {
-        int itemCount = transform.childCount;
-
         Transform deskItems = transform.Find("Desk Items");
+        int itemCount = deskItems.childCount;
 
         for (int i = 0; i < itemCount; i++)
         {
