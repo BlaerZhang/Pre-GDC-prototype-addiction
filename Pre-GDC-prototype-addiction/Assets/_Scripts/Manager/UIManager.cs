@@ -64,8 +64,8 @@ namespace Manager
         public void UpdateGold(int resource)
         {
             if (!goldUI) return;
-            if (goldUI.text == $"${resource}") return;
-            goldUI.DOText($"${resource}", 1f,true, ScrambleMode.Numerals);
+            if (goldUI.text == $"{resource}") return;
+            goldUI.DOText($"{resource}", 1f,true, ScrambleMode.Numerals);
         }
 
         public void UpdateUpgradePrice(int price)
