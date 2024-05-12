@@ -57,7 +57,7 @@ namespace _Scripts.ConsumableStore
         /// <summary>
         /// assemble items from the data list
         /// </summary>
-        private GameObject AssembleItemIcons(string itemName, Sprite icon, Sprite itemSprite, ConsumableType consumableType, int unlockLevel, int price, string description)
+        private GameObject AssembleItemIcons(string itemName, Sprite icon, Sprite itemSprite, ConsumableType consumableType, int unlockLevel, int price, string itemDescription, ConsumableItemsData.LockedInformation lockedInformation)
         {
             GameObject consumableItem = new GameObject(itemName);
             
@@ -65,61 +65,68 @@ namespace _Scripts.ConsumableStore
             // // image.SetNativeSize();
             image.sprite = icon;
             // image.color = Color.black;
-            GameObject lockMask;
-            if (lockedImagePrefab) lockMask = Instantiate(lockedImagePrefab, image.transform);
+            if (lockedImagePrefab)
+            {
+                GameObject lockedObject = Instantiate(lockedImagePrefab, image.transform);
+                AddTooltip(lockedObject, lockedInformation.leftCornerText, lockedInformation.lockedDescription, lockedInformation.rightCornerText, true);
+            }
 
             // add price, unlock level to each icon
-            AddPriceText(consumableItem.transform, price);
-            AddUnlockLevelText(consumableItem.transform, unlockLevel);
+            // AddPriceText(consumableItem.transform, price);
+            // AddUnlockLevelText(consumableItem.transform, unlockLevel);
 
             // add tooltip on consumable items
-            AddTooltip(consumableItem, itemName, description, price);
+            AddTooltip(consumableItem, itemName, itemDescription, price.ToString());
 
             consumableItem.AddComponent<ConsumableItemIcon>().InitializeItem(consumablePrefab, itemName, price, itemSprite, consumableType, unlockLevel);
 
             return consumableItem;
         }
 
-        private void AddPriceText(Transform parent, int price)
-        {
-            GameObject priceTextObject = new GameObject("priceText");
-            priceTextObject.transform.SetParent(parent);
-            priceTextObject.transform.position += (Vector3)priceTextOffset;
-            var textMeshPro = priceTextObject.AddComponent<TextMeshProUGUI>();
-            textMeshPro.text = price.ToString();
+        // private void AddPriceText(Transform parent, int price)
+        // {
+        //     GameObject priceTextObject = new GameObject("priceText");
+        //     priceTextObject.transform.SetParent(parent);
+        //     priceTextObject.transform.position += (Vector3)priceTextOffset;
+        //     var textMeshPro = priceTextObject.AddComponent<TextMeshProUGUI>();
+        //     textMeshPro.text = price.ToString();
+        //
+        //     textMeshPro.color = priceTextColor;
+        //     textMeshPro.font = priceTextFont;
+        //     textMeshPro.fontSize = priceTextFontSize;
+        //     textMeshPro.alignment = TextAlignmentOptions.Center;
+        // }
 
-            textMeshPro.color = priceTextColor;
-            textMeshPro.font = priceTextFont;
-            textMeshPro.fontSize = priceTextFontSize;
-            textMeshPro.alignment = TextAlignmentOptions.Center;
-        }
-
-        private void AddUnlockLevelText(Transform parent, int unlockLevel)
-        {
-            GameObject priceTextObject = new GameObject("unlockLevelText");
-            priceTextObject.transform.SetParent(parent);
-            priceTextObject.transform.position += (Vector3)unlockLevelTextOffset;
-            var textMeshPro = priceTextObject.AddComponent<TextMeshProUGUI>();
-            textMeshPro.text = unlockLevel.ToString();
-
-            textMeshPro.color = unlockLevelTextColor;
-            textMeshPro.font = unlockLevelTextFont;
-            textMeshPro.fontSize = unlockLevelTextFontSize;
-            textMeshPro.alignment = TextAlignmentOptions.Center;
-        }
+        // private void AddUnlockLevelText(Transform parent, int unlockLevel)
+        // {
+        //     GameObject priceTextObject = new GameObject("unlockLevelText");
+        //     priceTextObject.transform.SetParent(parent);
+        //     priceTextObject.transform.position += (Vector3)unlockLevelTextOffset;
+        //     var textMeshPro = priceTextObject.AddComponent<TextMeshProUGUI>();
+        //     textMeshPro.text = unlockLevel.ToString();
+        //
+        //     textMeshPro.color = unlockLevelTextColor;
+        //     textMeshPro.font = unlockLevelTextFont;
+        //     textMeshPro.fontSize = unlockLevelTextFontSize;
+        //     textMeshPro.alignment = TextAlignmentOptions.Center;
+        // }
 
         /// <summary>
         /// ~ for title; ^ for default text; @ for price
         /// </summary>
-        private void AddTooltip(GameObject consumableItem, string itemName, string description, int price)
+        private void AddTooltip(GameObject objectToAdd, string leftUpCornerText, string description, string rightUpCornerText, bool isTooltipEnabled = false)
         {
-            var tooltip = consumableItem.AddComponent<SimpleTooltip>();
-            tooltip.isEnabled = false;
+            if (!objectToAdd.TryGetComponent(out SimpleTooltip tooltip))
+            {
+                tooltip = objectToAdd.AddComponent<SimpleTooltip>();
+            }
+
+            tooltip.isEnabled = isTooltipEnabled;
 
             if (tooltipStyle) tooltip.simpleTooltipStyle = tooltipStyle;
-            tooltip.infoLeft += "~" + itemName + "\n";
+            tooltip.infoLeft += "~" + leftUpCornerText + "\n";
             tooltip.infoLeft += "^" + description;
-            tooltip.infoRight += "@$" + price;
+            tooltip.infoRight += "@$" + rightUpCornerText;
         }
 
         /// <summary>
@@ -132,7 +139,7 @@ namespace _Scripts.ConsumableStore
             for (int i = 0; i < totalItemNumber; i++)
             {
                 var currentDataElement = consumableItemsData.consumableItemsDataList[i];
-                GameObject currentItem = AssembleItemIcons(currentDataElement.name, currentDataElement.icon, currentDataElement.itemSprite, currentDataElement.type, currentDataElement.unlockLevel, currentDataElement.price, currentDataElement.description);
+                GameObject currentItem = AssembleItemIcons(currentDataElement.name, currentDataElement.icon, currentDataElement.itemSprite, currentDataElement.type, currentDataElement.unlockLevel, currentDataElement.price, currentDataElement.itemDescription, currentDataElement.lockedInformation);
 
                 currentItem.transform.SetParent(consumableStore.transform);
                 currentItem.transform.localScale = Vector3.one;
