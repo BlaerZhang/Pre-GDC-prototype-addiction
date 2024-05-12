@@ -5742,7 +5742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_Pivot.y
@@ -5750,7 +5750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5758,7 +5758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_AnchorMin.y
@@ -5790,11 +5790,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_LocalRotation.z
@@ -5802,7 +5802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1317.75
+      value: 720
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8775,7 +8775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1617103020
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10318,7 +10318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1928468249
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11714,6 +11714,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9607844
       objectReference: {fileID: 0}
+    - target: {fileID: 1335251773385693154, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 871e21364a7f0c341a3403cbc24e4ae9, type: 3}
     - target: {fileID: 1516589694104831261, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 537.9
@@ -11739,12 +11743,40 @@ PrefabInstance:
       value: 175.6
       objectReference: {fileID: 0}
     - target: {fileID: 1838284352962514818, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_Name
+      value: Chewable Jolly
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838284352962514818, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1891951732960601006, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950462456879335099, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_Name
+      value: Puffable Jolly
       objectReference: {fileID: 0}
     - target: {fileID: 1950462456879335099, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111370580591656900, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111370580591656900, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111370580591656900, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 327
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111370580591656900, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 2499717957227404348, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
       propertyPath: m_Enabled
@@ -11762,6 +11794,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1988539211, guid: a7e5d89cdcf6b2142a5738ea7a9cf1d3, type: 3}
+    - target: {fileID: 3842489177861357594, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_Name
+      value: Drinkable Jolly
+      objectReference: {fileID: 0}
     - target: {fileID: 3842489177861357594, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -11878,6 +11914,10 @@ PrefabInstance:
       propertyPath: pressSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: dd4dd5c6921474d319fb8f0ca5af2e64, type: 3}
+    - target: {fileID: 8036076681733347061, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: m_Name
+      value: Edible Jolly
+      objectReference: {fileID: 0}
     - target: {fileID: 8276377435871116406, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
       propertyPath: m_IsActive
       value: 1
