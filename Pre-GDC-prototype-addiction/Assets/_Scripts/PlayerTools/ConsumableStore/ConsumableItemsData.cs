@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.Serialization;
 
 namespace _Scripts.ConsumableStore
 {
@@ -12,17 +13,27 @@ namespace _Scripts.ConsumableStore
         public struct ItemInformation
         {
             public string name;
-            [TableColumnWidth(57, Resizable = false)]
             [PreviewField(Alignment = ObjectFieldAlignment.Center)]
+            [TableColumnWidth(57, Resizable = false)]
             public Sprite icon;
             [PreviewField(Alignment = ObjectFieldAlignment.Center)]
             public Sprite itemSprite;
             public ConsumableType type;
-            [TableColumnWidth(80, Resizable = false)]
             public int unlockLevel;
             public int price;
             [TextArea]
-            public string description;
+            public string itemDescription;
+            [TableColumnWidth(240, Resizable = false)]
+            public LockedInformation lockedInformation;
+        }
+
+        [Serializable]
+        public struct LockedInformation
+        {
+            public string rightCornerText;
+            public string leftCornerText;
+            [TextArea]
+            public string lockedDescription;
         }
 
         [TableList(ShowIndexLabels = true)]

@@ -137,7 +137,7 @@ namespace _Scripts.ConsumableStore
                 {
                     // change the icon sprite color to white
                     transform.GetChild(0).GetComponent<Image>().DOColor(Color.clear, 1f);
-                    transform.Find("unlockLevelText").gameObject.SetActive(false);
+                    // transform.Find("unlockLevelText").gameObject.SetActive(false);
                     GetComponent<SimpleTooltip>().isEnabled = true;
                     isUnlocked = true;
                 }
