@@ -1,5 +1,5 @@
 using System;
-using Manager;
+using _Scripts.Manager;
 using UnityEngine;
 
 namespace _Scripts.ConsumableStore.ConsumableEffect
@@ -14,6 +14,7 @@ namespace _Scripts.ConsumableStore.ConsumableEffect
 
         private void OnBecameInvisible()
         {
+            gameObject.SetActive(false);
             onWaterSprayParticleDisappear?.Invoke();
         }
 

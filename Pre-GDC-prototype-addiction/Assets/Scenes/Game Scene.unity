@@ -3115,12 +3115,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: faceEventUIDict
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[UnityEngine.RectTransform,
-        UnityEngine.CoreModule]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[UnityEngine.RectTransform, UnityEngine.CoreModule]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FaceEventType, Assembly-CSharp]],
-        mscorlib
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -3313,12 +3313,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: CardLayoutConstructorDic
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[ScratchCardGeneration.ScratchCardBrand,
-        Assembly-CSharp],[ScratchCardGeneration.LayoutConstructor.ICardLayoutConstructor,
+      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.ScratchCardGeneration.ScratchCardBrand,
+        Assembly-CSharp],[_Scripts.ScratchCardGeneration.LayoutConstructor.ICardLayoutConstructor,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ScratchCardGeneration.ScratchCardBrand,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.ScratchCardGeneration.ScratchCardBrand,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -4805,19 +4805,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: serializationData.SerializationNodes.Array.size
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"effectDict","add_keys":{"$id":0,"$type":"System.Object[], mscorlib","$rlength":6,"$rcontent":[{"$id":1,"$type":"_Scripts.ConsumableStore.ConsumableType,
-        Assembly-CSharp",1},{"$id":2,"$type":"_Scripts.ConsumableStore.ConsumableType,
-        Assembly-CSharp",2},{"$id":3,"$type":"_Scripts.ConsumableStore.ConsumableType,
-        Assembly-CSharp",3},{"$id":4,"$type":"_Scripts.ConsumableStore.ConsumableType,
-        Assembly-CSharp",0},{"$id":5,"$type":"_Scripts.ConsumableStore.ConsumableType,
-        Assembly-CSharp",1},{"$id":6,"$type":"_Scripts.ConsumableStore.ConsumableType,
-        Assembly-CSharp",0}]},"remove_keys":{"$id":7,"$type":"System.Object[], mscorlib","$rlength":2,"$rcontent":[{"$id":8,"$type":"_Scripts.ConsumableStore.ConsumableType,
-        Assembly-CSharp",4},{"$id":9,"$type":"_Scripts.ConsumableStore.ConsumableType,
+      value: '"path":"effectDict","add_keys":{"$id":0,"$type":"System.Object[], mscorlib","$rlength":10,"$rcontent":[{"$id":1,"$type":"System.Object,
+        mscorlib"},{"$id":2,"$type":"System.Object, mscorlib"},{"$id":3,"$type":"System.Object,
+        mscorlib"},{"$id":4,"$type":"System.Object, mscorlib"},{"$id":5,"$type":"System.Object,
+        mscorlib"},{"$id":6,"$type":"System.Object, mscorlib"},{"$id":7,"$type":"_Scripts.PlayerTools.ConsumableStore.ConsumableType,
+        Assembly-CSharp",1},{"$id":8,"$type":"_Scripts.PlayerTools.ConsumableStore.ConsumableType,
+        Assembly-CSharp",0},{"$id":9,"$type":"_Scripts.PlayerTools.ConsumableStore.ConsumableType,
+        Assembly-CSharp",1},{"$id":10,"$type":"_Scripts.PlayerTools.ConsumableStore.ConsumableType,
+        Assembly-CSharp",0}]},"remove_keys":{"$id":11,"$type":"System.Object[], mscorlib","$rlength":4,"$rcontent":[{"$id":12,"$type":"System.Object,
+        mscorlib"},{"$id":13,"$type":"System.Object, mscorlib"},{"$id":14,"$type":"_Scripts.PlayerTools.ConsumableStore.ConsumableType,
+        Assembly-CSharp",4},{"$id":15,"$type":"_Scripts.PlayerTools.ConsumableStore.ConsumableType,
         Assembly-CSharp",4}]}'
       objectReference: {fileID: 0}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
@@ -4835,6 +4841,46 @@ PrefabInstance:
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[4]
       value: '"path":"effectDict.{3es}","value":$eref:3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: serializationData.ReferencedUnityObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: serializationData.ReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 422610696}
+    - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: serializationData.ReferencedUnityObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 197637163}
+    - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: serializationData.ReferencedUnityObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1461604062}
+    - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: serializationData.SerializationNodes.Array.data[5].Data
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: serializationData.SerializationNodes.Array.data[11].Data
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: serializationData.SerializationNodes.Array.data[19].Data
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: serializationData.SerializationNodes.Array.data[19].Name
+      value: $k
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: serializationData.SerializationNodes.Array.data[18].Entry
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: serializationData.SerializationNodes.Array.data[19].Entry
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
@@ -4941,61 +4987,9 @@ PrefabInstance:
       value: Consumable Store
       objectReference: {fileID: 0}
     - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: screenBorderOffset
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: overlayCanvasObject
       value: 
       objectReference: {fileID: 2045035531}
-    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: generationBoundRect.x
-      value: -8.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: generationBoundRect.y
-      value: -4.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: chewableResiduePrefabs
-      value: 
-      objectReference: {fileID: 4562464324445495068, guid: 6403b3d10b7ee4cb7a0ecc6e05b31627, type: 3}
-    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: generationBoundRect.width
-      value: 16.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 3544808210550699486, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: generationBoundRect.height
-      value: 8.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 4584270957578037922, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: m_Name
-      value: Edible Effect
-      objectReference: {fileID: 0}
-    - target: {fileID: 4588486367513094724, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: effectDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4588486367513094724, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: waterFountainGeneratePosition.x
-      value: 0.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 4588486367513094724, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: waterFountainGeneratePosition.y
-      value: -2.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 4588486367513094724, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: waterFountainParticleSystemPrefab
-      value: 
-      objectReference: {fileID: 8010995132374359559, guid: 9f53cf21ebfe54086b7ca6f0b33c2f16, type: 3}
-    - target: {fileID: 7915848419125513806, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: m_Name
-      value: Puffable Effect
-      objectReference: {fileID: 0}
-    - target: {fileID: 8731038679195661008, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: m_Name
-      value: Edible Effect Volume
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7581,7 +7575,7 @@ MonoBehaviour:
     texture: {fileID: 2800000, guid: 03659d851c7854d07a0f09044623a40b, type: 3}
     hotspot: {x: 0, y: 0}
   - type: 6
-    texture: {fileID: 2800000, guid: 5aa30f0cf5bab4c7dab839a28bd5a3b8, type: 3}
+    texture: {fileID: 2800000, guid: 11d0ec23f87e4dc4aac1f251113a100c, type: 3}
     hotspot: {x: 0, y: 0}
   currentCursorType: 0
 --- !u!1001 &1412201499
@@ -8625,12 +8619,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: faceEventDurationDict
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Int32,
-        mscorlib]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FaceEventType, Assembly-CSharp]],
-        mscorlib
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -8922,11 +8916,11 @@ MonoBehaviour:
     SerializationNodes:
     - Name: cardPrefabsDict
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[Interaction.SelectableScratchCard,
+      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.Interaction.InteractableSprite.SelectableScratchCard,
         Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Interaction.SelectableScratchCard,
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[_Scripts.Interaction.InteractableSprite.SelectableScratchCard,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
@@ -9002,12 +8996,13 @@ MonoBehaviour:
       Data: 
     - Name: eventTriggerWeightPerFaceTypeDict
       Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[FaceType, Assembly-CSharp],[System.Collections.Generic.Dictionary`2[[FaceEventType,
+      Data: 2|System.Collections.Generic.Dictionary`2[[_Scripts.Interaction.FaceType,
+        Assembly-CSharp],[System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[FaceType, Assembly-CSharp]],
-        mscorlib
+      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.Interaction.FaceType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -9028,12 +9023,12 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 4|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Single,
-        mscorlib]], mscorlib
+      Data: 4|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[FaceEventType, Assembly-CSharp]],
-        mscorlib
+      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -9111,8 +9106,8 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: 6|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Single,
-        mscorlib]], mscorlib
+      Data: 6|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 5
@@ -9184,8 +9179,8 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 7
-      Data: 7|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Single,
-        mscorlib]], mscorlib
+      Data: 7|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 5
@@ -9257,8 +9252,8 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 7
-      Data: 8|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Single,
-        mscorlib]], mscorlib
+      Data: 8|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 5
@@ -9330,8 +9325,8 @@ MonoBehaviour:
       Data: 4
     - Name: $v
       Entry: 7
-      Data: 9|System.Collections.Generic.Dictionary`2[[FaceEventType, Assembly-CSharp],[System.Single,
-        mscorlib]], mscorlib
+      Data: 9|System.Collections.Generic.Dictionary`2[[_Scripts.FaceEventSystem.FaceEventType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 5
@@ -11233,7 +11228,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6517994683583707551, guid: 1e9c1039922fb47bc869b652818ea510, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6612974405320042393, guid: 1e9c1039922fb47bc869b652818ea510, type: 3}
       propertyPath: m_AnchorMax.y
@@ -12050,12 +12045,12 @@ MonoBehaviour:
       Data: 
     - Name: FXTypeProbabilityDict
       Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
-        Assembly-CSharp],[System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+      Data: 2|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
+        Assembly-CSharp],[System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
+      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+PrizeType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -12077,11 +12072,11 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 4|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+      Data: 4|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -12148,7 +12143,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: 6|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+      Data: 6|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12209,7 +12204,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 7
-      Data: 7|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
+      Data: 7|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXType,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12270,11 +12265,11 @@ MonoBehaviour:
       Data: 
     - Name: PositiveScratchNoFXAndFXNotOnWinningGridProbabilityList
       Entry: 7
-      Data: 8|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 8|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 9|System.Collections.Generic.EnumEqualityComparer`1[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 9|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -12344,7 +12339,7 @@ MonoBehaviour:
       Data: 
     - Name: PositiveScratchNoFXButFXOnWinningGridProbabilityList
       Entry: 7
-      Data: 10|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 10|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12408,7 +12403,7 @@ MonoBehaviour:
       Data: 
     - Name: PositiveScratchFXButFXNotOnWinningGridProbabilityList
       Entry: 7
-      Data: 11|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 11|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12472,7 +12467,7 @@ MonoBehaviour:
       Data: 
     - Name: PositiveScratchFXAndFXOnWinningGridProbabilityList
       Entry: 7
-      Data: 12|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 12|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12536,7 +12531,7 @@ MonoBehaviour:
       Data: 
     - Name: NegativeScratchNoFXAndFXNotOnWinningGridProbabilityList
       Entry: 7
-      Data: 13|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 13|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12600,7 +12595,7 @@ MonoBehaviour:
       Data: 
     - Name: NegativeScratchNoFXButFXOnWinningGridProbabilityList
       Entry: 7
-      Data: 14|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 14|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12664,7 +12659,7 @@ MonoBehaviour:
       Data: 
     - Name: NegativeScratchFXButFXNotOnWinningGridProbabilityList
       Entry: 7
-      Data: 15|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 15|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9
@@ -12728,7 +12723,7 @@ MonoBehaviour:
       Data: 
     - Name: NegativeScratchFXAndFXOnWinningGridProbabilityList
       Entry: 7
-      Data: 16|System.Collections.Generic.Dictionary`2[[MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
+      Data: 16|System.Collections.Generic.Dictionary`2[[_Scripts.MetaphysicsSystem.Alpha.SquareFXMetaphysics.AlphaSquareFXManager+FXActionName,
         Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 9

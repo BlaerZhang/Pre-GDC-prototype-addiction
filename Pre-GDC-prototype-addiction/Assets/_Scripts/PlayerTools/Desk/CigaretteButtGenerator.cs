@@ -67,12 +67,12 @@ namespace _Scripts.PlayerTools.Desk
 
         private void OnEnable()
         {
-            TobaccoEffect.onStopSmoking += AddCigarettes;
+            PuffableEffect.onStopSmoking += AddCigarettes;
         }
 
         private void OnDisable()
         {
-            TobaccoEffect.onStopSmoking -= AddCigarettes;
+            PuffableEffect.onStopSmoking -= AddCigarettes;
         }
 
         private void InitializeSlotAvailability()

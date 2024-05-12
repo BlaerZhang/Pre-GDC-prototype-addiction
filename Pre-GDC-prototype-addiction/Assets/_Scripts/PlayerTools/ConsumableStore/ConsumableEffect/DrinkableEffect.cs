@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using Manager;
+using _Scripts.PlayerTools.ConsumableStore.ConsumableEffect;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -38,6 +38,7 @@ namespace _Scripts.ConsumableStore.ConsumableEffect
             }
             else
             {
+                waterFountainParticleObject.SetActive(true);
                 waterFountainParticleObject.GetComponent<ParticleSystem>()?.Play();
             }
 

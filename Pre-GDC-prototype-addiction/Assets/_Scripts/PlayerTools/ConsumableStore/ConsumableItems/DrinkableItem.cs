@@ -1,4 +1,5 @@
 using _Scripts.ConsumableStore.ConsumableEffect;
+using _Scripts.PlayerTools.ConsumableStore.ConsumableItems;
 using DG.Tweening;
 using UnityEngine;
 
