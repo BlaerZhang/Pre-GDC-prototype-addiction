@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Franklin Gothic Heavy IT SDF
+  m_Name: Franklin Gothic Heavy IT SDF No Shadow
   m_EditorClassIdentifier: 
-  hashCode: -415191414
+  hashCode: -1371590067
   material: {fileID: 3768820367615246695}
-  materialHashCode: 2093393130
+  materialHashCode: -1451926707
   m_Version: 1.1.0
   m_SourceFontFileGUID: 0de04e94dc336444eb50e1c4a0a70ead
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 0de04e94dc336444eb50e1c4a0a70ead, type: 3}
@@ -6788,8 +6788,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - UNDERLAY_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
