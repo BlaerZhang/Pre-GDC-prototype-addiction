@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Manager
+namespace _Scripts.Manager
 {
     // TODO: adjustable volume
     public class AudioManager : MonoBehaviour

@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
-using Manager;
+using _Scripts.Manager;
 using UnityEngine;
 
-namespace _Scripts.ConsumableStore.ConsumableEffect
+namespace _Scripts.PlayerTools.ConsumableStore.ConsumableEffect
 {
     public class PuffableEffect : MonoBehaviour, IConsumableEffect
     {

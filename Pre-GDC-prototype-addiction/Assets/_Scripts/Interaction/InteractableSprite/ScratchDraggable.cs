@@ -1,13 +1,14 @@
 using System;
+using _Scripts.Interaction.PosterPicking;
+using _Scripts.Manager;
 using _Scripts.VisualTools;
 using DG.Tweening;
-using Manager;
 using ScratchCardAsset;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.EventSystems;
 
-namespace Interaction
+namespace _Scripts.Interaction.InteractableSprite
 {
     public class ScratchDraggable : InteractableSpriteBase
     {
@@ -68,6 +69,7 @@ namespace Interaction
 
         protected override void OnMouseEnter()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (!isDragging)
             {
                 // print("Mouse Enter");
@@ -82,6 +84,7 @@ namespace Interaction
 
         protected override void OnMouseDown()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (dragLock) return;
             
             isDragging = true;
@@ -101,6 +104,7 @@ namespace Interaction
 
         protected override void OnMouseDrag()
         {
+            if (EventSystem.current.IsPointerOverGameObject() && !isDragging) return;
             if (dragLock) return;
             
             //Card Follow Mouse Y
@@ -131,6 +135,7 @@ namespace Interaction
         }
         protected override void OnMouseUp()
         {
+            if (!isDragging) return;
             if (dragLock) return;
             
             isDragging = false;

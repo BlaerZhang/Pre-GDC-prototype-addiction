@@ -1,8 +1,11 @@
-public enum FaceType
+namespace _Scripts.Interaction
 {
-    Original,
-    B,
-    C,
-    D,
-    E
+    public enum FaceType
+    {
+        Original,
+        B,
+        C,
+        D,
+        E
+    }
 }

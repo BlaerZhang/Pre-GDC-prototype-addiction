@@ -1,12 +1,13 @@
-using System;
+using _Scripts.PlayerTools.Payphone;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Interaction
+namespace _Scripts.Interaction.PosterPicking
 {
     public class ScrollView : MonoBehaviour
     {
         [HideInInspector] public bool isScrollLocked = false;
+        protected bool PayphoneState = false;
 
         [Title("Scroll View Settings")]
         [SerializeField] public Transform scrollViewHolder;
@@ -17,6 +18,16 @@ namespace Interaction
         [SerializeField] [PropertyRange(100, 10000)] protected float scrollSpeedSensitivity = 300f;
 
         private float currentVelocity = 0f; // 当前速度，用于平滑减速
+
+        protected void OnEnable()
+        {
+            PayphoneManager.onPhoneStateChanged += isInMessage => { PayphoneState = isInMessage; };
+        }
+        
+        protected void OnDisable()
+        {
+            PayphoneManager.onPhoneStateChanged -= isInMessage => { PayphoneState = isInMessage; };
+        }
 
         void Start()
         {
@@ -30,8 +41,7 @@ namespace Interaction
 
         void Update()
         {
-            if (isScrollLocked) return;
-            Scroll();
+            if (!isScrollLocked && !PayphoneState) Scroll();
         }
 
         private void Scroll()
@@ -57,7 +67,7 @@ namespace Interaction
             // 设置初始位置
             scrollViewHolder.position = new Vector3(scrollViewHolder.position.x, initialYPosition, scrollViewHolder.position.z);
         }
-
+        
         // void RecordLastYPosition()
         // {
         //     // 记录当前Y位置

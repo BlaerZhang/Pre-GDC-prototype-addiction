@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FrameFollow : MonoBehaviour
+namespace _Scripts
 {
-    public Transform menuHolder;
-    
-    void Update()
+    public class FrameFollow : MonoBehaviour
     {
-        transform.position = menuHolder.position;
+        public Transform menuHolder;
+    
+        void Update()
+        {
+            transform.position = menuHolder.position;
+        }
     }
 }

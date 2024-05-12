@@ -1,11 +1,10 @@
 using System;
-using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-namespace _Scripts.ConsumableStore.ConsumableEffect
+namespace _Scripts.PlayerTools.ConsumableStore.ConsumableEffect
 {
     public class EdibleEffect : MonoBehaviour, IConsumableEffect
     {

@@ -1,8 +1,7 @@
-using System;
 using ScratchCardAsset;
 using UnityEngine;
 
-namespace Interaction
+namespace _Scripts.Interaction
 {
     public abstract class ScratchProgressEvent : MonoBehaviour
     {

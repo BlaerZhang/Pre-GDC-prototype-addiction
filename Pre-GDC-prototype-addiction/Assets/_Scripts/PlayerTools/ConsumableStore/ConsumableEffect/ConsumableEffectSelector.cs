@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using _Scripts.PlayerTools.ConsumableStore.ConsumableItems;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace _Scripts.ConsumableStore.ConsumableEffect
+namespace _Scripts.PlayerTools.ConsumableStore.ConsumableEffect
 {
     public class ConsumableEffectSelector : SerializedMonoBehaviour
     {

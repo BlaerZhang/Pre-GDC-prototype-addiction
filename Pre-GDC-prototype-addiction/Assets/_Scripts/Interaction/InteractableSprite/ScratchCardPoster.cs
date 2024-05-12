@@ -1,18 +1,18 @@
 using System;
+using _Scripts.FaceEventSystem;
+using _Scripts.FaceEventSystem.FaceEvents;
+using _Scripts.Interaction.PosterPicking;
+using _Scripts.Manager;
+using _Scripts.ScratchCardGeneration;
 using _Scripts.VisualTools;
 using DG.Tweening;
-using Manager;
-using ScratchCardGeneration;
-using ScratchCardGeneration.PrizeGenerator;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
-namespace Interaction
+namespace _Scripts.Interaction.InteractableSprite
 {
     public class ScratchCardPoster : InteractableSpriteBase
     {

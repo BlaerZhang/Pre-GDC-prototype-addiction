@@ -1,8 +1,7 @@
 using DG.Tweening;
-using Interaction;
 using UnityEngine;
 
-namespace Manager
+namespace _Scripts.Manager
 {
     public class MenuManager : MonoBehaviour
     {

@@ -1,10 +1,10 @@
 using System;
-using System.Collections.Generic;
-using _Scripts.ConsumableStore;
+using _Scripts.PlayerTools.ConsumableStore;
+using _Scripts.PlayerTools.ConsumableStore.ConsumableItems;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace _Scripts.PlayerTools
+namespace _Scripts.PlayerTools.Desk
 {
     public class DeskItemPlacement : MonoBehaviour
     {

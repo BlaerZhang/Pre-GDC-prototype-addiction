@@ -14792,6 +14792,7 @@ GameObject:
   - component: {fileID: 1477076552492218940}
   - component: {fileID: 5756209428792729246}
   - component: {fileID: 5822553337677737008}
+  - component: {fileID: 349040301443923510}
   m_Layer: 0
   m_Name: ScratchCardTargetGrid
   m_TagString: Untagged
@@ -14893,6 +14894,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullyScratchedThreshold: 0.5
   autoRevealingDuration: 0.5
+--- !u!114 &349040301443923510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686339270730752103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6233f0d25c130394497d6fd782e0f82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9000087750868902696
 GameObject:
   m_ObjectHideFlags: 0

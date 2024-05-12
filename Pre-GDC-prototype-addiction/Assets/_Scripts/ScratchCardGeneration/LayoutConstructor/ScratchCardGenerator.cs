@@ -1,16 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Interaction;
-using Manager;
-using ScratchCardGeneration.PrizeGenerator;
-using ScratchCardGeneration.ScratchCardData;
-using ScratchCardGeneration.Utilities;
+using _Scripts.Interaction.PosterPicking;
+using _Scripts.ScratchCardGeneration.PrizeGenerator;
+using _Scripts.ScratchCardGeneration.ScratchCardData;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace ScratchCardGeneration.LayoutConstructor
+namespace _Scripts.ScratchCardGeneration.LayoutConstructor
 {
     public class ScratchCardGenerator : SerializedMonoBehaviour
     {

@@ -1,4 +1,8 @@
 using System;
+using _Scripts.FaceEventSystem;
+using _Scripts.Interaction.InteractableSprite;
+using _Scripts.Interaction.PosterPicking;
+using _Scripts.PlayerTools.MembershipSystem;
 using DG.Tweening;
 using Interaction;
 using Sirenix.OdinInspector;

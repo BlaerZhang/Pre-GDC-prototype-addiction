@@ -1,14 +1,15 @@
 using System;
-using _Scripts.PlayerTools;
-using Interaction.Clickable;
+using _Scripts.Interaction.InteractableUI;
+using _Scripts.Manager;
+using _Scripts.PlayerTools.ConsumableStore.ConsumableItems;
+using _Scripts.PlayerTools.Desk;
+using _Scripts.PlayerTools.MembershipSystem;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using DG.Tweening;
-using Manager;
-using TMPro;
 
-namespace _Scripts.ConsumableStore
+namespace _Scripts.PlayerTools.ConsumableStore
 {
     public class ConsumableItemIcon : InteractableUIBase, IUnlockable
     {

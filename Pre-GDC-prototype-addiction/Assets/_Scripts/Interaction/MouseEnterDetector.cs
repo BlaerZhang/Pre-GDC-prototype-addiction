@@ -1,19 +1,18 @@
 using System;
-using ScratchCardAsset;
 using UnityEngine;
 
-namespace Interaction
+namespace _Scripts.Interaction
 {
     public class MouseEnterDetector : MonoBehaviour
     {
-        public static Action<ScratchCardAsset.ScratchCard> onMouseEnterEvent;
+        public static Action<global::ScratchCardAsset.ScratchCard> onMouseEnterEvent;
         public static Action onMouseExitEvent;
 
-        private ScratchCardAsset.ScratchCard _scratchCard;
+        private global::ScratchCardAsset.ScratchCard _scratchCard;
 
         private void Start()
         {
-            _scratchCard = transform.parent.transform.Find("Scratch Card").GetComponent<ScratchCardAsset.ScratchCard>();
+            _scratchCard = transform.parent.transform.Find("Scratch Card").GetComponent<global::ScratchCardAsset.ScratchCard>();
         }
 
         private void OnMouseEnter()

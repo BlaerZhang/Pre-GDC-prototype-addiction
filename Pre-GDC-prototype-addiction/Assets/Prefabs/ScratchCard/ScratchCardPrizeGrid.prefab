@@ -10010,6 +10010,7 @@ GameObject:
   - component: {fileID: 1477076552492218940}
   - component: {fileID: 5502477987563918813}
   - component: {fileID: 5756209428792729246}
+  - component: {fileID: 1379382471381812978}
   m_Layer: 0
   m_Name: ScratchCardPrizeGrid
   m_TagString: Untagged
@@ -10085,10 +10086,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWinningPrize: 0
+  prize: 0
   currentGrid: {x: 0, y: 0}
   fullyScratchedThreshold: 0.5
   autoRevealingDuration: 0.5
-  prize: 0
 --- !u!114 &5756209428792729246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10114,6 +10115,18 @@ MonoBehaviour:
   card: {fileID: 5513172946490601260}
   cardSprite: {fileID: 7674806991845585932}
   eraseProgress: {fileID: 4636350087685637525}
+--- !u!114 &1379382471381812978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686339270730752103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6233f0d25c130394497d6fd782e0f82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6141834433544553692
 GameObject:
   m_ObjectHideFlags: 0

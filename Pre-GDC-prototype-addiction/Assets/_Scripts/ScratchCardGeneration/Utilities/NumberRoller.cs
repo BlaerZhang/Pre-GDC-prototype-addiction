@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
-using Interaction;
-using Manager;
+using _Scripts.Interaction;
+using _Scripts.Interaction.PosterPicking;
 using TMPro;
 using UnityEngine;
 
-namespace ScratchCardGeneration.Utilities
+namespace _Scripts.ScratchCardGeneration.Utilities
 {
     public class NumberRoller : MonoBehaviour
     {

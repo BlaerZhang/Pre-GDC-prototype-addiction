@@ -1,11 +1,10 @@
 using System;
-using System.Collections.Generic;
+using _Scripts.Interaction.InteractableSprite;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Interaction
+namespace _Scripts.Interaction.PosterPicking
 {
     public class PosterHolder : ScrollView
     {
@@ -41,6 +40,7 @@ namespace Interaction
 
         private void OnEnable()
         {
+            base.OnEnable();
             ScratchCardPoster.onPosterDragged += SemiCollapse;
             ScratchCardPoster.onPosterReleased += CheckIfPosterInPickingArea;
             ScratchCardPoster.onTryBuyPoster += SwitchCollapseState;
@@ -52,6 +52,7 @@ namespace Interaction
 
         private void OnDisable()
         {
+            base.OnDisable();
             ScratchCardPoster.onPosterDragged -= SemiCollapse;
             ScratchCardPoster.onPosterReleased -= CheckIfPosterInPickingArea;
             ScratchCardPoster.onTryBuyPoster -= SwitchCollapseState;

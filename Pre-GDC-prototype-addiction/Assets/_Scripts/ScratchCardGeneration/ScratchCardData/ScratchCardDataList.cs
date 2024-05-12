@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace ScratchCardGeneration.ScratchCardData
+namespace _Scripts.ScratchCardGeneration.ScratchCardData
 {
     [CreateAssetMenu(fileName = "ScratchCardPitySettings", menuName = "ScriptableObjects/ScratchCardPitySetting",
         order = 0)]

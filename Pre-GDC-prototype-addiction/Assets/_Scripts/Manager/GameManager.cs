@@ -1,10 +1,10 @@
-using Interaction;
-using ScratchCardGeneration.LayoutConstructor;
+using _Scripts.FaceEventSystem.FaceEvents;
+using _Scripts.PlayerTools.MembershipSystem;
+using _Scripts.ScratchCardGeneration.LayoutConstructor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
-namespace Manager
+namespace _Scripts.Manager
 {
     public class GameManager : MonoBehaviour
     {

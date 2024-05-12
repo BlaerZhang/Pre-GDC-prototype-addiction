@@ -1,4 +1,4 @@
-namespace _Scripts.ConsumableStore
+namespace _Scripts.PlayerTools.ConsumableStore
 {
     public enum ConsumableType
     {

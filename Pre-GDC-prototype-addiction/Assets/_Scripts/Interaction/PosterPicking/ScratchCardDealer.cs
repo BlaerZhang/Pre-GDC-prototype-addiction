@@ -1,16 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.FaceEventSystem;
+using _Scripts.Interaction.InteractableSprite;
+using _Scripts.Manager;
+using _Scripts.ScratchCardGeneration;
+using _Scripts.ScratchCardGeneration.LayoutConstructor;
 using DG.Tweening;
-using Manager;
-using ScratchCardGeneration;
-using ScratchCardGeneration.LayoutConstructor;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
-namespace Interaction
+namespace _Scripts.Interaction.PosterPicking
 {
     public class ScratchCardDealer : MonoBehaviour
     {

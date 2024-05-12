@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace _Scripts.MembershipSystem
+namespace _Scripts.PlayerTools.MembershipSystem
 {
     [CreateAssetMenu(fileName = "MembershipPointsCostSetting", menuName = "ScriptableObjects/MembershipPointsCostSetting", order = 0)]
     public class MembershipPointsCostData : SerializedScriptableObject

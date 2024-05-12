@@ -3,171 +3,174 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-public class VariableMatrix<T>
+namespace _Scripts.ScratchCardGeneration.Utilities
 {
-    private List<List<T>> matrix = new List<List<T>>();
-
-    public VariableMatrix() {}
-
-    public VariableMatrix(int rowIndex, int columnIndex)
+    public class VariableMatrix<T>
     {
-        for (int i = 0; i < rowIndex; i++)
+        private List<List<T>> matrix = new List<List<T>>();
+
+        public VariableMatrix() {}
+
+        public VariableMatrix(int rowIndex, int columnIndex)
         {
-            matrix.Add(new List<T>(columnIndex));
-            for (int j = 0; j < columnIndex; j++)
+            for (int i = 0; i < rowIndex; i++)
             {
-                matrix[i].Add(default(T));
+                matrix.Add(new List<T>(columnIndex));
+                for (int j = 0; j < columnIndex; j++)
+                {
+                    matrix[i].Add(default(T));
+                }
             }
         }
-    }
 
-    public VariableMatrix(int rowIndex, int columnIndex, T defaultValue)
-    {
-        for (int i = 0; i < rowIndex; i++)
+        public VariableMatrix(int rowIndex, int columnIndex, T defaultValue)
         {
-            matrix.Add(new List<T>(columnIndex));
-            for (int j = 0; j < columnIndex; j++)
+            for (int i = 0; i < rowIndex; i++)
             {
-                matrix[i].Add(defaultValue);
+                matrix.Add(new List<T>(columnIndex));
+                for (int j = 0; j < columnIndex; j++)
+                {
+                    matrix[i].Add(defaultValue);
+                }
             }
         }
-    }
 
-    public int GetRow()
-    {
-        return matrix.Count;
-    }
+        public int GetRow()
+        {
+            return matrix.Count;
+        }
     
-    public int GetColumn()
-    {
-        if (matrix.Count > 0) return matrix[0].Count;
-        return 0;
-    }
+        public int GetColumn()
+        {
+            if (matrix.Count > 0) return matrix[0].Count;
+            return 0;
+        }
     
-    public void AddRow()
-    {
-        matrix.Add(new List<T>());
-    }
-
-    public void AddElement(int rowIndex, T element)
-    {
-        if (rowIndex < matrix.Count)
+        public void AddRow()
         {
-            matrix[rowIndex].Add(element);
-        }
-        else
-        {
-            int rowDiff = rowIndex - matrix.Count + 1;
-            for (int i = 0; i < rowDiff; i++) AddRow();
-            matrix[rowIndex].Add(element);
-        }
-    }
-
-    public T GetElement(int rowIndex, int columnIndex)
-    {
-        if (rowIndex < matrix.Count && columnIndex < matrix[rowIndex].Count)
-        {
-            if (matrix[rowIndex] != null) return matrix[rowIndex][columnIndex];
+            matrix.Add(new List<T>());
         }
 
-        throw null!;
-    }
-
-    public T GetElement(Vector2Int grid)
-    {
-        int rowIndex = grid.x;
-        int columnIndex = grid.y;
-
-        if (rowIndex < matrix.Count && columnIndex < matrix[rowIndex].Count)
+        public void AddElement(int rowIndex, T element)
         {
-            return matrix[rowIndex][columnIndex];
-        }
-
-        throw null!;
-    }
-
-    public List<Vector2Int> GetIndexOfElement(T element)
-    {
-        List<Vector2Int> indicesList = new();
-
-        int currentRow = 0;
-        int currentCol = 0;
-
-        foreach (List<T> row in matrix)
-        {
-            foreach (T col in row)
+            if (rowIndex < matrix.Count)
             {
-                if (col.Equals(element)) indicesList.Add(new Vector2Int(currentRow, currentCol));
-                currentCol++;
+                matrix[rowIndex].Add(element);
             }
-
-            currentCol = 0;
-            currentRow++;
-        }
-
-        return indicesList;
-    }
-
-    public void SetElement(int rowIndex, int columnIndex, T value)
-    {
-        if (rowIndex < matrix.Count && columnIndex < matrix[rowIndex].Count)
-        {
-            matrix[rowIndex][columnIndex] = value;
-        }
-        else
-        {
-            throw new IndexOutOfRangeException("Variable matrix index out of range");
-        }
-    }
-
-    public bool Contains(T value)
-    {
-        foreach (List<T> row in matrix)
-        {
-            if (row.Contains(value))
+            else
             {
-                return true;
+                int rowDiff = rowIndex - matrix.Count + 1;
+                for (int i = 0; i < rowDiff; i++) AddRow();
+                matrix[rowIndex].Add(element);
             }
         }
-        return false;
-    }
 
-    public bool ContainsAny(List<T> items)
-    {
-        foreach (T item in items)
+        public T GetElement(int rowIndex, int columnIndex)
         {
-            if (Contains(item))
+            if (rowIndex < matrix.Count && columnIndex < matrix[rowIndex].Count)
             {
-                return true;
+                if (matrix[rowIndex] != null) return matrix[rowIndex][columnIndex];
+            }
+
+            throw null!;
+        }
+
+        public T GetElement(Vector2Int grid)
+        {
+            int rowIndex = grid.x;
+            int columnIndex = grid.y;
+
+            if (rowIndex < matrix.Count && columnIndex < matrix[rowIndex].Count)
+            {
+                return matrix[rowIndex][columnIndex];
+            }
+
+            throw null!;
+        }
+
+        public List<Vector2Int> GetIndexOfElement(T element)
+        {
+            List<Vector2Int> indicesList = new();
+
+            int currentRow = 0;
+            int currentCol = 0;
+
+            foreach (List<T> row in matrix)
+            {
+                foreach (T col in row)
+                {
+                    if (col.Equals(element)) indicesList.Add(new Vector2Int(currentRow, currentCol));
+                    currentCol++;
+                }
+
+                currentCol = 0;
+                currentRow++;
+            }
+
+            return indicesList;
+        }
+
+        public void SetElement(int rowIndex, int columnIndex, T value)
+        {
+            if (rowIndex < matrix.Count && columnIndex < matrix[rowIndex].Count)
+            {
+                matrix[rowIndex][columnIndex] = value;
+            }
+            else
+            {
+                throw new IndexOutOfRangeException("Variable matrix index out of range");
             }
         }
-        return false;
-    }
 
-    public bool ContainsAll(List<T> values)
-    {
-        foreach (T value in values)
+        public bool Contains(T value)
         {
-            if (!Contains(value))
+            foreach (List<T> row in matrix)
             {
-                return false;
+                if (row.Contains(value))
+                {
+                    return true;
+                }
             }
+            return false;
         }
-        return true;
-    }
 
-    public void PrintMatrix()
-    {
-        StringBuilder sb = new StringBuilder();
-
-        foreach (List<T> row in matrix)
+        public bool ContainsAny(List<T> items)
         {
-            foreach (T item in row)
+            foreach (T item in items)
             {
-                sb.Append(item.ToString() + ", ");
+                if (Contains(item))
+                {
+                    return true;
+                }
             }
-            sb.AppendLine();
+            return false;
         }
-        Debug.Log(sb.ToString());
+
+        public bool ContainsAll(List<T> values)
+        {
+            foreach (T value in values)
+            {
+                if (!Contains(value))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public void PrintMatrix()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (List<T> row in matrix)
+            {
+                foreach (T item in row)
+                {
+                    sb.Append(item.ToString() + ", ");
+                }
+                sb.AppendLine();
+            }
+            Debug.Log(sb.ToString());
+        }
     }
 }

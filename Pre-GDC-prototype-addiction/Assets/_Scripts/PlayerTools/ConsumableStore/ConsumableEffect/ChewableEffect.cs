@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace _Scripts.ConsumableStore.ConsumableEffect
+namespace _Scripts.PlayerTools.ConsumableStore.ConsumableEffect
 {
     public class ChewableEffect : MonoBehaviour, IConsumableEffect
     {
