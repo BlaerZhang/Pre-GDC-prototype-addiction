@@ -37,6 +37,7 @@ namespace Interaction
         public bool discount = false;
         public ScratchCardTier eventTriggerTier;
         public float discountPriceTagYPos;
+        private float originalPriceTagYPos;
     
         [Title("Feedback")]
         public float hoverScale = 0.95f;
@@ -66,9 +67,10 @@ namespace Interaction
             
             isDragging = false;
             originalLocalPosition = transform.localPosition;
+            originalPriceTagYPos = pricePanelSprite.transform.localPosition.y;
             priceText.text = $"${price}";
             
-            InitDiscount();
+            DetectDiscount();
             
             if (!unlock)
             {
@@ -78,14 +80,32 @@ namespace Interaction
                 priceText.enabled = false;
             }
         }
+        
+        private void OnEnable()
+        {
+            FaceEventManager.onFaceEventDurationReduced += DetectDiscount;
+            PosterHolder.onRecoverHolderPosition += DisplayDiscount;
+            originalPrice = price;
+        }
 
-        private void InitDiscount()
-        { 
+        private void OnDisable()
+        {
+            FaceEventManager.onFaceEventDurationReduced -= DetectDiscount;
+            PosterHolder.onRecoverHolderPosition -= DisplayDiscount;
+        }
+
+        private void DetectDiscount()
+        {
+            ResetDiscountDisplay();
+            
             discount = GameManager.Instance.faceEventManager.faceEventDurationDict[FaceEventType.Discount] > 0;
 
-            discountCross.enabled = false;
-
-            if (!discount) return;
+            if (!discount)
+            {
+                price = originalPrice;
+                ResetDiscountDisplay();
+                return;
+            }
             
             //calculate discount price
             int tierDistance = tier - GameManager.Instance.faceEventManager.discountTriggerTier;
@@ -93,25 +113,22 @@ namespace Interaction
             price = discountPrice;
         }
 
-        private void OnEnable()
+        private void DisplayDiscount()
         {
-            SwitchSceneManager.onSceneChanged += DisplayDiscount;
-            originalPrice = price;
-        }
-
-        private void OnDisable()
-        {
-            SwitchSceneManager.onSceneChanged -= DisplayDiscount;
-        }
-
-        private void DisplayDiscount(string sceneName)
-        {
-            if (sceneName != "Menu") return;
             if (!discount || !unlock) return;
             
             pricePanelSprite.transform.DOLocalMoveY(discountPriceTagYPos, 0.5f).SetEase(Ease.OutElastic);
             discountCross.enabled = true;
             priceText.text = $"${price}\n${originalPrice}";
+        }
+
+        private void ResetDiscountDisplay()
+        {
+            if (!unlock) return;
+
+            pricePanelSprite.transform.DOLocalMoveY(originalPriceTagYPos, 0);
+            discountCross.enabled = false;
+            priceText.text = $"${price}";
         }
 
         protected override void OnMouseEnter()
