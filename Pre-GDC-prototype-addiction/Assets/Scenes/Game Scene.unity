@@ -2185,7 +2185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 599.9999, y: 0}
+  m_AnchoredPosition: {x: 599.99994, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &332660807
@@ -5635,7 +5635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6294280185724049804, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_Pivot.x
@@ -5732,7 +5732,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 878656680}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -8479,8 +8479,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1604128126}
   - component: {fileID: 1604128131}
-  - component: {fileID: 1604128130}
   - component: {fileID: 1604128129}
+  - component: {fileID: 1604128130}
   - component: {fileID: 1604128128}
   - component: {fileID: 1604128127}
   m_Layer: 0

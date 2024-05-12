@@ -32,6 +32,7 @@ namespace Interaction
         private float recoverY;
 
         public static Action onReturnPosterMenu;
+        public static Action onRecoverHolderPosition;
 
         private void Start()
         {
@@ -105,6 +106,7 @@ namespace Interaction
                     isScrollLocked = false;
                     posterHolderScrollIndicator.SetParent(this.transform); //set parent to unfollow collapse
                     ScratchCardPoster.isInteractable = true;
+                    onRecoverHolderPosition?.Invoke();
                 });
         }
         

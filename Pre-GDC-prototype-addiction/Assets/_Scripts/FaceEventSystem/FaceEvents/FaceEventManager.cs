@@ -19,6 +19,7 @@ public class FaceEventManager : SerializedMonoBehaviour
     };
 
     public static Action<FaceEventType> onFaceEventEnd;
+    public static Action onFaceEventDurationReduced;
 
     [HideInInspector] public ScratchCardTier discountTriggerTier;
 
@@ -84,6 +85,7 @@ public class FaceEventManager : SerializedMonoBehaviour
                 onFaceEventEnd?.Invoke(key);
             }
         }
+        onFaceEventDurationReduced?.Invoke();
     }
 
     public void ClearDuration()
