@@ -141,7 +141,6 @@ public class PayphoneManager : InteractableUIBase
             return;
         }
 
-        // TODO: newest message should be at the same position, and older ones needs to be pushed up
         if (currentBubbleAmount == maxBubbleAmount)
         {
             GameObject textBubbleToRemove = currentDisplayBubbles[0];
