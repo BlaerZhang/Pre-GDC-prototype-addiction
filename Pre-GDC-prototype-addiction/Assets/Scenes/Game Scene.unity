@@ -1991,8 +1991,8 @@ MonoBehaviour:
   - {x: 1.75, y: 0}
   cardZoomEndScale: 0.8
   redeemArea: {fileID: 1859716402}
-  redeemAreaActivateThreshold: 0.5
-  redeemAreaActivateDistance: 200
+  redeemAreaActivateThreshold: 0.6
+  redeemAreaActivateDistance: 300
   redeemAreaStopThreshold: 0.8
   redeemAreaMoveAmount: 2400
   redeemCardStayYOffset: 5.25
