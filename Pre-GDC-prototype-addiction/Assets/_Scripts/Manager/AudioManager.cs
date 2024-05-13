@@ -18,15 +18,22 @@ namespace _Scripts.Manager
             StartCoroutine(DestroyTempAudio(tempAudio));
         }
 
-        public void PlayLoopSound(AudioClip audioClip)
+        public GameObject PlayLoopSound(AudioClip audioClip)
         {
-            if (audioClip == null) return;
+            if (audioClip == null) return null;
             GameObject tempAudio = new GameObject("Temp Audio");
             AudioSource tempAudioSource = tempAudio.AddComponent<AudioSource>();
             tempAudioSource.playOnAwake = false;
             tempAudioSource.loop = true;
             tempAudioSource.clip = audioClip;
             tempAudioSource.Play();
+
+            return tempAudio;
+        }
+
+        public void StopLoopSound(GameObject tempAudio)
+        {
+            Destroy(tempAudio);
         }
 
         private IEnumerator DestroyTempAudio(GameObject tempAudio)

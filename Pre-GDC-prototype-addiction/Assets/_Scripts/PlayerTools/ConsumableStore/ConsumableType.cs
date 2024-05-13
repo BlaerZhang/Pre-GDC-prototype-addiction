@@ -2,10 +2,9 @@ namespace _Scripts.PlayerTools.ConsumableStore
 {
     public enum ConsumableType
     {
-        AlcoholicBeverage,
-        NonAlcoholicBeverage,
-        Tobacco,
+        Drinkable,
+        Puffable,
         Chewable,
-        Drug
+        Edible
     }
 }

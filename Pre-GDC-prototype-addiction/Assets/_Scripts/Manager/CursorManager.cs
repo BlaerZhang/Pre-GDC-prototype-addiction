@@ -15,7 +15,8 @@ namespace _Scripts.Manager
             Dragging,
             DragAreaHover,
             ScratchFieldHover,
-            Scratching
+            Scratching,
+            Drinking
         }
 
         private bool payphoneState = false;

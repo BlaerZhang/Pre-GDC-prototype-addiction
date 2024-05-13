@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overlayCanvasObject: {fileID: 0}
-  chewableResiduePrefabs: []
-  effectDuration: 5
+  chewableResiduePrefabs: {fileID: 4562464324445495068, guid: 6403b3d10b7ee4cb7a0ecc6e05b31627, type: 3}
+  screenBorderOffset: 20
 --- !u!1 &1975741238683967858
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +399,53 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4408491564460548672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8484981204650780108}
+  - component: {fileID: 4588486367513094724}
+  m_Layer: 0
+  m_Name: Drinkable Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8484981204650780108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4408491564460548672}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3910330080005750657}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4588486367513094724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4408491564460548672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8692841b893f49d686434512ef152abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterFountainParticleSystemPrefab: {fileID: 8010995132374359559, guid: 9f53cf21ebfe54086b7ca6f0b33c2f16, type: 3}
+  waterFountainGeneratePosition: {x: 0.29, y: -2.67, z: 0}
+  effectDuration: 10
 --- !u!1 &4483920097327437894
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +479,7 @@ Transform:
   - {fileID: 2349035181973765887}
   - {fileID: 2405112854643911757}
   - {fileID: 255899899037290831}
+  - {fileID: 8484981204650780108}
   m_Father: {fileID: 2153688874752061479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1399430913806217970
@@ -450,9 +498,10 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 3544808210550699486}
     - {fileID: 5383017150360712836}
     - {fileID: 450225509939880439}
-    - {fileID: 3544808210550699486}
+    - {fileID: 4588486367513094724}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -460,12 +509,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: effectDict
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.ConsumableStore.ConsumableType,
-        Assembly-CSharp],[_Scripts.ConsumableStore.ConsumableEffect.IConsumableEffect,
+      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.PlayerTools.ConsumableStore.ConsumableType,
+        Assembly-CSharp],[_Scripts.PlayerTools.ConsumableStore.ConsumableEffect.IConsumableEffect,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.ConsumableStore.ConsumableType,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.PlayerTools.ConsumableStore.ConsumableType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -478,7 +527,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -496,7 +545,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 4
+      Data: 1
     - Name: $v
       Entry: 10
       Data: 1
@@ -512,6 +561,18 @@ MonoBehaviour:
     - Name: $v
       Entry: 10
       Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -532,7 +593,7 @@ GameObject:
   - component: {fileID: 2405112854643911757}
   - component: {fileID: 450225509939880439}
   m_Layer: 0
-  m_Name: Drug Effect
+  m_Name: Edible Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -570,6 +631,7 @@ MonoBehaviour:
   maxHueShift: 180
   effectChangeSpeed: 50
   effectDuration: 10
+  recoverDuration: 1
 --- !u!1 &6343276474675859286
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,7 +718,7 @@ GameObject:
   - component: {fileID: 2349035181973765887}
   - component: {fileID: 5383017150360712836}
   m_Layer: 0
-  m_Name: Tobacco Effect
+  m_Name: Puffable Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -778,7 +840,7 @@ GameObject:
   - component: {fileID: 4171916854519171796}
   - component: {fileID: 5026324043095885817}
   m_Layer: 0
-  m_Name: Drug Effect Volume
+  m_Name: Edible Effect Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
