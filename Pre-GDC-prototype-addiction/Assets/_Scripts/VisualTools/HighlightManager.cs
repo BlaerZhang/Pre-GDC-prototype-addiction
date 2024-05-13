@@ -30,4 +30,11 @@ public class HighlightManager : MonoBehaviour
                 1, transitionDuration)
             .OnComplete(() => _tutorialFadeImage.enabled = false);
     }
+
+    public static void SmoothDisableEnableCombo(float transitionDuration)
+    {
+        DOTween.To(() => _tutorialFadeImage.Smoothness, x => _tutorialFadeImage.Smoothness = x,
+                1, transitionDuration)
+            .OnComplete(() => SmoothEnableHighlight(transitionDuration));
+    }
 }
