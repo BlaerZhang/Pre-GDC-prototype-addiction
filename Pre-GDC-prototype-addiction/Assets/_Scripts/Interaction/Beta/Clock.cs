@@ -51,7 +51,8 @@ namespace _Scripts.Interaction.Beta
             }).SetEase(Ease.Linear).OnComplete(() => { displayHour = newTime.Hour; });
         
             //Colun Feedback
-            colun.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0);
+            colun.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0)
+                .OnComplete(() => colun.DOColor(new Color32(232, 176, 35, 255), 0.1f));
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using _Scripts.Interaction.PosterPicking;
 using _Scripts.Manager;
 using _Scripts.VisualTools;
+using Abu;
 using DG.Tweening;
 using ScratchCardAsset;
 using Sirenix.OdinInspector;
@@ -32,6 +33,7 @@ namespace _Scripts.Interaction.InteractableSprite
         private BuyCardManager buyCardManager;
         private Vector2 initialPos;
         private SpriteShadow[] shadows;
+        private TutorialHighlight highlight;
 
         public static Action onScratchCardClicked;
         public static Func<Vector2, Vector2> onScratchCardDragging;
@@ -48,6 +50,8 @@ namespace _Scripts.Interaction.InteractableSprite
             // scratchCardManager = transform.parent.GetComponentInChildren<ScratchCardManager>();
             // buyCardManager = FindObjectOfType<BuyCardManager>();
             shadows = GetComponentsInChildren<SpriteShadow>();
+            highlight = GetComponentInParent<TutorialHighlight>();
+            highlight.enabled = false;
             initialPos = transform.position;
             isDragging = false;
         }
@@ -88,6 +92,8 @@ namespace _Scripts.Interaction.InteractableSprite
             if (dragLock) return;
             
             isDragging = true;
+            highlight.enabled = true;
+            HighlightManager.SmoothEnableHighlight(0.05f);
             
             base.OnMouseDown();
         
@@ -139,6 +145,8 @@ namespace _Scripts.Interaction.InteractableSprite
             if (dragLock) return;
             
             isDragging = false;
+            highlight.enabled = false;
+            HighlightManager.SmoothDisableHighlight(0.05f);
             
             base.OnMouseUp();
         

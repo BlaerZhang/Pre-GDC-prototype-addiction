@@ -13,12 +13,12 @@ namespace _Scripts.ScratchCardGeneration.LayoutConstructor
         [Title("Prize Setting")]
         [HideInInspector] public float currentCardPrize;
 
-        [SerializeField] public ScratchCardPrizeDistributionData prizeDistributionData;
-        [SerializeField] public ScratchCardPitySystemData prizePityData;
+        public ScratchCardPrizeDistributionData prizeDistributionData;
+        public ScratchCardPitySystemData prizePityData;
 
         [Title("Layout Setting")]
-        [SerializeField] public Dictionary<ScratchCardBrand, ICardLayoutConstructor> CardLayoutConstructorDic = new();
-        [SerializeField] private Vector2 cardGenerationPosition;
+        public Dictionary<ScratchCardBrand, ICardLayoutConstructor> CardLayoutConstructorDic = new();
+        public Vector2 cardGenerationPosition;
 
         [HideInInspector] public GameObject currentScratchCard;
 
@@ -80,7 +80,7 @@ namespace _Scripts.ScratchCardGeneration.LayoutConstructor
                 return;
             }
 
-            GameObject scratchBackground = Instantiate(scratchBackgroundPrefab, Vector3.zero, Quaternion.identity);
+            GameObject scratchBackground = Instantiate(scratchBackgroundPrefab, cardGenerationPosition, Quaternion.identity);
             scratchBackground.transform.SetParent(currentScratchCard.transform);
             scratchBackground.transform.localPosition = Vector2.zero;
 

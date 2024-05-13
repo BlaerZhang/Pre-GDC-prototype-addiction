@@ -443,8 +443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8692841b893f49d686434512ef152abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterFountainParticleSystemPrefab: {fileID: 8010995132374359559, guid: 9f53cf21ebfe54086b7ca6f0b33c2f16, type: 3}
-  waterFountainGeneratePosition: {x: 0.29, y: -2.67, z: 0}
+  waterFountainParticleSystemPrefab: {fileID: 8010995132374359559, guid: de81f8f074406d546b6a2a4373f55373, type: 3}
+  waterFountainGeneratePosition: {x: 0.23, y: -2.61, z: 0}
   effectDuration: 10
 --- !u!1 &4483920097327437894
 GameObject:
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drugEffectVolume: {fileID: 5026324043095885817}
   maxHueShift: 180
-  effectChangeSpeed: 50
+  effectChangeSpeed: 0.1
   effectDuration: 10
   recoverDuration: 1
 --- !u!1 &6343276474675859286

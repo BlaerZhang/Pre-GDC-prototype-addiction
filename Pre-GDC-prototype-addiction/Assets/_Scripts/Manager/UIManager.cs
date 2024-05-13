@@ -15,6 +15,7 @@ namespace _Scripts.Manager
     {
         [Title("Resource")]
         public TextMeshProUGUI goldUI;
+        public TextMeshProUGUI IncrementalGoldUI;
 
         [Title("Face Event")]
         public RectTransform faceEventUIParent;
@@ -66,7 +67,8 @@ namespace _Scripts.Manager
 
         public void UpdateGold(int resource)
         {
-            if (!goldUI) return;
+            // if (!goldUI) return;
+            IncrementalGoldUI.text = $"$ {resource}";
             if (goldUI.text == $"{resource}") return;
             goldUI.DOText($"{resource}", 1f,true, ScrambleMode.Numerals);
         }

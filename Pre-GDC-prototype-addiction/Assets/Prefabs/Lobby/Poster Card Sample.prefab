@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3347057267825333430}
   - component: {fileID: 1510424551251865756}
   - component: {fileID: 7198871161486802522}
+  - component: {fileID: 2384260688059911398}
   m_Layer: 0
   m_Name: Price Panel Sprite
   m_TagString: Untagged
@@ -116,6 +117,19 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_SortAtRoot: 0
+--- !u!114 &2384260688059911398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13868407726025601}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecefd69a79c0423a9f41ca2b7a2a76fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialFade: {fileID: 0}
 --- !u!1 &737191375582525072
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +142,7 @@ GameObject:
   - component: {fileID: 6614837345165067547}
   - component: {fileID: 3844765940959178556}
   - component: {fileID: 5717340154043184648}
+  - component: {fileID: 6793819182149787946}
   m_Layer: 0
   m_Name: Poster Sprite
   m_TagString: Untagged
@@ -231,6 +246,19 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &6793819182149787946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737191375582525072}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecefd69a79c0423a9f41ca2b7a2a76fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialFade: {fileID: 0}
 --- !u!1 &2582822206088799528
 GameObject:
   m_ObjectHideFlags: 0

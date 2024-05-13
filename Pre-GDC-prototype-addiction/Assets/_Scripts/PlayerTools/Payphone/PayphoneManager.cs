@@ -36,6 +36,9 @@ namespace _Scripts.PlayerTools.Payphone
         private List<string> lastMessageList;
         private List<string> currentMessageList;
         private int messageIndexCounter = 0;
+        
+        //payphone animation
+        private Animator animator;
 
         private bool inTextDisplayMode = false;
         private bool isTextShowing = false;
@@ -62,6 +65,7 @@ namespace _Scripts.PlayerTools.Payphone
         {
             base.Start();
             currentDisplayBubbles = new List<GameObject>(maxBubbleAmount);
+            animator = GetComponent<Animator>();
             textDisplayVolume.enabled = false;
             raycastBlocker.SetActive(false);
         }
@@ -178,11 +182,13 @@ namespace _Scripts.PlayerTools.Payphone
                 .OnStart(() =>
                 {
                     isTextShowing = true;
+                    animator.SetTrigger("Speak");
                 })
                 .OnComplete(() =>
                 {
                     LayoutRebuilder.ForceRebuildLayoutImmediate(textBubbleLayoutGroup.GetComponent<RectTransform>());
                     isTextShowing = false;
+                    animator.SetTrigger("Stop");
                 })
                 .OnPause(() =>
                 {
@@ -190,6 +196,7 @@ namespace _Scripts.PlayerTools.Payphone
                     textUI.text = completeText;
                     LayoutRebuilder.ForceRebuildLayoutImmediate(textBubbleLayoutGroup.GetComponent<RectTransform>());
                     isTextShowing = false;
+                    animator.SetTrigger("Stop");
                 }).Play();
 
             // fade older bubbles
