@@ -165,7 +165,7 @@ namespace _Scripts.PlayerTools.Payphone
             inTextDisplayMode = true;
             raycastBlocker.SetActive(true);
             // blur background
-            textDisplayVolume.enabled = true;
+            if (messageIndexCounter == 0) textDisplayVolume.enabled = true;
             // textDisplayVolume.TryGet(out DepthOfField depthOfField);
 
             // when all messages are played
