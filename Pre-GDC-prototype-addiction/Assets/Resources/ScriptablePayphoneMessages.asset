@@ -145,7 +145,7 @@ MonoBehaviour:
       Data: Here comes our new member, welcome.
     - Name: 
       Entry: 1
-      Data: We are <color=#e73e2b>JOLLY ESSENTIALS</color>, and we sell essential
+      Data: We are <color=#e73e2b><b>Jolly Essentials</b></color>, and we sell essential
         joys.
     - Name: 
       Entry: 1
@@ -156,7 +156,7 @@ MonoBehaviour:
       Data: Your mission is to simply sit back, relax
     - Name: 
       Entry: 1
-      Data: <b>and</b> earn <color=#e73e2b>$100000 within 24 hours</color>
+      Data: <b>and</b> earn <color=#e73e2b><b>$100000 within 24 hours</b></color>
     - Name: 
       Entry: 1
       Data: then get out off here gracefully with your cash.
@@ -226,7 +226,7 @@ MonoBehaviour:
       Data: These are the scratchable areas
     - Name: 
       Entry: 1
-      Data: The top two squares contain two <color=#e73e2b>target fruits</color>.
+      Data: The top two squares contain two <color=#e73e2b><b>target fruits</b></color>.
     - Name: 
       Entry: 1
       Data: if any square in the lower area reveals a fruit matching the target,
@@ -236,8 +236,8 @@ MonoBehaviour:
       Data: Each winning square will be settled independently.
     - Name: 
       Entry: 1
-      Data: when you finish, <color=#e73e2b>drag</color> the card to the <color=#e73e2b>hand-in
-        area</color>
+      Data: when you finish, <color=#e73e2b><b>drag</b></color> the card to the <color=#e73e2b><b>hand-in
+        area</b></color>
     - Name: 
       Entry: 1
       Data: and we will redeem it for you.
