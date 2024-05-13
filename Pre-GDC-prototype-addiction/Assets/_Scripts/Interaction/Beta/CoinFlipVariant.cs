@@ -4,6 +4,7 @@ using _Scripts.Manager;
 using _Scripts.PlayerTools.Payphone;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace _Scripts.Interaction.Beta
@@ -18,17 +19,26 @@ namespace _Scripts.Interaction.Beta
         public List<AudioClip> flipSounds;
         public List<AudioClip> dropSounds;
         public List<ParticleSystem> dropParticles;
+        public RawImage coinCamTexture;
 
         public Transform shadow;
 
         private void OnEnable()
         {
-            PayphoneManager.onPhoneStateChanged += isInMessage => { flipLock = isInMessage; };
+            PayphoneManager.onPhoneStateChanged += isInMessage =>
+            {
+                flipLock = isInMessage;
+                coinCamTexture.gameObject.SetActive(!isInMessage);
+            };
         }
         
         private void OnDisable()
         {
-            PayphoneManager.onPhoneStateChanged -= isInMessage => { flipLock = isInMessage; };
+            PayphoneManager.onPhoneStateChanged -= isInMessage =>
+            {
+                flipLock = isInMessage;
+                coinCamTexture.gameObject.SetActive(!isInMessage);
+            };
         }
 
         void Update()

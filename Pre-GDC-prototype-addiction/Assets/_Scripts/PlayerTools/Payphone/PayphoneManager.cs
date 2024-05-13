@@ -163,7 +163,7 @@ namespace _Scripts.PlayerTools.Payphone
         private void DisplayMessage()
         {
             inTextDisplayMode = true;
-            raycastBlocker.SetActive(true);
+            raycastBlocker.SetActive(!playAutomatically);
             // blur background
             if (messageIndexCounter == 0) textDisplayVolume.enabled = true;
             // textDisplayVolume.TryGet(out DepthOfField depthOfField);

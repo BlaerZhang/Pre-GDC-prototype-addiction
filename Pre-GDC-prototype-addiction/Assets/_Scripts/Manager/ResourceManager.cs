@@ -52,6 +52,7 @@ namespace _Scripts.Manager
             ScratchCardPoster.onTryBuyPoster += (poster, isBought) =>
             {
                 if (isBought) PlayerGold -= poster.price;
+                if (isBought) ChangeTime(3);
             };
         }
 
@@ -60,6 +61,7 @@ namespace _Scripts.Manager
             ScratchCardPoster.onTryBuyPoster -= (poster, isBought) =>
             {
                 if (isBought) PlayerGold -= poster.price;
+                if (isBought) ChangeTime(3);
             };
         }
 
