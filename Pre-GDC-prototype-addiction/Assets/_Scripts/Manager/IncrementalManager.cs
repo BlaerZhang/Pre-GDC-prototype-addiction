@@ -3,6 +3,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace _Scripts.Manager
 {
@@ -14,6 +15,8 @@ namespace _Scripts.Manager
 
         public List<int> upgradePricePerLevel;
 
+        public RectMask2D incrementalUIMask;
+
         private ResourceManager resourceManager;
 
         [Header("Feedback")]
@@ -21,23 +24,23 @@ namespace _Scripts.Manager
         public GameObject textFeedback;
         public List<AudioClip> soundFeedbacks;
     
-        [FormerlySerializedAs("incrementalButton")] [Header("Move to Menu")] 
-        public RectTransform menuButton;
+        [Header("Move to Menu")] public RectTransform menuButton;
     
         private void OnEnable()
         {
-            SwitchSceneManager.onSceneChanged += InitializeButton;
+
         }
 
         private void OnDisable()
         {
-            SwitchSceneManager.onSceneChanged -= InitializeButton;
+            
         }
     
         void Start()
         {
             resourceManager = GameManager.Instance.resourceManager;
             GameManager.Instance.uiManager.UpdateUpgradePrice(upgradePricePerLevel[resourceManager.ClickerLevel - 1]);
+            incrementalUIMask.padding = new Vector4(0, incrementalUIMask.rectTransform.rect.height, 0, 0); // z is right, w is top, y is bottom
         }
 
         public void OnClick(RectTransform buttonTransform)
@@ -60,6 +63,40 @@ namespace _Scripts.Manager
             resourceManager.PlayerGold -= upgradePricePerLevel[resourceManager.ClickerLevel - 1];
             resourceManager.ClickerLevel++;
             GameManager.Instance.uiManager.UpdateUpgradePrice(upgradePricePerLevel[resourceManager.ClickerLevel - 1]);
+        }
+
+        public void SwitchToIncremental()
+        {
+            DOTween.To(() => incrementalUIMask.padding, x => incrementalUIMask.padding = x, Vector4.zero, 1)
+                .SetUpdate(true)
+                .OnStart(() =>
+                {
+                    incrementalUIMask.padding = new Vector4(0, incrementalUIMask.rectTransform.rect.height, 0, 0);
+                    AudioListener.pause = true;
+                    Time.timeScale = 0;
+                })
+                .OnComplete(() =>
+                {
+                    Time.timeScale = 1;
+                    ActivateMenuButton();
+                });
+        }
+
+        public void SwitchToLobby()
+        {
+            DOTween.To(() => incrementalUIMask.padding, x => incrementalUIMask.padding = x, new Vector4(0, incrementalUIMask.rectTransform.rect.height, 0, 0), 1)
+                .SetUpdate(true)
+                .OnStart(() =>
+                {
+                    incrementalUIMask.padding = Vector4.zero;
+                    DeactivateMenuButton();
+                    Time.timeScale = 0;
+                })
+                .OnComplete(() =>
+                {
+                    Time.timeScale = 1;
+                    AudioListener.pause = false;
+                });
         }
     
         private void PlayFeedbackAnimation(RectTransform buttonTransform)
@@ -91,12 +128,5 @@ namespace _Scripts.Manager
         {
             menuButton.DOAnchorPosX(200, 0.1f).OnComplete((() => { menuButton.gameObject.SetActive(false); }));
         }
-    
-        public void InitializeButton(string toScene)
-        {
-            if (toScene == "Incremental") ActivateMenuButton();
-        }
-    
-    
     }
 }

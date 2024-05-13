@@ -390,7 +390,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: IncrementalManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: _Scripts.Manager.IncrementalManager, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 2
         m_Arguments:
@@ -414,7 +414,6 @@ GameObject:
   - component: {fileID: 5582305286816703878}
   - component: {fileID: 3240203919298999100}
   - component: {fileID: 1619639867725961276}
-  - component: {fileID: 8293649123921626211}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -523,10 +522,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8293649123921626211}
-        m_TargetAssemblyTypeName: ButtonFunctionUtils, Assembly-CSharp
-        m_MethodName: ChangeScene
-        m_Mode: 5
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: _Scripts.Manager.IncrementalManager, Assembly-CSharp
+        m_MethodName: SwitchToLobby
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -545,18 +544,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 151358a3a8406b94bb14c56d5f83aa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8293649123921626211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2981906146616932349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9f3d0e9b97e7084a95f1518b4013ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4237404209551501629
@@ -1026,7 +1013,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: IncrementalManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: _Scripts.Manager.IncrementalManager, Assembly-CSharp
         m_MethodName: OnUpgrade
         m_Mode: 1
         m_Arguments:
@@ -1271,7 +1258,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8038140964561564603}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
