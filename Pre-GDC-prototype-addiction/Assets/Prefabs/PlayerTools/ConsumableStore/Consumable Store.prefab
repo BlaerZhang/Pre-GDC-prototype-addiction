@@ -629,7 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drugEffectVolume: {fileID: 5026324043095885817}
   maxHueShift: 180
-  effectChangeSpeed: 50
+  effectChangeSpeed: 0.1
   effectDuration: 10
   recoverDuration: 1
 --- !u!1 &6343276474675859286

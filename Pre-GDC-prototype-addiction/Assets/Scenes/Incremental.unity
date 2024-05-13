@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 276315197}
   - component: {fileID: 276315196}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Incremental Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
