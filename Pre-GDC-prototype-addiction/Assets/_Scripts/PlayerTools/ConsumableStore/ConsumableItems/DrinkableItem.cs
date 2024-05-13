@@ -37,7 +37,6 @@ namespace _Scripts.ConsumableStore
         {
             base.RemoveItem();
 
-            // TODO: remove drinkable effect
             GameObject drinkableObject = new GameObject("drinkableToThrow");
             var drinkableObjectImage = drinkableObject.AddComponent<Image>();
             drinkableObjectImage.sprite = GetComponent<Image>().sprite;
