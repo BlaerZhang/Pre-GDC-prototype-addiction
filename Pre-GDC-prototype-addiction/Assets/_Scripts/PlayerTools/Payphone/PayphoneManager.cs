@@ -94,7 +94,8 @@ namespace _Scripts.PlayerTools.Payphone
             {
                 if (inTextDisplayMode)
                 {
-                    if (playAutomatically) return;
+                    // disable input in automatic play after the first click
+                    if (playAutomatically & messageIndexCounter > 0) return;
                     CheckTextDisplay();
                 }
             }
@@ -193,6 +194,7 @@ namespace _Scripts.PlayerTools.Payphone
             int stringLength = currentMessageList[messageIndexCounter].Length;
             float textPlayDuration = stringLength / textShowSpeed;
             string completeText = currentMessageList[messageIndexCounter];
+
             currentTextDisplayTween = textUI.DOText(completeText, textPlayDuration)
                 .SetEase(Ease.Linear)
                 .OnStart(() =>
@@ -206,7 +208,7 @@ namespace _Scripts.PlayerTools.Payphone
                     isTextShowing = false;
                     animator.SetBool(Speak, false);
 
-                    if (playAutomatically) StartCoroutine(AutomaticPlay());
+                    if (playAutomatically) StartCoroutine(WaitAndDisplayNext());
                 })
                 .OnPause(() =>
                 {
@@ -227,9 +229,15 @@ namespace _Scripts.PlayerTools.Payphone
 
             currentDisplayBubbles.Add(newTextBubble);
             messageIndexCounter++;
-        
+
             //broadcast state
             onPhoneStateChanged?.Invoke(true);
+        }
+
+        IEnumerator WaitAndDisplayNext()
+        {
+            yield return new WaitForSeconds(automaticPlayInterval);
+            DisplayMessage();
         }
 
         private GameObject AddTextBubble()
@@ -263,12 +271,6 @@ namespace _Scripts.PlayerTools.Payphone
             print("Replaying last message");
             currentMessageList = lastMessageList;
             inTextDisplayMode = true;
-        }
-
-        private IEnumerator AutomaticPlay()
-        {
-            DisplayMessage();
-            yield return new WaitForSeconds(automaticPlayInterval);
         }
 
         public override void OnPointerDown(PointerEventData eventData)
