@@ -38,7 +38,7 @@ namespace _Scripts.ConsumableStore.ConsumableEffect
             }
             else
             {
-                waterFountainParticleObject.SetActive(true);
+                waterFountainParticleObject.GetComponent<BoxCollider2D>().enabled = true;
                 waterFountainParticleObject.GetComponent<ParticleSystem>()?.Play();
             }
 
@@ -47,6 +47,7 @@ namespace _Scripts.ConsumableStore.ConsumableEffect
             yield return new WaitForSeconds(effectDuration);
             print("stop spray");
             waterFountainParticleObject.GetComponent<ParticleSystem>()?.Stop();
+            waterFountainParticleObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }

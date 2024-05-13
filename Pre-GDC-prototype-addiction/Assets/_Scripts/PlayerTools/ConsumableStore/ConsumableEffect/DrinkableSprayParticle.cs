@@ -14,7 +14,6 @@ namespace _Scripts.ConsumableStore.ConsumableEffect
 
         private void OnBecameInvisible()
         {
-            gameObject.SetActive(false);
             onWaterSprayParticleDisappear?.Invoke();
         }
 
