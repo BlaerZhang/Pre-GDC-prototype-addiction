@@ -34,7 +34,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -109,6 +109,141 @@ MonoBehaviour:
     - Name: 
       Entry: 1
       Data: zi dong dang zi dong dang zi dong dang zi dong dang
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Opening
+    - Name: $v
+      Entry: 7
+      Data: _Scripts.PlayerTools.Payphone.ScriptablePayphoneMessages+MessageInfo,
+        Assembly-CSharp
+    - Name: playAutomatically
+      Entry: 5
+      Data: false
+    - Name: messageText
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 14
+    - Name: 
+      Entry: 1
+      Data: Here comes our new member, welcome.
+    - Name: 
+      Entry: 1
+      Data: We are <color=#e73e2b>JOLLY ESSENTIALS</color>, and we sell essential
+        joys.
+    - Name: 
+      Entry: 1
+      Data: It is our mission to provide you a <b>great experience</b> while your
+        time here.
+    - Name: 
+      Entry: 1
+      Data: Your mission is to simply sit back, relax
+    - Name: 
+      Entry: 1
+      Data: <b>and</b> earn <color=#e73e2b>$100000 within 24 hours</color>
+    - Name: 
+      Entry: 1
+      Data: then get out off here gracefully with your cash.
+    - Name: 
+      Entry: 1
+      Data: Now these are one of our iconic brand - the Frutie series.
+    - Name: 
+      Entry: 1
+      Data: A good place to start with.
+    - Name: 
+      Entry: 1
+      Data: As for these, they are exclusive to our senior members,
+    - Name: 
+      Entry: 1
+      Data: no need for you to worry about them.
+    - Name: 
+      Entry: 1
+      Data: Though I guess you will soon become one of them.
+    - Name: 
+      Entry: 1
+      Data: That's all you need to know for now
+    - Name: 
+      Entry: 1
+      Data: We wish you a good shopping experience
+    - Name: 
+      Entry: 1
+      Data: and may the odds be in your favor.
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: First Card
+    - Name: $v
+      Entry: 7
+      Data: _Scripts.PlayerTools.Payphone.ScriptablePayphoneMessages+MessageInfo,
+        Assembly-CSharp
+    - Name: playAutomatically
+      Entry: 5
+      Data: false
+    - Name: messageText
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 9
+    - Name: 
+      Entry: 1
+      Data: Good that you did not hang up
+    - Name: 
+      Entry: 1
+      Data: 'Here is the rules for Frutie series:'
+    - Name: 
+      Entry: 1
+      Data: These are the scratchable areas
+    - Name: 
+      Entry: 1
+      Data: The top two squares contain two <color=#e73e2b>target fruits</color>.
+    - Name: 
+      Entry: 1
+      Data: if any square in the lower area reveals a fruit matching the target,
+        it is considered a win.
+    - Name: 
+      Entry: 1
+      Data: Each winning square will be settled independently.
+    - Name: 
+      Entry: 1
+      Data: when you finish, <color=#e73e2b>drag</color> the card to the <color=#e73e2b>hand-in
+        area</color>
+    - Name: 
+      Entry: 1
+      Data: and we will redeem it for you.
+    - Name: 
+      Entry: 1
+      Data: Good luck.
     - Name: 
       Entry: 13
       Data: 

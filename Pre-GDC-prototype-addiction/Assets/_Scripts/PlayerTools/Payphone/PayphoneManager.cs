@@ -41,7 +41,7 @@ namespace _Scripts.PlayerTools.Payphone
         private bool playAutomatically = false;
 
         //payphone animation
-        private Animator animator;
+        public Animator animator;
 
         private bool inTextDisplayMode = false;
         private bool isTextShowing = false;

@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace _Scripts.Manager
 {
-    // TODO: adjustable volume
     public class AudioManager : MonoBehaviour
     {
+        [Range(0,1)] [SerializeField] private float soundVolume = 0.75f;
         public void PlaySound(AudioClip audioClip)
         {
             if (audioClip == null) return;
@@ -14,6 +14,7 @@ namespace _Scripts.Manager
 
             tempAudioSource.playOnAwake = false;
             tempAudioSource.clip = audioClip;
+            tempAudioSource.volume = soundVolume;
             tempAudioSource.Play();
             StartCoroutine(DestroyTempAudio(tempAudio));
         }
@@ -26,6 +27,7 @@ namespace _Scripts.Manager
             tempAudioSource.playOnAwake = false;
             tempAudioSource.loop = true;
             tempAudioSource.clip = audioClip;
+            tempAudioSource.volume = soundVolume;
             tempAudioSource.Play();
 
             return tempAudio;

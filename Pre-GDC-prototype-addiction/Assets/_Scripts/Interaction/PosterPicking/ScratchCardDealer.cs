@@ -6,6 +6,7 @@ using _Scripts.Interaction.InteractableSprite;
 using _Scripts.Manager;
 using _Scripts.ScratchCardGeneration;
 using _Scripts.ScratchCardGeneration.LayoutConstructor;
+using Abu;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -43,6 +44,7 @@ namespace _Scripts.Interaction.PosterPicking
         [SerializeField] private bool dealAudio = true;
         [SerializeField] private List<AudioClip> dealSounds;
 
+        private TutorialHighlight redeemAreaHighlight;
         private ScratchCardBrand currentCardBrand;
         private List<SelectableScratchCard> cardsToSelect = new();
         private int cardSpawnCount;
@@ -50,6 +52,7 @@ namespace _Scripts.Interaction.PosterPicking
         private void Start()
         {
             cardSpawnCount = cardSlotPositions.Count;
+            redeemAreaHighlight = redeemArea.GetComponent<TutorialHighlight>();
         }
 
         private void OnEnable()
@@ -239,11 +242,13 @@ namespace _Scripts.Interaction.PosterPicking
         private void ActivateRedeemArea()
         {
             redeemArea.DOAnchorPosY(-redeemAreaActivateDistance, 0.1f);
+            redeemAreaHighlight.enabled = true;
         }
 
         private void DeactivateRedeemArea()
         {
             redeemArea.DOAnchorPosY(0, 0.1f);
+            redeemAreaHighlight.enabled = false;
         }
         #endregion
     }
