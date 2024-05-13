@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: PhoneMessageDict
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.List`1[[System.String,
-        mscorlib]], mscorlib]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[_Scripts.PlayerTools.Payphone.ScriptablePayphoneMessages+MessageInfo,
+        Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
@@ -43,27 +43,34 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
+      Data: _Scripts.PlayerTools.Payphone.ScriptablePayphoneMessages+MessageInfo,
+        Assembly-CSharp
+    - Name: playAutomatically
+      Entry: 5
+      Data: false
+    - Name: messageText
+      Entry: 7
       Data: 2|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 4
     - Name: 
       Entry: 1
-      Data: aaaaaaaaaaaaaaaaaaa
+      Data: shou dong dang
     - Name: 
       Entry: 1
-      Data: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+      Data: 'shou dong dang shou dong dang '
     - Name: 
       Entry: 1
-      Data: cccccccc
+      Data: shou dong dang shou dong dang shou dong dang
     - Name: 
       Entry: 1
-      Data: dddddddddddddddddd
-    - Name: 
-      Entry: 1
-      Data: eeeeeeeeeeeeee
+      Data: shou dong dang shou dong dang shou dong dang shou dong dang
     - Name: 
       Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -79,24 +86,34 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
+      Data: _Scripts.PlayerTools.Payphone.ScriptablePayphoneMessages+MessageInfo,
+        Assembly-CSharp
+    - Name: playAutomatically
+      Entry: 5
+      Data: true
+    - Name: messageText
+      Entry: 7
       Data: 3|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 4
     - Name: 
       Entry: 1
-      Data: 11112
+      Data: zi dong dang
     - Name: 
       Entry: 1
-      Data: 2222
+      Data: zi dong dang zi dong dang
     - Name: 
       Entry: 1
-      Data: 333
+      Data: zi dong dang zi dong dang zi dong dang
     - Name: 
       Entry: 1
-      Data: 4444
+      Data: zi dong dang zi dong dang zi dong dang zi dong dang
     - Name: 
       Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8

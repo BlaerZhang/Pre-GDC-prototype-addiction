@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Interaction.InteractableUI;
 using _Scripts.ScratchCardGeneration.Utilities;
@@ -26,17 +27,19 @@ namespace _Scripts.PlayerTools.Payphone
         private int currentBubbleAmount = 0;
 
         [Title("Text Displaying")]
-        [SerializeField] private Volume textDisplayVolume;
+        [SerializeField] private float automaticPlayInterval;
         [SerializeField] private float textShowSpeed;
         [SerializeField] private float textFadeModifier;
         [SerializeField] private float textFadeDuration;
+        [SerializeField] private Volume textDisplayVolume;
         [SerializeField] private GameObject raycastBlocker;
 
         // reset required
         private List<string> lastMessageList;
         private List<string> currentMessageList;
         private int messageIndexCounter = 0;
-        
+        private bool playAutomatically = false;
+
         //payphone animation
         private Animator animator;
 
@@ -47,9 +50,13 @@ namespace _Scripts.PlayerTools.Payphone
 
         // come with the message id that could be used in the dictionary to retrieve the message text
         public static Action<string> onPhoneMessageSent;
+
+        // called when single message from the list begins, come with the index of the line
+        public static Action<int> onSingleLineBegins;
     
         // broadcast payphone state, true is IN Message, false is OUT OF Message
         public static Action<bool> onPhoneStateChanged;
+        private static readonly int Speak = Animator.StringToHash("Speak");
 
         private void OnEnable()
         {
@@ -85,19 +92,29 @@ namespace _Scripts.PlayerTools.Payphone
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (inTextDisplayMode) CheckTextDisplay();
+                if (inTextDisplayMode)
+                {
+                    if (playAutomatically) return;
+                    CheckTextDisplay();
+                }
             }
         }
 
+        /// <summary>
+        /// get info from the scriptable object
+        /// </summary>
+        /// <param name="messageId"></param>
         private void RetrieveMessage(string messageId)
         {
-            if (!scriptablePayphoneMessages.PhoneMessageDict.TryGetValue(messageId, out List<string> messageList))
+            if (!scriptablePayphoneMessages.PhoneMessageDict.TryGetValue(messageId, out ScriptablePayphoneMessages.MessageInfo messageInfo))
             {
                 Debug.LogError("No message found in scriptable payphone message lists, please check your message id");
                 return;
             }
 
-            currentMessageList = messageList;
+            playAutomatically = messageInfo.playAutomatically;
+            currentMessageList = messageInfo.messageText;
+
             DisplayMessage();
         }
 
@@ -145,7 +162,6 @@ namespace _Scripts.PlayerTools.Payphone
         private void DisplayMessage()
         {
             inTextDisplayMode = true;
-            // TODO: lock all other interactions: panel block UI interaction, lock sprite
             raycastBlocker.SetActive(true);
             // blur background
             textDisplayVolume.enabled = true;
@@ -182,13 +198,15 @@ namespace _Scripts.PlayerTools.Payphone
                 .OnStart(() =>
                 {
                     isTextShowing = true;
-                    animator.SetTrigger("Speak");
+                    animator.SetBool(Speak, true);
                 })
                 .OnComplete(() =>
                 {
                     LayoutRebuilder.ForceRebuildLayoutImmediate(textBubbleLayoutGroup.GetComponent<RectTransform>());
                     isTextShowing = false;
-                    animator.SetTrigger("Stop");
+                    animator.SetBool(Speak, false);
+
+                    if (playAutomatically) StartCoroutine(AutomaticPlay());
                 })
                 .OnPause(() =>
                 {
@@ -196,7 +214,7 @@ namespace _Scripts.PlayerTools.Payphone
                     textUI.text = completeText;
                     LayoutRebuilder.ForceRebuildLayoutImmediate(textBubbleLayoutGroup.GetComponent<RectTransform>());
                     isTextShowing = false;
-                    animator.SetTrigger("Stop");
+                    animator.SetBool(Speak, false);
                 }).Play();
 
             // fade older bubbles
@@ -216,6 +234,7 @@ namespace _Scripts.PlayerTools.Payphone
 
         private GameObject AddTextBubble()
         {
+            onSingleLineBegins?.Invoke(messageIndexCounter);
             GameObject newTextBubble = Instantiate(textBubblePrefab, textBubbleLayoutGroup.transform, false);
             newTextBubble.transform.localScale = Vector3.one;
 
@@ -244,7 +263,12 @@ namespace _Scripts.PlayerTools.Payphone
             print("Replaying last message");
             currentMessageList = lastMessageList;
             inTextDisplayMode = true;
-            // DisplayMessage();
+        }
+
+        private IEnumerator AutomaticPlay()
+        {
+            DisplayMessage();
+            yield return new WaitForSeconds(automaticPlayInterval);
         }
 
         public override void OnPointerDown(PointerEventData eventData)

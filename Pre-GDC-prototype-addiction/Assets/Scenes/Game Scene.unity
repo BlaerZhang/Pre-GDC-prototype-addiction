@@ -7907,6 +7907,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 878656681}
     - target: {fileID: 191854589728466253, guid: 0b4184024a901419e9f7460c0ac0d3ef, type: 3}
+      propertyPath: automaticPlayInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 191854589728466253, guid: 0b4184024a901419e9f7460c0ac0d3ef, type: 3}
       propertyPath: textBubbleLayoutGroup
       value: 
       objectReference: {fileID: 878656682}

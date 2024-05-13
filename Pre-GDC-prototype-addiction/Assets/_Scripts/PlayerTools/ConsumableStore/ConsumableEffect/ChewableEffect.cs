@@ -23,6 +23,7 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableEffect
             print("chewable effect triggered");
             GameObject residue = Instantiate(chewableResiduePrefabs, overlayCanvasObject.transform);
             RectTransform residueRectTransform = residue.GetComponent<RectTransform>();
+            residueRectTransform.SetAsFirstSibling();
 
             float screenWidth = Screen.width;
             float screenHeight = Screen.height;

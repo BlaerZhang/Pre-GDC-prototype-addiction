@@ -30,6 +30,7 @@ namespace _Scripts.Interaction.InteractableSprite
 
         // private BuyCardManager buyCardManager;
 
+        public static Action<FaceEventType> onFaceEventHappened;
         public static Action<SelectableScratchCard, FaceEventType> onScratchCardSelected;
 
         private bool isCardSelected = false;
@@ -56,6 +57,8 @@ namespace _Scripts.Interaction.InteractableSprite
         private void PickCard()
         {
             FaceEventType faceEventTypeResult = Utils.CalculateMultiProbability(GameManager.Instance.cardPoolManager.eventTriggerWeightPerFaceTypeDict[faceType]); //draw face event
+            onFaceEventHappened?.Invoke(faceEventTypeResult);
+
             StatsTracker.onValueChanged?.Invoke(nameof(faceEventTypeResult), (int)faceEventTypeResult); //send to metaphysics center
 
             //start collect + zoom
