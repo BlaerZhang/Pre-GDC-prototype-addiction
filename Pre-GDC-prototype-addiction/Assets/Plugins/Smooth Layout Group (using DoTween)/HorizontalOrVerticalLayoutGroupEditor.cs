@@ -10,7 +10,7 @@ namespace Utility.SLayout {
     /// </summary>
     public class HorizontalOrVerticalLayoutGroupEditor : Editor
     {
-        
+#if UNITY_EDITOR
         SerializedProperty moveDuration;
         SerializedProperty m_Padding;
         SerializedProperty m_Spacing;
@@ -93,4 +93,5 @@ namespace Utility.SLayout {
             EditorGUI.EndProperty();
         }
     }
+#endif
 }

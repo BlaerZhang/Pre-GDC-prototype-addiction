@@ -11,7 +11,7 @@ namespace Utility.SLayout {
     [DisallowMultipleComponent]
     [ExecuteAlways]
     [RequireComponent(typeof(RectTransform))]
-    public abstract class SLayoutGroup : UIBehaviour, ILayoutElement, ILayoutGroup {
+    public abstract class  SLayoutGroup : UIBehaviour, ILayoutElement, ILayoutGroup {
         
         [SerializeField] protected RectOffset m_Padding = new RectOffset();
         [SerializeField] public float moveDuration = 1f;
