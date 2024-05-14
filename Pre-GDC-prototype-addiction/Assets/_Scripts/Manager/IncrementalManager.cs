@@ -69,7 +69,7 @@ namespace _Scripts.Manager
         public void SwitchToIncremental()
         {
             DOTween.To(() => incrementalUIMask.padding, x => incrementalUIMask.padding = x, Vector4.zero, 1)
-                .SetUpdate(true)
+                .SetUpdate(true).SetEase(Ease.Linear)
                 .OnStart(() =>
                 {
                     incrementalUIMask.padding = new Vector4(0, incrementalUIMask.rectTransform.rect.height, 0, 0);
@@ -86,7 +86,7 @@ namespace _Scripts.Manager
         public void SwitchToLobby()
         {
             DOTween.To(() => incrementalUIMask.padding, x => incrementalUIMask.padding = x, new Vector4(0, incrementalUIMask.rectTransform.rect.height, 0, 0), 1)
-                .SetUpdate(true)
+                .SetUpdate(true).SetEase(Ease.Linear)
                 .OnStart(() =>
                 {
                     incrementalUIMask.padding = Vector4.zero;

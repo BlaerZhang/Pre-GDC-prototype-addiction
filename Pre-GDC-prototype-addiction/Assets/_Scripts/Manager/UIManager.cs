@@ -15,7 +15,8 @@ namespace _Scripts.Manager
     {
         [Title("Resource")]
         public TextMeshProUGUI goldUI;
-        public TextMeshProUGUI IncrementalGoldUI;
+        public TextMeshProUGUI incrementalGoldUI;
+        public TextMeshProUGUI incrementalClockUI;
 
         [Title("Face Event")]
         // public RectTransform faceEventUIParent;
@@ -43,6 +44,7 @@ namespace _Scripts.Manager
             }
             FaceEventListener.onFaceEventTriggered += PutUpPoster;
             FaceEventManager.onFaceEventEnd += RemovePoster;
+            ResourceManager.OnTimeChanged += time => incrementalClockUI.text = time.ToString("t");
             // UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
             // FaceEventListener.onFaceEventTriggered += PopFaceEventUI;
             // FaceEventManager.onFaceEventEnd += CollapseFaceEventUI;
@@ -53,6 +55,7 @@ namespace _Scripts.Manager
         {
             FaceEventListener.onFaceEventTriggered -= PutUpPoster;
             FaceEventManager.onFaceEventEnd -= RemovePoster;
+            ResourceManager.OnTimeChanged -= time => incrementalClockUI.text = time.ToString("t");
             // SceneManager.sceneLoaded -= OnSceneLoaded;
             // FaceEventListener.onFaceEventTriggered -= PopFaceEventUI;
             // FaceEventManager.onFaceEventEnd -= CollapseFaceEventUI;
@@ -77,7 +80,7 @@ namespace _Scripts.Manager
         public void UpdateGold(int resource)
         {
             // if (!goldUI) return;
-            IncrementalGoldUI.text = $"$ {resource}";
+            incrementalGoldUI.text = $"$ {resource}";
             if (goldUI.text == $"{resource}") return;
             goldUI.DOText($"{resource}", 1f,true, ScrambleMode.Numerals);
         }
