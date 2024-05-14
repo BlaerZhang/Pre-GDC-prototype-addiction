@@ -86,5 +86,5 @@
             ENDCG
         }
     }
-    CustomEditor "FourColorDynamicGradientInspector"
+//    CustomEditor "FourColorDynamicGradientInspector"
 }
