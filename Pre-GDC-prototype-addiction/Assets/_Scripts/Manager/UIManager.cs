@@ -15,10 +15,11 @@ namespace _Scripts.Manager
     {
         [Title("Resource")]
         public TextMeshProUGUI goldUI;
-        public TextMeshProUGUI IncrementalGoldUI;
+        public TextMeshProUGUI incrementalGoldUI;
+        public TextMeshProUGUI incrementalClockUI;
 
         [Title("Face Event")]
-        public RectTransform faceEventUIParent;
+        // public RectTransform faceEventUIParent;
         public Dictionary<FaceEventType, RectTransform> faceEventUIDict;
     
         [Title("Incremental")]
@@ -36,39 +37,50 @@ namespace _Scripts.Manager
 
         private void OnEnable()
         {
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
-            FaceEventListener.onFaceEventTriggered += PopFaceEventUI;
-            FaceEventManager.onFaceEventEnd += CollapseFaceEventUI;
-            SwitchSceneManager.onSceneChanged += ShowFaceEventUI;
+            foreach (var kvp in faceEventUIDict)
+            {
+                kvp.Value.localScale = Vector3.zero;
+                kvp.Value.gameObject.SetActive(false);
+            }
+            FaceEventListener.onFaceEventTriggered += PutUpPoster;
+            FaceEventManager.onFaceEventEnd += RemovePoster;
+            ResourceManager.OnTimeChanged += time => incrementalClockUI.text = time.ToString("t");
+            // UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+            // FaceEventListener.onFaceEventTriggered += PopFaceEventUI;
+            // FaceEventManager.onFaceEventEnd += CollapseFaceEventUI;
+            // SwitchSceneManager.onSceneChanged += ShowFaceEventUI;
         }
 
         private void OnDisable()
         {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-            FaceEventListener.onFaceEventTriggered -= PopFaceEventUI;
-            FaceEventManager.onFaceEventEnd -= CollapseFaceEventUI;
-            SwitchSceneManager.onSceneChanged -= ShowFaceEventUI;
+            FaceEventListener.onFaceEventTriggered -= PutUpPoster;
+            FaceEventManager.onFaceEventEnd -= RemovePoster;
+            ResourceManager.OnTimeChanged -= time => incrementalClockUI.text = time.ToString("t");
+            // SceneManager.sceneLoaded -= OnSceneLoaded;
+            // FaceEventListener.onFaceEventTriggered -= PopFaceEventUI;
+            // FaceEventManager.onFaceEventEnd -= CollapseFaceEventUI;
+            // SwitchSceneManager.onSceneChanged -= ShowFaceEventUI;
         }
 
-        void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
-        {
-            switch (scene.name)
-            {
-                case "Incremental":
-                    upgradePrice = GameObject.Find("Upgrade Price").GetComponent<TextMeshProUGUI>();
-                    break;
-                case "Buy Card":
-                    buyCardPrice = GameObject.Find("Buy Price").GetComponent<TextMeshProUGUI>();
-                    break;
-            }
-            
-            HideFaceEventUI();
-        }
+        // void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+        // {
+        //     switch (scene.name)
+        //     {
+        //         case "Incremental":
+        //             upgradePrice = GameObject.Find("Upgrade Price").GetComponent<TextMeshProUGUI>();
+        //             break;
+        //         case "Buy Card":
+        //             buyCardPrice = GameObject.Find("Buy Price").GetComponent<TextMeshProUGUI>();
+        //             break;
+        //     }
+        //     
+        //     HideFaceEventUI();
+        // }
 
         public void UpdateGold(int resource)
         {
             // if (!goldUI) return;
-            IncrementalGoldUI.text = $"$ {resource}";
+            incrementalGoldUI.text = $"$ {resource}";
             if (goldUI.text == $"{resource}") return;
             goldUI.DOText($"{resource}", 1f,true, ScrambleMode.Numerals);
         }
@@ -133,26 +145,46 @@ namespace _Scripts.Manager
 
         }
 
-        private void PopFaceEventUI(FaceEventType eventType, int eventDuration, ScratchCardTier triggerTier)
+        private void PutUpPoster(FaceEventType eventType, int eventDuration, ScratchCardTier triggerTier)
         {
             if (eventType == FaceEventType.NoEvent) return;
-            faceEventUIDict[eventType].DOAnchorPosX(0, 0.5f).SetEase(Ease.OutElastic);
+            faceEventUIDict[eventType].DOScale(1,0.5f).SetEase(Ease.OutElastic)
+                .OnStart(() =>
+                {
+                    faceEventUIDict[eventType].gameObject.SetActive(true);
+                });
         }
         
-        private void CollapseFaceEventUI(FaceEventType eventType)
+        private void RemovePoster(FaceEventType eventType)
         {
             if (eventType == FaceEventType.NoEvent) return;
-            faceEventUIDict[eventType].DOAnchorPosX(600, 0.3f);
+            faceEventUIDict[eventType].DOScale(0,0.5f).SetEase(Ease.OutElastic)
+                .OnComplete(() =>
+                {
+                    faceEventUIDict[eventType].gameObject.SetActive(false);
+                });
         }
 
-        private void HideFaceEventUI()
-        {
-            faceEventUIParent.DOAnchorPosX(600, 0.3f);
-        }
-
-        private void ShowFaceEventUI(string toScene)
-        {
-            faceEventUIParent.DOAnchorPosX(0, 0.3f);
-        }
+        // private void PopFaceEventUI(FaceEventType eventType, int eventDuration, ScratchCardTier triggerTier)
+        // {
+        //     if (eventType == FaceEventType.NoEvent) return;
+        //     faceEventUIDict[eventType].DOAnchorPosX(0, 0.5f).SetEase(Ease.OutElastic);
+        // }
+        //
+        // private void CollapseFaceEventUI(FaceEventType eventType)
+        // {
+        //     if (eventType == FaceEventType.NoEvent) return;
+        //     faceEventUIDict[eventType].DOAnchorPosX(600, 0.3f);
+        // }
+        //
+        // private void HideFaceEventUI()
+        // {
+        //     faceEventUIParent.DOAnchorPosX(600, 0.3f);
+        // }
+        //
+        // private void ShowFaceEventUI(string toScene)
+        // {
+        //     faceEventUIParent.DOAnchorPosX(0, 0.3f);
+        // }
     }
 }
