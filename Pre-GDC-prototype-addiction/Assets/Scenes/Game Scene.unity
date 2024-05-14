@@ -3146,9 +3146,9 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 1577206672}
-    - {fileID: 1995114926}
-    - {fileID: 512837238}
+    - {fileID: 1355635114}
+    - {fileID: 1563980343}
+    - {fileID: 962814674}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -3218,7 +3218,6 @@ MonoBehaviour:
       Data: 
   goldUI: {fileID: 874094101}
   IncrementalGoldUI: {fileID: 1388952655}
-  faceEventUIParent: {fileID: 312405963}
   upgradePrice: {fileID: 1069747122}
   buyCardPrice: {fileID: 1548577263}
   membershipProgressBar: {fileID: 6722899509281127686}
