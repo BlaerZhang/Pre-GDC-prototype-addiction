@@ -2,6 +2,7 @@ using System;
 using _Scripts.FaceEventSystem;
 using _Scripts.Interaction.InteractableSprite;
 using _Scripts.Interaction.PosterPicking;
+using _Scripts.Manager;
 using _Scripts.PlayerTools.MembershipSystem;
 using DG.Tweening;
 using Interaction;
@@ -16,14 +17,15 @@ namespace _Scripts.PlayerTools
     {
         [SerializeField] private Sprite normalSprite;
 
-        [Title("Unlock Settings")]
         [SerializeField] private bool unlockRequired = true;
+
         [ShowIf(nameof(unlockRequired))]
+        [TitleGroup("Unlock Settings")]
         [SerializeField] private int unlockPrice;
-        [ShowIf(nameof(unlockRequired))]
         [SerializeField] private int unlockMembershipLevel;
-        [ShowIf(nameof(unlockRequired))]
-        [SerializeField] private Sprite lockedSprite;
+        [SerializeField] private GameObject lockedCover;
+        [SerializeField] private AudioClip revealCoverSound;
+
 
         [Title("Collapse Settings")]
         [SerializeField] private bool hideWhenScratching = false;
@@ -52,6 +54,24 @@ namespace _Scripts.PlayerTools
             semiHideOffset = hideOffset / 3;
             rectTransform = GetComponent<RectTransform>();
             originalPosition = rectTransform.anchoredPosition;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                CollapseToEdge(hideOffset);
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                ExpandFromEdge();
+            }
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                ShowUnlockEffect();
+            }
         }
 
         private void OnEnable()
@@ -101,25 +121,28 @@ namespace _Scripts.PlayerTools
             }
         }
 
-        protected virtual void ShowUnlockEffect() {}
+        protected virtual void ShowUnlockEffect()
+        {
+            // TODO: unlock effect
+            if (!lockedCover) return;
 
+            RectTransform mainCover = lockedCover.transform.GetChild(0).GetComponent<RectTransform>();
+            RectTransform coverTop = lockedCover.transform.GetChild(1).GetComponent<RectTransform>();
+
+            if (revealCoverSound) GameManager.Instance.audioManager.PlaySound(revealCoverSound);
+
+            float lockedCoverFirstLiftY = mainCover.GetComponent<Image>().rectTransform.rect.height;
+            float lockedCoverSecondLiftY = coverTop.GetComponent<Image>().rectTransform.rect.height;
+
+            mainCover.DOLocalMoveY(lockedCoverFirstLiftY, 0.2f).SetEase(Ease.InQuart)
+                .OnComplete(() =>
+                {
+                    coverTop.DOLocalMoveY( coverTop.anchoredPosition.y + lockedCoverSecondLiftY, 0.1f).SetEase(Ease.InQuart);
+                });
+        }
         #endregion
 
         #region Hide Tool
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                CollapseToEdge(hideOffset);
-            }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                ExpandFromEdge();
-            }
-        }
-
         // private void SemiCollapse()
         // {
         //     CollapseToEdge(semiHideOffset);

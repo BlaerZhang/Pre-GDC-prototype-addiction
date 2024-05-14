@@ -3971,6 +3971,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1935106897654960958, guid: 89a1768b69288d44588fd1912702c2fe, type: 3}
+      propertyPath: lockedCover
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935106897654960958, guid: 89a1768b69288d44588fd1912702c2fe, type: 3}
+      propertyPath: lockedCoverFirstLiftY
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935106897654960958, guid: 89a1768b69288d44588fd1912702c2fe, type: 3}
+      propertyPath: lockedCoverSecondLiftY
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 6121326938929209919, guid: 89a1768b69288d44588fd1912702c2fe, type: 3}
       propertyPath: m_Name
       value: Card Counter
@@ -4650,7 +4662,7 @@ PrefabInstance:
       objectReference: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
@@ -4684,23 +4696,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.ReferencedUnityObjects.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.ReferencedUnityObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 422610696}
+      objectReference: {fileID: 1461604062}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.ReferencedUnityObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 197637163}
+      objectReference: {fileID: 422610696}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.ReferencedUnityObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 1461604062}
+      objectReference: {fileID: 197637163}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1399430913806217970, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
@@ -4718,6 +4730,10 @@ PrefabInstance:
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]
       value: 
       objectReference: {fileID: 197637163}
+    - target: {fileID: 1464302872218825695, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: unlockRequired
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2153688874752061479, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: m_Pivot.x
       value: 1
