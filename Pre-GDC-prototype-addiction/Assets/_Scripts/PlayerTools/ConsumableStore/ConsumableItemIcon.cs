@@ -43,7 +43,7 @@ namespace _Scripts.PlayerTools.ConsumableStore
             if(usedItemName.Equals(itemName)) isOutOfStock = false;
         }
 
-        public void InitializeItem(GameObject consumablePrefab, string itemName, int price, Sprite itemSprite, ConsumableType consumableType, int unlockLevel)
+        public void InitializeItem(GameObject consumablePrefab, string itemName, int price, Sprite itemSprite, ConsumableType consumableType, int unlockLevel, AudioClip pressSound)
         {
             this.consumablePrefab = consumablePrefab;
             this.itemName = itemName;
@@ -51,6 +51,7 @@ namespace _Scripts.PlayerTools.ConsumableStore
             this.itemSprite = itemSprite;
             this.consumableType = consumableType;
             this.unlockLevel = unlockLevel;
+            this.pressSounds.Add(pressSound);
 
             UnlockItem(0);
         }

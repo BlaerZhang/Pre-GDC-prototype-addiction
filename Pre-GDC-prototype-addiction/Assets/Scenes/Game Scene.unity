@@ -1912,7 +1912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &312405963
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1932,7 +1932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 600, y: 0}
+  m_AnchoredPosition: {x: 599.9999, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &312910291
@@ -4806,6 +4806,10 @@ PrefabInstance:
       propertyPath: overlayCanvasObject
       value: 
       objectReference: {fileID: 2045035531}
+    - target: {fileID: 7381797434029712070, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: iconPurchaseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 08a0b75409e6d0946aa67935e1f7264d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8165,6 +8169,14 @@ PrefabInstance:
       propertyPath: textBubbleLayoutGroup
       value: 
       objectReference: {fileID: 878656682}
+    - target: {fileID: 191854589728466253, guid: 0b4184024a901419e9f7460c0ac0d3ef, type: 3}
+      propertyPath: pressSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 191854589728466253, guid: 0b4184024a901419e9f7460c0ac0d3ef, type: 3}
+      propertyPath: pressSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5fdf0ee1b2fb2bb489d11b3ee8e3d71d, type: 3}
     - target: {fileID: 2836917475697622083, guid: 0b4184024a901419e9f7460c0ac0d3ef, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -12252,7 +12264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6430194213914336460, guid: c97034314b22749ada12fc406e45adc2, type: 3}
       propertyPath: lightOffColor.a
-      value: 0.9019608
+      value: 0.98039216
       objectReference: {fileID: 0}
     - target: {fileID: 6430194213914336460, guid: c97034314b22749ada12fc406e45adc2, type: 3}
       propertyPath: hoverSizeModifier
@@ -12529,6 +12541,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4786320291268410811, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: pressSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786320291268410811, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: pressSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 39239efee03aae94e8a0c7bc1059f6d3, type: 3}
+    - target: {fileID: 4786320291268410811, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: pressSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b83f1a4c814e14a4c8dd0c960841f069, type: 3}
+    - target: {fileID: 4786320291268410811, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: pressSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 74105d789a4e3834ca81d7fc126f5a59, type: 3}
+    - target: {fileID: 4786320291268410811, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: pressSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: e8ff943ea0b4ef24b824bcfb269d7d1b, type: 3}
+    - target: {fileID: 5089485901366672387, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: throwSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8342602a88f061248888c09951036d72, type: 3}
+    - target: {fileID: 5089485901366672387, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: pressSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089485901366672387, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
+      propertyPath: pressSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 40ecc9d035ecd85439d4e9faf67ec200, type: 3}
     - target: {fileID: 7560158786241817581, guid: e79f771bea5a44c9ea5d3b0f22421a8a, type: 3}
       propertyPath: m_Name
       value: Desk (Preset)

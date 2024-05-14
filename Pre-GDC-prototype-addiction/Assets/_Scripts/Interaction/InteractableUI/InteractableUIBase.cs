@@ -17,9 +17,9 @@ namespace _Scripts.Interaction.InteractableUI
         private Vector3 originalLocalScale;
 
         [Title("Sound")]
-        [SerializeField] private List<AudioClip> hoverSounds = new();
-        [SerializeField] private List<AudioClip> pressSounds = new();
-        [SerializeField] private List<AudioClip> exitSounds = new();
+        [SerializeField] protected List<AudioClip> hoverSounds = new();
+        [SerializeField] protected List<AudioClip> pressSounds = new();
+        [SerializeField] protected List<AudioClip> exitSounds = new();
 
         protected virtual void Start()
         {

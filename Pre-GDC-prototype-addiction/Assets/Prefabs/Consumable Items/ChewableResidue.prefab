@@ -92,6 +92,10 @@ MonoBehaviour:
   hoverSizeModifier: 1.1
   pressSizeModifier: 0.8
   hoverSounds: []
-  pressSounds: []
+  pressSounds:
+  - {fileID: 8300000, guid: 39239efee03aae94e8a0c7bc1059f6d3, type: 3}
+  - {fileID: 8300000, guid: b83f1a4c814e14a4c8dd0c960841f069, type: 3}
+  - {fileID: 8300000, guid: 74105d789a4e3834ca81d7fc126f5a59, type: 3}
+  - {fileID: 8300000, guid: e8ff943ea0b4ef24b824bcfb269d7d1b, type: 3}
   exitSounds: []
   initialClickRequiredToRemove: 3
