@@ -120,11 +120,14 @@ public class TutorialManager : MonoBehaviour
                 raycastBlocker.SetActive(true);
                 PayphoneManager.onPhoneStateChanged?.Invoke(true);
                 ringAudioTemp = GameManager.Instance.audioManager.PlayLoopSound(payphoneRingSound);
-                mask.DOFade(230f / 256, 2f).SetEase(Ease.Linear).OnComplete(() =>
+                mask.DOFade(250f / 256, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
                 {
-                    mask.color = Color.clear;
-                    isLightOn = true;
-                    GameManager.Instance.audioManager.PlaySound(lightOnSound);
+                    DOVirtual.DelayedCall(1.5f, () =>
+                    {
+                        mask.color = Color.clear;
+                        isLightOn = true;
+                        GameManager.Instance.audioManager.PlaySound(lightOnSound);
+                    }).Play();
                 });
                 break;
             case 4:

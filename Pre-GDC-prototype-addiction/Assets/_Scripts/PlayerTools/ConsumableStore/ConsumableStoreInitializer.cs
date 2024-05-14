@@ -36,6 +36,9 @@ namespace _Scripts.PlayerTools.ConsumableStore
         [Title("Item Tooltip Settings")]
         [SerializeField] private SimpleTooltipStyle tooltipStyle;
 
+        [Title("Item Audio Settings")] 
+        [SerializeField] private AudioClip iconPurchaseSound;
+
         void Start()
         {
             SetUpGridLayout();
@@ -77,7 +80,7 @@ namespace _Scripts.PlayerTools.ConsumableStore
             // add tooltip on consumable items
             AddTooltip(consumableItem, itemName, itemDescription, price.ToString());
 
-            consumableItem.AddComponent<ConsumableItemIcon>().InitializeItem(consumablePrefab, itemName, price, itemSprite, consumableType, unlockLevel);
+            consumableItem.AddComponent<ConsumableItemIcon>().InitializeItem(consumablePrefab, itemName, price, itemSprite, consumableType, unlockLevel, iconPurchaseSound);
 
             return consumableItem;
         }
