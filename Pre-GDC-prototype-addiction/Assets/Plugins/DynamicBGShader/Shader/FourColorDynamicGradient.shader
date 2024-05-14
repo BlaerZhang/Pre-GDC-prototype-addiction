@@ -1,5 +1,6 @@
 ﻿Shader "LTN/FourColorDynamicGradient" {
     Properties {
+        _MainTex ("Texture", 2D) = "white" {}
         _Color1 ("Color 1", Color) = (1, 0, 0, 1)
         _Color2 ("Color 2", Color) = (0, 1, 0, 1)
         _Color3 ("Color 3", Color) = (0, 0, 1, 1)
@@ -86,5 +87,5 @@
             ENDCG
         }
     }
-//    CustomEditor "FourColorDynamicGradientInspector"
+    CustomEditor "FourColorDynamicGradientInspector"
 }
