@@ -203,4 +203,19 @@ public class TutorialManager : MonoBehaviour
                 break;
         }
     }
+
+    void Coin(int messageIndex)
+    {
+        switch (messageIndex)
+        {
+            case 0:
+                payphoneVolume.enabled = false;
+                toolsHighlights[0].enabled = true;
+                HighlightManager.SmoothEnableHighlight(0.5f);
+                break;
+            case 1:
+                // -=
+                break;
+        }
+    }
 }
