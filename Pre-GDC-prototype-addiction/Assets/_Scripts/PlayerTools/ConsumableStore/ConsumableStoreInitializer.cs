@@ -45,7 +45,7 @@ namespace _Scripts.PlayerTools.ConsumableStore
         private void SetUpGridLayout()
         {
             consumableStore.startCorner = GridLayoutGroup.Corner.UpperLeft;
-            consumableStore.startAxis = GridLayoutGroup.Axis.Vertical;
+            consumableStore.startAxis = GridLayoutGroup.Axis.Horizontal;
             consumableStore.constraint = GridLayoutGroup.Constraint.FixedRowCount;
             consumableStore.constraintCount = gridLayoutSizeConstraint;
 

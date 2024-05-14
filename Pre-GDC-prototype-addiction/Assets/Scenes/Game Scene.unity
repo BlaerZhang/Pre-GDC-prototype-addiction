@@ -5735,6 +5735,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2045035532}
     m_Modifications:
+    - target: {fileID: 5913018909431577009, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
+      propertyPath: m_Padding.m_Left
+      value: -840
+      objectReference: {fileID: 0}
     - target: {fileID: 6679468516255687067, guid: 6b6cd32f6f84543768e4cb73485c0f19, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -7883,9 +7887,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2045035532}
     m_Modifications:
     - target: {fileID: 191854589728466253, guid: 0b4184024a901419e9f7460c0ac0d3ef, type: 3}
+      propertyPath: textShowSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 191854589728466253, guid: 0b4184024a901419e9f7460c0ac0d3ef, type: 3}
       propertyPath: raycastBlocker
       value: 
       objectReference: {fileID: 602965260}
+    - target: {fileID: 191854589728466253, guid: 0b4184024a901419e9f7460c0ac0d3ef, type: 3}
+      propertyPath: textFadeModifier
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 191854589728466253, guid: 0b4184024a901419e9f7460c0ac0d3ef, type: 3}
       propertyPath: textDisplayVolume
       value: 
