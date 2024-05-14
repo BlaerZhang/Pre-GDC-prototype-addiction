@@ -33,6 +33,7 @@ namespace _Scripts.Interaction
 
         // pass the current fully scratched grid
         public static Action<Vector2Int> onFullyScratched;
+        public static Action<GameObject> onWinningGridFullyScratched;
         public static Action<float> onPrizeRevealed;
 
         private void Update()
@@ -75,6 +76,7 @@ namespace _Scripts.Interaction
                     cardManager.SpriteRendererCard?.DOFade(0, autoRevealingDuration).OnComplete(() => {cardManager.Card.Fill();});
                     // cardManager.Card.ScratchHole(new Vector2(0f, 0f));
                     onFullyScratched?.Invoke(currentGrid);
+                    if(isWinningPrize) onWinningGridFullyScratched?.Invoke(this.gameObject);
                 }
                 
                 base.OnScratchProgress(progress);

@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Interaction;
 using _Scripts.Interaction.PosterPicking;
 using _Scripts.Manager;
 using _Scripts.PlayerTools.Payphone;
 using Abu;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -26,15 +28,17 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TutorialHighlight moneyHighlight;
     [SerializeField] private List<TutorialHighlight> fruitiePosterHighlights;
     [SerializeField] private List<TutorialHighlight> toolsHighlights;
+    private TutorialHighlight winningGridHighlight;
 
     [Title("First Card Highlights")] 
     [SerializeField] private TutorialHighlight prizeGridHighlight;
     [SerializeField] private GameObject targetGridHighlights;
     
     private StatsTrackingManager statsTrackingManager;
-    private bool isPayphonePickedUp = false;
+    private bool hasPayphonePickedUp = false;
     private bool isLightOn = false;
-    private bool isCardZoomedForFirstTime = false;
+    private bool hasCardZoomedForFirstTime = false;
+    private bool hasWonForFirstTime = false;
     private GameObject ringAudioTemp;
 
     private void OnEnable()
@@ -42,12 +46,23 @@ public class TutorialManager : MonoBehaviour
         PayphoneManager.onSingleLineBegins += Opening;
         ScratchCardDealer.onToScratchStage += (brand, i, arg3, arg4) =>
         {
-            if(isCardZoomedForFirstTime) return;
-            isCardZoomedForFirstTime = true;
+            if (hasCardZoomedForFirstTime) return;
+            hasCardZoomedForFirstTime = true;
             PayphoneManager.onSingleLineBegins += FirstCard;
             raycastBlocker.SetActive(true);
             PayphoneManager.onPhoneStateChanged?.Invoke(true);
             DOVirtual.DelayedCall(1, () => PayphoneManager.onPhoneMessageSent?.Invoke("First Card")).Play();
+        };
+        PrizeRevealing.onWinningGridFullyScratched += grid =>
+        {
+            if (hasWonForFirstTime) return;
+            hasWonForFirstTime = true;
+            PayphoneManager.onSingleLineBegins += FirstPrize;
+            raycastBlocker.SetActive(true);
+            PayphoneManager.onPhoneStateChanged?.Invoke(true);
+            winningGridHighlight = grid.GetComponentInChildren<SpriteRenderer>().AddComponent<TutorialHighlight>();
+            winningGridHighlight.enabled = false;
+            DOVirtual.DelayedCall(0.5f, () => PayphoneManager.onPhoneMessageSent?.Invoke("First Prize")).Play();
         };
     }
 
@@ -56,21 +71,31 @@ public class TutorialManager : MonoBehaviour
         PayphoneManager.onSingleLineBegins -= Opening;
         ScratchCardDealer.onToScratchStage -= (brand, i, arg3, arg4) =>
         {
-            if(isCardZoomedForFirstTime) return;
-            isCardZoomedForFirstTime = true;
+            if (hasCardZoomedForFirstTime) return;
+            hasCardZoomedForFirstTime = true;
             PayphoneManager.onSingleLineBegins += FirstCard;
             raycastBlocker.SetActive(true);
             PayphoneManager.onPhoneStateChanged?.Invoke(true);
             DOVirtual.DelayedCall(1, () => PayphoneManager.onPhoneMessageSent?.Invoke("First Card")).Play();
+        };
+        PrizeRevealing.onWinningGridFullyScratched -= grid =>
+        {
+            if (hasWonForFirstTime) return;
+            hasWonForFirstTime = true;
+            PayphoneManager.onSingleLineBegins += FirstPrize;
+            PayphoneManager.onPhoneMessageSent?.Invoke("First Prize");
+            winningGridHighlight = grid.GetComponent<SpriteRenderer>().AddComponent<TutorialHighlight>();
+            winningGridHighlight.enabled = false;
         };
     }
 
     void Start()
     {
         statsTrackingManager = GetComponent<StatsTrackingManager>();
-        isPayphonePickedUp = false;
+        hasPayphonePickedUp = false;
         isLightOn = false;
-        isCardZoomedForFirstTime = false;
+        hasCardZoomedForFirstTime = false;
+        hasWonForFirstTime = false;
         mask.enabled = true;
 
         Opening(-1);
@@ -78,9 +103,9 @@ public class TutorialManager : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isPayphonePickedUp && isLightOn)
+        if (Input.GetMouseButtonDown(0) && !hasPayphonePickedUp && isLightOn)
         {
-            isPayphonePickedUp = true;
+            hasPayphonePickedUp = true;
             GameManager.Instance.audioManager.StopLoopSound(ringAudioTemp);
             GameManager.Instance.audioManager.PlaySound(payphonePickUpSound);
             PayphoneManager.onPhoneMessageSent?.Invoke("Opening");
@@ -145,18 +170,36 @@ public class TutorialManager : MonoBehaviour
                 break;
             case 3:
                 prizeGridHighlight.enabled = false;
-                HighlightManager.SmoothDisableEnableCombo(0.5f);
+                HighlightManager.SmoothDisableEnableCombo(0.25f);
                 break;
             case 4:
                 prizeGridHighlight.enabled = true;
                 targetGridHighlights.SetActive(false);
-                HighlightManager.SmoothDisableEnableCombo(0.5f);
+                HighlightManager.SmoothDisableEnableCombo(0.25f);
                 break;
             case 6:
                 payphoneVolume.enabled = true;
                 prizeGridHighlight.enabled = false;
-                HighlightManager.SmoothDisableHighlight(0f);
+                HighlightManager.SmoothDisableHighlight(0.03f);
                 PayphoneManager.onSingleLineBegins -= FirstCard;
+                break;
+        }
+    }
+
+    void FirstPrize(int messageIndex)
+    {
+        switch (messageIndex)
+        {
+            case 1:
+                payphoneVolume.enabled = false;
+                winningGridHighlight.enabled = true;
+                HighlightManager.SmoothEnableHighlight(0.5f);
+                break;
+            case 4:
+                payphoneVolume.enabled = true;
+                Destroy(winningGridHighlight);
+                HighlightManager.SmoothDisableHighlight(0.03f);
+                PayphoneManager.onSingleLineBegins -= FirstPrize;
                 break;
         }
     }
