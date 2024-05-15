@@ -41,6 +41,7 @@ namespace _Scripts.Interaction.PosterPicking
         public static Action onPrizeRedeemed;
 
         [Title("Feedback")] 
+        [SerializeField] private AudioClip purchaseSound;
         [SerializeField] private bool dealAudio = true;
         [SerializeField] private List<AudioClip> dealSounds;
 
@@ -80,6 +81,8 @@ namespace _Scripts.Interaction.PosterPicking
         {
             if (!isBought) return;
 
+            if (purchaseSound) GameManager.Instance.audioManager.PlaySound(purchaseSound);
+            
             currentCardBrand = cardPoster.cardBrand;
             currentPickedCardPrice = cardPoster.price;
             currentPickedCardOriginalPrice = cardPoster.originalPrice;

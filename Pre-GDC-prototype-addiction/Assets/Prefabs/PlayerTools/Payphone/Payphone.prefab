@@ -277,17 +277,20 @@ MonoBehaviour:
   hoverSizeModifier: 1.02
   pressSizeModifier: 0.98
   hoverSounds: []
-  pressSounds: []
+  pressSounds:
+  - {fileID: 8300000, guid: 5fdf0ee1b2fb2bb489d11b3ee8e3d71d, type: 3}
   exitSounds: []
   scriptablePayphoneMessages: {fileID: 11400000, guid: d50edd70d3589485d8c7f20e397a7055, type: 2}
   textBubbleLayoutGroup: {fileID: 0}
   textBubblePrefab: {fileID: 2173499297871516543, guid: c03941104742e4faa9ce946fd4836f08, type: 3}
   maxBubbleAmount: 3
-  textDisplayVolume: {fileID: 0}
-  textShowSpeed: 15
-  textFadeModifier: 0.25
+  automaticPlayInterval: 1
+  textShowSpeed: 30
+  textFadeModifier: 0.5
   textFadeDuration: 0.5
+  textDisplayVolume: {fileID: 0}
   raycastBlocker: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!95 &2644345429773735724
 Animator:
   serializedVersion: 5

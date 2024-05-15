@@ -27,6 +27,7 @@ namespace _Scripts.Manager
 
         [Title("Buy")]
         public TextMeshProUGUI buyCardPrice;
+        public AudioClip notEnoughGoldSound;
 
         [Title("Membership Card UI")]
         [SerializeField] private Slider membershipProgressBar;
@@ -137,6 +138,8 @@ namespace _Scripts.Manager
             if(isPlayingNotEnoughAnimation) return;
             isPlayingNotEnoughAnimation = true;
 
+            if (notEnoughGoldSound) GameManager.Instance.audioManager.PlaySound(notEnoughGoldSound);
+            
             goldUI.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0);
             goldUI.rectTransform.DOShakeAnchorPos(0.5f, Vector3.right * 10f, 10).OnComplete((() =>
             {
