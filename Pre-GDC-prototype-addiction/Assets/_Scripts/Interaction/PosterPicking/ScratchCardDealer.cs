@@ -47,7 +47,7 @@ namespace _Scripts.Interaction.PosterPicking
         [SerializeField] private List<AudioClip> dealSounds;
         [SerializeField] private bool zoomInAudio = true;
         [SerializeField] private List<AudioClip> zoomInSounds;
-        private bool zoomInParticle = true;
+        private bool zoomInParticle = false;
         private List<AudioClip> zoomInParticles;
 
         private List<TutorialHighlight> redeemAreaHighlights;
@@ -179,9 +179,11 @@ namespace _Scripts.Interaction.PosterPicking
                     // Feedback
                     if (zoomInAudio && zoomInSounds.Count > 0) 
                         GameManager.Instance.audioManager.PlaySound(zoomInSounds[Random.Range(0, zoomInSounds.Count)]);
-                    if (zoomInParticle && zoomInParticles.Count > 0) ; 
                     
-                    //TODO: Zoom In Particles
+                    if (zoomInParticle && zoomInParticles.Count > 0)
+                    {
+                        //TODO: Zoom In Particles
+                    }
                     
                     //set action to generate card
                     onToScratchStage?.Invoke(currentCardBrand, (int)currentPickedCardTier,
