@@ -1,4 +1,4 @@
-namespace _Scripts.System
+namespace _Scripts.GameSystem
 {
     public static class Bootstrapper {
         // [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]

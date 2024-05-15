@@ -10,6 +10,8 @@ namespace _Scripts.ScratchCardGeneration.PrizeGenerator
         // the possible prize when player wins
         private static Dictionary<int, float> _actualPrizeDistributions;
 
+        private static System.Random random = new System.Random();
+
         /// <summary>
         /// generate the total prize of the current card
         /// </summary>
@@ -23,17 +25,25 @@ namespace _Scripts.ScratchCardGeneration.PrizeGenerator
             //     _actualPrizeDistributions = Utils.AdjustProbabilityRatio(basePrizeDistributions, basePrizeDistributions.Keys.ElementAt(randIndex), winningProbabilityOverThreshold);
             // }
 
+            // return Utils.CalculateMultiProbability(_actualPrizeDistributions);
+
             // order the probability by ascending
             var sortedDistribution = _actualPrizeDistributions.OrderBy(pair => pair.Value);
 
-            float rand = Random.value;
+            // float rand = Random.Range(0, 1f);
+
+            double rand = random.NextDouble();
+
+            Debug.Log($"rand: {rand}");
             float accumulatedProbability = 0;
             foreach (var d in sortedDistribution)
             {
+                Debug.Log($"d value: {d.Value}");
                 accumulatedProbability += d.Value;
+                Debug.Log($"accumulatedProbability: {accumulatedProbability}");
                 if (rand <= accumulatedProbability)
                 {
-                    Debug.Log($"accumulatedProbability: {accumulatedProbability}");
+                    Debug.Log("rand <= acc");
                     // return to the normal distribution after winning
                     // if (d.Key != 0)
                     // {
