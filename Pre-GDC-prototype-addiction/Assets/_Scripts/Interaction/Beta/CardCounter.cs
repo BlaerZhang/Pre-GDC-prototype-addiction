@@ -91,15 +91,18 @@ namespace _Scripts.Interaction.Beta
 
         }
 
-        public void ClearRow(int price, int prize)
+        private void ClearRow(int price, int prize)
         {
             GameObject tempIconParent = new GameObject(); //instantiate empty
             RectTransform tempRect = tempIconParent.AddComponent<RectTransform>(); //add rect
-            tempIconParent.transform.parent = this.transform; //set parent
+            tempIconParent.transform.SetParent(transform); //set parent
             foreach (var icon in currentIconList) { icon.transform.SetParent(tempIconParent.transform); } //set children
             tempRect.DOAnchorPosY(tempRect.anchoredPosition.y + gapBetweenIconsVertical, iconClearDuration).SetEase(Ease.OutElastic).OnComplete(() =>
             {
-                foreach (var icon in tempIconParent.GetComponentsInChildren<Image>()) { icon.transform.parent = this.transform; } //detach all icons and set card counter as parent
+                foreach (var icon in tempIconParent.GetComponentsInChildren<Image>())
+                {
+                    icon.transform.SetParent(transform);
+                } //detach all icons and set card counter as parent
                 Destroy(tempIconParent); //delete temp parent
                 //remove first row icon
                 for (int i = 0; i < column; i++)

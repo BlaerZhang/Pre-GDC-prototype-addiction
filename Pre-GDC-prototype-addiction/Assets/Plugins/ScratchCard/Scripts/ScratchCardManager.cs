@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using ScratchCardAsset.Core;
 using ScratchCardAsset.Tools;
-using UnityEditor.Sprites;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+
+#if UNITY_EDITOR
+using UnityEditor.Sprites;
+#endif
 
 namespace ScratchCardAsset
 {

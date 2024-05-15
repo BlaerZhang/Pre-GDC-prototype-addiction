@@ -1,11 +1,9 @@
-using System;
 using _Scripts.FaceEventSystem;
 using _Scripts.Interaction.InteractableSprite;
 using _Scripts.Interaction.PosterPicking;
 using _Scripts.Manager;
 using _Scripts.PlayerTools.MembershipSystem;
 using DG.Tweening;
-using Interaction;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,8 +44,8 @@ namespace _Scripts.PlayerTools
         private Vector2 originalPosition;
 
         private bool isUnlocked = false;
-        private bool isCollapsed = false;
-        private bool isCollapsing = false;
+        // private bool isCollapsed = false;
+        // private bool isCollapsing = false;
 
         private void Start()
         {

@@ -33,12 +33,12 @@ namespace _Scripts.Interaction.PosterPicking
         public static Action onReturnPosterMenu;
         public static Action onRecoverHolderPosition;
 
-        private void Start()
+        protected override void Start()
         {
             transform.position = new Vector3(transform.position.x, posterHolderInitialY, transform.position.z);
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
             base.OnEnable();
             ScratchCardPoster.onPosterDragged += SemiCollapse;
@@ -50,7 +50,7 @@ namespace _Scripts.Interaction.PosterPicking
             // SelectableScratchCard.onScratchCardSelected += FullyHidePosterHolder;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
             base.OnDisable();
             ScratchCardPoster.onPosterDragged -= SemiCollapse;

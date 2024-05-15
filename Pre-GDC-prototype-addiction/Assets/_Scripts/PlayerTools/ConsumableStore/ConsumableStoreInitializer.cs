@@ -1,5 +1,4 @@
 using Sirenix.OdinInspector;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,20 +17,8 @@ namespace _Scripts.PlayerTools.ConsumableStore
         [SerializeField] private Vector2 gapLength;
         [SerializeField] private int gridLayoutSizeConstraint;
 
-        [Title("Price Text Settings")]
-        [SerializeField] private Vector2 priceTextOffset = new Vector2(0, -60f);
-        [SerializeField] private Color priceTextColor = Color.black;
-        [SerializeField] private TMP_FontAsset priceTextFont;
-        [SerializeField] private int priceTextFontSize = 36;
-
-        [Title("Unlock Level Text Settings")]
-        [SerializeField] private Vector2 unlockLevelTextOffset = Vector2.zero;
-        [SerializeField] private Color unlockLevelTextColor = Color.black;
-        [SerializeField] private TMP_FontAsset unlockLevelTextFont;
-        [SerializeField] private int unlockLevelTextFontSize = 36;
+        [Title("Locked Settings")]
         [SerializeField] private GameObject lockedImagePrefab;
-
-        // TODO: locked sprite for consumable
 
         [Title("Item Tooltip Settings")]
         [SerializeField] private SimpleTooltipStyle tooltipStyle;
@@ -84,34 +71,6 @@ namespace _Scripts.PlayerTools.ConsumableStore
 
             return consumableItem;
         }
-
-        // private void AddPriceText(Transform parent, int price)
-        // {
-        //     GameObject priceTextObject = new GameObject("priceText");
-        //     priceTextObject.transform.SetParent(parent);
-        //     priceTextObject.transform.position += (Vector3)priceTextOffset;
-        //     var textMeshPro = priceTextObject.AddComponent<TextMeshProUGUI>();
-        //     textMeshPro.text = price.ToString();
-        //
-        //     textMeshPro.color = priceTextColor;
-        //     textMeshPro.font = priceTextFont;
-        //     textMeshPro.fontSize = priceTextFontSize;
-        //     textMeshPro.alignment = TextAlignmentOptions.Center;
-        // }
-
-        // private void AddUnlockLevelText(Transform parent, int unlockLevel)
-        // {
-        //     GameObject priceTextObject = new GameObject("unlockLevelText");
-        //     priceTextObject.transform.SetParent(parent);
-        //     priceTextObject.transform.position += (Vector3)unlockLevelTextOffset;
-        //     var textMeshPro = priceTextObject.AddComponent<TextMeshProUGUI>();
-        //     textMeshPro.text = unlockLevel.ToString();
-        //
-        //     textMeshPro.color = unlockLevelTextColor;
-        //     textMeshPro.font = unlockLevelTextFont;
-        //     textMeshPro.fontSize = unlockLevelTextFontSize;
-        //     textMeshPro.alignment = TextAlignmentOptions.Center;
-        // }
 
         /// <summary>
         /// ~ for title; ^ for default text; @ for price

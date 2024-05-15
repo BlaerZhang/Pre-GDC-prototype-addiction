@@ -264,7 +264,7 @@ namespace _Scripts.PlayerTools.Payphone
             // if there are messages played before
             if (lastMessageList == null)
             {
-                Debug.LogError("No previous message found!");
+                print("No previous message found!");
                 return;
             }
 

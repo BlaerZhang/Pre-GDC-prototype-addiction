@@ -19,17 +19,17 @@ namespace _Scripts.Interaction.PosterPicking
 
         private float currentVelocity = 0f; // 当前速度，用于平滑减速
 
-        protected void OnEnable()
+        protected virtual void OnEnable()
         {
             PayphoneManager.onPhoneStateChanged += isInMessage => { PayphoneState = isInMessage; };
         }
         
-        protected void OnDisable()
+        protected virtual void OnDisable()
         {
             PayphoneManager.onPhoneStateChanged -= isInMessage => { PayphoneState = isInMessage; };
         }
 
-        void Start()
+        protected virtual void Start()
         {
             ResetScrollViewToInitialPosition();
         }

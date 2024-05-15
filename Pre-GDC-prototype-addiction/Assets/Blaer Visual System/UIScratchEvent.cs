@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using _Scripts.Interaction;
-using Cinemachine;
 using DG.Tweening;
-using Interaction;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
