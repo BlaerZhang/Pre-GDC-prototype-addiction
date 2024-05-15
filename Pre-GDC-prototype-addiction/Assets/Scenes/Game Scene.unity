@@ -1730,6 +1730,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1729a20b18d06904b999c3b53ef33d48, type: 3}
   - {fileID: 8300000, guid: fb29c9a46a8330b46ba1a84c3ff13df7, type: 3}
   - {fileID: 8300000, guid: 14cc5907bc11d114ea4a70a80e2c6790, type: 3}
+  zoomInAudio: 1
+  zoomInSounds:
+  - {fileID: 8300000, guid: 3a04ecff35b77bf41afb71c45cf05aca, type: 3}
+  - {fileID: 8300000, guid: d0d92cc1d56626d44b8b84a1affb912f, type: 3}
 --- !u!1 &287189475
 GameObject:
   m_ObjectHideFlags: 0
@@ -7479,7 +7483,7 @@ Transform:
   m_GameObject: {fileID: 1239243362}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.35, y: -0.42, z: 0}
+  m_LocalPosition: {x: 4.37, y: -0.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8974,7 +8978,7 @@ MonoBehaviour:
   faceEventType: 2
   eventDuration: 2
   strength: 0
-  triggerAudio: {fileID: 8300000, guid: bd5dbd56caba80f409231cbd7351dffb, type: 3}
+  triggerAudio: {fileID: 8300000, guid: 9744987916077f642af040f6268d6ce5, type: 3}
 --- !u!114 &1604128128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8991,7 +8995,7 @@ MonoBehaviour:
   faceEventType: 3
   eventDuration: 2
   strength: 0
-  triggerAudio: {fileID: 8300000, guid: bd5dbd56caba80f409231cbd7351dffb, type: 3}
+  triggerAudio: {fileID: 8300000, guid: 9744987916077f642af040f6268d6ce5, type: 3}
 --- !u!114 &1604128129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9025,7 +9029,7 @@ MonoBehaviour:
   faceEventType: 1
   eventDuration: 2
   strength: 0
-  triggerAudio: {fileID: 8300000, guid: bd5dbd56caba80f409231cbd7351dffb, type: 3}
+  triggerAudio: {fileID: 8300000, guid: 9744987916077f642af040f6268d6ce5, type: 3}
 --- !u!114 &1604128131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10358,7 +10362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1759175665
 Transform:
   m_ObjectHideFlags: 0
@@ -10703,10 +10707,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 801151669}
     m_Modifications:
-    - target: {fileID: 522873234466083989, guid: d21c7fece55316444b93a81adcc39326, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1797068846382451486, guid: d21c7fece55316444b93a81adcc39326, type: 3}
       propertyPath: m_Name
       value: Redeem Area
@@ -10737,11 +10737,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2830149160685229869, guid: d21c7fece55316444b93a81adcc39326, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 3208
+      value: 1355
       objectReference: {fileID: 0}
     - target: {fileID: 2830149160685229869, guid: d21c7fece55316444b93a81adcc39326, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1378.4375
+      value: 1378
       objectReference: {fileID: 0}
     - target: {fileID: 2830149160685229869, guid: d21c7fece55316444b93a81adcc39326, type: 3}
       propertyPath: m_LocalPosition.x
