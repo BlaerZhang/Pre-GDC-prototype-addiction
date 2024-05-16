@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseTexture:
-        m_Texture: {fileID: 2800000, guid: 0356013da30aa4549a2daaa9ab3e97d7, type: 3}
+        m_Texture: {fileID: 2800000, guid: b85475928f4c9cb4a9e9e9dbad3f47db, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -101,8 +101,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HighLightFalloff: 2.22
-    - _HighLightIntensity: 0.48
+    - _HighLightFalloff: 2.08
+    - _HighLightIntensity: 0
     - _InvertSecondAlphaShade: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
@@ -120,7 +120,7 @@ Material:
     - _Surface: 0
     - _TimeSpeed: 1
     - _TrailLengthFalloff: 1
-    - _TrailNumber: 2
+    - _TrailNumber: 3
     - _UseClockwise: 0
     - _UseDistortion: 0
     - _UseUIAlphaClip: 0
@@ -129,7 +129,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _ColorOverlay: {r: 1, g: 0.71832883, b: 0.0141509175, a: 1}
+    - _ColorOverlay: {r: 0.9433962, g: 0.6132249, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
