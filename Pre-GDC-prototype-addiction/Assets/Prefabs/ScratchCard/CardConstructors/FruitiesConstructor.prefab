@@ -67,9 +67,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fcb90a86f7c032e4f984c445e460da46, type: 3}
   - {fileID: 21300000, guid: 79dd33d943089f24db94175b339bb602, type: 3}
   - {fileID: 21300000, guid: 84bafc277a1c36244bc25e8bcb8fd7dc, type: 3}
-  targetAreaStartPosition: {x: -1.22, y: 0.57}
+  scratchCardScale: 1
+  targetAreaStartPosition: {x: -1.23, y: 0.51}
   targetAreaGridSize: {x: 1, y: 2}
-  prizeAreaStartPosition: {x: -2.43, y: -3.33}
+  prizeAreaStartPosition: {x: -2.44, y: -3.39}
   prizeAreaGridSize: {x: 3, y: 5}
   cellSize: 1
   targetGapLength: 1.16
@@ -77,3 +78,4 @@ MonoBehaviour:
   scratchPrizeGrid: {fileID: 5686339270730752103, guid: e605c4a369768473aba23dbe5e66eea1, type: 3}
   scratchTargetGrid: {fileID: 5686339270730752103, guid: 527b6795175eea547828a323a854851d, type: 3}
   prizeWinningGridList: []
+  notWinningGridList: []
