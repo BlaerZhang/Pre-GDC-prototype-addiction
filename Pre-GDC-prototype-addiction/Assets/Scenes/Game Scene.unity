@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1793525055}
     m_Modifications:
+    - target: {fileID: 416495923921640609, guid: 702468a71b37a974b97adc1df59059e1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1095899564152503177, guid: 702468a71b37a974b97adc1df59059e1, type: 3}
       propertyPath: m_Name
       value: Window
@@ -214,6 +218,14 @@ PrefabInstance:
     - target: {fileID: 1508574242735898025, guid: 702468a71b37a974b97adc1df59059e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326589778900541862, guid: 702468a71b37a974b97adc1df59059e1, type: 3}
+      propertyPath: tutorialFade
+      value: 
+      objectReference: {fileID: 1726279765}
+    - target: {fileID: 6523251702814056674, guid: 702468a71b37a974b97adc1df59059e1, type: 3}
+      propertyPath: m_Padding.z
+      value: -23.13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1981,42 +1993,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2105724355}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 4173457581783892917, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2105724355}
     - target: {fileID: 4526018691626827834, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2105724355}
-    - target: {fileID: 5757588193178899800, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_Padding.y
-      value: 10000
-      objectReference: {fileID: 0}
     - target: {fileID: 8038140964561564603, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
       propertyPath: m_Name
       value: Incremental UI

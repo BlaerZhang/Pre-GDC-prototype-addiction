@@ -103,13 +103,13 @@ namespace _Scripts.PlayerTools.ConsumableStore
 
                 // check if there is enough space on desk, then decide whether successfully bought an item
                 GameObject itemBought = AssembleItemObject(consumablePrefab);
-                onTryBuyItem?.Invoke(itemBought);
 
                 GameManager.Instance.audioManager.PlaySound(buyItemSound);
 
                 // if (DeskItemPlacement.isDeskFull) return;
                 
                 GameManager.Instance.resourceManager.PlayerGold -= price;
+                onTryBuyItem?.Invoke(itemBought);
                 isOutOfStock = true;
             }
         }

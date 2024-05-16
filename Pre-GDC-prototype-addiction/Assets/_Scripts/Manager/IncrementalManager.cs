@@ -80,7 +80,7 @@ namespace _Scripts.Manager
                 .OnComplete(() =>
                 {
                     Time.timeScale = 1;
-                    ActivateMenuButton();
+                    // ActivateMenuButton();
                 });
         }
 
@@ -92,7 +92,7 @@ namespace _Scripts.Manager
                 .OnStart(() =>
                 {
                     incrementalUIMask.padding = Vector4.zero;
-                    DeactivateMenuButton();
+                    // DeactivateMenuButton();
                     Time.timeScale = 0;
                 })
                 .OnComplete(() =>
