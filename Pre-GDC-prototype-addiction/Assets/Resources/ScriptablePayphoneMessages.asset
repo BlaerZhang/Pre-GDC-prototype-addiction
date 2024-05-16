@@ -34,7 +34,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 9
+      Data: 10
     - Name: 
       Entry: 7
       Data: 
@@ -349,14 +349,14 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: FIrst Lost
+      Data: First Lost
     - Name: $v
       Entry: 7
       Data: _Scripts.PlayerTools.Payphone.ScriptablePayphoneMessages+MessageInfo,
         Assembly-CSharp
     - Name: playAutomatically
       Entry: 5
-      Data: false
+      Data: true
     - Name: messageText
       Entry: 7
       Data: 8|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
@@ -411,7 +411,7 @@ MonoBehaviour:
       Data: Analytical tool available exclusively for the pros.
     - Name: 
       Entry: 1
-      Data: 'It monitors your performance across the latest 15 cards. '
+      Data: 'It monitors your performance across the latest 12 cards. '
     - Name: 
       Entry: 1
       Data: We hope this tool empowers you to dominate.
@@ -439,7 +439,7 @@ MonoBehaviour:
         Assembly-CSharp
     - Name: playAutomatically
       Entry: 5
-      Data: false
+      Data: true
     - Name: messageText
       Entry: 7
       Data: 10|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
@@ -449,6 +449,58 @@ MonoBehaviour:
     - Name: 
       Entry: 1
       Data: Awesome! Not all members have your kind of luck and skill.
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: 8 Hours
+    - Name: $v
+      Entry: 7
+      Data: _Scripts.PlayerTools.Payphone.ScriptablePayphoneMessages+MessageInfo,
+        Assembly-CSharp
+    - Name: playAutomatically
+      Entry: 5
+      Data: false
+    - Name: messageText
+      Entry: 7
+      Data: 11|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 7
+    - Name: 
+      Entry: 1
+      Data: Eight delightful hours have just passed.
+    - Name: 
+      Entry: 1
+      Data: We sincerely hope you have enjoyed your experience with us so far.
+    - Name: 
+      Entry: 1
+      Data: It seems you've accumulated a fair amount of wealth.
+    - Name: 
+      Entry: 1
+      Data: We hope this experience has brought you closer to embracing our values.
+    - Name: 
+      Entry: 1
+      Data: Also, don't worry too much about the time.
+    - Name: 
+      Entry: 1
+      Data: We could find a way to make a <b>exception</b> just for you.
+    - Name: 
+      Entry: 1
+      Data: We will see.
     - Name: 
       Entry: 13
       Data: 

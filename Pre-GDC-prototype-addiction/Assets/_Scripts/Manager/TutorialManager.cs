@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Interaction;
+using _Scripts.Interaction.InteractableSprite;
 using _Scripts.Interaction.PosterPicking;
 using _Scripts.Manager;
+using _Scripts.PlayerTools;
 using _Scripts.PlayerTools.Payphone;
 using Abu;
 using DG.Tweening;
@@ -28,6 +30,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TutorialHighlight moneyHighlight;
     [SerializeField] private List<TutorialHighlight> fruitiePosterHighlights;
     [SerializeField] private List<TutorialHighlight> toolsHighlights;
+    [SerializeField] private TutorialHighlight cardCounterHighlightUnlocked;
     private TutorialHighlight winningGridHighlight;
 
     [Title("First Card Highlights")] 
@@ -39,6 +42,9 @@ public class TutorialManager : MonoBehaviour
     private bool isLightOn = false;
     private bool hasCardZoomedForFirstTime = false;
     private bool hasWonForFirstTime = false;
+    private bool hasLostForFirstTime = false;
+    private bool hasWonBigForFirstTime = false;
+    private bool hasPassed8hours = false;
     private GameObject ringAudioTemp;
 
     private void OnEnable()
@@ -64,6 +70,54 @@ public class TutorialManager : MonoBehaviour
             winningGridHighlight.enabled = false;
             DOVirtual.DelayedCall(0.5f, () => PayphoneManager.onPhoneMessageSent?.Invoke("First Prize")).Play();
         };
+        PlayerToolBase.onToolUnlocked += cover =>
+        {
+            if (!cover.name.Contains("Coin") && !cover.name.Contains("Counter")) return;
+            raycastBlocker.SetActive(true);
+            PayphoneManager.onPhoneStateChanged?.Invoke(true);
+            DOVirtual.DelayedCall(0.5f, () =>
+            {
+                switch (cover.name)
+                {
+                    case "Coin Locked Cover":
+                        PayphoneManager.onSingleLineBegins += Coin;
+                        PayphoneManager.onPhoneMessageSent?.Invoke("Coin");
+                        break;
+                    case "Prize Counter Locked Cover":
+                        PayphoneManager.onSingleLineBegins += Counter;
+                        PayphoneManager.onPhoneMessageSent?.Invoke("Counter");
+                        break;
+                    default:
+                        break;
+                }
+            }).Play();
+        };
+        ScratchCardDealer.onPrizeByPriceDisplayed += ratio =>
+        {
+            switch (ratio)
+            {
+                case 0:
+                    if (hasLostForFirstTime) return;
+                    hasLostForFirstTime = true;
+                    PayphoneManager.onPhoneMessageSent?.Invoke("First Lost");
+                    break;
+                case >= 5:
+                    if (hasWonBigForFirstTime) return;
+                    hasWonBigForFirstTime = true;
+                    PayphoneManager.onPhoneMessageSent?.Invoke("First Big Prize");
+                    break;
+                default:
+                    break;
+            }
+        };
+        ScratchCardDealer.onPrizeRedeemed += () =>  
+        {
+            if (GameManager.Instance.resourceManager.minutesPassed >= 480 && !hasPassed8hours)
+            {
+                hasPassed8hours = true;
+                PayphoneManager.onPhoneMessageSent?.Invoke("8 Hours");
+            }
+        };
     }
 
     private void OnDisable()
@@ -87,6 +141,54 @@ public class TutorialManager : MonoBehaviour
             winningGridHighlight = grid.GetComponent<SpriteRenderer>().AddComponent<TutorialHighlight>();
             winningGridHighlight.enabled = false;
         };
+        PlayerToolBase.onToolUnlocked += cover =>
+        {
+            if (!cover.name.Contains("Coin") && !cover.name.Contains("Counter")) return;
+            raycastBlocker.SetActive(true);
+            PayphoneManager.onPhoneStateChanged?.Invoke(true);
+            DOVirtual.DelayedCall(0.5f, () =>
+            {
+                switch (cover.name)
+                {
+                    case "Coin Locked Cover":
+                        PayphoneManager.onSingleLineBegins += Coin;
+                        PayphoneManager.onPhoneMessageSent?.Invoke("Coin");
+                        break;
+                    case "Prize Counter Locked Cover":
+                        PayphoneManager.onSingleLineBegins += Counter;
+                        PayphoneManager.onPhoneMessageSent?.Invoke("Counter");
+                        break;
+                    default:
+                        break;
+                }
+            }).Play();
+        };
+        ScratchCardDealer.onPrizeByPriceDisplayed -= ratio =>
+        {
+            switch (ratio)
+            {
+                case 0:
+                    if (hasLostForFirstTime) return;
+                    hasLostForFirstTime = true;
+                    PayphoneManager.onPhoneMessageSent?.Invoke("First Lost");
+                    break;
+                case >= 5:
+                    if (hasWonBigForFirstTime) return;
+                    hasWonBigForFirstTime = true;
+                    PayphoneManager.onPhoneMessageSent?.Invoke("First Big Prize");
+                    break;
+                default:
+                    break;
+            }
+        };
+        ScratchCardDealer.onPrizeRedeemed -= () =>  
+        {
+            if (GameManager.Instance.resourceManager.minutesPassed >= 480 && !hasPassed8hours)
+            {
+                hasPassed8hours = true;
+                PayphoneManager.onPhoneMessageSent?.Invoke("8 Hours");
+            }
+        };
     }
 
     void Start()
@@ -96,6 +198,9 @@ public class TutorialManager : MonoBehaviour
         isLightOn = false;
         hasCardZoomedForFirstTime = false;
         hasWonForFirstTime = false;
+        hasLostForFirstTime = false;
+        hasWonBigForFirstTime = false;
+        hasPassed8hours = false;
         mask.enabled = true;
 
         Opening(-1);
@@ -216,8 +321,29 @@ public class TutorialManager : MonoBehaviour
                 toolsHighlights[0].enabled = true;
                 HighlightManager.SmoothEnableHighlight(0.5f);
                 break;
-            case 1:
-                // -=
+            case 2:
+                payphoneVolume.enabled = true;
+                toolsHighlights[0].enabled = false;
+                HighlightManager.SmoothDisableHighlight(0);
+                PayphoneManager.onSingleLineBegins -= Coin;
+                break;
+        }
+    }
+    
+    void Counter(int messageIndex)
+    {
+        switch (messageIndex)
+        {
+            case 0:
+                payphoneVolume.enabled = false;
+                cardCounterHighlightUnlocked.enabled = true;
+                HighlightManager.SmoothEnableHighlight(0.5f);
+                break;
+            case 2:
+                payphoneVolume.enabled = true;
+                cardCounterHighlightUnlocked.enabled = false;
+                HighlightManager.SmoothDisableHighlight(0);
+                PayphoneManager.onSingleLineBegins -= Counter;
                 break;
         }
     }

@@ -170,7 +170,7 @@ namespace _Scripts.PlayerTools.Payphone
             inTextDisplayMode = true;
             raycastBlocker.SetActive(!playAutomatically);
             // blur background
-            if (messageIndexCounter == 0) textDisplayVolume.enabled = true;
+            if (messageIndexCounter == 0) textDisplayVolume.enabled = !playAutomatically;
             // textDisplayVolume.TryGet(out DepthOfField depthOfField);
             
             // when all messages are played
@@ -244,7 +244,7 @@ namespace _Scripts.PlayerTools.Payphone
             messageIndexCounter++;
 
             //broadcast state
-            onPhoneStateChanged?.Invoke(true);
+            if (!playAutomatically) onPhoneStateChanged?.Invoke(true);
         }
 
         IEnumerator WaitAndDisplayNext()

@@ -234,7 +234,6 @@ GameObject:
   - component: {fileID: 6621747694225678759}
   - component: {fileID: 3807126628980265827}
   - component: {fileID: 5337765215836883121}
-  - component: {fileID: 4170560871791053856}
   m_Layer: 0
   m_Name: fruit_bg_withoutBottom
   m_TagString: Untagged
@@ -340,19 +339,6 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_SortAtRoot: 0
---- !u!114 &4170560871791053856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2932669954305132293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecefd69a79c0423a9f41ca2b7a2a76fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorialFade: {fileID: 0}
 --- !u!1 &3413574631249698230
 GameObject:
   m_ObjectHideFlags: 0

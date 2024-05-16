@@ -46,7 +46,7 @@ namespace _Scripts.Manager
         public void OnClick(RectTransform buttonTransform)
         {
             resourceManager.PlayerGold += productivityPerLevel[resourceManager.ClickerLevel - 1];
-            resourceManager.ChangeTime(1);
+            resourceManager.ChangeTime(0.5);
             if (feedback)
             {
                 PlayFeedbackAnimation(buttonTransform);
