@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 946208692089637787, guid: 702468a71b37a974b97adc1df59059e1, type: 3}
+      propertyPath: revealCoverSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1800e9a6df4f245dc9bbc864ac7d0378, type: 3}
     - target: {fileID: 1095899564152503177, guid: 702468a71b37a974b97adc1df59059e1, type: 3}
       propertyPath: m_Name
       value: Window
@@ -3085,7 +3089,7 @@ MonoBehaviour:
   incrementalClockUI: {fileID: 1689966664}
   upgradePrice: {fileID: 1069747122}
   buyCardPrice: {fileID: 1548577263}
-  notEnoughGoldSound: {fileID: 8300000, guid: 175992d8707b2df42af3fed71c4fea16, type: 3}
+  notEnoughGoldSound: {fileID: 8300000, guid: 351ef0e0ddc1e45d495fbd4b76705ae2, type: 3}
   membershipProgressBar: {fileID: 6722899509281127686}
   membershipLevelUI: {fileID: 270031067}
   progressBarZoomRatio: 1.2
@@ -3832,6 +3836,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4499876250051240844, guid: 89a1768b69288d44588fd1912702c2fe, type: 3}
+      propertyPath: playerToolBase
+      value: 
+      objectReference: {fileID: 1470727666}
     - target: {fileID: 6121326938929209919, guid: 89a1768b69288d44588fd1912702c2fe, type: 3}
       propertyPath: m_Name
       value: Card Counter
@@ -6717,7 +6725,7 @@ PrefabInstance:
     - target: {fileID: 8215879346862950201, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
       propertyPath: revealCoverSound
       value: 
-      objectReference: {fileID: 8300000, guid: 2aff862bef897484fb469427d1a7ec56, type: 3}
+      objectReference: {fileID: 8300000, guid: 1800e9a6df4f245dc9bbc864ac7d0378, type: 3}
     - target: {fileID: 8215879346862950201, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
       propertyPath: unlockMembershipLevel
       value: 3
@@ -7207,7 +7215,7 @@ MonoBehaviour:
   unlockMembershipLevel: 1
   lockedCover: {fileID: 4656803798433517198}
   unlockObject: {fileID: 1646536130}
-  revealCoverSound: {fileID: 8300000, guid: 2aff862bef897484fb469427d1a7ec56, type: 3}
+  revealCoverSound: {fileID: 8300000, guid: 1800e9a6df4f245dc9bbc864ac7d0378, type: 3}
   hideWhenScratching: 0
   currentHidingDirection: 0
   hideOffset: 0
@@ -8471,7 +8479,7 @@ MonoBehaviour:
   unlockMembershipLevel: 5
   lockedCover: {fileID: 894177012}
   unlockObject: {fileID: 6121326938433349014}
-  revealCoverSound: {fileID: 8300000, guid: 2aff862bef897484fb469427d1a7ec56, type: 3}
+  revealCoverSound: {fileID: 8300000, guid: 1800e9a6df4f245dc9bbc864ac7d0378, type: 3}
   hideWhenScratching: 1
   currentHidingDirection: 1
   hideOffset: 850
