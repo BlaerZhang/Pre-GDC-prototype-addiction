@@ -220,11 +220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53d44835ed84dbfa0d42a1de44582af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockRequired: 0
-  unlockMembershipLevel: 0
-  lockedCover: {fileID: 0}
+  unlockRequired: 1
+  unlockMembershipLevel: 3
+  lockedCover: {fileID: 6160369283779324414, guid: d084d83d790fd4f8ab7165d0d37afb7d, type: 3}
   unlockObject: {fileID: 0}
-  revealCoverSound: {fileID: 0}
+  revealCoverSound: {fileID: 8300000, guid: 1800e9a6df4f245dc9bbc864ac7d0378, type: 3}
   hideWhenScratching: 1
   currentHidingDirection: 0
   hideOffset: 350
