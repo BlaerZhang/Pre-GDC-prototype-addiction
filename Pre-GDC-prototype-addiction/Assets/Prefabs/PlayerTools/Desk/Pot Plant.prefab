@@ -240,6 +240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateDegreeLimitation: 10
   rotateSpeed: 10
+  randomStartDirection: 1
+  direction: 0
 --- !u!1 &3475200026755048723
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +332,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateDegreeLimitation: 8
   rotateSpeed: 8
+  randomStartDirection: 1
+  direction: 0
 --- !u!1 &3570725637237393179
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +424,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateDegreeLimitation: 15
   rotateSpeed: 15
+  randomStartDirection: 1
+  direction: 0
 --- !u!1 &4403681782128912287
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateDegreeLimitation: 15
   rotateSpeed: 20
+  randomStartDirection: 0
+  direction: -1
 --- !u!1 &5921594891707525424
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +614,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateDegreeLimitation: 12
   rotateSpeed: 12
+  randomStartDirection: 1
+  direction: 0
 --- !u!1 &8098792236375911353
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,3 +819,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateDegreeLimitation: 5
   rotateSpeed: 5
+  randomStartDirection: 1
+  direction: 0
