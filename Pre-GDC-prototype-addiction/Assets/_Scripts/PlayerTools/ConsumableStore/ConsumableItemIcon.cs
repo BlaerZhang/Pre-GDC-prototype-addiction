@@ -135,7 +135,7 @@ namespace _Scripts.PlayerTools.ConsumableStore
 
             return newObject;
         }
-        
+
         private void OutOfStockEffects()
         {
             if(isPlayingOutOfStockEffect) return;
