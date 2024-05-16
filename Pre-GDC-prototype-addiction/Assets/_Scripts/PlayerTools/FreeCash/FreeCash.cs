@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Manager;
 using _Scripts.PlayerTools;
+using _Scripts.PlayerTools.ConsumableStore;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class FreeCash : PlayerToolBase, IPointerEnterHandler, IPointerExitHandle
 {
     [Title("Incremental")] 
     [SerializeField] private IncrementalManager incrementalManager;
+    [SerializeField] private bool unlock = false;
+    [SerializeField] private int numberOfCardsPlayedToUnlock = 10;
     
     [Title("Size Modifier")]
     [SerializeField] private bool sizeFeedback = true; 
@@ -22,18 +25,36 @@ public class FreeCash : PlayerToolBase, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] protected List<AudioClip> hoverSounds = new(); 
     [SerializeField] protected List<AudioClip> pressSounds = new(); 
     [SerializeField] protected List<AudioClip> exitSounds = new();
+
+    protected override void OnEnable()
+    {
+        ConsumableItemIcon.onTryBuyItem += o => ExpandFromEdge();
+        base.OnEnable();
+    }
     
+    protected override void OnDisable()
+    {
+        ConsumableItemIcon.onTryBuyItem -= o => ExpandFromEdge();
+        base.OnDisable();
+    }
+
     protected override void Start()
     {
         base.Start();
+        GetComponent<RectTransform>().DOAnchorPosX(-GetComponent<RectTransform>().rect.width, 0);
         originalLocalScale = transform.localScale;
+    }
+
+    protected override void ExpandFromEdge()
+    {
+        if (GameManager.Instance.resourceManager.PlayerGold < 100 || GameManager.Instance.statsTrackingManager.pricePrizeHistory.Count >= 10) unlock = true;
+        if (unlock) base.ExpandFromEdge();
     }
     
     public virtual void OnPointerEnter(PointerEventData eventData) 
     { 
         if (sizeFeedback) ScaleUpClickable(hoverSizeModifier); 
         PlaySound(hoverSounds);
-        
     }
     
     

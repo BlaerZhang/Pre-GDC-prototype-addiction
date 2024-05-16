@@ -27,7 +27,7 @@ namespace _Scripts.PlayerTools
         [Title("Collapse Settings")]
         [SerializeField] private bool hideWhenScratching = false;
         [SerializeField] private HidingDirection currentHidingDirection;
-        [SerializeField] private float hideOffset;
+        [SerializeField] protected float hideOffset;
         [SerializeField] public float collapseDuration = 0.5f;
         private float semiHideOffset;
 
@@ -73,7 +73,7 @@ namespace _Scripts.PlayerTools
             }
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             if (hideWhenScratching)
             {
@@ -87,7 +87,7 @@ namespace _Scripts.PlayerTools
             MembershipManager.onMembershipLevelUp += UnlockItem;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             if (hideWhenScratching)
             {
@@ -172,7 +172,7 @@ namespace _Scripts.PlayerTools
         /// <summary>
         /// hide outside its closest screen border
         /// </summary>
-        private void CollapseToEdge(float currentHideOffset)
+        protected virtual void CollapseToEdge(float currentHideOffset)
         {
             // Calculate the distances to each edge
             // float distanceToLeft = rectTransform.anchoredPosition.x + Screen.width / 2 + rectTransform.rect.width / 2;
@@ -213,7 +213,7 @@ namespace _Scripts.PlayerTools
             rectTransform.DOAnchorPos(targetPosition, collapseDuration).SetEase(Ease.OutBack);
         }
 
-        private void ExpandFromEdge()
+        protected virtual void ExpandFromEdge()
         {
             rectTransform.DOAnchorPos(originalPosition, collapseDuration).SetEase(Ease.OutCubic);
         }

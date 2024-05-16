@@ -9,7 +9,8 @@ namespace _Scripts.Interaction.Beta
 {
     public class CardCounter : MonoBehaviour
     {
-        [Header("Basic")] 
+        [Header("Basic")]
+        public PlayerToolBase playerToolBase;
         public Image counterIconPrefab;
         public Sprite iconEmpty;
         public Sprite iconHalf;
@@ -55,7 +56,7 @@ namespace _Scripts.Interaction.Beta
 
         public void UpdateCardCounter(int price, int prize)
         {
-            float collapseDuration = GetComponent<PlayerToolBase>().collapseDuration;
+            float collapseDuration = playerToolBase.collapseDuration;
             DOVirtual.DelayedCall(collapseDuration,
                 () =>
                 {

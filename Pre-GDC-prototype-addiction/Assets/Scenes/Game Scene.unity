@@ -219,9 +219,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7698282827103388560, guid: 702468a71b37a974b97adc1df59059e1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -10.199997
+    - target: {fileID: 2326589778900541862, guid: 702468a71b37a974b97adc1df59059e1, type: 3}
+      propertyPath: tutorialFade
+      value: 
+      objectReference: {fileID: 1726279765}
+    - target: {fileID: 6523251702814056674, guid: 702468a71b37a974b97adc1df59059e1, type: 3}
+      propertyPath: m_Padding.z
+      value: -23.13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -597,6 +601,8 @@ GameObject:
   m_Component:
   - component: {fileID: 63288065}
   - component: {fileID: 63288064}
+  - component: {fileID: 63288067}
+  - component: {fileID: 63288066}
   m_Layer: 0
   m_Name: Scratch Card Desk
   m_TagString: Untagged
@@ -671,8 +677,36 @@ Transform:
   m_Children:
   - {fileID: 285760280}
   - {fileID: 803372565}
+  - {fileID: 758493009}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &63288066
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63288063}
+  m_Enabled: 1
+  m_SortingLayerID: 1724410075
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+--- !u!114 &63288067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63288063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b7ff4d27555194d8cd48e1b6403365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowOffset: {x: 0.1, y: -0.1}
+  shadowColor: {r: 0.1015625, g: 0.1015625, b: 0.1015625, a: 1}
+  hoverShadowColor: {r: 0.81960785, g: 0.4627451, b: 0.4627451, a: 1}
 --- !u!1 &94099919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,8 +1706,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1724410075
-  m_SortingLayer: 1
+  m_SortingLayerID: 1726441453
+  m_SortingLayer: 2
   m_SortingOrder: -100
   m_Sprite: {fileID: 21300000, guid: a96c9b645df27684aa96c269f32d7f76, type: 3}
   m_Color: {r: 0.1015625, g: 0.1015625, b: 0.1015625, a: 1}
@@ -1959,42 +1993,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2105724355}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302129667631246744, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 4173457581783892917, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2105724355}
     - target: {fileID: 4526018691626827834, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2105724355}
-    - target: {fileID: 5757588193178899800, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
-      propertyPath: m_Padding.y
-      value: 10000
-      objectReference: {fileID: 0}
     - target: {fileID: 8038140964561564603, guid: 33f56475d06965e45a90cd867dd0862c, type: 3}
       propertyPath: m_Name
       value: Incremental UI
@@ -4610,6 +4616,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2045035531}
     - target: {fileID: 7381797434029712070, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: buyItemSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 08a0b75409e6d0946aa67935e1f7264d, type: 3}
+    - target: {fileID: 7381797434029712070, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
+      propertyPath: outOfStockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 351ef0e0ddc1e45d495fbd4b76705ae2, type: 3}
+    - target: {fileID: 7381797434029712070, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: iconPurchaseSound
       value: 
       objectReference: {fileID: 8300000, guid: 08a0b75409e6d0946aa67935e1f7264d, type: 3}
@@ -4923,6 +4937,90 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialFade: {fileID: 1726279765}
+--- !u!1 &758493008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 758493009}
+  - component: {fileID: 758493010}
+  m_Layer: 0
+  m_Name: Shadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &758493009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758493008}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.100000024, y: -0.099999994, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 63288065}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &758493010
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758493008}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -100
+  m_Sprite: {fileID: 21300000, guid: a96c9b645df27684aa96c269f32d7f76, type: 3}
+  m_Color: {r: 0.1015625, g: 0.1015625, b: 0.1015625, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 1
+  m_Size: {x: 9.5, y: 18.58}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &782425484
 GameObject:
   m_ObjectHideFlags: 0
@@ -6588,6 +6686,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8137483209852792258, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137483209852792258, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137483209852792258, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8215879346862950201, guid: 25899c15a0f7abc48ba2cdf0f933fd3a, type: 3}
       propertyPath: hideOffset
       value: 350
@@ -7027,8 +7137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 19.6, y: -22.89}
   m_UseGraphicAlpha: 1
 --- !u!114 &1118128914
 MonoBehaviour:
@@ -8285,15 +8395,7 @@ PrefabInstance:
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
-      propertyPath: negativeIconExchangeProbability
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
-      propertyPath: positiveIconExchangeProbability
-      value: 0.3
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9585,6 +9687,8 @@ MonoBehaviour:
   hideOffset: 403
   collapseDuration: 0.5
   incrementalManager: {fileID: 2105724355}
+  unlock: 0
+  numberOfCardsPlayedToUnlock: 10
   sizeFeedback: 1
   hoverSizeModifier: 1.1
   pressSizeModifier: 0.8
