@@ -149,11 +149,11 @@ MonoBehaviour:
         joys.
     - Name: 
       Entry: 1
-      Data: It is our mission to provide you a <b>great experience</b> while your
+      Data: It is our mission to provide you a <b>great experience</b> during your
         time here.
     - Name: 
       Entry: 1
-      Data: Your mission is to simply sit back, relax
+      Data: Your mission is to simply sit back, relax,
     - Name: 
       Entry: 1
       Data: <b>and</b> earn <color=#e73e2b><b>$100000 within 24 hours</b></color>
@@ -162,7 +162,7 @@ MonoBehaviour:
       Data: then get out off here gracefully with your cash.
     - Name: 
       Entry: 1
-      Data: Now these are one of our iconic brand - the Frutie series.
+      Data: Now these are one of our iconic brand - the Fruitie series.
     - Name: 
       Entry: 1
       Data: A good place to start with.
@@ -174,7 +174,7 @@ MonoBehaviour:
       Data: no need for you to worry about them.
     - Name: 
       Entry: 1
-      Data: Though I guess you will soon become one of them.
+      Data: <color=grey><b>Though I guess you will soon be joining their tiers.</b></color>
     - Name: 
       Entry: 1
       Data: That's all you need to know for now

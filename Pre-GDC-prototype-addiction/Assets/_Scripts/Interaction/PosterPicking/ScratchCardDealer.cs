@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using _Scripts.FaceEventSystem;
 using _Scripts.Interaction.InteractableSprite;
 using _Scripts.Manager;
@@ -41,10 +42,15 @@ namespace _Scripts.Interaction.PosterPicking
         public static Action onPrizeRedeemed;
 
         [Title("Feedback")] 
+        [SerializeField] private AudioClip purchaseSound;
         [SerializeField] private bool dealAudio = true;
         [SerializeField] private List<AudioClip> dealSounds;
+        [SerializeField] private bool zoomInAudio = true;
+        [SerializeField] private List<AudioClip> zoomInSounds;
+        private bool zoomInParticle = false;
+        private List<AudioClip> zoomInParticles;
 
-        private TutorialHighlight redeemAreaHighlight;
+        private List<TutorialHighlight> redeemAreaHighlights;
         private ScratchCardBrand currentCardBrand;
         private List<SelectableScratchCard> cardsToSelect = new();
         private int cardSpawnCount;
@@ -52,7 +58,7 @@ namespace _Scripts.Interaction.PosterPicking
         private void Start()
         {
             cardSpawnCount = cardSlotPositions.Count;
-            redeemAreaHighlight = redeemArea.GetComponent<TutorialHighlight>();
+            redeemAreaHighlights = redeemArea.GetComponentsInChildren<TutorialHighlight>().ToList();
         }
 
         private void OnEnable()
@@ -80,6 +86,8 @@ namespace _Scripts.Interaction.PosterPicking
         {
             if (!isBought) return;
 
+            if (purchaseSound) GameManager.Instance.audioManager.PlaySound(purchaseSound);
+            
             currentCardBrand = cardPoster.cardBrand;
             currentPickedCardPrice = cardPoster.price;
             currentPickedCardOriginalPrice = cardPoster.originalPrice;
@@ -167,17 +175,21 @@ namespace _Scripts.Interaction.PosterPicking
                 .OnComplete(() =>
                 {
                     print("SpawnCard complete");
+                    
+                    // Feedback
+                    if (zoomInAudio && zoomInSounds.Count > 0) 
+                        GameManager.Instance.audioManager.PlaySound(zoomInSounds[Random.Range(0, zoomInSounds.Count)]);
+                    
+                    if (zoomInParticle && zoomInParticles.Count > 0)
+                    {
+                        //TODO: Zoom In Particles
+                    }
+                    
                     //set action to generate card
-
-                    //Feedback
-                    // if (zoomInAudio && zoomInSounds.Count > 0)
-                    //     GameManager.Instance.audioManager.PlaySound(zoomInSounds[Random.Range(0, zoomInSounds.Count)]);
-                    // if (zoomInParticle && zoomInParticles.Count > 0) ; //TODO: Zoom In Particles
                     onToScratchStage?.Invoke(currentCardBrand, (int)currentPickedCardTier,
                         currentPickedCardOriginalPrice, selectedCard.cardBGSprite.sprite);
                     print("Action Invoked");
-
-                    //TODO:Temp change sprite, will be deleted in future
+                    
                     // if (faceEventTypeResult != FaceEventType.NoEvent) yield return new WaitForSeconds(1);
                     // yield return StartCoroutine(CollectCards(isPurchased));
 
@@ -242,13 +254,13 @@ namespace _Scripts.Interaction.PosterPicking
         private void ActivateRedeemArea()
         {
             redeemArea.DOAnchorPosY(-redeemAreaActivateDistance, 0.1f);
-            redeemAreaHighlight.enabled = true;
+            foreach (var highlight in redeemAreaHighlights) highlight.enabled = true;
         }
 
         private void DeactivateRedeemArea()
         {
             redeemArea.DOAnchorPosY(0, 0.1f);
-            redeemAreaHighlight.enabled = false;
+            foreach (var highlight in redeemAreaHighlights) highlight.enabled = false;
         }
         #endregion
     }
