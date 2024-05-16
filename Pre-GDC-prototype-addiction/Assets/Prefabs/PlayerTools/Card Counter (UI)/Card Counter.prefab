@@ -756,11 +756,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53d44835ed84dbfa0d42a1de44582af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSprite: {fileID: 0}
   unlockRequired: 1
-  unlockPrice: 0
   unlockMembershipLevel: 0
-  lockedSprite: {fileID: 0}
+  lockedCover: {fileID: 0}
+  revealCoverSound: {fileID: 0}
+  unlockObject: {fileID: 0}
   hideWhenScratching: 1
   currentHidingDirection: 1
   hideOffset: 850

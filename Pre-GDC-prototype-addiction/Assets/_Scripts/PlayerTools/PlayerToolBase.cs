@@ -13,15 +13,15 @@ namespace _Scripts.PlayerTools
     // TODO: unlock visual effects and sprites
     public class PlayerToolBase : MonoBehaviour, IUnlockable
     {
-        [SerializeField] private Sprite normalSprite;
-
         [SerializeField] private bool unlockRequired = true;
 
-        [ShowIf(nameof(unlockRequired))]
-        [TitleGroup("Unlock Settings")]
-        [SerializeField] private int unlockPrice;
+        [ShowIfGroup(nameof(unlockRequired))]
+
+        [BoxGroup("unlockRequired/Unlock Settings")]
         [SerializeField] private int unlockMembershipLevel;
-        [SerializeField] private GameObject lockedCover;
+        [BoxGroup("unlockRequired/Unlock Settings")]
+        [SerializeField] private GameObject lockedCover, unlockObject;
+        [BoxGroup("unlockRequired/Unlock Settings")]
         [SerializeField] private AudioClip revealCoverSound;
 
 
@@ -47,11 +47,13 @@ namespace _Scripts.PlayerTools
         // private bool isCollapsed = false;
         // private bool isCollapsing = false;
 
-        private void Start()
+        protected virtual void Start()
         {
             semiHideOffset = hideOffset / 3;
             rectTransform = GetComponent<RectTransform>();
             originalPosition = rectTransform.anchoredPosition;
+
+            if (unlockObject) unlockObject.SetActive(false);
         }
 
         private void Update()
@@ -129,14 +131,26 @@ namespace _Scripts.PlayerTools
 
             if (revealCoverSound) GameManager.Instance.audioManager.PlaySound(revealCoverSound);
 
-            float lockedCoverFirstLiftY = mainCover.GetComponent<Image>().rectTransform.rect.height;
             float lockedCoverSecondLiftY = coverTop.GetComponent<Image>().rectTransform.rect.height;
+            float lockedCoverFirstLiftY = mainCover.GetComponent<Image>().rectTransform.rect.height + lockedCoverSecondLiftY;
 
-            mainCover.DOLocalMoveY(lockedCoverFirstLiftY, 0.2f).SetEase(Ease.InQuart)
+            mainCover.DOAnchorPosY(mainCover.anchoredPosition.y + lockedCoverFirstLiftY, 1f).SetEase(Ease.InQuart)
                 .OnComplete(() =>
                 {
-                    coverTop.DOLocalMoveY( coverTop.anchoredPosition.y + lockedCoverSecondLiftY, 0.1f).SetEase(Ease.InQuart);
+                    coverTop.DOAnchorPosY(coverTop.anchoredPosition.y + lockedCoverSecondLiftY, 0.5f)
+                        .SetEase(Ease.InQuart)
+                        .OnComplete(EnableTool);
                 });
+        }
+
+        private void EnableTool()
+        {
+            if (unlockObject)
+            {
+                unlockObject.transform.localScale = Vector3.zero;
+                unlockObject.SetActive(true);
+                unlockObject.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InOutBack);
+            }
         }
         #endregion
 
@@ -199,12 +213,12 @@ namespace _Scripts.PlayerTools
                 targetPosition.y = -(currentHideOffset);
             }
 
-            rectTransform.DOAnchorPos(targetPosition, collapseDuration).SetEase(Ease.InOutQuad).SetEase(Ease.OutBack);
+            rectTransform.DOAnchorPos(targetPosition, collapseDuration).SetEase(Ease.OutBack);
         }
 
         private void ExpandFromEdge()
         {
-            rectTransform.DOAnchorPos(originalPosition, collapseDuration).SetEase(Ease.InOutQuad).SetEase(Ease.OutCubic);
+            rectTransform.DOAnchorPos(originalPosition, collapseDuration).SetEase(Ease.OutCubic);
         }
 
         // /// <summary>

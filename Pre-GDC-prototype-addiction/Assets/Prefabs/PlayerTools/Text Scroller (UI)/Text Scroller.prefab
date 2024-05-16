@@ -92,6 +92,7 @@ MonoBehaviour:
   scrollingTextTMPPrefab: {fileID: 258128239774618707, guid: b812d73cbb20ac447bd7880ee3d1d12a, type: 3}
   scrollSpeed: 500
   gapBetweenTexts: 100
+  textHeader: "\u25A0"
   idleStrings:
   - There is no true randomness in computer software.
   - Digital scratch-offs can generate icons while revealing.
@@ -219,11 +220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53d44835ed84dbfa0d42a1de44582af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSprite: {fileID: 0}
-  unlockRequired: 1
-  unlockPrice: 0
+  unlockRequired: 0
   unlockMembershipLevel: 0
-  lockedSprite: {fileID: 0}
+  lockedCover: {fileID: 0}
+  revealCoverSound: {fileID: 0}
+  unlockObject: {fileID: 0}
   hideWhenScratching: 1
   currentHidingDirection: 0
   hideOffset: 350
