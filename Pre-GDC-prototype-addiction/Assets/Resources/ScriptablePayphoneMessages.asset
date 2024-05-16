@@ -411,7 +411,7 @@ MonoBehaviour:
       Data: Analytical tool available exclusively for the pros.
     - Name: 
       Entry: 1
-      Data: 'It monitors your performance across the latest 15 cards. '
+      Data: 'It monitors your performance across the latest 12 cards. '
     - Name: 
       Entry: 1
       Data: We hope this tool empowers you to dominate.
