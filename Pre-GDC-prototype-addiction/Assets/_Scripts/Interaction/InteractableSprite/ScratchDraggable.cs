@@ -24,6 +24,11 @@ namespace _Scripts.Interaction.InteractableSprite
         public SpriteRenderer cardSurfaceSprite;
         public SpriteRenderer cardBackgroundSprite;
         public float hoverScale = 1.05f;
+        
+        [Title("Scratch Sound")]
+        public AudioClip scratchSound;
+        private GameObject currentScratchSoundTempAudio = null;
+        private bool isPlayingScratchSound = false;
 
         // private DetectScratchArea detectScratchArea;
         private Vector2 dragOffset = new Vector2(0, 0);
@@ -68,7 +73,18 @@ namespace _Scripts.Interaction.InteractableSprite
 
         private void Update()
         {
-            // scratchCardManager.InputEnabled = !isDragging;
+            if (scratchSound && DetectScratchArea.isOverScratchArea && Input.GetMouseButton(0) && !isPlayingScratchSound)
+            {
+                currentScratchSoundTempAudio = GameManager.Instance.audioManager.PlayLoopSound(scratchSound);
+                isPlayingScratchSound = true;
+            }
+                
+            if ((!DetectScratchArea.isOverScratchArea || Input.GetMouseButtonUp(0)) && currentScratchSoundTempAudio != null)
+            {
+                GameManager.Instance.audioManager.StopLoopSound(currentScratchSoundTempAudio);
+                currentScratchSoundTempAudio = null;
+                isPlayingScratchSound = false;
+            }
         }
 
         protected override void OnMouseEnter()

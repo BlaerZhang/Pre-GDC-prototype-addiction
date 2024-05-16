@@ -1077,6 +1077,10 @@ PrefabInstance:
       value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 1002119165718636770, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
+      propertyPath: scratchSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 385a43fb51a5c99469605c9d8cd21d51, type: 3}
+    - target: {fileID: 1002119165718636770, guid: 0f74c80da22ff4ff590d1a4ee2e3e16c, type: 3}
       propertyPath: scratchCardScale.x
       value: 0.8
       objectReference: {fileID: 0}
