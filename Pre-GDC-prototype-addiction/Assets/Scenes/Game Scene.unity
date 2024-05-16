@@ -4511,10 +4511,6 @@ PrefabInstance:
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]
       value: 
       objectReference: {fileID: 197637163}
-    - target: {fileID: 1464302872218825695, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: unlockRequired
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2153688874752061479, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -4603,22 +4599,6 @@ PrefabInstance:
       propertyPath: overlayCanvasObject
       value: 
       objectReference: {fileID: 2045035531}
-    - target: {fileID: 5383017150360712836, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: smokeGeneratePosition.x
-      value: -3.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 7381797434029712070, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: buyItemSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 08a0b75409e6d0946aa67935e1f7264d, type: 3}
-    - target: {fileID: 7381797434029712070, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: outOfStockSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 351ef0e0ddc1e45d495fbd4b76705ae2, type: 3}
-    - target: {fileID: 7381797434029712070, guid: 55d28ae84f20441f3a9d9b52d2dc73e8, type: 3}
-      propertyPath: iconPurchaseSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 08a0b75409e6d0946aa67935e1f7264d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
