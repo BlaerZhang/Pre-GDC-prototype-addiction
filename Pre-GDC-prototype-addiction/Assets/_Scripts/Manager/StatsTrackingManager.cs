@@ -14,12 +14,6 @@ namespace _Scripts.Manager
             pricePrizeHistory = new List<Vector2>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
-
         public void UpdatePricePrizeHistory(int price, int prize)
         {
             pricePrizeHistory.Add(new Vector2(price, prize));
