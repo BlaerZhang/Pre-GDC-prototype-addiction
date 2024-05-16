@@ -41,15 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Top-Down Desk
+  - name: Background
     uniqueID: 1724410075
     locked: 0
-  - name: Poster Holder
+  - name: Middleground
     uniqueID: 1726441453
     locked: 0
-  - name: Scratch Card
+  - name: Foreground
     uniqueID: 969988853
-    locked: 0
-  - name: Screen Space UI
-    uniqueID: 3623190157
     locked: 0

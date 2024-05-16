@@ -10,7 +10,6 @@ using UnityEngine.UI;
 
 namespace _Scripts.PlayerTools
 {
-    // TODO: unlock visual effects and sprites
     public class PlayerToolBase : MonoBehaviour, IUnlockable
     {
         [SerializeField] private bool unlockRequired = true;
@@ -123,7 +122,6 @@ namespace _Scripts.PlayerTools
 
         protected virtual void ShowUnlockEffect()
         {
-            // TODO: unlock effect
             if (!lockedCover) return;
 
             RectTransform mainCover = lockedCover.transform.GetChild(0).GetComponent<RectTransform>();
@@ -171,7 +169,6 @@ namespace _Scripts.PlayerTools
             CollapseToEdge(hideOffset);
         }
 
-        // TODO: when should it be called?
         /// <summary>
         /// hide outside its closest screen border
         /// </summary>
@@ -227,8 +224,7 @@ namespace _Scripts.PlayerTools
         // /// <param name="targetPosition"></param>
         // private void MoveTool(Vector2 targetPosition)
         // {
-        //     // if (isCollapsing) return;
-        //     // TODO: GIMME SOME JUICE!!!
+        //     // if (isCollapsing) return
         //     rectTransform.DOAnchorPos(targetPosition, collapseDuration).SetEase(Ease.InOutQuad).OnStart(() =>
         //     {
         //         isCollapsing = true;
