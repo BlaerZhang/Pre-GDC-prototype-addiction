@@ -18,7 +18,7 @@ namespace _Scripts.ConsumableStore
 
         protected override void ClickableEvent()
         {
-            if (isConsuming) return;
+            if (isDisabled) return;
 
             transform.DOScale(1, 0.3f).SetEase(Ease.OutElastic);
             UseItem();

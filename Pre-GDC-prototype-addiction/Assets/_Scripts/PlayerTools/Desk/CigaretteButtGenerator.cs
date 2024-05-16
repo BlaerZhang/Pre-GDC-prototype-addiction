@@ -5,7 +5,6 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-// TODO: drop after certain layers ?
 namespace _Scripts.PlayerTools.Desk
 {
     public class CigaretteButtGenerator : MonoBehaviour

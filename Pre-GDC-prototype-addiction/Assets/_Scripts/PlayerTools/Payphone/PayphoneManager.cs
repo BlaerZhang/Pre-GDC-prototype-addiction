@@ -252,7 +252,6 @@ namespace _Scripts.PlayerTools.Payphone
 
         private void RemoveTextBubble(GameObject textBubbleToRemove)
         {
-            // TODO: remove effects
             Destroy(textBubbleToRemove);
         }
 

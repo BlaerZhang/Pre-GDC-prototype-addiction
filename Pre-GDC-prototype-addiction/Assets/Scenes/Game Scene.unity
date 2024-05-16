@@ -8420,7 +8420,15 @@ PrefabInstance:
     - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: negativeIconExchangeProbability
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789297513944152307, guid: 495b6bd84ddc74162925ccc818d3be9d, type: 3}
+      propertyPath: positiveIconExchangeProbability
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10764,7 +10772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1759175665
 Transform:
   m_ObjectHideFlags: 0
@@ -12664,7 +12672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6517994683583707551, guid: 1e9c1039922fb47bc869b652818ea510, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6612974405320042393, guid: 1e9c1039922fb47bc869b652818ea510, type: 3}
       propertyPath: m_AnchorMax.y
