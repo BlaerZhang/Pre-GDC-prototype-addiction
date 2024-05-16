@@ -23,8 +23,10 @@ namespace _Scripts.PlayerTools.ConsumableStore
         [Title("Item Tooltip Settings")]
         [SerializeField] private SimpleTooltipStyle tooltipStyle;
 
-        [Title("Item Audio Settings")] 
-        [SerializeField] private AudioClip iconPurchaseSound;
+        [Title("Item Audio Settings")]
+        [SerializeField] private AudioClip itemUnlockSound;
+        [SerializeField] private AudioClip buyItemSound;
+        [SerializeField] private AudioClip outOfStockSound;
 
         void Start()
         {
@@ -60,14 +62,14 @@ namespace _Scripts.PlayerTools.ConsumableStore
                 AddTooltip(lockedObject, lockedInformation.leftCornerText, lockedInformation.lockedDescription, lockedInformation.rightCornerText, true);
             }
 
-            // add price, unlock level to each icon
-            // AddPriceText(consumableItem.transform, price);
-            // AddUnlockLevelText(consumableItem.transform, unlockLevel);
-
             // add tooltip on consumable items
             AddTooltip(consumableItem, itemName, itemDescription, price.ToString());
 
-            consumableItem.AddComponent<ConsumableItemIcon>().InitializeItem(consumablePrefab, itemName, price, itemSprite, consumableType, unlockLevel, iconPurchaseSound);
+            var consumableIcon = consumableItem.AddComponent<ConsumableItemIcon>();
+            consumableIcon.InitializeItem(consumablePrefab, itemName, price, itemSprite, consumableType, unlockLevel, buyItemSound);
+            consumableIcon.buyItemSound = buyItemSound;
+            consumableIcon.itemUnlockSound = itemUnlockSound;
+            consumableIcon.outOfStockSound = outOfStockSound;
 
             return consumableItem;
         }
