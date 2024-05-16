@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace _Scripts.PlayerTools.Payphone
 {
@@ -34,6 +35,10 @@ namespace _Scripts.PlayerTools.Payphone
         [SerializeField] private Volume textDisplayVolume;
         [SerializeField] private GameObject raycastBlocker;
 
+        [Title("Voice")] 
+        [SerializeField] private List<AudioClip> voices;
+        [SerializeField] private AudioSource payphoneSource;
+
         // reset required
         private List<string> lastMessageList;
         private List<string> currentMessageList;
@@ -41,7 +46,7 @@ namespace _Scripts.PlayerTools.Payphone
         private bool playAutomatically = false;
 
         //payphone animation
-        public Animator animator;
+        [HideInInspector] public Animator animator;
 
         private bool inTextDisplayMode = false;
         private bool isTextShowing = false;
@@ -167,7 +172,7 @@ namespace _Scripts.PlayerTools.Payphone
             // blur background
             if (messageIndexCounter == 0) textDisplayVolume.enabled = true;
             // textDisplayVolume.TryGet(out DepthOfField depthOfField);
-
+            
             // when all messages are played
             if (messageIndexCounter >= currentMessageList.Count)
             {
@@ -201,6 +206,11 @@ namespace _Scripts.PlayerTools.Payphone
                 {
                     isTextShowing = true;
                     animator.SetBool(Speak, true);
+                    
+                    //voice
+                    payphoneSource.Stop();
+                    payphoneSource.clip = voices[Random.Range(0, voices.Count)];
+                    payphoneSource.Play();
                 })
                 .OnComplete(() =>
                 {
@@ -217,6 +227,9 @@ namespace _Scripts.PlayerTools.Payphone
                     LayoutRebuilder.ForceRebuildLayoutImmediate(textBubbleLayoutGroup.GetComponent<RectTransform>());
                     isTextShowing = false;
                     animator.SetBool(Speak, false);
+                    
+                    //voice
+                    payphoneSource.Stop();
                 }).Play();
 
             // fade older bubbles
