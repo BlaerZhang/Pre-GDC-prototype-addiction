@@ -1,5 +1,6 @@
 using System;
 using _Scripts.Interaction.InteractableUI;
+using _Scripts.Manager;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
 {
     public class ConsumableItemBase : InteractableUIBase
     {
+        public AudioClip itemGenerateSound;
+
         [Title("Item Settings")]
         public ConsumableType consumableType;
 
@@ -82,6 +85,7 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
             rectTransform.DOAnchorPosY(originalPosition.y, 0.5f).SetEase(Ease.OutBounce)
                 .OnComplete(() =>
                 {
+                    GameManager.Instance.audioManager.PlaySound(itemGenerateSound);
                     isDisabled = false;
                 });
         }

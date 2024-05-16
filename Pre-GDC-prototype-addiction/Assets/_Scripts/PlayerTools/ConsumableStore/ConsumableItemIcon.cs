@@ -5,6 +5,7 @@ using _Scripts.PlayerTools.ConsumableStore.ConsumableItems;
 using _Scripts.PlayerTools.Desk;
 using _Scripts.PlayerTools.MembershipSystem;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -24,12 +25,21 @@ namespace _Scripts.PlayerTools.ConsumableStore
         private bool isUnlocked = false;
         private bool isOutOfStock = false;
 
+        private bool isPlayingOutOfStockEffect = false;
+
+        private Image iconImage;
+
+        public AudioClip itemUnlockSound;
+        public AudioClip buyItemSound;
+        public AudioClip outOfStockSound;
+
         public static Action<GameObject> onTryBuyItem;
 
         private void OnEnable()
         {
             MembershipManager.onMembershipLevelUp += UnlockItem;
             ConsumableItemBase.onItemRemoved += Restock;
+            iconImage = GetComponent<Image>();
         }
 
         private void OnDisable()
@@ -51,7 +61,6 @@ namespace _Scripts.PlayerTools.ConsumableStore
             this.itemSprite = itemSprite;
             this.consumableType = consumableType;
             this.unlockLevel = unlockLevel;
-            this.pressSounds.Add(pressSound);
 
             UnlockItem(0);
         }
@@ -71,6 +80,7 @@ namespace _Scripts.PlayerTools.ConsumableStore
         public override void OnPointerDown(PointerEventData eventData)
         {
             if (!isUnlocked) return;
+            if (isPlayingOutOfStockEffect) return;
             base.OnPointerDown(eventData);
         }
 
@@ -93,6 +103,8 @@ namespace _Scripts.PlayerTools.ConsumableStore
 
                 // check if there is enough space on desk, then decide whether successfully bought an item
                 GameObject itemBought = AssembleItemObject(consumablePrefab);
+
+                GameManager.Instance.audioManager.PlaySound(buyItemSound);
 
                 // if (DeskItemPlacement.isDeskFull) return;
                 
@@ -123,11 +135,19 @@ namespace _Scripts.PlayerTools.ConsumableStore
 
             return newObject;
         }
-
-        // TODO: OutOfStockEffects
+        
         private void OutOfStockEffects()
         {
-            // transform.DOShakeRotation(0.2f, Ve);
+            if(isPlayingOutOfStockEffect) return;
+            isPlayingOutOfStockEffect = true;
+
+            GameManager.Instance.audioManager.PlaySound(outOfStockSound);
+            iconImage.DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0);
+            iconImage.rectTransform.DOShakeAnchorPos(0.5f, Vector3.right * 10f).OnComplete(() =>
+            {
+                isPlayingOutOfStockEffect = false;
+            });
+
         }
 
         public void UnlockItem(int currentLevel)
@@ -141,6 +161,8 @@ namespace _Scripts.PlayerTools.ConsumableStore
                     // transform.Find("unlockLevelText").gameObject.SetActive(false);
                     GetComponent<SimpleTooltip>().isEnabled = true;
                     isUnlocked = true;
+
+                    GameManager.Instance.audioManager.PlaySound(itemUnlockSound);
                 }
             }
         }

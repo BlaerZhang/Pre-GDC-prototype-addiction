@@ -94,5 +94,6 @@ MonoBehaviour:
   hoverSounds: []
   pressSounds: []
   exitSounds: []
+  itemGenerateSound: {fileID: 0}
   consumableType: 3
   hoverSprite: {fileID: 0}
