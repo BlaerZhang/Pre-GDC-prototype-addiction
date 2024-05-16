@@ -4842,7 +4842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd6421a977a41c0ad7f2f303fd9c7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drinkingSound: {fileID: 0}
+  drinkingSound: {fileID: 8300000, guid: 3adbbc367512145f8a3603909ff86ecc, type: 3}
 --- !u!61 &7708150739217101190
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ namespace _Scripts.Manager
         private DateTime gameStartTime;
         private DateTime currentTime;
         public static Action<DateTime> OnTimeChanged;
+        public static Action onPlayerGoldChanged;
 
         public bool isTimeStopped = false;
 
@@ -22,6 +23,7 @@ namespace _Scripts.Manager
             {
                 playerGold = value;
                 GameManager.Instance.uiManager.UpdateGold(value);
+                onPlayerGoldChanged?.Invoke();
                 StatsTracker.onValueChanged?.Invoke(nameof(playerGold), playerGold);
             }
         }
