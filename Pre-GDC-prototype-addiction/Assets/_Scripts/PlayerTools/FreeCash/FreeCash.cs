@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Manager;
 using _Scripts.PlayerTools;
+using _Scripts.PlayerTools.ConsumableStore;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -24,7 +25,19 @@ public class FreeCash : PlayerToolBase, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] protected List<AudioClip> hoverSounds = new(); 
     [SerializeField] protected List<AudioClip> pressSounds = new(); 
     [SerializeField] protected List<AudioClip> exitSounds = new();
+
+    protected override void OnEnable()
+    {
+        ConsumableItemIcon.onTryBuyItem += o => ExpandFromEdge();
+        base.OnEnable();
+    }
     
+    protected override void OnDisable()
+    {
+        ConsumableItemIcon.onTryBuyItem -= o => ExpandFromEdge();
+        base.OnDisable();
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -32,14 +45,9 @@ public class FreeCash : PlayerToolBase, IPointerEnterHandler, IPointerExitHandle
         originalLocalScale = transform.localScale;
     }
 
-    private void Update()
-    {
-        if (GameManager.Instance.resourceManager.PlayerGold < 100 ||
-            GameManager.Instance.statsTrackingManager.pricePrizeHistory.Count >= 10) unlock = true;
-    }
-
     protected override void ExpandFromEdge()
     {
+        if (GameManager.Instance.resourceManager.PlayerGold < 100 || GameManager.Instance.statsTrackingManager.pricePrizeHistory.Count >= 10) unlock = true;
         if (unlock) base.ExpandFromEdge();
     }
     

@@ -73,7 +73,7 @@ namespace _Scripts.PlayerTools
             }
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             if (hideWhenScratching)
             {
@@ -87,7 +87,7 @@ namespace _Scripts.PlayerTools
             MembershipManager.onMembershipLevelUp += UnlockItem;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             if (hideWhenScratching)
             {
