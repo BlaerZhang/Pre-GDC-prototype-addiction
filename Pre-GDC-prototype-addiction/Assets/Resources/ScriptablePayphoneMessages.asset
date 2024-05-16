@@ -34,7 +34,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 6
+      Data: 9
     - Name: 
       Entry: 7
       Data: 
@@ -332,6 +332,123 @@ MonoBehaviour:
     - Name: 
       Entry: 1
       Data: Have fun.
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: FIrst Lost
+    - Name: $v
+      Entry: 7
+      Data: _Scripts.PlayerTools.Payphone.ScriptablePayphoneMessages+MessageInfo,
+        Assembly-CSharp
+    - Name: playAutomatically
+      Entry: 5
+      Data: false
+    - Name: messageText
+      Entry: 7
+      Data: 8|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 1
+      Data: Didn't win? No worries,
+    - Name: 
+      Entry: 1
+      Data: ' everyone has their off days. '
+    - Name: 
+      Entry: 1
+      Data: The important thing is to believe in yourself
+    - Name: 
+      Entry: 1
+      Data: The harder you play, the luckier you get.
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Counter
+    - Name: $v
+      Entry: 7
+      Data: _Scripts.PlayerTools.Payphone.ScriptablePayphoneMessages+MessageInfo,
+        Assembly-CSharp
+    - Name: playAutomatically
+      Entry: 5
+      Data: false
+    - Name: messageText
+      Entry: 7
+      Data: 9|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 1
+      Data: Analytical tool available exclusively for the pros.
+    - Name: 
+      Entry: 1
+      Data: 'It monitors your performance across the latest 15 cards. '
+    - Name: 
+      Entry: 1
+      Data: We hope this tool empowers you to dominate.
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: First Big Prize
+    - Name: $v
+      Entry: 7
+      Data: _Scripts.PlayerTools.Payphone.ScriptablePayphoneMessages+MessageInfo,
+        Assembly-CSharp
+    - Name: playAutomatically
+      Entry: 5
+      Data: false
+    - Name: messageText
+      Entry: 7
+      Data: 10|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Awesome! Not all members have your kind of luck and skill.
     - Name: 
       Entry: 13
       Data: 
