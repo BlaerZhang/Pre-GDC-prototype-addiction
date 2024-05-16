@@ -12,6 +12,7 @@ namespace _Scripts.Manager
         private DateTime gameStartTime;
         private DateTime currentTime;
         public static Action<DateTime> OnTimeChanged;
+        public int minutesPassed = 0;
 
         public bool isTimeStopped = false;
 
@@ -68,6 +69,7 @@ namespace _Scripts.Manager
         public void ChangeTime(double minutes)
         {
             if (isTimeStopped) return;
+            minutesPassed += (int)minutes;
             CurrentTime = CurrentTime.AddMinutes(minutes);
         }
     }

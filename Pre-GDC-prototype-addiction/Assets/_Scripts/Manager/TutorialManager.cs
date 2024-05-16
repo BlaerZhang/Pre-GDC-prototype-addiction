@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Interaction;
+using _Scripts.Interaction.InteractableSprite;
 using _Scripts.Interaction.PosterPicking;
 using _Scripts.Manager;
 using _Scripts.PlayerTools;
@@ -29,6 +30,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TutorialHighlight moneyHighlight;
     [SerializeField] private List<TutorialHighlight> fruitiePosterHighlights;
     [SerializeField] private List<TutorialHighlight> toolsHighlights;
+    [SerializeField] private TutorialHighlight cardCounterHighlightUnlocked;
     private TutorialHighlight winningGridHighlight;
 
     [Title("First Card Highlights")] 
@@ -42,6 +44,7 @@ public class TutorialManager : MonoBehaviour
     private bool hasWonForFirstTime = false;
     private bool hasLostForFirstTime = false;
     private bool hasWonBigForFirstTime = false;
+    private bool hasPassed8hours = false;
     private GameObject ringAudioTemp;
 
     private void OnEnable()
@@ -69,6 +72,7 @@ public class TutorialManager : MonoBehaviour
         };
         PlayerToolBase.onToolUnlocked += cover =>
         {
+            if (!cover.name.Contains("Coin") && !cover.name.Contains("Counter")) return;
             raycastBlocker.SetActive(true);
             PayphoneManager.onPhoneStateChanged?.Invoke(true);
             DOVirtual.DelayedCall(0.5f, () =>
@@ -106,6 +110,14 @@ public class TutorialManager : MonoBehaviour
                     break;
             }
         };
+        ScratchCardDealer.onPrizeRedeemed += () =>  
+        {
+            if (GameManager.Instance.resourceManager.minutesPassed >= 480 && !hasPassed8hours)
+            {
+                hasPassed8hours = true;
+                PayphoneManager.onPhoneMessageSent?.Invoke("8 Hours");
+            }
+        };
     }
 
     private void OnDisable()
@@ -129,8 +141,9 @@ public class TutorialManager : MonoBehaviour
             winningGridHighlight = grid.GetComponent<SpriteRenderer>().AddComponent<TutorialHighlight>();
             winningGridHighlight.enabled = false;
         };
-        PlayerToolBase.onToolUnlocked -= cover =>
+        PlayerToolBase.onToolUnlocked += cover =>
         {
+            if (!cover.name.Contains("Coin") && !cover.name.Contains("Counter")) return;
             raycastBlocker.SetActive(true);
             PayphoneManager.onPhoneStateChanged?.Invoke(true);
             DOVirtual.DelayedCall(0.5f, () =>
@@ -168,6 +181,14 @@ public class TutorialManager : MonoBehaviour
                     break;
             }
         };
+        ScratchCardDealer.onPrizeRedeemed -= () =>  
+        {
+            if (GameManager.Instance.resourceManager.minutesPassed >= 480 && !hasPassed8hours)
+            {
+                hasPassed8hours = true;
+                PayphoneManager.onPhoneMessageSent?.Invoke("8 Hours");
+            }
+        };
     }
 
     void Start()
@@ -179,6 +200,7 @@ public class TutorialManager : MonoBehaviour
         hasWonForFirstTime = false;
         hasLostForFirstTime = false;
         hasWonBigForFirstTime = false;
+        hasPassed8hours = false;
         mask.enabled = true;
 
         Opening(-1);
@@ -314,12 +336,12 @@ public class TutorialManager : MonoBehaviour
         {
             case 0:
                 payphoneVolume.enabled = false;
-                toolsHighlights[2].enabled = true;
+                cardCounterHighlightUnlocked.enabled = true;
                 HighlightManager.SmoothEnableHighlight(0.5f);
                 break;
             case 2:
                 payphoneVolume.enabled = true;
-                toolsHighlights[2].enabled = false;
+                cardCounterHighlightUnlocked.enabled = false;
                 HighlightManager.SmoothDisableHighlight(0);
                 PayphoneManager.onSingleLineBegins -= Counter;
                 break;

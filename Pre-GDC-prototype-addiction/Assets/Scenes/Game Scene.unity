@@ -2277,6 +2277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b03eed837141394c89d0710d4005b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minutesPassed: 0
   isTimeStopped: 0
   initialGold: 300
 --- !u!1 &347867736
@@ -3824,7 +3825,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6121326938929209919, guid: 89a1768b69288d44588fd1912702c2fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6121326938433349020}
   m_SourcePrefab: {fileID: 100100000, guid: 89a1768b69288d44588fd1912702c2fe, type: 3}
 --- !u!114 &602779248 stripped
 MonoBehaviour:
@@ -10973,6 +10977,7 @@ MonoBehaviour:
   - {fileID: 688832695}
   - {fileID: 736727432}
   - {fileID: 1995119631}
+  cardCounterHighlightUnlocked: {fileID: 6121326938433349020}
   prizeGridHighlight: {fileID: 1491944527}
   targetGridHighlights: {fileID: 840667702}
 --- !u!1 &1787735783
@@ -13232,6 +13237,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6121326938929209919, guid: 89a1768b69288d44588fd1912702c2fe, type: 3}
   m_PrefabInstance: {fileID: 599705513}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6121326938433349020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6121326938433349014}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecefd69a79c0423a9f41ca2b7a2a76fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialFade: {fileID: 1726279765}
 --- !u!222 &6440888210258737047
 CanvasRenderer:
   m_ObjectHideFlags: 0

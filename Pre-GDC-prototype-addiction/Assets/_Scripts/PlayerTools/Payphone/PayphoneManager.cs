@@ -244,7 +244,7 @@ namespace _Scripts.PlayerTools.Payphone
             messageIndexCounter++;
 
             //broadcast state
-            onPhoneStateChanged?.Invoke(true);
+            if (!playAutomatically) onPhoneStateChanged?.Invoke(true);
         }
 
         IEnumerator WaitAndDisplayNext()
