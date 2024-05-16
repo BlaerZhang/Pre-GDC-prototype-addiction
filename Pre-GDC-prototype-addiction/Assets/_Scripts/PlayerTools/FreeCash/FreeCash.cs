@@ -11,6 +11,8 @@ public class FreeCash : PlayerToolBase, IPointerEnterHandler, IPointerExitHandle
 {
     [Title("Incremental")] 
     [SerializeField] private IncrementalManager incrementalManager;
+    [SerializeField] private bool unlock = false;
+    [SerializeField] private int numberOfCardsPlayedToUnlock = 10;
     
     [Title("Size Modifier")]
     [SerializeField] private bool sizeFeedback = true; 
@@ -26,14 +28,25 @@ public class FreeCash : PlayerToolBase, IPointerEnterHandler, IPointerExitHandle
     protected override void Start()
     {
         base.Start();
+        GetComponent<RectTransform>().DOAnchorPosX(-GetComponent<RectTransform>().rect.width, 0);
         originalLocalScale = transform.localScale;
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.resourceManager.PlayerGold < 100 ||
+            GameManager.Instance.statsTrackingManager.pricePrizeHistory.Count >= 10) unlock = true;
+    }
+
+    protected override void ExpandFromEdge()
+    {
+        if (unlock) base.ExpandFromEdge();
     }
     
     public virtual void OnPointerEnter(PointerEventData eventData) 
     { 
         if (sizeFeedback) ScaleUpClickable(hoverSizeModifier); 
         PlaySound(hoverSounds);
-        
     }
     
     
