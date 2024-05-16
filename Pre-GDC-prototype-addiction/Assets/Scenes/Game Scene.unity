@@ -3085,7 +3085,7 @@ MonoBehaviour:
   incrementalClockUI: {fileID: 1689966664}
   upgradePrice: {fileID: 1069747122}
   buyCardPrice: {fileID: 1548577263}
-  notEnoughGoldSound: {fileID: 8300000, guid: 175992d8707b2df42af3fed71c4fea16, type: 3}
+  notEnoughGoldSound: {fileID: 8300000, guid: 351ef0e0ddc1e45d495fbd4b76705ae2, type: 3}
   membershipProgressBar: {fileID: 6722899509281127686}
   membershipLevelUI: {fileID: 270031067}
   progressBarZoomRatio: 1.2

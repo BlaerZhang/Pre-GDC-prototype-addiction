@@ -1,4 +1,5 @@
 using _Scripts.Manager;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Scripts.Interaction
