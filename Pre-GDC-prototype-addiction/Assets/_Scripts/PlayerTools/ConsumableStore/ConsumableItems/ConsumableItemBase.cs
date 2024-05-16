@@ -82,10 +82,10 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
             gameObject.SetActive(true);
 
             isDisabled = true;
+            GameManager.Instance.audioManager.PlaySound(itemGenerateSound);
             rectTransform.DOAnchorPosY(originalPosition.y, 0.5f).SetEase(Ease.OutBounce)
                 .OnComplete(() =>
                 {
-                    GameManager.Instance.audioManager.PlaySound(itemGenerateSound);
                     isDisabled = false;
                 });
         }
