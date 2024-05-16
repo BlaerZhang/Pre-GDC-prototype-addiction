@@ -349,14 +349,14 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: FIrst Lost
+      Data: First Lost
     - Name: $v
       Entry: 7
       Data: _Scripts.PlayerTools.Payphone.ScriptablePayphoneMessages+MessageInfo,
         Assembly-CSharp
     - Name: playAutomatically
       Entry: 5
-      Data: false
+      Data: true
     - Name: messageText
       Entry: 7
       Data: 8|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
@@ -439,7 +439,7 @@ MonoBehaviour:
         Assembly-CSharp
     - Name: playAutomatically
       Entry: 5
-      Data: false
+      Data: true
     - Name: messageText
       Entry: 7
       Data: 10|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib

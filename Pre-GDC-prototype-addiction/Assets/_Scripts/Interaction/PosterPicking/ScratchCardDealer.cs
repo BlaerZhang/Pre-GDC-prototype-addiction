@@ -41,6 +41,7 @@ namespace _Scripts.Interaction.PosterPicking
         public float redeemCardStayYOffset;
 
         public static Action onPrizeRedeemed;
+        public static Action<float> onPrizeByPriceDisplayed;
 
         [Title("Feedback")] 
         [SerializeField] private AudioClip purchaseSound;
@@ -233,9 +234,10 @@ namespace _Scripts.Interaction.PosterPicking
                     // back to the poster
                     onPrizeRedeemed?.Invoke();
                 });
-                
+
+                float prizeByPriceRatio = generator.currentCardPrize / currentPickedCardOriginalPrice;
                 // Feedback
-                switch (generator.currentCardPrize / currentPickedCardOriginalPrice)
+                switch (prizeByPriceRatio)
                 {
                     case 0:
                         break;
@@ -248,6 +250,7 @@ namespace _Scripts.Interaction.PosterPicking
                             GameManager.Instance.audioManager.PlaySound(bigRedeemSounds[Random.Range(0, bigRedeemSounds.Count)]);
                         break;
                 }
+                onPrizeByPriceDisplayed?.Invoke(prizeByPriceRatio);
                  
                 // if (giveParticle && giveParticles.Count > 0) //TODO: Give Particles
             }).Play();
