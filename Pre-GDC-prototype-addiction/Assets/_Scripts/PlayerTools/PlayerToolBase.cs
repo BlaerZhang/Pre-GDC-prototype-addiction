@@ -1,3 +1,4 @@
+using System;
 using _Scripts.FaceEventSystem;
 using _Scripts.Interaction.InteractableSprite;
 using _Scripts.Interaction.PosterPicking;
@@ -38,6 +39,8 @@ namespace _Scripts.PlayerTools
             Bottom,
             Left
         }
+
+        public static Action<GameObject> onToolUnlocked;
 
         private RectTransform rectTransform;
         private Vector2 originalPosition;
@@ -116,6 +119,7 @@ namespace _Scripts.PlayerTools
                     print($"Player tool {gameObject.name} unlocked");
                     ShowUnlockEffect();
                     isUnlocked = true;
+                    if (lockedCover) onToolUnlocked?.Invoke(lockedCover);
                 }
             }
         }
