@@ -23,12 +23,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: dataList
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[ScratchCardGeneration.ScratchCardBrand,
-        Assembly-CSharp],[ScratchCardGeneration.ScratchCardData.ScratchCardPrizeDistributionData+Distribution,
+      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.ScratchCardGeneration.ScratchCardBrand,
+        Assembly-CSharp],[_Scripts.ScratchCardGeneration.ScratchCardData.ScratchCardPrizeDistributionData+Distribution,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ScratchCardGeneration.ScratchCardBrand,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.ScratchCardGeneration.ScratchCardBrand,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -50,7 +50,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 2|ScratchCardGeneration.ScratchCardData.ScratchCardPrizeDistributionData+Distribution,
+      Data: 2|_Scripts.ScratchCardGeneration.ScratchCardData.ScratchCardPrizeDistributionData+Distribution,
         Assembly-CSharp
     - Name: levelDistribution
       Entry: 7
@@ -424,7 +424,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 6
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
@@ -494,6 +494,18 @@ MonoBehaviour:
     - Name: $v
       Entry: 4
       Data: 0.049
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 50000
+    - Name: $v
+      Entry: 4
+      Data: 0.001
     - Name: 
       Entry: 8
       Data: 
