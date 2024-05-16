@@ -11,6 +11,7 @@ using Abu;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace _Scripts.Interaction.PosterPicking
@@ -49,6 +50,11 @@ namespace _Scripts.Interaction.PosterPicking
         [SerializeField] private List<AudioClip> zoomInSounds;
         private bool zoomInParticle = false;
         private List<AudioClip> zoomInParticles;
+        [SerializeField] private bool redeemAudio = true;
+        [SerializeField] private List<AudioClip> smallRedeemSounds;
+        [SerializeField] private List<AudioClip> bigRedeemSounds;
+        private bool redeemParticle = false;
+        private List<AudioClip> redeemParticles;
 
         private List<TutorialHighlight> redeemAreaHighlights;
         private ScratchCardBrand currentCardBrand;
@@ -227,11 +233,23 @@ namespace _Scripts.Interaction.PosterPicking
                     // back to the poster
                     onPrizeRedeemed?.Invoke();
                 });
-                //Feedback
-                // if (generator.currentCardPrize <= 0) return;
-                // if (giveAudio && giveSounds.Count > 0)
-                //     GameManager.Instance.audioManager.PlaySound(giveSounds[Random.Range(0, giveSounds.Count)]);
-                // if (giveParticle && giveParticles.Count > 0) ; //TODO: Give Particles
+                
+                // Feedback
+                switch (generator.currentCardPrize / currentPickedCardOriginalPrice)
+                {
+                    case 0:
+                        break;
+                    case < 5:
+                        if (redeemAudio && smallRedeemSounds.Count > 0)
+                            GameManager.Instance.audioManager.PlaySound(smallRedeemSounds[Random.Range(0, smallRedeemSounds.Count)]);
+                        break;
+                    case >= 5:
+                        if (redeemAudio && bigRedeemSounds.Count > 0)
+                            GameManager.Instance.audioManager.PlaySound(bigRedeemSounds[Random.Range(0, bigRedeemSounds.Count)]);
+                        break;
+                }
+                 
+                // if (giveParticle && giveParticles.Count > 0) //TODO: Give Particles
             }).Play();
         }
 

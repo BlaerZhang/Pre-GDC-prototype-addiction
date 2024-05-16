@@ -223,8 +223,8 @@ MonoBehaviour:
   unlockRequired: 0
   unlockMembershipLevel: 0
   lockedCover: {fileID: 0}
-  revealCoverSound: {fileID: 0}
   unlockObject: {fileID: 0}
+  revealCoverSound: {fileID: 0}
   hideWhenScratching: 1
   currentHidingDirection: 0
   hideOffset: 350

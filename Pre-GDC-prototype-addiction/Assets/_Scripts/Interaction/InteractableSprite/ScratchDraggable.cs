@@ -73,17 +73,18 @@ namespace _Scripts.Interaction.InteractableSprite
 
         private void Update()
         {
-            if (scratchSound && DetectScratchArea.isOverScratchArea && Input.GetMouseButton(0) && !isPlayingScratchSound)
-            {
-                currentScratchSoundTempAudio = GameManager.Instance.audioManager.PlayLoopSound(scratchSound);
-                isPlayingScratchSound = true;
-            }
-                
             if ((!DetectScratchArea.isOverScratchArea || Input.GetMouseButtonUp(0)) && currentScratchSoundTempAudio != null)
             {
                 GameManager.Instance.audioManager.StopLoopSound(currentScratchSoundTempAudio);
                 currentScratchSoundTempAudio = null;
                 isPlayingScratchSound = false;
+            }
+            
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (scratchSound && DetectScratchArea.isOverScratchArea && Input.GetMouseButton(0) && !isPlayingScratchSound)
+            {
+                currentScratchSoundTempAudio = GameManager.Instance.audioManager.PlayLoopSound(scratchSound);
+                isPlayingScratchSound = true;
             }
         }
 

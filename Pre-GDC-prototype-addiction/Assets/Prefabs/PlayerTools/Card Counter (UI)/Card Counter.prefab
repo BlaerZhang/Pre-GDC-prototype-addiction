@@ -614,7 +614,6 @@ GameObject:
   - component: {fileID: 4499876250051240844}
   - component: {fileID: 4426150133428202539}
   - component: {fileID: 581912477651686157}
-  - component: {fileID: 1935106897654960958}
   m_Layer: 5
   m_Name: Card Counter
   m_TagString: Untagged
@@ -707,6 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20084fba0c66f6e419bace035f9ffc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerToolBase: {fileID: 0}
   counterIconPrefab: {fileID: 8363729834168705785, guid: 613d0dbadacc3194794c216744d32286, type: 3}
   iconEmpty: {fileID: 21300000, guid: 721d34cb279623147afe194e334fb690, type: 3}
   iconHalf: {fileID: 21300000, guid: cc19f703033b6ab4aa94feb65bda427e, type: 3}
@@ -742,29 +742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding: {x: 10, y: 10, z: 10, w: 10}
+  m_Padding: {x: 9, y: 10, z: 3, w: 10}
   m_Softness: {x: 0, y: 0}
---- !u!114 &1935106897654960958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6121326938929209919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f53d44835ed84dbfa0d42a1de44582af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlockRequired: 1
-  unlockMembershipLevel: 0
-  lockedCover: {fileID: 0}
-  revealCoverSound: {fileID: 0}
-  unlockObject: {fileID: 0}
-  hideWhenScratching: 1
-  currentHidingDirection: 1
-  hideOffset: 850
-  collapseDuration: 0.4
 --- !u!1 &6243743667498579289
 GameObject:
   m_ObjectHideFlags: 0
