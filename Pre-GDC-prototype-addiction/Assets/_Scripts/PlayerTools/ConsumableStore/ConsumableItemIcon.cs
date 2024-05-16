@@ -95,7 +95,7 @@ namespace _Scripts.PlayerTools.ConsumableStore
                 GameObject itemBought = AssembleItemObject(consumablePrefab);
                 onTryBuyItem?.Invoke(itemBought);
 
-                if (DeskItemPlacement.isDeskFull) return;
+                // if (DeskItemPlacement.isDeskFull) return;
                 
                 GameManager.Instance.resourceManager.PlayerGold -= price;
                 isOutOfStock = true;
@@ -118,7 +118,6 @@ namespace _Scripts.PlayerTools.ConsumableStore
                 newImage.SetNativeSize();
             }
 
-            // TODO: select specific item script according to the consumable type
             if (newObject.TryGetComponent(out ConsumableItemBase consumableItemBase)) consumableItemBase.consumableType = consumableType;
             else consumablePrefab.AddComponent<ConsumableItemBase>();
 
@@ -128,7 +127,6 @@ namespace _Scripts.PlayerTools.ConsumableStore
         // TODO: OutOfStockEffects
         private void OutOfStockEffects()
         {
-            // transform.
             // transform.DOShakeRotation(0.2f, Ve);
         }
 

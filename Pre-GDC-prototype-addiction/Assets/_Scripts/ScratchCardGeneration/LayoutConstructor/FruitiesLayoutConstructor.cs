@@ -101,8 +101,8 @@ namespace _Scripts.ScratchCardGeneration.LayoutConstructor
             spriteRenderer.sprite = iconSprite;
 
             var sortingGroup = iconObject.AddComponent<SortingGroup>();
-            sortingGroup.sortingLayerName = "Scratch Card";
-            sortingGroup.sortingOrder = 2;
+            sortingGroup.sortingLayerName = "Foreground";
+            sortingGroup.sortingOrder = 20;
 
             iconObject.transform.SetParent(currentScratchCard.transform);
 

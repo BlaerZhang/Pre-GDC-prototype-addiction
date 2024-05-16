@@ -20,7 +20,7 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
         public static Action<ConsumableType> onItemConsumed;
         public static Action<string> onItemRemoved;
 
-        protected bool isConsuming = false;
+        protected bool isDisabled = false;
 
         protected void Awake()
         {
@@ -42,7 +42,7 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            if (isConsuming) return;
+            if (isDisabled) return;
             base.OnPointerEnter(eventData);
             if (hoverSprite) itemImage.sprite = hoverSprite;
             // else Debug.LogError("Hover sprite is null!");
@@ -50,7 +50,7 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            if (isConsuming) return;
+            if (isDisabled) return;
             base.OnPointerExit(eventData);
             if (itemImage.sprite) itemImage.sprite = normalSprite;
             else Debug.LogError("itemImage is null!");
@@ -58,13 +58,13 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
 
         public override void OnPointerDown(PointerEventData eventData)
         {
-            if (isConsuming) return;
+            if (isDisabled) return;
             base.OnPointerDown(eventData);
         }
 
         public override void OnPointerUp(PointerEventData eventData)
         {
-            if (isConsuming) return;
+            if (isDisabled) return;
             base.OnPointerUp(eventData);
         }
 
@@ -73,12 +73,22 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
         {
             if (!item.name.Equals(name)) return;
 
+            RectTransform rectTransform = GetComponent<RectTransform>();
+            Vector2 originalPosition = rectTransform.anchoredPosition;
+            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 250);
             gameObject.SetActive(true);
+
+            isDisabled = true;
+            rectTransform.DOAnchorPosY(originalPosition.y, 0.5f).SetEase(Ease.OutBounce)
+                .OnComplete(() =>
+                {
+                    isDisabled = false;
+                });
         }
 
         protected void UseItem()
         {
-            isConsuming = true;
+            isDisabled = true;
 
             print($"{name} is used");
             onItemConsumed?.Invoke(consumableType);
@@ -88,7 +98,7 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
         {
             itemImage.sprite = normalSprite;
 
-            isConsuming = false;
+            isDisabled = false;
 
             gameObject.SetActive(false);
             print($"{name} is removed");
@@ -97,7 +107,7 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableItems
 
         protected override void ClickableEvent()
         {
-            if (isConsuming) return;
+            if (isDisabled) return;
             transform.DOScale(1, 0.3f).SetEase(Ease.OutElastic);
             UseItem();
             RemoveItem();

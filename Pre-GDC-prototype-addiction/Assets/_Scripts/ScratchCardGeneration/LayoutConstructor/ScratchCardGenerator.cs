@@ -51,8 +51,8 @@ namespace _Scripts.ScratchCardGeneration.LayoutConstructor
 
             currentScratchCard = SwitchConstructor(currentCardBrand).ConstructCardLayout(currentCardPrize, originalPrice, cardGenerationPosition);
             var sortingGroup = currentScratchCard.AddComponent<SortingGroup>();
-            sortingGroup.sortingLayerName = "Scratch Card";
-            sortingGroup.sortingOrder = 1;
+            sortingGroup.sortingLayerName = "Foreground";
+            sortingGroup.sortingOrder = 2;
 
             GenerateCardFace(cardFace);
         }
