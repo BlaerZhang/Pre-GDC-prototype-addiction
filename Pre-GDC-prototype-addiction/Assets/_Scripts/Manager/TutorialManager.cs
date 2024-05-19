@@ -44,7 +44,7 @@ public class TutorialManager : MonoBehaviour
     private bool hasWonForFirstTime = false;
     private bool hasLostForFirstTime = false;
     private bool hasWonBigForFirstTime = false;
-    private bool hasPassed8hours = false;
+    private bool hasPassed8Hours = false;
     private GameObject ringAudioTemp;
 
     private void OnEnable()
@@ -57,7 +57,7 @@ public class TutorialManager : MonoBehaviour
             PayphoneManager.onSingleLineBegins += FirstCard;
             raycastBlocker.SetActive(true);
             PayphoneManager.onPhoneStateChanged?.Invoke(true);
-            DOVirtual.DelayedCall(1, () => PayphoneManager.onPhoneMessageSent?.Invoke("First Card")).Play();
+            DOVirtual.DelayedCall(1f, () => PayphoneManager.onPhoneMessageSent?.Invoke("First Card")).Play();
         };
         PrizeRevealing.onWinningGridFullyScratched += grid =>
         {
@@ -112,9 +112,9 @@ public class TutorialManager : MonoBehaviour
         };
         ScratchCardDealer.onPrizeRedeemed += () =>  
         {
-            if (GameManager.Instance.resourceManager.minutesPassed >= 480 && !hasPassed8hours)
+            if (GameManager.Instance.resourceManager.minutesPassed >= 480 && !hasPassed8Hours)
             {
-                hasPassed8hours = true;
+                hasPassed8Hours = true;
                 PayphoneManager.onPhoneMessageSent?.Invoke("8 Hours");
             }
         };
@@ -137,9 +137,11 @@ public class TutorialManager : MonoBehaviour
             if (hasWonForFirstTime) return;
             hasWonForFirstTime = true;
             PayphoneManager.onSingleLineBegins += FirstPrize;
-            PayphoneManager.onPhoneMessageSent?.Invoke("First Prize");
-            winningGridHighlight = grid.GetComponent<SpriteRenderer>().AddComponent<TutorialHighlight>();
+            raycastBlocker.SetActive(true);
+            PayphoneManager.onPhoneStateChanged?.Invoke(true);
+            winningGridHighlight = grid.GetComponentInChildren<SpriteRenderer>().AddComponent<TutorialHighlight>();
             winningGridHighlight.enabled = false;
+            DOVirtual.DelayedCall(2f, () => PayphoneManager.onPhoneMessageSent?.Invoke("First Prize")).Play();
         };
         PlayerToolBase.onToolUnlocked += cover =>
         {
@@ -183,9 +185,9 @@ public class TutorialManager : MonoBehaviour
         };
         ScratchCardDealer.onPrizeRedeemed -= () =>  
         {
-            if (GameManager.Instance.resourceManager.minutesPassed >= 480 && !hasPassed8hours)
+            if (GameManager.Instance.resourceManager.minutesPassed >= 480 && !hasPassed8Hours)
             {
-                hasPassed8hours = true;
+                hasPassed8Hours = true;
                 PayphoneManager.onPhoneMessageSent?.Invoke("8 Hours");
             }
         };
@@ -200,7 +202,7 @@ public class TutorialManager : MonoBehaviour
         hasWonForFirstTime = false;
         hasLostForFirstTime = false;
         hasWonBigForFirstTime = false;
-        hasPassed8hours = false;
+        hasPassed8Hours = false;
         mask.enabled = true;
 
         Opening(-1);
@@ -213,7 +215,7 @@ public class TutorialManager : MonoBehaviour
             hasPayphonePickedUp = true;
             GameManager.Instance.audioManager.StopLoopSound(ringAudioTemp);
             GameManager.Instance.audioManager.PlaySound(payphonePickUpSound);
-            PayphoneManager.onPhoneMessageSent?.Invoke("Opening");
+            DOVirtual.DelayedCall(0.05f, () => PayphoneManager.onPhoneMessageSent?.Invoke("Opening")).Play();
         }
     }
 
@@ -288,7 +290,7 @@ public class TutorialManager : MonoBehaviour
             case 6:
                 payphoneVolume.enabled = true;
                 prizeGridHighlight.enabled = false;
-                HighlightManager.SmoothDisableHighlight(0.03f);
+                HighlightManager.SmoothDisableHighlight(0f);
                 PayphoneManager.onSingleLineBegins -= FirstCard;
                 break;
         }

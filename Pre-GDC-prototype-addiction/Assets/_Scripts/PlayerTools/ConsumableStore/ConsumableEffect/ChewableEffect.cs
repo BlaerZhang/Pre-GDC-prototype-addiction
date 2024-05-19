@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _Scripts.ConsumableStore.ConsumableEffect;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -32,6 +33,8 @@ namespace _Scripts.PlayerTools.ConsumableStore.ConsumableEffect
 
             residueRectTransform.anchoredPosition = new Vector2(randomX, randomY);
             residueRectTransform.eulerAngles = new Vector3(0, 0, Random.Range(0, 360));
+            // residueRectTransform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutElastic)
+            //     .OnStart(() => residueRectTransform.localScale = Vector3.zero);
         }
     }
 }

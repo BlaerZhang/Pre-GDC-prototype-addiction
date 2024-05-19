@@ -79,7 +79,7 @@ namespace _Scripts.PlayerTools.Payphone
             currentDisplayBubbles = new List<GameObject>(maxBubbleAmount);
             animator = GetComponent<Animator>();
             textDisplayVolume.enabled = false;
-            raycastBlocker.SetActive(false);
+            // raycastBlocker.SetActive(false);
         }
 
         private void Update()
