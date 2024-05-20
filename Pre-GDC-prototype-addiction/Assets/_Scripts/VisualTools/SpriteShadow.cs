@@ -45,7 +45,7 @@ namespace _Scripts.VisualTools
 
         void Update()
         {
-            _shadow.transform.position = this.transform.position + (Vector3)shadowOffset;
+            _shadow.transform.position = this.transform.position + (Vector3)shadowOffset + Vector3.forward * 5;
         }
     }
 }

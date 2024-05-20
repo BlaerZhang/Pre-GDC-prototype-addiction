@@ -36,6 +36,10 @@ public class TutorialManager : MonoBehaviour
     [Title("First Card Highlights")] 
     [SerializeField] private TutorialHighlight prizeGridHighlight;
     [SerializeField] private GameObject targetGridHighlights;
+
+    [Title("Dynamic Triggered Dialog")] 
+    [SerializeField] private int targetAmountOfMoneyToTriggerDialog = 100000;
+    [SerializeField] private int targetAmountOfMinutesToTriggerDialog = 720;
     
     private StatsTrackingManager statsTrackingManager;
     private bool hasPayphonePickedUp = false;
@@ -45,6 +49,8 @@ public class TutorialManager : MonoBehaviour
     private bool hasLostForFirstTime = false;
     private bool hasWonBigForFirstTime = false;
     private bool hasPassed8Hours = false;
+    private bool hasReachMoneyGoal = false;
+    private bool hasPassedSetMinutes = false;
     private GameObject ringAudioTemp;
 
     private void OnEnable()
@@ -117,6 +123,21 @@ public class TutorialManager : MonoBehaviour
                 hasPassed8Hours = true;
                 PayphoneManager.onPhoneMessageSent?.Invoke("8 Hours");
             }
+            
+            //set minutes
+            if (GameManager.Instance.resourceManager.minutesPassed >= targetAmountOfMinutesToTriggerDialog && !hasPassedSetMinutes)
+            {
+                hasPassedSetMinutes = true;
+                PayphoneManager.onPhoneMessageSent?.Invoke("Time Pass");
+            }
+            
+            //money goal
+            if (GameManager.Instance.resourceManager.PlayerGold >= targetAmountOfMoneyToTriggerDialog &&
+                !hasReachMoneyGoal)
+            {
+                hasReachMoneyGoal = true;
+                PayphoneManager.onPhoneMessageSent?.Invoke("Reach Goal");
+            }
         };
     }
 
@@ -183,12 +204,27 @@ public class TutorialManager : MonoBehaviour
                     break;
             }
         };
-        ScratchCardDealer.onPrizeRedeemed -= () =>  
+        ScratchCardDealer.onPrizeRedeemed += () =>  
         {
             if (GameManager.Instance.resourceManager.minutesPassed >= 480 && !hasPassed8Hours)
             {
                 hasPassed8Hours = true;
                 PayphoneManager.onPhoneMessageSent?.Invoke("8 Hours");
+            }
+            
+            //set minutes
+            if (GameManager.Instance.resourceManager.minutesPassed >= targetAmountOfMinutesToTriggerDialog && !hasPassedSetMinutes)
+            {
+                hasPassedSetMinutes = true;
+                PayphoneManager.onPhoneMessageSent?.Invoke("Time Pass");
+            }
+            
+            //money goal
+            if (GameManager.Instance.resourceManager.PlayerGold >= targetAmountOfMoneyToTriggerDialog &&
+                !hasReachMoneyGoal)
+            {
+                hasReachMoneyGoal = true;
+                PayphoneManager.onPhoneMessageSent?.Invoke("Reach Goal");
             }
         };
     }

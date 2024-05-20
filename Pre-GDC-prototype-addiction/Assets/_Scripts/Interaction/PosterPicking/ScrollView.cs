@@ -14,8 +14,8 @@ namespace _Scripts.Interaction.PosterPicking
 
         [SerializeField] protected float initialYPosition = -2.25f;
         [SerializeField] public Vector2 scrollLimits; // 滚动限制
-        [SerializeField] protected float smoothTime = 0.3f; // 平滑时间
-        [SerializeField] [PropertyRange(100, 10000)] protected float scrollSpeedSensitivity = 300f;
+        [SerializeField] protected float smoothTime = 1f; // 平滑时间
+        [SerializeField] [PropertyRange(500, 2000)] protected float scrollSpeedSensitivity = 300f;
 
         private float currentVelocity = 0f; // 当前速度，用于平滑减速
 
@@ -50,10 +50,10 @@ namespace _Scripts.Interaction.PosterPicking
             float targetVelocity = scrollInput * scrollSpeedSensitivity; // 目标速度基于输入和一个自定义系数
 
             // 平滑过渡当前速度到目标速度
-            currentVelocity = Mathf.Lerp(currentVelocity, targetVelocity, Time.deltaTime / smoothTime);
+            currentVelocity = Mathf.Lerp(currentVelocity, targetVelocity, Time.fixedDeltaTime / smoothTime);
 
             // 更新位置
-            scrollViewHolder.position += Vector3.up * currentVelocity * Time.deltaTime;
+            scrollViewHolder.position += Vector3.up * currentVelocity * Time.fixedDeltaTime;
             scrollViewHolder.position = new Vector3(scrollViewHolder.position.x,
                 Mathf.Clamp(scrollViewHolder.position.y, scrollLimits.x, scrollLimits.y),
                 scrollViewHolder.position.z);

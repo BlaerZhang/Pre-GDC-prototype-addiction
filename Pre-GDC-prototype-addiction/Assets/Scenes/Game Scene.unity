@@ -533,6 +533,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -954,6 +962,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1061,8 +1077,8 @@ MonoBehaviour:
   scrollViewHolder: {fileID: 626965177}
   initialYPosition: 4
   scrollLimits: {x: -12, y: 4}
-  smoothTime: 0.3
-  scrollSpeedSensitivity: 10000
+  smoothTime: 1
+  scrollSpeedSensitivity: 1000
   posterHolderInitialY: 0
   posterHolderScrollIndicator: {fileID: 1239243363}
   pickingArea:
@@ -1124,6 +1140,14 @@ PrefabInstance:
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
       value: Poster Card Sample (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
@@ -1476,10 +1500,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6614837345165067547, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2c4e52614643cdc4193200b0f46def19, type: 3}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1560,6 +1592,14 @@ PrefabInstance:
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
       value: Poster Card Sample (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
@@ -1670,7 +1710,7 @@ Transform:
   m_GameObject: {fileID: 282630129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -0.10000038, z: 0}
+  m_LocalPosition: {x: 0.1, y: -0.10000038, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1907,7 +1947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 599.9999, y: 0}
+  m_AnchoredPosition: {x: 600.00006, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &312910291
@@ -3596,10 +3636,14 @@ PrefabInstance:
     - target: {fileID: 2384260688059911398, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: tutorialFade
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1726279765}
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
       value: Poster Card Sample (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6614837345165067547, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Size.x
@@ -3616,6 +3660,10 @@ PrefabInstance:
     - target: {fileID: 6614837345165067547, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
@@ -3668,7 +3716,7 @@ PrefabInstance:
     - target: {fileID: 6793819182149787946, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: tutorialFade
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1726279765}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4182,10 +4230,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6614837345165067547, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c34f71510b985424ab09968029094275, type: 3}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -4266,6 +4322,14 @@ PrefabInstance:
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
       value: Poster Card Sample (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
@@ -4936,7 +5000,7 @@ Transform:
   m_GameObject: {fileID: 758493008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.100000024, y: -0.099999994, z: 0}
+  m_LocalPosition: {x: 0.100000024, y: -0.099999994, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5073,14 +5137,13 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!4 &782425487
-Transform:
+--- !u!224 &782425487
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782425484}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -5088,6 +5151,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1124282827}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782425488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6160,6 +6228,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -6492,10 +6568,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6614837345165067547, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d2ed7985407f4714fbba4885347bc272, type: 3}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -7028,6 +7112,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -7375,6 +7467,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -7549,6 +7649,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6614837345165067547, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Size.x
       value: 2.204651
@@ -7564,6 +7668,10 @@ PrefabInstance:
     - target: {fileID: 6614837345165067547, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
@@ -7969,10 +8077,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6614837345165067547, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 79b970398f8e9fd42ad4ae1fa634c2c2, type: 3}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -9278,6 +9394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster Card Sample
       objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3580790522045312806, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -9298,6 +9418,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -9594,6 +9718,14 @@ PrefabInstance:
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
       value: Poster Card Sample (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
@@ -10440,6 +10572,14 @@ PrefabInstance:
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
       value: Poster Card Sample (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
@@ -11291,6 +11431,14 @@ PrefabInstance:
     - target: {fileID: 2582822206088799528, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_Name
       value: Poster Card Sample (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295967019691367880, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723807513803538567, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6735853119971919180, guid: d7af941c525aad24d956798b25e86a8f, type: 3}
       propertyPath: m_LocalScale.x
@@ -13078,6 +13226,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4278190080
       objectReference: {fileID: 0}
+    - target: {fileID: 6124833160257428789, guid: 1e9c1039922fb47bc869b652818ea510, type: 3}
+      propertyPath: membershipPointsCostData
+      value: 
+      objectReference: {fileID: 11400000, guid: bdb431ed8fd80224ab8bd463f30bedaf, type: 2}
     - target: {fileID: 6517994683583707551, guid: 1e9c1039922fb47bc869b652818ea510, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
